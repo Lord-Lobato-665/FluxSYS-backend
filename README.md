@@ -16,6 +16,7 @@ La gestión de inventarios es un aspecto crucial en cualquier empresa que maneje
 - Quintero Escobar Carlos Máximo
 - Gutiérrez Canul Gustavo
 - Raymundo Mata Isha Mia
+
 - Velázquez De La Cruz Carlos Yahir
 
 ## Librerías
