@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "KRrL0LCymt1ML/F4mE/CvRaG2jFMHQ2xWavYc3XldNs=",
+  "Source": "FluxSYS-backend",
+  "BasePath": "_content/FluxSYS-backend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

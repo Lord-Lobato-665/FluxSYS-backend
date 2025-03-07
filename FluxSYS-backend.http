@@ -1,0 +1,6 @@
+@FluxSYS_backend_HostAddress = http://localhost:5076
+
+GET {{FluxSYS_backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
