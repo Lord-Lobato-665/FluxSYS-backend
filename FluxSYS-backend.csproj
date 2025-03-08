@@ -8,7 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="DevExpress.Data" Version="24.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="7.3.1" />
   </ItemGroup>
 
@@ -16,16 +24,15 @@
     <Folder Include="Application\DTOs\" />
     <Folder Include="Application\PDFs\" />
     <Folder Include="Application\AppServices\" />
-    <Folder Include="Domain\Models\" />
     <Folder Include="Domain\IServices\" />
     <Folder Include="Domain\CoreServices\" />
-    <Folder Include="Infraestructure\Data\" />
+    <Folder Include="Domain\Models\PrincipalModels\" />
+    <Folder Include="Domain\Models\PrimitiveModels\" />
     <Folder Include="Infraestructure\ExternalServices\" />
-    <Folder Include="Infraestructure\Migrations\" />
     <Folder Include="Infraestructure\Repositories\" />
     <Folder Include="Migrations\" />
     <Folder Include="Presentation\Controllers\" />
-    <Folder Include="Presentation\ModelsView\" />
+    <Folder Include="Presentation\ViewModels\" />
   </ItemGroup>
 
 </Project>
