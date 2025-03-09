@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "Program\u002B\u003C\u003Ec",
-    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_1",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_3",
     "RelativePath": "",
     "HttpMethod": "GET",
     "IsController": false,
@@ -14,5 +14,94 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CompaniesController",
+    "Method": "Create",
+    "RelativePath": "api/Companies/create-company",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "FluxSYS_backend.Application.ViewModels.CompanyViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CompaniesController",
+    "Method": "SoftDelete",
+    "RelativePath": "api/Companies/delete-company/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CompaniesController",
+    "Method": "GetAll",
+    "RelativePath": "api/Companies/get-companies",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CompaniesController",
+    "Method": "Restore",
+    "RelativePath": "api/Companies/restore-company/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CompaniesController",
+    "Method": "Update",
+    "RelativePath": "api/Companies/update-company/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "FluxSYS_backend.Application.ViewModels.CompanyViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.ErrorsController",
+    "Method": "GetAllErrors",
+    "RelativePath": "api/Errors",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]
