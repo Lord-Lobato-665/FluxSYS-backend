@@ -23,15 +23,10 @@
   <ItemGroup>
     <Folder Include="Application\DTOs\" />
     <Folder Include="Application\PDFs\" />
-    <Folder Include="Application\AppServices\" />
-    <Folder Include="Domain\IServices\" />
     <Folder Include="Domain\CoreServices\" />
-    <Folder Include="Domain\Models\PrincipalModels\" />
     <Folder Include="Domain\Models\PrimitiveModels\" />
     <Folder Include="Infraestructure\ExternalServices\" />
-    <Folder Include="Infraestructure\Repositories\" />
     <Folder Include="Migrations\" />
-    <Folder Include="Presentation\Controllers\" />
     <Folder Include="Presentation\ViewModels\" />
   </ItemGroup>
 

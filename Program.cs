@@ -9,11 +9,25 @@ var builder = WebApplication.CreateBuilder(args);
 // Agregar servicios al contenedor
 builder.Services.AddControllers();
 
-// Inyeccion del ApplicationDbContext
+// Inyección del ApplicationDbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("UserApiDb")));
 
-// Inyeccion de servicios de swagger
+// Llamar al método de extensión para registrar dependencias
+builder.Services.AddApplicationServices();
+
+// Configuración de CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000") // Reemplaza con el dominio de tu frontend
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+// Inyección de servicios de swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -32,6 +46,9 @@ if (app.Environment.IsDevelopment())
 
 // Redirigir a Swagger si acceden a la raíz
 app.MapGet("/", () => Results.Redirect("/swagger"));
+
+// Aplicar CORS
+app.UseCors("AllowSpecificOrigin");
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
