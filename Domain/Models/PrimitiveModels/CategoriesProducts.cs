@@ -18,5 +18,5 @@ public class CategoriesProducts
     public virtual Companies Companies { get; set; }
 
     public virtual ICollection<Inventories> Inventories { get; set; }
-    public virtual ICollection<InventoryMovements> InventoriesMovements { get; set; }
+    public virtual ICollection<InventoryMovements> InventoryMovements { get; set; }
 }

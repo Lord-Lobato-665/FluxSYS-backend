@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FluxSYS_backend.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class ModelsConfiguration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -39,6 +39,22 @@ namespace FluxSYS_backend.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_companies", x => x.Id_company);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "error_logs",
+                columns: table => new
+                {
+                    Id_error_log = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Message_error = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Stacktrace_error = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Source_error = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Timestamp = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_error_logs", x => x.Id_error_log);
                 });
 
             migrationBuilder.CreateTable(
@@ -77,15 +93,14 @@ namespace FluxSYS_backend.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name_category_product = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Id_company_Id = table.Column<int>(type: "int", nullable: false),
-                    Delete_log_category_product = table.Column<bool>(type: "bit", nullable: false),
-                    CompaniesId_company = table.Column<int>(type: "int", nullable: false)
+                    Delete_log_category_product = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_categories_products", x => x.Id_category_product);
                     table.ForeignKey(
-                        name: "FK_categories_products_companies_CompaniesId_company",
-                        column: x => x.CompaniesId_company,
+                        name: "FK_categories_products_companies_Id_company_Id",
+                        column: x => x.Id_company_Id,
                         principalTable: "companies",
                         principalColumn: "Id_company",
                         onDelete: ReferentialAction.Cascade);
@@ -99,15 +114,14 @@ namespace FluxSYS_backend.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name_category_purchase_order = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Id_company_Id = table.Column<int>(type: "int", nullable: false),
-                    Delete_log_category_purchase_order = table.Column<bool>(type: "bit", nullable: false),
-                    CompaniesId_company = table.Column<int>(type: "int", nullable: false)
+                    Delete_log_category_purchase_order = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_categories_purchase_orders", x => x.Id_category_purchase_order);
                     table.ForeignKey(
-                        name: "FK_categories_purchase_orders_companies_CompaniesId_company",
-                        column: x => x.CompaniesId_company,
+                        name: "FK_categories_purchase_orders_companies_Id_company_Id",
+                        column: x => x.Id_company_Id,
                         principalTable: "companies",
                         principalColumn: "Id_company",
                         onDelete: ReferentialAction.Cascade);
@@ -121,15 +135,14 @@ namespace FluxSYS_backend.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name_category_supplier = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Id_company_Id = table.Column<int>(type: "int", nullable: false),
-                    Delete_log_category_supplier = table.Column<bool>(type: "bit", nullable: false),
-                    CompanyId_company = table.Column<int>(type: "int", nullable: false)
+                    Delete_log_category_supplier = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_categories_suppliers", x => x.Id_category_supplier);
                     table.ForeignKey(
-                        name: "FK_categories_suppliers_companies_CompanyId_company",
-                        column: x => x.CompanyId_company,
+                        name: "FK_categories_suppliers_companies_Id_company_Id",
+                        column: x => x.Id_company_Id,
                         principalTable: "companies",
                         principalColumn: "Id_company",
                         onDelete: ReferentialAction.Cascade);
@@ -143,18 +156,16 @@ namespace FluxSYS_backend.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name_deparment = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Id_company_Id = table.Column<int>(type: "int", nullable: false),
-                    Delete_log_department = table.Column<bool>(type: "bit", nullable: false),
-                    CompaniesId_company = table.Column<int>(type: "int", nullable: false)
+                    Delete_log_department = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_departments", x => x.Id_department);
                     table.ForeignKey(
-                        name: "FK_departments_companies_CompaniesId_company",
-                        column: x => x.CompaniesId_company,
+                        name: "FK_departments_companies_Id_company_Id",
+                        column: x => x.Id_company_Id,
                         principalTable: "companies",
-                        principalColumn: "Id_company",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id_company");
                 });
 
             migrationBuilder.CreateTable(
@@ -166,22 +177,19 @@ namespace FluxSYS_backend.Migrations
                     Name_movement_type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Id_company_Id = table.Column<int>(type: "int", nullable: false),
                     Id_clasification_movement_Id = table.Column<int>(type: "int", nullable: false),
-                    Delete_log_movement_type = table.Column<bool>(type: "bit", nullable: false),
-                    CompaniesId_company = table.Column<int>(type: "int", nullable: false),
-                    ClasificationsMovementsId_clasification_movement = table.Column<int>(type: "int", nullable: false)
+                    Delete_log_movement_type = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_movements_types", x => x.Id_movement_type);
                     table.ForeignKey(
-                        name: "FK_movements_types_clasification_movements_ClasificationsMovementsId_clasification_movement",
-                        column: x => x.ClasificationsMovementsId_clasification_movement,
+                        name: "FK_movements_types_clasification_movements_Id_clasification_movement_Id",
+                        column: x => x.Id_clasification_movement_Id,
                         principalTable: "clasification_movements",
-                        principalColumn: "Id_clasification_movement",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id_clasification_movement");
                     table.ForeignKey(
-                        name: "FK_movements_types_companies_CompaniesId_company",
-                        column: x => x.CompaniesId_company,
+                        name: "FK_movements_types_companies_Id_company_Id",
+                        column: x => x.Id_company_Id,
                         principalTable: "companies",
                         principalColumn: "Id_company",
                         onDelete: ReferentialAction.Cascade);
@@ -195,15 +203,14 @@ namespace FluxSYS_backend.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name_position = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Id_company_Id = table.Column<int>(type: "int", nullable: false),
-                    Delete_log_position = table.Column<bool>(type: "bit", nullable: false),
-                    CompaniesId_company = table.Column<int>(type: "int", nullable: false)
+                    Delete_log_position = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_positions", x => x.Id_position);
                     table.ForeignKey(
-                        name: "FK_positions_companies_CompaniesId_company",
-                        column: x => x.CompaniesId_company,
+                        name: "FK_positions_companies_Id_company_Id",
+                        column: x => x.Id_company_Id,
                         principalTable: "companies",
                         principalColumn: "Id_company",
                         onDelete: ReferentialAction.Cascade);
@@ -217,15 +224,14 @@ namespace FluxSYS_backend.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name_state = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Delete_log_state = table.Column<bool>(type: "bit", nullable: false),
-                    Id_company_Id = table.Column<int>(type: "int", nullable: false),
-                    CompaniesId_company = table.Column<int>(type: "int", nullable: false)
+                    Id_company_Id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_states", x => x.Id_state);
                     table.ForeignKey(
-                        name: "FK_states_companies_CompaniesId_company",
-                        column: x => x.CompaniesId_company,
+                        name: "FK_states_companies_Id_company_Id",
+                        column: x => x.Id_company_Id,
                         principalTable: "companies",
                         principalColumn: "Id_company",
                         onDelete: ReferentialAction.Cascade);
@@ -247,29 +253,16 @@ namespace FluxSYS_backend.Migrations
                     Date_update = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Date_delete = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Date_restore = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Delete_log_suppliers = table.Column<bool>(type: "bit", nullable: false),
-                    CategoriesSuppliersId_category_supplier = table.Column<int>(type: "int", nullable: true),
-                    CompaniesId_company = table.Column<int>(type: "int", nullable: true),
-                    ModulesId_module = table.Column<int>(type: "int", nullable: true)
+                    Delete_log_suppliers = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_suppliers", x => x.Id_supplier);
                     table.ForeignKey(
-                        name: "FK_suppliers_categories_suppliers_CategoriesSuppliersId_category_supplier",
-                        column: x => x.CategoriesSuppliersId_category_supplier,
-                        principalTable: "categories_suppliers",
-                        principalColumn: "Id_category_supplier");
-                    table.ForeignKey(
                         name: "FK_suppliers_categories_suppliers_Id_category_supplier_Id",
                         column: x => x.Id_category_supplier_Id,
                         principalTable: "categories_suppliers",
                         principalColumn: "Id_category_supplier");
-                    table.ForeignKey(
-                        name: "FK_suppliers_companies_CompaniesId_company",
-                        column: x => x.CompaniesId_company,
-                        principalTable: "companies",
-                        principalColumn: "Id_company");
                     table.ForeignKey(
                         name: "FK_suppliers_companies_Id_company_Id",
                         column: x => x.Id_company_Id,
@@ -279,11 +272,6 @@ namespace FluxSYS_backend.Migrations
                     table.ForeignKey(
                         name: "FK_suppliers_modules_Id_module_Id",
                         column: x => x.Id_module_Id,
-                        principalTable: "modules",
-                        principalColumn: "Id_module");
-                    table.ForeignKey(
-                        name: "FK_suppliers_modules_ModulesId_module",
-                        column: x => x.ModulesId_module,
                         principalTable: "modules",
                         principalColumn: "Id_module");
                 });
@@ -307,32 +295,17 @@ namespace FluxSYS_backend.Migrations
                     Date_update = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Date_delete = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Date_restore = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Delete_log_user = table.Column<bool>(type: "bit", nullable: false),
-                    CompaniesId_company = table.Column<int>(type: "int", nullable: true),
-                    DepartmentsId_department = table.Column<int>(type: "int", nullable: true),
-                    ModulesId_module = table.Column<int>(type: "int", nullable: true),
-                    PositionsId_position = table.Column<int>(type: "int", nullable: true),
-                    RolesId_role = table.Column<int>(type: "int", nullable: true)
+                    Delete_log_user = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_users", x => x.Id_user);
-                    table.ForeignKey(
-                        name: "FK_users_companies_CompaniesId_company",
-                        column: x => x.CompaniesId_company,
-                        principalTable: "companies",
-                        principalColumn: "Id_company");
                     table.ForeignKey(
                         name: "FK_users_companies_Id_company_Id",
                         column: x => x.Id_company_Id,
                         principalTable: "companies",
                         principalColumn: "Id_company",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_users_departments_DepartmentsId_department",
-                        column: x => x.DepartmentsId_department,
-                        principalTable: "departments",
-                        principalColumn: "Id_department");
                     table.ForeignKey(
                         name: "FK_users_departments_Id_department_Id",
                         column: x => x.Id_department_Id,
@@ -344,28 +317,13 @@ namespace FluxSYS_backend.Migrations
                         principalTable: "modules",
                         principalColumn: "Id_module");
                     table.ForeignKey(
-                        name: "FK_users_modules_ModulesId_module",
-                        column: x => x.ModulesId_module,
-                        principalTable: "modules",
-                        principalColumn: "Id_module");
-                    table.ForeignKey(
                         name: "FK_users_positions_Id_position_Id",
                         column: x => x.Id_position_Id,
                         principalTable: "positions",
                         principalColumn: "Id_position");
                     table.ForeignKey(
-                        name: "FK_users_positions_PositionsId_position",
-                        column: x => x.PositionsId_position,
-                        principalTable: "positions",
-                        principalColumn: "Id_position");
-                    table.ForeignKey(
                         name: "FK_users_roles_Id_rol_Id",
                         column: x => x.Id_rol_Id,
-                        principalTable: "roles",
-                        principalColumn: "Id_role");
-                    table.ForeignKey(
-                        name: "FK_users_roles_RolesId_role",
-                        column: x => x.RolesId_role,
                         principalTable: "roles",
                         principalColumn: "Id_role");
                 });
@@ -385,30 +343,16 @@ namespace FluxSYS_backend.Migrations
                     Id_department_Id = table.Column<int>(type: "int", nullable: false),
                     Id_module_Id = table.Column<int>(type: "int", nullable: false),
                     Id_company_Id = table.Column<int>(type: "int", nullable: false),
-                    Delete_log_audits = table.Column<bool>(type: "bit", nullable: false),
-                    CompaniesId_company = table.Column<int>(type: "int", nullable: true),
-                    DepartmentsId_department = table.Column<int>(type: "int", nullable: true),
-                    ModulesId_module = table.Column<int>(type: "int", nullable: true),
-                    UsersId_user = table.Column<int>(type: "int", nullable: true)
+                    Delete_log_audits = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_audits", x => x.Id_audit);
                     table.ForeignKey(
-                        name: "FK_audits_companies_CompaniesId_company",
-                        column: x => x.CompaniesId_company,
-                        principalTable: "companies",
-                        principalColumn: "Id_company");
-                    table.ForeignKey(
                         name: "FK_audits_companies_Id_company_Id",
                         column: x => x.Id_company_Id,
                         principalTable: "companies",
                         principalColumn: "Id_company");
-                    table.ForeignKey(
-                        name: "FK_audits_departments_DepartmentsId_department",
-                        column: x => x.DepartmentsId_department,
-                        principalTable: "departments",
-                        principalColumn: "Id_department");
                     table.ForeignKey(
                         name: "FK_audits_departments_Id_department_Id",
                         column: x => x.Id_department_Id,
@@ -420,18 +364,8 @@ namespace FluxSYS_backend.Migrations
                         principalTable: "modules",
                         principalColumn: "Id_module");
                     table.ForeignKey(
-                        name: "FK_audits_modules_ModulesId_module",
-                        column: x => x.ModulesId_module,
-                        principalTable: "modules",
-                        principalColumn: "Id_module");
-                    table.ForeignKey(
                         name: "FK_audits_users_Id_user_Id",
                         column: x => x.Id_user_Id,
-                        principalTable: "users",
-                        principalColumn: "Id_user");
-                    table.ForeignKey(
-                        name: "FK_audits_users_UsersId_user",
-                        column: x => x.UsersId_user,
                         principalTable: "users",
                         principalColumn: "Id_user");
                 });
@@ -457,45 +391,22 @@ namespace FluxSYS_backend.Migrations
                     Date_update = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Date_delete = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Date_restore = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Delete_log_inventory = table.Column<bool>(type: "bit", nullable: false),
-                    CategoriesProductsId_category_product = table.Column<int>(type: "int", nullable: true),
-                    CompaniesId_company = table.Column<int>(type: "int", nullable: true),
-                    DepartmentsId_department = table.Column<int>(type: "int", nullable: true),
-                    ModulesId_module = table.Column<int>(type: "int", nullable: true),
-                    MovementsTypesId_movement_type = table.Column<int>(type: "int", nullable: true),
-                    StatesId_state = table.Column<int>(type: "int", nullable: true),
-                    SuppliersId_supplier = table.Column<int>(type: "int", nullable: true),
-                    UsersId_user = table.Column<int>(type: "int", nullable: true)
+                    Delete_log_inventory = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_inventory", x => x.Id_inventory_product);
-                    table.ForeignKey(
-                        name: "FK_inventory_categories_products_CategoriesProductsId_category_product",
-                        column: x => x.CategoriesProductsId_category_product,
-                        principalTable: "categories_products",
-                        principalColumn: "Id_category_product");
                     table.ForeignKey(
                         name: "FK_inventory_categories_products_Id_category_product_Id",
                         column: x => x.Id_category_product_Id,
                         principalTable: "categories_products",
                         principalColumn: "Id_category_product");
                     table.ForeignKey(
-                        name: "FK_inventory_companies_CompaniesId_company",
-                        column: x => x.CompaniesId_company,
-                        principalTable: "companies",
-                        principalColumn: "Id_company");
-                    table.ForeignKey(
                         name: "FK_inventory_companies_Id_company_Id",
                         column: x => x.Id_company_Id,
                         principalTable: "companies",
                         principalColumn: "Id_company",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_inventory_departments_DepartmentsId_department",
-                        column: x => x.DepartmentsId_department,
-                        principalTable: "departments",
-                        principalColumn: "Id_department");
                     table.ForeignKey(
                         name: "FK_inventory_departments_Id_department_Id",
                         column: x => x.Id_department_Id,
@@ -507,18 +418,8 @@ namespace FluxSYS_backend.Migrations
                         principalTable: "modules",
                         principalColumn: "Id_module");
                     table.ForeignKey(
-                        name: "FK_inventory_modules_ModulesId_module",
-                        column: x => x.ModulesId_module,
-                        principalTable: "modules",
-                        principalColumn: "Id_module");
-                    table.ForeignKey(
                         name: "FK_inventory_movements_types_Id_movement_type_Id",
                         column: x => x.Id_movement_type_Id,
-                        principalTable: "movements_types",
-                        principalColumn: "Id_movement_type");
-                    table.ForeignKey(
-                        name: "FK_inventory_movements_types_MovementsTypesId_movement_type",
-                        column: x => x.MovementsTypesId_movement_type,
                         principalTable: "movements_types",
                         principalColumn: "Id_movement_type");
                     table.ForeignKey(
@@ -527,28 +428,13 @@ namespace FluxSYS_backend.Migrations
                         principalTable: "states",
                         principalColumn: "Id_state");
                     table.ForeignKey(
-                        name: "FK_inventory_states_StatesId_state",
-                        column: x => x.StatesId_state,
-                        principalTable: "states",
-                        principalColumn: "Id_state");
-                    table.ForeignKey(
                         name: "FK_inventory_suppliers_Id_supplier_Id",
                         column: x => x.Id_supplier_Id,
                         principalTable: "suppliers",
                         principalColumn: "Id_supplier");
                     table.ForeignKey(
-                        name: "FK_inventory_suppliers_SuppliersId_supplier",
-                        column: x => x.SuppliersId_supplier,
-                        principalTable: "suppliers",
-                        principalColumn: "Id_supplier");
-                    table.ForeignKey(
                         name: "FK_inventory_users_Id_user_Id",
                         column: x => x.Id_user_Id,
-                        principalTable: "users",
-                        principalColumn: "Id_user");
-                    table.ForeignKey(
-                        name: "FK_inventory_users_UsersId_user",
-                        column: x => x.UsersId_user,
                         principalTable: "users",
                         principalColumn: "Id_user");
                 });
@@ -574,45 +460,22 @@ namespace FluxSYS_backend.Migrations
                     Date_update = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Date_delete = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Date_restore = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Delete_log_purchase_orders = table.Column<bool>(type: "bit", nullable: false),
-                    CategoriesPurchaseOrdersId_category_purchase_order = table.Column<int>(type: "int", nullable: true),
-                    CompaniesId_company = table.Column<int>(type: "int", nullable: true),
-                    DepartmentsId_department = table.Column<int>(type: "int", nullable: true),
-                    ModulesId_module = table.Column<int>(type: "int", nullable: true),
-                    MovementsTypesId_movement_type = table.Column<int>(type: "int", nullable: true),
-                    StatesId_state = table.Column<int>(type: "int", nullable: true),
-                    SuppliersId_supplier = table.Column<int>(type: "int", nullable: true),
-                    UsersId_user = table.Column<int>(type: "int", nullable: true)
+                    Delete_log_purchase_orders = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_purchase_orders", x => x.Id_purchase_order);
-                    table.ForeignKey(
-                        name: "FK_purchase_orders_categories_purchase_orders_CategoriesPurchaseOrdersId_category_purchase_order",
-                        column: x => x.CategoriesPurchaseOrdersId_category_purchase_order,
-                        principalTable: "categories_purchase_orders",
-                        principalColumn: "Id_category_purchase_order");
                     table.ForeignKey(
                         name: "FK_purchase_orders_categories_purchase_orders_Id_category_purchase_order_Id",
                         column: x => x.Id_category_purchase_order_Id,
                         principalTable: "categories_purchase_orders",
                         principalColumn: "Id_category_purchase_order");
                     table.ForeignKey(
-                        name: "FK_purchase_orders_companies_CompaniesId_company",
-                        column: x => x.CompaniesId_company,
-                        principalTable: "companies",
-                        principalColumn: "Id_company");
-                    table.ForeignKey(
                         name: "FK_purchase_orders_companies_Id_company_Id",
                         column: x => x.Id_company_Id,
                         principalTable: "companies",
                         principalColumn: "Id_company",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_purchase_orders_departments_DepartmentsId_department",
-                        column: x => x.DepartmentsId_department,
-                        principalTable: "departments",
-                        principalColumn: "Id_department");
                     table.ForeignKey(
                         name: "FK_purchase_orders_departments_Id_department_Id",
                         column: x => x.Id_department_Id,
@@ -624,18 +487,8 @@ namespace FluxSYS_backend.Migrations
                         principalTable: "modules",
                         principalColumn: "Id_module");
                     table.ForeignKey(
-                        name: "FK_purchase_orders_modules_ModulesId_module",
-                        column: x => x.ModulesId_module,
-                        principalTable: "modules",
-                        principalColumn: "Id_module");
-                    table.ForeignKey(
                         name: "FK_purchase_orders_movements_types_Id_movement_type_Id",
                         column: x => x.Id_movement_type_Id,
-                        principalTable: "movements_types",
-                        principalColumn: "Id_movement_type");
-                    table.ForeignKey(
-                        name: "FK_purchase_orders_movements_types_MovementsTypesId_movement_type",
-                        column: x => x.MovementsTypesId_movement_type,
                         principalTable: "movements_types",
                         principalColumn: "Id_movement_type");
                     table.ForeignKey(
@@ -644,28 +497,13 @@ namespace FluxSYS_backend.Migrations
                         principalTable: "states",
                         principalColumn: "Id_state");
                     table.ForeignKey(
-                        name: "FK_purchase_orders_states_StatesId_state",
-                        column: x => x.StatesId_state,
-                        principalTable: "states",
-                        principalColumn: "Id_state");
-                    table.ForeignKey(
                         name: "FK_purchase_orders_suppliers_Id_supplier_Id",
                         column: x => x.Id_supplier_Id,
                         principalTable: "suppliers",
                         principalColumn: "Id_supplier");
                     table.ForeignKey(
-                        name: "FK_purchase_orders_suppliers_SuppliersId_supplier",
-                        column: x => x.SuppliersId_supplier,
-                        principalTable: "suppliers",
-                        principalColumn: "Id_supplier");
-                    table.ForeignKey(
                         name: "FK_purchase_orders_users_Id_user_Id",
                         column: x => x.Id_user_Id,
-                        principalTable: "users",
-                        principalColumn: "Id_user");
-                    table.ForeignKey(
-                        name: "FK_purchase_orders_users_UsersId_user",
-                        column: x => x.UsersId_user,
                         principalTable: "users",
                         principalColumn: "Id_user");
                 });
@@ -689,45 +527,22 @@ namespace FluxSYS_backend.Migrations
                     Date_update = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Date_delete = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Date_restore = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Delete_log_inventory_movement = table.Column<bool>(type: "bit", nullable: false),
-                    CategoriesProductsId_category_product = table.Column<int>(type: "int", nullable: true),
-                    CompaniesId_company = table.Column<int>(type: "int", nullable: true),
-                    DepartmentsId_department = table.Column<int>(type: "int", nullable: true),
-                    InventoriesId_inventory_product = table.Column<int>(type: "int", nullable: true),
-                    ModulesId_module = table.Column<int>(type: "int", nullable: true),
-                    MovementsTypesId_movement_type = table.Column<int>(type: "int", nullable: true),
-                    SuppliersId_supplier = table.Column<int>(type: "int", nullable: true),
-                    UsersId_user = table.Column<int>(type: "int", nullable: true)
+                    Delete_log_inventory_movement = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_inventory_movements", x => x.Id_inventory_movement);
-                    table.ForeignKey(
-                        name: "FK_inventory_movements_categories_products_CategoriesProductsId_category_product",
-                        column: x => x.CategoriesProductsId_category_product,
-                        principalTable: "categories_products",
-                        principalColumn: "Id_category_product");
                     table.ForeignKey(
                         name: "FK_inventory_movements_categories_products_Id_category_product_Id",
                         column: x => x.Id_category_product_Id,
                         principalTable: "categories_products",
                         principalColumn: "Id_category_product");
                     table.ForeignKey(
-                        name: "FK_inventory_movements_companies_CompaniesId_company",
-                        column: x => x.CompaniesId_company,
-                        principalTable: "companies",
-                        principalColumn: "Id_company");
-                    table.ForeignKey(
                         name: "FK_inventory_movements_companies_Id_company_Id",
                         column: x => x.Id_company_Id,
                         principalTable: "companies",
                         principalColumn: "Id_company",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_inventory_movements_departments_DepartmentsId_department",
-                        column: x => x.DepartmentsId_department,
-                        principalTable: "departments",
-                        principalColumn: "Id_department");
                     table.ForeignKey(
                         name: "FK_inventory_movements_departments_Id_department_Id",
                         column: x => x.Id_department_Id,
@@ -739,18 +554,8 @@ namespace FluxSYS_backend.Migrations
                         principalTable: "inventory",
                         principalColumn: "Id_inventory_product");
                     table.ForeignKey(
-                        name: "FK_inventory_movements_inventory_InventoriesId_inventory_product",
-                        column: x => x.InventoriesId_inventory_product,
-                        principalTable: "inventory",
-                        principalColumn: "Id_inventory_product");
-                    table.ForeignKey(
                         name: "FK_inventory_movements_modules_Id_module_Id",
                         column: x => x.Id_module_Id,
-                        principalTable: "modules",
-                        principalColumn: "Id_module");
-                    table.ForeignKey(
-                        name: "FK_inventory_movements_modules_ModulesId_module",
-                        column: x => x.ModulesId_module,
                         principalTable: "modules",
                         principalColumn: "Id_module");
                     table.ForeignKey(
@@ -759,28 +564,13 @@ namespace FluxSYS_backend.Migrations
                         principalTable: "movements_types",
                         principalColumn: "Id_movement_type");
                     table.ForeignKey(
-                        name: "FK_inventory_movements_movements_types_MovementsTypesId_movement_type",
-                        column: x => x.MovementsTypesId_movement_type,
-                        principalTable: "movements_types",
-                        principalColumn: "Id_movement_type");
-                    table.ForeignKey(
                         name: "FK_inventory_movements_suppliers_Id_supplier_Id",
                         column: x => x.Id_supplier_Id,
                         principalTable: "suppliers",
                         principalColumn: "Id_supplier");
                     table.ForeignKey(
-                        name: "FK_inventory_movements_suppliers_SuppliersId_supplier",
-                        column: x => x.SuppliersId_supplier,
-                        principalTable: "suppliers",
-                        principalColumn: "Id_supplier");
-                    table.ForeignKey(
                         name: "FK_inventory_movements_users_Id_user_Id",
                         column: x => x.Id_user_Id,
-                        principalTable: "users",
-                        principalColumn: "Id_user");
-                    table.ForeignKey(
-                        name: "FK_inventory_movements_users_UsersId_user",
-                        column: x => x.UsersId_user,
                         principalTable: "users",
                         principalColumn: "Id_user");
                 });
@@ -793,9 +583,7 @@ namespace FluxSYS_backend.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Suggested_price = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     Id_inventory_product_Id = table.Column<int>(type: "int", nullable: false),
-                    Id_supplier_Id = table.Column<int>(type: "int", nullable: false),
-                    InventoriesId_inventory_product = table.Column<int>(type: "int", nullable: true),
-                    SuppliersId_supplier = table.Column<int>(type: "int", nullable: true)
+                    Id_supplier_Id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -807,18 +595,8 @@ namespace FluxSYS_backend.Migrations
                         principalColumn: "Id_inventory_product",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_suppliers_products_inventory_InventoriesId_inventory_product",
-                        column: x => x.InventoriesId_inventory_product,
-                        principalTable: "inventory",
-                        principalColumn: "Id_inventory_product");
-                    table.ForeignKey(
                         name: "FK_suppliers_products_suppliers_Id_supplier_Id",
                         column: x => x.Id_supplier_Id,
-                        principalTable: "suppliers",
-                        principalColumn: "Id_supplier");
-                    table.ForeignKey(
-                        name: "FK_suppliers_products_suppliers_SuppliersId_supplier",
-                        column: x => x.SuppliersId_supplier,
                         principalTable: "suppliers",
                         principalColumn: "Id_supplier");
                 });
@@ -840,32 +618,17 @@ namespace FluxSYS_backend.Migrations
                     Date_update = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Date_delete = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Date_restore = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Delete_log_invoices = table.Column<bool>(type: "bit", nullable: false),
-                    CompaniesId_company = table.Column<int>(type: "int", nullable: true),
-                    DepartmentsId_department = table.Column<int>(type: "int", nullable: true),
-                    ModulesId_module = table.Column<int>(type: "int", nullable: true),
-                    PurchaseOrdersId_purchase_order = table.Column<int>(type: "int", nullable: true),
-                    SuppliersId_supplier = table.Column<int>(type: "int", nullable: true)
+                    Delete_log_invoices = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_invoices", x => x.Id_invoice);
-                    table.ForeignKey(
-                        name: "FK_invoices_companies_CompaniesId_company",
-                        column: x => x.CompaniesId_company,
-                        principalTable: "companies",
-                        principalColumn: "Id_company");
                     table.ForeignKey(
                         name: "FK_invoices_companies_Id_company_Id",
                         column: x => x.Id_company_Id,
                         principalTable: "companies",
                         principalColumn: "Id_company",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_invoices_departments_DepartmentsId_department",
-                        column: x => x.DepartmentsId_department,
-                        principalTable: "departments",
-                        principalColumn: "Id_department");
                     table.ForeignKey(
                         name: "FK_invoices_departments_Id_department_Id",
                         column: x => x.Id_department_Id,
@@ -877,28 +640,13 @@ namespace FluxSYS_backend.Migrations
                         principalTable: "modules",
                         principalColumn: "Id_module");
                     table.ForeignKey(
-                        name: "FK_invoices_modules_ModulesId_module",
-                        column: x => x.ModulesId_module,
-                        principalTable: "modules",
-                        principalColumn: "Id_module");
-                    table.ForeignKey(
                         name: "FK_invoices_purchase_orders_Id_purchase_order_Id",
                         column: x => x.Id_purchase_order_Id,
                         principalTable: "purchase_orders",
                         principalColumn: "Id_purchase_order");
                     table.ForeignKey(
-                        name: "FK_invoices_purchase_orders_PurchaseOrdersId_purchase_order",
-                        column: x => x.PurchaseOrdersId_purchase_order,
-                        principalTable: "purchase_orders",
-                        principalColumn: "Id_purchase_order");
-                    table.ForeignKey(
                         name: "FK_invoices_suppliers_Id_supplier_Id",
                         column: x => x.Id_supplier_Id,
-                        principalTable: "suppliers",
-                        principalColumn: "Id_supplier");
-                    table.ForeignKey(
-                        name: "FK_invoices_suppliers_SuppliersId_supplier",
-                        column: x => x.SuppliersId_supplier,
                         principalTable: "suppliers",
                         principalColumn: "Id_supplier");
                 });
@@ -912,9 +660,7 @@ namespace FluxSYS_backend.Migrations
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     Id_purchase_order_Id = table.Column<int>(type: "int", nullable: false),
-                    Id_inventory_product_Id = table.Column<int>(type: "int", nullable: false),
-                    InventoriesId_inventory_product = table.Column<int>(type: "int", nullable: true),
-                    PurchaseOrdersId_purchase_order = table.Column<int>(type: "int", nullable: true)
+                    Id_inventory_product_Id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -926,18 +672,8 @@ namespace FluxSYS_backend.Migrations
                         principalColumn: "Id_inventory_product",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_orders_products_inventory_InventoriesId_inventory_product",
-                        column: x => x.InventoriesId_inventory_product,
-                        principalTable: "inventory",
-                        principalColumn: "Id_inventory_product");
-                    table.ForeignKey(
                         name: "FK_orders_products_purchase_orders_Id_purchase_order_Id",
                         column: x => x.Id_purchase_order_Id,
-                        principalTable: "purchase_orders",
-                        principalColumn: "Id_purchase_order");
-                    table.ForeignKey(
-                        name: "FK_orders_products_purchase_orders_PurchaseOrdersId_purchase_order",
-                        column: x => x.PurchaseOrdersId_purchase_order,
                         principalTable: "purchase_orders",
                         principalColumn: "Id_purchase_order");
                 });
@@ -951,9 +687,7 @@ namespace FluxSYS_backend.Migrations
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Unit_price = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     Id_invoice_Id = table.Column<int>(type: "int", nullable: false),
-                    Id_inventory_product_Id = table.Column<int>(type: "int", nullable: false),
-                    InventoriesId_inventory_product = table.Column<int>(type: "int", nullable: true),
-                    InvoicesId_invoice = table.Column<int>(type: "int", nullable: true)
+                    Id_inventory_product_Id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -965,20 +699,20 @@ namespace FluxSYS_backend.Migrations
                         principalColumn: "Id_inventory_product",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_invoices_products_inventory_InventoriesId_inventory_product",
-                        column: x => x.InventoriesId_inventory_product,
-                        principalTable: "inventory",
-                        principalColumn: "Id_inventory_product");
-                    table.ForeignKey(
                         name: "FK_invoices_products_invoices_Id_invoice_Id",
                         column: x => x.Id_invoice_Id,
                         principalTable: "invoices",
                         principalColumn: "Id_invoice");
-                    table.ForeignKey(
-                        name: "FK_invoices_products_invoices_InvoicesId_invoice",
-                        column: x => x.InvoicesId_invoice,
-                        principalTable: "invoices",
-                        principalColumn: "Id_invoice");
+                });
+
+            migrationBuilder.InsertData(
+                table: "clasification_movements",
+                columns: new[] { "Id_clasification_movement", "Delete_log_clasification_movement", "Name_clasification_movement" },
+                values: new object[,]
+                {
+                    { 1, false, "Eliminacion" },
+                    { 2, false, "Creacion" },
+                    { 3, false, "Actualizacion" }
                 });
 
             migrationBuilder.InsertData(
@@ -997,16 +731,6 @@ namespace FluxSYS_backend.Migrations
                     { 9, false, "Synergy Networks" },
                     { 10, false, "Vertex Solutions" }
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_audits_CompaniesId_company",
-                table: "audits",
-                column: "CompaniesId_company");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_audits_DepartmentsId_department",
-                table: "audits",
-                column: "DepartmentsId_department");
 
             migrationBuilder.CreateIndex(
                 name: "IX_audits_Id_company_Id",
@@ -1029,49 +753,24 @@ namespace FluxSYS_backend.Migrations
                 column: "Id_user_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_audits_ModulesId_module",
-                table: "audits",
-                column: "ModulesId_module");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_audits_UsersId_user",
-                table: "audits",
-                column: "UsersId_user");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_categories_products_CompaniesId_company",
+                name: "IX_categories_products_Id_company_Id",
                 table: "categories_products",
-                column: "CompaniesId_company");
+                column: "Id_company_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_categories_purchase_orders_CompaniesId_company",
+                name: "IX_categories_purchase_orders_Id_company_Id",
                 table: "categories_purchase_orders",
-                column: "CompaniesId_company");
+                column: "Id_company_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_categories_suppliers_CompanyId_company",
+                name: "IX_categories_suppliers_Id_company_Id",
                 table: "categories_suppliers",
-                column: "CompanyId_company");
+                column: "Id_company_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_departments_CompaniesId_company",
+                name: "IX_departments_Id_company_Id",
                 table: "departments",
-                column: "CompaniesId_company");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_inventory_CategoriesProductsId_category_product",
-                table: "inventory",
-                column: "CategoriesProductsId_category_product");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_inventory_CompaniesId_company",
-                table: "inventory",
-                column: "CompaniesId_company");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_inventory_DepartmentsId_department",
-                table: "inventory",
-                column: "DepartmentsId_department");
+                column: "Id_company_Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_inventory_Id_category_product_Id",
@@ -1114,46 +813,6 @@ namespace FluxSYS_backend.Migrations
                 column: "Id_user_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_inventory_ModulesId_module",
-                table: "inventory",
-                column: "ModulesId_module");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_inventory_MovementsTypesId_movement_type",
-                table: "inventory",
-                column: "MovementsTypesId_movement_type");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_inventory_StatesId_state",
-                table: "inventory",
-                column: "StatesId_state");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_inventory_SuppliersId_supplier",
-                table: "inventory",
-                column: "SuppliersId_supplier");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_inventory_UsersId_user",
-                table: "inventory",
-                column: "UsersId_user");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_inventory_movements_CategoriesProductsId_category_product",
-                table: "inventory_movements",
-                column: "CategoriesProductsId_category_product");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_inventory_movements_CompaniesId_company",
-                table: "inventory_movements",
-                column: "CompaniesId_company");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_inventory_movements_DepartmentsId_department",
-                table: "inventory_movements",
-                column: "DepartmentsId_department");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_inventory_movements_Id_category_product_Id",
                 table: "inventory_movements",
                 column: "Id_category_product_Id");
@@ -1194,41 +853,6 @@ namespace FluxSYS_backend.Migrations
                 column: "Id_user_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_inventory_movements_InventoriesId_inventory_product",
-                table: "inventory_movements",
-                column: "InventoriesId_inventory_product");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_inventory_movements_ModulesId_module",
-                table: "inventory_movements",
-                column: "ModulesId_module");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_inventory_movements_MovementsTypesId_movement_type",
-                table: "inventory_movements",
-                column: "MovementsTypesId_movement_type");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_inventory_movements_SuppliersId_supplier",
-                table: "inventory_movements",
-                column: "SuppliersId_supplier");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_inventory_movements_UsersId_user",
-                table: "inventory_movements",
-                column: "UsersId_user");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_invoices_CompaniesId_company",
-                table: "invoices",
-                column: "CompaniesId_company");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_invoices_DepartmentsId_department",
-                table: "invoices",
-                column: "DepartmentsId_department");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_invoices_Id_company_Id",
                 table: "invoices",
                 column: "Id_company_Id");
@@ -1254,21 +878,6 @@ namespace FluxSYS_backend.Migrations
                 column: "Id_supplier_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_invoices_ModulesId_module",
-                table: "invoices",
-                column: "ModulesId_module");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_invoices_PurchaseOrdersId_purchase_order",
-                table: "invoices",
-                column: "PurchaseOrdersId_purchase_order");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_invoices_SuppliersId_supplier",
-                table: "invoices",
-                column: "SuppliersId_supplier");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_invoices_products_Id_inventory_product_Id",
                 table: "invoices_products",
                 column: "Id_inventory_product_Id");
@@ -1279,24 +888,14 @@ namespace FluxSYS_backend.Migrations
                 column: "Id_invoice_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_invoices_products_InventoriesId_inventory_product",
-                table: "invoices_products",
-                column: "InventoriesId_inventory_product");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_invoices_products_InvoicesId_invoice",
-                table: "invoices_products",
-                column: "InvoicesId_invoice");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_movements_types_ClasificationsMovementsId_clasification_movement",
+                name: "IX_movements_types_Id_clasification_movement_Id",
                 table: "movements_types",
-                column: "ClasificationsMovementsId_clasification_movement");
+                column: "Id_clasification_movement_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_movements_types_CompaniesId_company",
+                name: "IX_movements_types_Id_company_Id",
                 table: "movements_types",
-                column: "CompaniesId_company");
+                column: "Id_company_Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_orders_products_Id_inventory_product_Id",
@@ -1309,34 +908,9 @@ namespace FluxSYS_backend.Migrations
                 column: "Id_purchase_order_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_orders_products_InventoriesId_inventory_product",
-                table: "orders_products",
-                column: "InventoriesId_inventory_product");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_orders_products_PurchaseOrdersId_purchase_order",
-                table: "orders_products",
-                column: "PurchaseOrdersId_purchase_order");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_positions_CompaniesId_company",
+                name: "IX_positions_Id_company_Id",
                 table: "positions",
-                column: "CompaniesId_company");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_purchase_orders_CategoriesPurchaseOrdersId_category_purchase_order",
-                table: "purchase_orders",
-                column: "CategoriesPurchaseOrdersId_category_purchase_order");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_purchase_orders_CompaniesId_company",
-                table: "purchase_orders",
-                column: "CompaniesId_company");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_purchase_orders_DepartmentsId_department",
-                table: "purchase_orders",
-                column: "DepartmentsId_department");
+                column: "Id_company_Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_purchase_orders_Id_category_purchase_order_Id",
@@ -1379,44 +953,9 @@ namespace FluxSYS_backend.Migrations
                 column: "Id_user_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_purchase_orders_ModulesId_module",
-                table: "purchase_orders",
-                column: "ModulesId_module");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_purchase_orders_MovementsTypesId_movement_type",
-                table: "purchase_orders",
-                column: "MovementsTypesId_movement_type");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_purchase_orders_StatesId_state",
-                table: "purchase_orders",
-                column: "StatesId_state");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_purchase_orders_SuppliersId_supplier",
-                table: "purchase_orders",
-                column: "SuppliersId_supplier");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_purchase_orders_UsersId_user",
-                table: "purchase_orders",
-                column: "UsersId_user");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_states_CompaniesId_company",
+                name: "IX_states_Id_company_Id",
                 table: "states",
-                column: "CompaniesId_company");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_suppliers_CategoriesSuppliersId_category_supplier",
-                table: "suppliers",
-                column: "CategoriesSuppliersId_category_supplier");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_suppliers_CompaniesId_company",
-                table: "suppliers",
-                column: "CompaniesId_company");
+                column: "Id_company_Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_suppliers_Id_category_supplier_Id",
@@ -1434,11 +973,6 @@ namespace FluxSYS_backend.Migrations
                 column: "Id_module_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_suppliers_ModulesId_module",
-                table: "suppliers",
-                column: "ModulesId_module");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_suppliers_products_Id_inventory_product_Id",
                 table: "suppliers_products",
                 column: "Id_inventory_product_Id");
@@ -1447,26 +981,6 @@ namespace FluxSYS_backend.Migrations
                 name: "IX_suppliers_products_Id_supplier_Id",
                 table: "suppliers_products",
                 column: "Id_supplier_Id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_suppliers_products_InventoriesId_inventory_product",
-                table: "suppliers_products",
-                column: "InventoriesId_inventory_product");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_suppliers_products_SuppliersId_supplier",
-                table: "suppliers_products",
-                column: "SuppliersId_supplier");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_users_CompaniesId_company",
-                table: "users",
-                column: "CompaniesId_company");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_users_DepartmentsId_department",
-                table: "users",
-                column: "DepartmentsId_department");
 
             migrationBuilder.CreateIndex(
                 name: "IX_users_Id_company_Id",
@@ -1492,21 +1006,6 @@ namespace FluxSYS_backend.Migrations
                 name: "IX_users_Id_rol_Id",
                 table: "users",
                 column: "Id_rol_Id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_users_ModulesId_module",
-                table: "users",
-                column: "ModulesId_module");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_users_PositionsId_position",
-                table: "users",
-                column: "PositionsId_position");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_users_RolesId_role",
-                table: "users",
-                column: "RolesId_role");
         }
 
         /// <inheritdoc />
@@ -1514,6 +1013,9 @@ namespace FluxSYS_backend.Migrations
         {
             migrationBuilder.DropTable(
                 name: "audits");
+
+            migrationBuilder.DropTable(
+                name: "error_logs");
 
             migrationBuilder.DropTable(
                 name: "inventory_movements");

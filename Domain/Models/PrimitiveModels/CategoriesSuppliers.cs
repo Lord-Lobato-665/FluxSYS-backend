@@ -14,7 +14,7 @@ public class CategoriesSuppliers
     public int Id_company_Id { get; set; }
     public bool Delete_log_category_supplier { get; set; } = false;
 
-    public virtual Companies Company { get; set; }
+    public virtual Companies Companies { get; set; }
 
     public virtual ICollection<Suppliers> Suppliers { get; set; }
 }
