@@ -14,11 +14,14 @@ namespace FluxSYS_backend.Infraestructure.Data
             services.AddScoped<IErrorLog, ErrorLogRepository>();
             services.AddScoped<ICompanies, CompaniesRepository>();
             services.AddScoped<IDepartments, DepartmentsRepository>();
+            services.AddScoped<IClasificationMovements, ClasificationMovementsRepository>();
 
             // Registrar Servicios
             services.AddScoped<ErrorLogService>();
             services.AddScoped<CompaniesService>();
             services.AddScoped<DepartmentsService>();
+            services.AddScoped<ClasificationMovementsService>();
+            
 
             return services;
         }

@@ -158,3 +158,4 @@ C:\Users\pochi\OneDrive\Desktop\FluxSYS-backend\obj\Debug\net9.0\refint\FluxSYS-
 C:\Users\pochi\OneDrive\Desktop\FluxSYS-backend\obj\Debug\net9.0\FluxSYS-backend.pdb
 C:\Users\pochi\OneDrive\Desktop\FluxSYS-backend\obj\Debug\net9.0\FluxSYS-backend.genruntimeconfig.cache
 C:\Users\pochi\OneDrive\Desktop\FluxSYS-backend\obj\Debug\net9.0\ref\FluxSYS-backend.dll
+C:\Users\pochi\OneDrive\Desktop\FluxSYS-backend\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
