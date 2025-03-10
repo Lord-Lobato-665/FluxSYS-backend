@@ -2,7 +2,6 @@
 using FluxSYS_backend.Application.Services;
 using FluxSYS_backend.Domain.IServices;
 using FluxSYS_backend.Infraestructure.Repositories;
-using FluxSYS_backend.Infrastructure.Repositories;
 
 namespace FluxSYS_backend.Infraestructure.Data
 {
@@ -13,12 +12,10 @@ namespace FluxSYS_backend.Infraestructure.Data
             // Registrar Repositorios
             services.AddScoped<IErrorLog, ErrorLogRepository>();
             services.AddScoped<ICompanies, CompaniesRepository>();
-            services.AddScoped<IDepartments, DepartmentsRepository>();
 
             // Registrar Servicios
             services.AddScoped<ErrorLogService>();
             services.AddScoped<CompaniesService>();
-            services.AddScoped<DepartmentsService>();
 
             return services;
         }

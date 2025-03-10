@@ -30,6 +30,9 @@ namespace FluxSYS_backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_category_product"));
 
+                    b.Property<int>("CompaniesId_company")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Delete_log_category_product")
                         .HasColumnType("bit");
 
@@ -42,7 +45,7 @@ namespace FluxSYS_backend.Migrations
 
                     b.HasKey("Id_category_product");
 
-                    b.HasIndex("Id_company_Id");
+                    b.HasIndex("CompaniesId_company");
 
                     b.ToTable("categories_products");
                 });
@@ -213,6 +216,9 @@ namespace FluxSYS_backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_department"));
 
+                    b.Property<int>("CompaniesId_company")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Delete_log_department")
                         .HasColumnType("bit");
 
@@ -225,7 +231,7 @@ namespace FluxSYS_backend.Migrations
 
                     b.HasKey("Id_department");
 
-                    b.HasIndex("Id_company_Id");
+                    b.HasIndex("CompaniesId_company");
 
                     b.ToTable("departments");
                 });
@@ -1173,7 +1179,7 @@ namespace FluxSYS_backend.Migrations
                 {
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", "Companies")
                         .WithMany("CategoriesProducts")
-                        .HasForeignKey("Id_company_Id")
+                        .HasForeignKey("CompaniesId_company")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1206,7 +1212,7 @@ namespace FluxSYS_backend.Migrations
                 {
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", "Companies")
                         .WithMany("Departments")
-                        .HasForeignKey("Id_company_Id")
+                        .HasForeignKey("CompaniesId_company")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

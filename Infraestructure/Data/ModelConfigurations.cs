@@ -302,7 +302,7 @@ namespace FluxSYS_backend.Infraestructure.Data
                 .OnDelete(DeleteBehavior.Cascade);
 
 
-            // Configuracion de elimaciones en cascada del modelo InvoicesProducts
+            // Configuracion de elimaciones en cascada del modelo
             modelBuilder.Entity<InvoicesProducts>()
                 .HasOne(a => a.Invoices)
                 .WithMany()
@@ -314,58 +314,6 @@ namespace FluxSYS_backend.Infraestructure.Data
                 .WithMany()
                 .HasForeignKey(a => a.Id_inventory_product_Id)
                 .OnDelete(DeleteBehavior.Cascade);
-
-
-            // Configuracion de elimaciones en cascada del modelo Departments
-            modelBuilder.Entity<Departments>()
-                .HasOne(d => d.Companies)
-                .WithMany(c => c.Departments)
-                .HasForeignKey(d => d.Id_company_Id)
-                .OnDelete(DeleteBehavior.Cascade);
-
-
-            // Configuracion de elimaciones en cascada del modelo CategoriesProducts
-            modelBuilder.Entity<CategoriesProducts>()
-                .HasOne(cp => cp.Companies)
-                .WithMany(c => c.CategoriesProducts)
-                .HasForeignKey(cp => cp.Id_company_Id)
-                .OnDelete(DeleteBehavior.Cascade);
-
-
-
-            // Configuracion de elimaciones en cascada del modelo
-
-
-
-            // Configuracion de elimaciones en cascada del modelo
-
-
-
-            // Configuracion de elimaciones en cascada del modelo
-
-
-
-            // Configuracion de elimaciones en cascada del modelo
-
-
-
-            // Configuracion de elimaciones en cascada del modelo
-
-
-
-            // Configuracion de elimaciones en cascada del modelo
-
-
-
-            // Configuracion de elimaciones en cascada del modelo
-
-
-
-            // Configuracion de elimaciones en cascada del modelo
-
-
-
-            // Configuracion de elimaciones en cascada del modelo
         }
     }
 }
