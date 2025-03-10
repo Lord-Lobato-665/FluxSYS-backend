@@ -21,13 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\DTOs\" />
+    <Folder Include="Application\DTOs\Departments\" />
     <Folder Include="Application\PDFs\" />
     <Folder Include="Domain\CoreServices\" />
     <Folder Include="Domain\Models\PrimitiveModels\" />
     <Folder Include="Infraestructure\ExternalServices\" />
     <Folder Include="Migrations\" />
-    <Folder Include="Presentation\ViewModels\" />
   </ItemGroup>
 
 </Project>
