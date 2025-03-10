@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FluxSYS_backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250308222106_ErrorLogs")]
-    partial class ErrorLogs
+    [Migration("20250310203240_ModelsConfiguration")]
+    partial class ModelsConfiguration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,9 +33,6 @@ namespace FluxSYS_backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_category_product"));
 
-                    b.Property<int>("CompaniesId_company")
-                        .HasColumnType("int");
-
                     b.Property<bool>("Delete_log_category_product")
                         .HasColumnType("bit");
 
@@ -48,7 +45,7 @@ namespace FluxSYS_backend.Migrations
 
                     b.HasKey("Id_category_product");
 
-                    b.HasIndex("CompaniesId_company");
+                    b.HasIndex("Id_company_Id");
 
                     b.ToTable("categories_products");
                 });
@@ -60,9 +57,6 @@ namespace FluxSYS_backend.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_category_purchase_order"));
-
-                    b.Property<int>("CompaniesId_company")
-                        .HasColumnType("int");
 
                     b.Property<bool>("Delete_log_category_purchase_order")
                         .HasColumnType("bit");
@@ -76,7 +70,7 @@ namespace FluxSYS_backend.Migrations
 
                     b.HasKey("Id_category_purchase_order");
 
-                    b.HasIndex("CompaniesId_company");
+                    b.HasIndex("Id_company_Id");
 
                     b.ToTable("categories_purchase_orders");
                 });
@@ -88,9 +82,6 @@ namespace FluxSYS_backend.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_category_supplier"));
-
-                    b.Property<int>("CompanyId_company")
-                        .HasColumnType("int");
 
                     b.Property<bool>("Delete_log_category_supplier")
                         .HasColumnType("bit");
@@ -104,7 +95,7 @@ namespace FluxSYS_backend.Migrations
 
                     b.HasKey("Id_category_supplier");
 
-                    b.HasIndex("CompanyId_company");
+                    b.HasIndex("Id_company_Id");
 
                     b.ToTable("categories_suppliers");
                 });
@@ -127,6 +118,26 @@ namespace FluxSYS_backend.Migrations
                     b.HasKey("Id_clasification_movement");
 
                     b.ToTable("clasification_movements");
+
+                    b.HasData(
+                        new
+                        {
+                            Id_clasification_movement = 1,
+                            Delete_log_clasification_movement = false,
+                            Name_clasification_movement = "Eliminacion"
+                        },
+                        new
+                        {
+                            Id_clasification_movement = 2,
+                            Delete_log_clasification_movement = false,
+                            Name_clasification_movement = "Creacion"
+                        },
+                        new
+                        {
+                            Id_clasification_movement = 3,
+                            Delete_log_clasification_movement = false,
+                            Name_clasification_movement = "Actualizacion"
+                        });
                 });
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", b =>
@@ -219,9 +230,6 @@ namespace FluxSYS_backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_department"));
 
-                    b.Property<int>("CompaniesId_company")
-                        .HasColumnType("int");
-
                     b.Property<bool>("Delete_log_department")
                         .HasColumnType("bit");
 
@@ -234,7 +242,7 @@ namespace FluxSYS_backend.Migrations
 
                     b.HasKey("Id_department");
 
-                    b.HasIndex("CompaniesId_company");
+                    b.HasIndex("Id_company_Id");
 
                     b.ToTable("departments");
                 });
@@ -267,12 +275,6 @@ namespace FluxSYS_backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_movement_type"));
 
-                    b.Property<int>("ClasificationsMovementsId_clasification_movement")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CompaniesId_company")
-                        .HasColumnType("int");
-
                     b.Property<bool>("Delete_log_movement_type")
                         .HasColumnType("bit");
 
@@ -288,9 +290,9 @@ namespace FluxSYS_backend.Migrations
 
                     b.HasKey("Id_movement_type");
 
-                    b.HasIndex("ClasificationsMovementsId_clasification_movement");
+                    b.HasIndex("Id_clasification_movement_Id");
 
-                    b.HasIndex("CompaniesId_company");
+                    b.HasIndex("Id_company_Id");
 
                     b.ToTable("movements_types");
                 });
@@ -309,14 +311,8 @@ namespace FluxSYS_backend.Migrations
                     b.Property<int>("Id_purchase_order_Id")
                         .HasColumnType("int");
 
-                    b.Property<int?>("InventoriesId_inventory_product")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(10, 2)");
-
-                    b.Property<int?>("PurchaseOrdersId_purchase_order")
-                        .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -326,10 +322,6 @@ namespace FluxSYS_backend.Migrations
                     b.HasIndex("Id_inventory_product_Id");
 
                     b.HasIndex("Id_purchase_order_Id");
-
-                    b.HasIndex("InventoriesId_inventory_product");
-
-                    b.HasIndex("PurchaseOrdersId_purchase_order");
 
                     b.ToTable("orders_products");
                 });
@@ -341,9 +333,6 @@ namespace FluxSYS_backend.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_position"));
-
-                    b.Property<int>("CompaniesId_company")
-                        .HasColumnType("int");
 
                     b.Property<bool>("Delete_log_position")
                         .HasColumnType("bit");
@@ -357,7 +346,7 @@ namespace FluxSYS_backend.Migrations
 
                     b.HasKey("Id_position");
 
-                    b.HasIndex("CompaniesId_company");
+                    b.HasIndex("Id_company_Id");
 
                     b.ToTable("positions");
                 });
@@ -390,9 +379,6 @@ namespace FluxSYS_backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_state"));
 
-                    b.Property<int>("CompaniesId_company")
-                        .HasColumnType("int");
-
                     b.Property<bool>("Delete_log_state")
                         .HasColumnType("bit");
 
@@ -405,7 +391,7 @@ namespace FluxSYS_backend.Migrations
 
                     b.HasKey("Id_state");
 
-                    b.HasIndex("CompaniesId_company");
+                    b.HasIndex("Id_company_Id");
 
                     b.ToTable("states");
                 });
@@ -417,12 +403,6 @@ namespace FluxSYS_backend.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_supplier"));
-
-                    b.Property<int?>("CategoriesSuppliersId_category_supplier")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CompaniesId_company")
-                        .HasColumnType("int");
 
                     b.Property<DateTime?>("Date_delete")
                         .HasColumnType("datetime2");
@@ -452,9 +432,6 @@ namespace FluxSYS_backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ModulesId_module")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name_supplier")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -464,17 +441,11 @@ namespace FluxSYS_backend.Migrations
 
                     b.HasKey("Id_supplier");
 
-                    b.HasIndex("CategoriesSuppliersId_category_supplier");
-
-                    b.HasIndex("CompaniesId_company");
-
                     b.HasIndex("Id_category_supplier_Id");
 
                     b.HasIndex("Id_company_Id");
 
                     b.HasIndex("Id_module_Id");
-
-                    b.HasIndex("ModulesId_module");
 
                     b.ToTable("suppliers");
                 });
@@ -493,24 +464,14 @@ namespace FluxSYS_backend.Migrations
                     b.Property<int>("Id_supplier_Id")
                         .HasColumnType("int");
 
-                    b.Property<int?>("InventoriesId_inventory_product")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("Suggested_price")
                         .HasColumnType("decimal(10, 2)");
-
-                    b.Property<int?>("SuppliersId_supplier")
-                        .HasColumnType("int");
 
                     b.HasKey("Id_supplier_product");
 
                     b.HasIndex("Id_inventory_product_Id");
 
                     b.HasIndex("Id_supplier_Id");
-
-                    b.HasIndex("InventoriesId_inventory_product");
-
-                    b.HasIndex("SuppliersId_supplier");
 
                     b.ToTable("suppliers_products");
                 });
@@ -524,9 +485,6 @@ namespace FluxSYS_backend.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_audit"));
 
                     b.Property<int>("Amount_modify")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CompaniesId_company")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("Date_delete")
@@ -544,9 +502,6 @@ namespace FluxSYS_backend.Migrations
                     b.Property<bool>("Delete_log_audits")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("DepartmentsId_department")
-                        .HasColumnType("int");
-
                     b.Property<int>("Id_company_Id")
                         .HasColumnType("int");
 
@@ -559,17 +514,7 @@ namespace FluxSYS_backend.Migrations
                     b.Property<int>("Id_user_Id")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ModulesId_module")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UsersId_user")
-                        .HasColumnType("int");
-
                     b.HasKey("Id_audit");
-
-                    b.HasIndex("CompaniesId_company");
-
-                    b.HasIndex("DepartmentsId_department");
 
                     b.HasIndex("Id_company_Id");
 
@@ -578,10 +523,6 @@ namespace FluxSYS_backend.Migrations
                     b.HasIndex("Id_module_Id");
 
                     b.HasIndex("Id_user_Id");
-
-                    b.HasIndex("ModulesId_module");
-
-                    b.HasIndex("UsersId_user");
 
                     b.ToTable("audits");
                 });
@@ -622,12 +563,6 @@ namespace FluxSYS_backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_inventory_product"));
 
-                    b.Property<int?>("CategoriesProductsId_category_product")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CompaniesId_company")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("Date_delete")
                         .HasColumnType("datetime2");
 
@@ -642,9 +577,6 @@ namespace FluxSYS_backend.Migrations
 
                     b.Property<bool>("Delete_log_inventory")
                         .HasColumnType("bit");
-
-                    b.Property<int?>("DepartmentsId_department")
-                        .HasColumnType("int");
 
                     b.Property<int>("Id_category_product_Id")
                         .HasColumnType("int");
@@ -670,12 +602,6 @@ namespace FluxSYS_backend.Migrations
                     b.Property<int>("Id_user_Id")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ModulesId_module")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MovementsTypesId_movement_type")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name_product")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -683,25 +609,10 @@ namespace FluxSYS_backend.Migrations
                     b.Property<decimal>("Price_product")
                         .HasColumnType("decimal(10, 2)");
 
-                    b.Property<int?>("StatesId_state")
-                        .HasColumnType("int");
-
                     b.Property<int>("Stock_product")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SuppliersId_supplier")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UsersId_user")
-                        .HasColumnType("int");
-
                     b.HasKey("Id_inventory_product");
-
-                    b.HasIndex("CategoriesProductsId_category_product");
-
-                    b.HasIndex("CompaniesId_company");
-
-                    b.HasIndex("DepartmentsId_department");
 
                     b.HasIndex("Id_category_product_Id");
 
@@ -719,16 +630,6 @@ namespace FluxSYS_backend.Migrations
 
                     b.HasIndex("Id_user_Id");
 
-                    b.HasIndex("ModulesId_module");
-
-                    b.HasIndex("MovementsTypesId_movement_type");
-
-                    b.HasIndex("StatesId_state");
-
-                    b.HasIndex("SuppliersId_supplier");
-
-                    b.HasIndex("UsersId_user");
-
                     b.ToTable("inventory");
                 });
 
@@ -741,12 +642,6 @@ namespace FluxSYS_backend.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_inventory_movement"));
 
                     b.Property<int>("Amount_modify")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CategoriesProductsId_category_product")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CompaniesId_company")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("Date_delete")
@@ -763,9 +658,6 @@ namespace FluxSYS_backend.Migrations
 
                     b.Property<bool>("Delete_log_inventory_movement")
                         .HasColumnType("bit");
-
-                    b.Property<int?>("DepartmentsId_department")
-                        .HasColumnType("int");
 
                     b.Property<int>("Id_category_product_Id")
                         .HasColumnType("int");
@@ -791,28 +683,7 @@ namespace FluxSYS_backend.Migrations
                     b.Property<int>("Id_user_Id")
                         .HasColumnType("int");
 
-                    b.Property<int?>("InventoriesId_inventory_product")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ModulesId_module")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MovementsTypesId_movement_type")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SuppliersId_supplier")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UsersId_user")
-                        .HasColumnType("int");
-
                     b.HasKey("Id_inventory_movement");
-
-                    b.HasIndex("CategoriesProductsId_category_product");
-
-                    b.HasIndex("CompaniesId_company");
-
-                    b.HasIndex("DepartmentsId_department");
 
                     b.HasIndex("Id_category_product_Id");
 
@@ -830,16 +701,6 @@ namespace FluxSYS_backend.Migrations
 
                     b.HasIndex("Id_user_Id");
 
-                    b.HasIndex("InventoriesId_inventory_product");
-
-                    b.HasIndex("ModulesId_module");
-
-                    b.HasIndex("MovementsTypesId_movement_type");
-
-                    b.HasIndex("SuppliersId_supplier");
-
-                    b.HasIndex("UsersId_user");
-
                     b.ToTable("inventory_movements");
                 });
 
@@ -852,9 +713,6 @@ namespace FluxSYS_backend.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_invoice"));
 
                     b.Property<int>("Amount_items_in_the_invoice")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CompaniesId_company")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("Date_delete")
@@ -872,9 +730,6 @@ namespace FluxSYS_backend.Migrations
                     b.Property<bool>("Delete_log_invoices")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("DepartmentsId_department")
-                        .HasColumnType("int");
-
                     b.Property<int>("Id_company_Id")
                         .HasColumnType("int");
 
@@ -890,24 +745,11 @@ namespace FluxSYS_backend.Migrations
                     b.Property<int>("Id_supplier_Id")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ModulesId_module")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name_invoice")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PurchaseOrdersId_purchase_order")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SuppliersId_supplier")
-                        .HasColumnType("int");
-
                     b.HasKey("Id_invoice");
-
-                    b.HasIndex("CompaniesId_company");
-
-                    b.HasIndex("DepartmentsId_department");
 
                     b.HasIndex("Id_company_Id");
 
@@ -918,12 +760,6 @@ namespace FluxSYS_backend.Migrations
                     b.HasIndex("Id_purchase_order_Id");
 
                     b.HasIndex("Id_supplier_Id");
-
-                    b.HasIndex("ModulesId_module");
-
-                    b.HasIndex("PurchaseOrdersId_purchase_order");
-
-                    b.HasIndex("SuppliersId_supplier");
 
                     b.ToTable("invoices");
                 });
@@ -937,12 +773,6 @@ namespace FluxSYS_backend.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_purchase_order"));
 
                     b.Property<int>("Amount_items_in_the_order")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CategoriesPurchaseOrdersId_category_purchase_order")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CompaniesId_company")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("Date_delete")
@@ -959,9 +789,6 @@ namespace FluxSYS_backend.Migrations
 
                     b.Property<bool>("Delete_log_purchase_orders")
                         .HasColumnType("bit");
-
-                    b.Property<int?>("DepartmentsId_department")
-                        .HasColumnType("int");
 
                     b.Property<int>("Id_category_purchase_order_Id")
                         .HasColumnType("int");
@@ -987,35 +814,14 @@ namespace FluxSYS_backend.Migrations
                     b.Property<int>("Id_user_Id")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ModulesId_module")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MovementsTypesId_movement_type")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name_purchase_order")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("StatesId_state")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SuppliersId_supplier")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("Total_price_products")
                         .HasColumnType("decimal(10, 2)");
 
-                    b.Property<int?>("UsersId_user")
-                        .HasColumnType("int");
-
                     b.HasKey("Id_purchase_order");
-
-                    b.HasIndex("CategoriesPurchaseOrdersId_category_purchase_order");
-
-                    b.HasIndex("CompaniesId_company");
-
-                    b.HasIndex("DepartmentsId_department");
 
                     b.HasIndex("Id_category_purchase_order_Id");
 
@@ -1032,16 +838,6 @@ namespace FluxSYS_backend.Migrations
                     b.HasIndex("Id_supplier_Id");
 
                     b.HasIndex("Id_user_Id");
-
-                    b.HasIndex("ModulesId_module");
-
-                    b.HasIndex("MovementsTypesId_movement_type");
-
-                    b.HasIndex("StatesId_state");
-
-                    b.HasIndex("SuppliersId_supplier");
-
-                    b.HasIndex("UsersId_user");
 
                     b.ToTable("purchase_orders");
                 });
@@ -1060,12 +856,6 @@ namespace FluxSYS_backend.Migrations
                     b.Property<int>("Id_invoice_Id")
                         .HasColumnType("int");
 
-                    b.Property<int?>("InventoriesId_inventory_product")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("InvoicesId_invoice")
-                        .HasColumnType("int");
-
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
@@ -1078,10 +868,6 @@ namespace FluxSYS_backend.Migrations
 
                     b.HasIndex("Id_invoice_Id");
 
-                    b.HasIndex("InventoriesId_inventory_product");
-
-                    b.HasIndex("InvoicesId_invoice");
-
                     b.ToTable("invoices_products");
                 });
 
@@ -1092,9 +878,6 @@ namespace FluxSYS_backend.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_user"));
-
-                    b.Property<int?>("CompaniesId_company")
-                        .HasColumnType("int");
 
                     b.Property<DateTime?>("Date_delete")
                         .HasColumnType("datetime2");
@@ -1110,9 +893,6 @@ namespace FluxSYS_backend.Migrations
 
                     b.Property<bool>("Delete_log_user")
                         .HasColumnType("bit");
-
-                    b.Property<int?>("DepartmentsId_department")
-                        .HasColumnType("int");
 
                     b.Property<int>("Id_company_Id")
                         .HasColumnType("int");
@@ -1133,9 +913,6 @@ namespace FluxSYS_backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ModulesId_module")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name_user")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -1147,17 +924,7 @@ namespace FluxSYS_backend.Migrations
                     b.Property<long>("Phone_user")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("PositionsId_position")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RolesId_role")
-                        .HasColumnType("int");
-
                     b.HasKey("Id_user");
-
-                    b.HasIndex("CompaniesId_company");
-
-                    b.HasIndex("DepartmentsId_department");
 
                     b.HasIndex("Id_company_Id");
 
@@ -1169,12 +936,6 @@ namespace FluxSYS_backend.Migrations
 
                     b.HasIndex("Id_rol_Id");
 
-                    b.HasIndex("ModulesId_module");
-
-                    b.HasIndex("PositionsId_position");
-
-                    b.HasIndex("RolesId_role");
-
                     b.ToTable("users");
                 });
 
@@ -1182,7 +943,7 @@ namespace FluxSYS_backend.Migrations
                 {
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", "Companies")
                         .WithMany("CategoriesProducts")
-                        .HasForeignKey("CompaniesId_company")
+                        .HasForeignKey("Id_company_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1193,7 +954,7 @@ namespace FluxSYS_backend.Migrations
                 {
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", "Companies")
                         .WithMany("CategoriesPurchaseOrders")
-                        .HasForeignKey("CompaniesId_company")
+                        .HasForeignKey("Id_company_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1202,21 +963,21 @@ namespace FluxSYS_backend.Migrations
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.CategoriesSuppliers", b =>
                 {
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", "Company")
+                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", "Companies")
                         .WithMany("CategoriesSuppliers")
-                        .HasForeignKey("CompanyId_company")
+                        .HasForeignKey("Id_company_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Company");
+                    b.Navigation("Companies");
                 });
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.Departments", b =>
                 {
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", "Companies")
                         .WithMany("Departments")
-                        .HasForeignKey("CompaniesId_company")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("Id_company_Id")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Companies");
@@ -1226,13 +987,13 @@ namespace FluxSYS_backend.Migrations
                 {
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.ClasificationMovements", "ClasificationsMovements")
                         .WithMany("MoventsTypes")
-                        .HasForeignKey("ClasificationsMovementsId_clasification_movement")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("Id_clasification_movement_Id")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", "Companies")
                         .WithMany("MovementsTypes")
-                        .HasForeignKey("CompaniesId_company")
+                        .HasForeignKey("Id_company_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1244,24 +1005,16 @@ namespace FluxSYS_backend.Migrations
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.OrdersProducts", b =>
                 {
                     b.HasOne("FluxSYS_backend.Domain.Models.PrincipalModels.Inventories", "Inventories")
-                        .WithMany()
+                        .WithMany("OrdersProducts")
                         .HasForeignKey("Id_inventory_product_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrincipalModels.PurchaseOrders", "PurchaseOrders")
-                        .WithMany()
+                        .WithMany("OrdersProducts")
                         .HasForeignKey("Id_purchase_order_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrincipalModels.Inventories", null)
-                        .WithMany("OrdersProducts")
-                        .HasForeignKey("InventoriesId_inventory_product");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrincipalModels.PurchaseOrders", null)
-                        .WithMany("OrdersProducts")
-                        .HasForeignKey("PurchaseOrdersId_purchase_order");
 
                     b.Navigation("Inventories");
 
@@ -1272,7 +1025,7 @@ namespace FluxSYS_backend.Migrations
                 {
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", "Companies")
                         .WithMany("Positions")
-                        .HasForeignKey("CompaniesId_company")
+                        .HasForeignKey("Id_company_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1283,7 +1036,7 @@ namespace FluxSYS_backend.Migrations
                 {
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", "Companies")
                         .WithMany("States")
-                        .HasForeignKey("CompaniesId_company")
+                        .HasForeignKey("Id_company_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1292,35 +1045,23 @@ namespace FluxSYS_backend.Migrations
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.Suppliers", b =>
                 {
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.CategoriesSuppliers", null)
-                        .WithMany("Suppliers")
-                        .HasForeignKey("CategoriesSuppliersId_category_supplier");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", null)
-                        .WithMany("Suppliers")
-                        .HasForeignKey("CompaniesId_company");
-
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.CategoriesSuppliers", "CategoriesSuppliers")
-                        .WithMany()
+                        .WithMany("Suppliers")
                         .HasForeignKey("Id_category_supplier_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", "Companies")
-                        .WithMany()
+                        .WithMany("Suppliers")
                         .HasForeignKey("Id_company_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Modules", "Modules")
-                        .WithMany()
+                        .WithMany("Suppliers")
                         .HasForeignKey("Id_module_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Modules", null)
-                        .WithMany("Suppliers")
-                        .HasForeignKey("ModulesId_module");
 
                     b.Navigation("CategoriesSuppliers");
 
@@ -1332,24 +1073,16 @@ namespace FluxSYS_backend.Migrations
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.SuppliersProducts", b =>
                 {
                     b.HasOne("FluxSYS_backend.Domain.Models.PrincipalModels.Inventories", "Inventories")
-                        .WithMany()
+                        .WithMany("SuppliersProducts")
                         .HasForeignKey("Id_inventory_product_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Suppliers", "Suppliers")
-                        .WithMany()
+                        .WithMany("SuppliersProducts")
                         .HasForeignKey("Id_supplier_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrincipalModels.Inventories", null)
-                        .WithMany("SuppliersProducts")
-                        .HasForeignKey("InventoriesId_inventory_product");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Suppliers", null)
-                        .WithMany("SuppliersProducts")
-                        .HasForeignKey("SuppliersId_supplier");
 
                     b.Navigation("Inventories");
 
@@ -1358,45 +1091,29 @@ namespace FluxSYS_backend.Migrations
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrincipalModels.Audits", b =>
                 {
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", null)
-                        .WithMany("Audits")
-                        .HasForeignKey("CompaniesId_company");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Departments", null)
-                        .WithMany("Audits")
-                        .HasForeignKey("DepartmentsId_department");
-
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", "Companies")
-                        .WithMany()
+                        .WithMany("Audits")
                         .HasForeignKey("Id_company_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Departments", "Departments")
-                        .WithMany()
+                        .WithMany("Audits")
                         .HasForeignKey("Id_department_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Modules", "Modules")
-                        .WithMany()
+                        .WithMany("Audits")
                         .HasForeignKey("Id_module_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Users", "Users")
-                        .WithMany()
+                        .WithMany("Audits")
                         .HasForeignKey("Id_user_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Modules", null)
-                        .WithMany("Audits")
-                        .HasForeignKey("ModulesId_module");
-
-                    b.HasOne("FluxSYS_backend.Users", null)
-                        .WithMany("Audits")
-                        .HasForeignKey("UsersId_user");
 
                     b.Navigation("Companies");
 
@@ -1409,85 +1126,53 @@ namespace FluxSYS_backend.Migrations
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrincipalModels.Inventories", b =>
                 {
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.CategoriesProducts", null)
-                        .WithMany("Inventories")
-                        .HasForeignKey("CategoriesProductsId_category_product");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", null)
-                        .WithMany("Inventories")
-                        .HasForeignKey("CompaniesId_company");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Departments", null)
-                        .WithMany("Inventories")
-                        .HasForeignKey("DepartmentsId_department");
-
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.CategoriesProducts", "CategoriesProducts")
-                        .WithMany()
+                        .WithMany("Inventories")
                         .HasForeignKey("Id_category_product_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", "Companies")
-                        .WithMany()
+                        .WithMany("Inventories")
                         .HasForeignKey("Id_company_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Departments", "Departments")
-                        .WithMany()
+                        .WithMany("Inventories")
                         .HasForeignKey("Id_department_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Modules", "Modules")
-                        .WithMany()
+                        .WithMany("Inventories")
                         .HasForeignKey("Id_module_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.MovementsTypes", "MovementsTypes")
-                        .WithMany()
+                        .WithMany("Inventories")
                         .HasForeignKey("Id_movement_type_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.States", "States")
-                        .WithMany()
+                        .WithMany("Inventories")
                         .HasForeignKey("Id_state_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Suppliers", "Suppliers")
-                        .WithMany()
+                        .WithMany("Inventories")
                         .HasForeignKey("Id_supplier_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Users", "Users")
-                        .WithMany()
+                        .WithMany("Inventories")
                         .HasForeignKey("Id_user_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Modules", null)
-                        .WithMany("Inventories")
-                        .HasForeignKey("ModulesId_module");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.MovementsTypes", null)
-                        .WithMany("Inventories")
-                        .HasForeignKey("MovementsTypesId_movement_type");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.States", null)
-                        .WithMany("Inventories")
-                        .HasForeignKey("StatesId_state");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Suppliers", null)
-                        .WithMany("Inventories")
-                        .HasForeignKey("SuppliersId_supplier");
-
-                    b.HasOne("FluxSYS_backend.Users", null)
-                        .WithMany("Inventories")
-                        .HasForeignKey("UsersId_user");
 
                     b.Navigation("CategoriesProducts");
 
@@ -1508,85 +1193,53 @@ namespace FluxSYS_backend.Migrations
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrincipalModels.InventoryMovements", b =>
                 {
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.CategoriesProducts", null)
-                        .WithMany("InventoriesMovements")
-                        .HasForeignKey("CategoriesProductsId_category_product");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", null)
-                        .WithMany("InventoryMovements")
-                        .HasForeignKey("CompaniesId_company");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Departments", null)
-                        .WithMany("InventoryMovements")
-                        .HasForeignKey("DepartmentsId_department");
-
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.CategoriesProducts", "CategoriesProducts")
-                        .WithMany()
+                        .WithMany("InventoryMovements")
                         .HasForeignKey("Id_category_product_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", "Companies")
-                        .WithMany()
+                        .WithMany("InventoryMovements")
                         .HasForeignKey("Id_company_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Departments", "Departments")
-                        .WithMany()
+                        .WithMany("InventoryMovements")
                         .HasForeignKey("Id_department_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrincipalModels.Inventories", "Inventories")
-                        .WithMany()
+                        .WithMany("InventoryMovements")
                         .HasForeignKey("Id_inventory_product_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Modules", "Modules")
-                        .WithMany()
+                        .WithMany("InventoryMovements")
                         .HasForeignKey("Id_module_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.MovementsTypes", "MovementsTypes")
-                        .WithMany()
+                        .WithMany("InventoryMovements")
                         .HasForeignKey("Id_movements_types_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Suppliers", "Suppliers")
-                        .WithMany()
+                        .WithMany("InventoryMovements")
                         .HasForeignKey("Id_supplier_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Users", "Users")
-                        .WithMany()
+                        .WithMany("InventoryMovements")
                         .HasForeignKey("Id_user_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrincipalModels.Inventories", null)
-                        .WithMany("InventoryMovements")
-                        .HasForeignKey("InventoriesId_inventory_product");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Modules", null)
-                        .WithMany("InventoryMovements")
-                        .HasForeignKey("ModulesId_module");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.MovementsTypes", null)
-                        .WithMany("InventoryMovements")
-                        .HasForeignKey("MovementsTypesId_movement_type");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Suppliers", null)
-                        .WithMany("InventoryMovements")
-                        .HasForeignKey("SuppliersId_supplier");
-
-                    b.HasOne("FluxSYS_backend.Users", null)
-                        .WithMany("InventoryMovements")
-                        .HasForeignKey("UsersId_user");
 
                     b.Navigation("CategoriesProducts");
 
@@ -1607,55 +1260,35 @@ namespace FluxSYS_backend.Migrations
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrincipalModels.Invoices", b =>
                 {
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", null)
-                        .WithMany("Invoices")
-                        .HasForeignKey("CompaniesId_company");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Departments", null)
-                        .WithMany("Invoices")
-                        .HasForeignKey("DepartmentsId_department");
-
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", "Companies")
-                        .WithMany()
+                        .WithMany("Invoices")
                         .HasForeignKey("Id_company_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Departments", "Departments")
-                        .WithMany()
+                        .WithMany("Invoices")
                         .HasForeignKey("Id_department_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Modules", "Modules")
-                        .WithMany()
+                        .WithMany("Invoices")
                         .HasForeignKey("Id_module_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrincipalModels.PurchaseOrders", "PurchaseOrders")
-                        .WithMany()
+                        .WithMany("Invoices")
                         .HasForeignKey("Id_purchase_order_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Suppliers", "Suppliers")
-                        .WithMany()
+                        .WithMany("Invoices")
                         .HasForeignKey("Id_supplier_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Modules", null)
-                        .WithMany("Invoices")
-                        .HasForeignKey("ModulesId_module");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrincipalModels.PurchaseOrders", null)
-                        .WithMany("Invoices")
-                        .HasForeignKey("PurchaseOrdersId_purchase_order");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Suppliers", null)
-                        .WithMany("Invoices")
-                        .HasForeignKey("SuppliersId_supplier");
 
                     b.Navigation("Companies");
 
@@ -1670,85 +1303,53 @@ namespace FluxSYS_backend.Migrations
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrincipalModels.PurchaseOrders", b =>
                 {
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.CategoriesPurchaseOrders", null)
-                        .WithMany("PurchaseOrders")
-                        .HasForeignKey("CategoriesPurchaseOrdersId_category_purchase_order");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", null)
-                        .WithMany("PurchaseOrders")
-                        .HasForeignKey("CompaniesId_company");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Departments", null)
-                        .WithMany("PurchaseOrders")
-                        .HasForeignKey("DepartmentsId_department");
-
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.CategoriesPurchaseOrders", "CategoryPurchaseOrders")
-                        .WithMany()
+                        .WithMany("PurchaseOrders")
                         .HasForeignKey("Id_category_purchase_order_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", "Companies")
-                        .WithMany()
+                        .WithMany("PurchaseOrders")
                         .HasForeignKey("Id_company_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Departments", "Departments")
-                        .WithMany()
+                        .WithMany("PurchaseOrders")
                         .HasForeignKey("Id_department_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Modules", "Modules")
-                        .WithMany()
+                        .WithMany("PurchaseOrders")
                         .HasForeignKey("Id_module_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.MovementsTypes", "MovementsTypes")
-                        .WithMany()
+                        .WithMany("PurchaseOrders")
                         .HasForeignKey("Id_movement_type_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.States", "States")
-                        .WithMany()
+                        .WithMany("PurchaseOrders")
                         .HasForeignKey("Id_state_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Suppliers", "Suppliers")
-                        .WithMany()
+                        .WithMany("PurchaseOrders")
                         .HasForeignKey("Id_supplier_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Users", "Users")
-                        .WithMany()
+                        .WithMany("PurchaseOrders")
                         .HasForeignKey("Id_user_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Modules", null)
-                        .WithMany("PurchaseOrders")
-                        .HasForeignKey("ModulesId_module");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.MovementsTypes", null)
-                        .WithMany("PurchaseOrders")
-                        .HasForeignKey("MovementsTypesId_movement_type");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.States", null)
-                        .WithMany("PurchaseOrders")
-                        .HasForeignKey("StatesId_state");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Suppliers", null)
-                        .WithMany("PurchaseOrders")
-                        .HasForeignKey("SuppliersId_supplier");
-
-                    b.HasOne("FluxSYS_backend.Users", null)
-                        .WithMany("PurchaseOrders")
-                        .HasForeignKey("UsersId_user");
 
                     b.Navigation("CategoryPurchaseOrders");
 
@@ -1770,24 +1371,16 @@ namespace FluxSYS_backend.Migrations
             modelBuilder.Entity("FluxSYS_backend.InvoicesProducts", b =>
                 {
                     b.HasOne("FluxSYS_backend.Domain.Models.PrincipalModels.Inventories", "Inventories")
-                        .WithMany()
+                        .WithMany("InvoicesProducts")
                         .HasForeignKey("Id_inventory_product_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrincipalModels.Invoices", "Invoices")
-                        .WithMany()
+                        .WithMany("InvoicesProducts")
                         .HasForeignKey("Id_invoice_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrincipalModels.Inventories", null)
-                        .WithMany("InvoicesProducts")
-                        .HasForeignKey("InventoriesId_inventory_product");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrincipalModels.Invoices", null)
-                        .WithMany("InvoicesProducts")
-                        .HasForeignKey("InvoicesId_invoice");
 
                     b.Navigation("Inventories");
 
@@ -1796,55 +1389,35 @@ namespace FluxSYS_backend.Migrations
 
             modelBuilder.Entity("FluxSYS_backend.Users", b =>
                 {
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", null)
-                        .WithMany("Users")
-                        .HasForeignKey("CompaniesId_company");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Departments", null)
-                        .WithMany("Users")
-                        .HasForeignKey("DepartmentsId_department");
-
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", "Companies")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("Id_company_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Departments", "Departments")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("Id_department_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Modules", "Modules")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("Id_module_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Positions", "Positions")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("Id_position_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Roles", "Roles")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("Id_rol_Id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Modules", null)
-                        .WithMany("Users")
-                        .HasForeignKey("ModulesId_module");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Positions", null)
-                        .WithMany("Users")
-                        .HasForeignKey("PositionsId_position");
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Roles", null)
-                        .WithMany("Users")
-                        .HasForeignKey("RolesId_role");
 
                     b.Navigation("Companies");
 
@@ -1861,7 +1434,7 @@ namespace FluxSYS_backend.Migrations
                 {
                     b.Navigation("Inventories");
 
-                    b.Navigation("InventoriesMovements");
+                    b.Navigation("InventoryMovements");
                 });
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.CategoriesPurchaseOrders", b =>

@@ -20,6 +20,12 @@ namespace FluxSYS_backend.Infraestructure.Data
             new Companies { Id_company = 10, Name_company = "Vertex Solutions" }
             );
 
+            modelBuilder.Entity<ClasificationMovements>().HasData(
+            new ClasificationMovements { Id_clasification_movement = 1, Name_clasification_movement = "Eliminacion" },
+            new ClasificationMovements { Id_clasification_movement = 2, Name_clasification_movement = "Creacion" },
+            new ClasificationMovements { Id_clasification_movement = 3, Name_clasification_movement = "Actualizacion" }
+            );
+
         }
     }
 }
