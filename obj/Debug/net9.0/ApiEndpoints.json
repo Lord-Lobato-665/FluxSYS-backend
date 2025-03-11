@@ -500,6 +500,85 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FluxSYS_backend.API.Controllers.InventoriesController",
+    "Method": "Create",
+    "RelativePath": "api/Inventories/create-inventory",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "FluxSYS_backend.Application.ViewModels.InventoryViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.InventoriesController",
+    "Method": "SoftDelete",
+    "RelativePath": "api/Inventories/delete-inventory/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.InventoriesController",
+    "Method": "GetAll",
+    "RelativePath": "api/Inventories/get-inventories",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.InventoriesController",
+    "Method": "Restore",
+    "RelativePath": "api/Inventories/restore-inventory/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.InventoriesController",
+    "Method": "Update",
+    "RelativePath": "api/Inventories/update-inventory/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "FluxSYS_backend.Application.ViewModels.InventoryViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FluxSYS_backend.API.Controllers.ModulesController",
     "Method": "Create",
     "RelativePath": "api/Modules/create-module",
@@ -731,6 +810,85 @@
       {
         "Name": "model",
         "Type": "FluxSYS_backend.Application.ViewModels.PositionViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.PurchaseOrdersController",
+    "Method": "Create",
+    "RelativePath": "api/PurchaseOrders/create-purchase-order",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "FluxSYS_backend.Application.ViewModels.PurchaseOrderViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.PurchaseOrdersController",
+    "Method": "SoftDelete",
+    "RelativePath": "api/PurchaseOrders/delete-purchase-order/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.PurchaseOrdersController",
+    "Method": "GetAll",
+    "RelativePath": "api/PurchaseOrders/get-purchase-orders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.PurchaseOrdersController",
+    "Method": "Restore",
+    "RelativePath": "api/PurchaseOrders/restore-purchase-order/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.PurchaseOrdersController",
+    "Method": "Update",
+    "RelativePath": "api/PurchaseOrders/update-purchase-order/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "FluxSYS_backend.Application.ViewModels.PurchaseOrderViewModel",
         "IsRequired": true
       }
     ],

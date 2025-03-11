@@ -803,6 +803,137 @@
         }
       }
     },
+    "/api/Inventories/get-inventories": {
+      "get": {
+        "tags": [
+          "Inventories"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Inventories/create-inventory": {
+      "post": {
+        "tags": [
+          "Inventories"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Inventories/update-inventory/{id}": {
+      "put": {
+        "tags": [
+          "Inventories"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Inventories/delete-inventory/{id}": {
+      "delete": {
+        "tags": [
+          "Inventories"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Inventories/restore-inventory/{id}": {
+      "patch": {
+        "tags": [
+          "Inventories"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Modules/get-modules": {
       "get": {
         "tags": [
@@ -1177,6 +1308,137 @@
       "patch": {
         "tags": [
           "Positions"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PurchaseOrders/get-purchase-orders": {
+      "get": {
+        "tags": [
+          "PurchaseOrders"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PurchaseOrders/create-purchase-order": {
+      "post": {
+        "tags": [
+          "PurchaseOrders"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PurchaseOrderViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PurchaseOrderViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PurchaseOrderViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PurchaseOrders/update-purchase-order/{id}": {
+      "put": {
+        "tags": [
+          "PurchaseOrders"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PurchaseOrderViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PurchaseOrderViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PurchaseOrderViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PurchaseOrders/delete-purchase-order/{id}": {
+      "delete": {
+        "tags": [
+          "PurchaseOrders"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PurchaseOrders/restore-purchase-order/{id}": {
+      "patch": {
+        "tags": [
+          "PurchaseOrders"
         ],
         "parameters": [
           {
@@ -1833,6 +2095,73 @@
         },
         "additionalProperties": false
       },
+      "InventoryViewModel": {
+        "required": [
+          "id_category_product_Id",
+          "id_company_Id",
+          "id_department_Id",
+          "id_module_Id",
+          "id_movement_type_Id",
+          "id_state_Id",
+          "id_supplier_Id",
+          "id_user_Id",
+          "name_product",
+          "price_product",
+          "stock_product"
+        ],
+        "type": "object",
+        "properties": {
+          "name_product": {
+            "maxLength": 100,
+            "minLength": 3,
+            "type": "string"
+          },
+          "stock_product": {
+            "maximum": 2147483647,
+            "minimum": 0,
+            "type": "integer",
+            "format": "int32"
+          },
+          "price_product": {
+            "minimum": 0.01,
+            "type": "number",
+            "format": "double"
+          },
+          "id_category_product_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_state_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_movement_type_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_supplier_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_department_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_module_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_company_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_user_Id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "ModuleViewModel": {
         "required": [
           "name_module"
@@ -1873,6 +2202,26 @@
         },
         "additionalProperties": false
       },
+      "OrderProductViewModel": {
+        "required": [
+          "id_inventory_product_Id",
+          "quantity"
+        ],
+        "type": "object",
+        "properties": {
+          "id_inventory_product_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "quantity": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "PositionViewModel": {
         "required": [
           "id_company_Id",
@@ -1889,6 +2238,67 @@
           "id_company_Id": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PurchaseOrderViewModel": {
+        "required": [
+          "id_category_purchase_order_Id",
+          "id_company_Id",
+          "id_department_Id",
+          "id_module_Id",
+          "id_movement_type_Id",
+          "id_state_Id",
+          "id_supplier_Id",
+          "id_user_Id",
+          "name_purchase_order"
+        ],
+        "type": "object",
+        "properties": {
+          "name_purchase_order": {
+            "maxLength": 100,
+            "minLength": 3,
+            "type": "string"
+          },
+          "id_user_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_category_purchase_order_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_department_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_supplier_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_state_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_movement_type_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_module_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_company_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderProductViewModel"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

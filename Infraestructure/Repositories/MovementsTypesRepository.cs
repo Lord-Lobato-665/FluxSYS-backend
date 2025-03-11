@@ -25,6 +25,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 return await _context.MovementsTypes
                     .Select(mt => new MovementTypeReadDTO
                     {
+                        Id_movement_type = mt.Id_movement_type,
                         Name_movement_type = mt.Name_movement_type,
                         Name_company = mt.Companies.Name_company,
                         Name_clasification_movement = mt.ClasificationsMovements.Name_clasification_movement,

@@ -2,6 +2,7 @@
 
 public class MovementTypeReadDTO
 {
+    public int Id_movement_type { get; set; }
     public string Name_movement_type { get; set; }
     public string Name_company { get; set; }
     public string Name_clasification_movement { get; set; }
