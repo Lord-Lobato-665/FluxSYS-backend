@@ -3,60 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\infraestructure\\data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:infraestructure\\data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\application\\appservices\\departmentsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\appservices\\departmentsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\infraestructure\\repositories\\departmentsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:infraestructure\\repositories\\departmentsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\infraestructure\\data\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:infraestructure\\data\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\infraestructure\\data\\modelconfigurations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:infraestructure\\data\\modelconfigurations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\presentation\\viewmodels\\categoryproductsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:presentation\\viewmodels\\categoryproductsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\presentation\\controllers\\categoriesproductscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:presentation\\controllers\\categoriesproductscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\application\\appservices\\categoriesproductsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\appservices\\categoriesproductsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\infraestructure\\repositories\\categoriesproductsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:infraestructure\\repositories\\categoriesproductsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\application\\dtos\\categoriesproducts\\categoryproductsupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\dtos\\categoriesproducts\\categoryproductsupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\application\\dtos\\categoriesproducts\\categoryproductsreaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\dtos\\categoriesproducts\\categoryproductsreaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\application\\dtos\\categoriesproducts\\categoryproductscreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\dtos\\categoriesproducts\\categoryproductscreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\domain\\iservices\\icategoriesproducts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:domain\\iservices\\icategoriesproducts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\domain\\models\\primitivemodels\\categoriesproducts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:domain\\models\\primitivemodels\\categoriesproducts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\domain\\models\\primitivemodels\\categoriessuppliers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:domain\\models\\primitivemodels\\categoriessuppliers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\presentation\\controllers\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:presentation\\controllers\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\presentation\\viewmodels\\departmentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:presentation\\viewmodels\\departmentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\application\\dtos\\departments\\departmentupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\dtos\\departments\\departmentupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\application\\dtos\\departments\\departmentcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\dtos\\departments\\departmentcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\application\\dtos\\departments\\departmentreaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\dtos\\departments\\departmentreaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\domain\\models\\primitivemodels\\departments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:domain\\models\\primitivemodels\\departments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\domain\\iservices\\idepartments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:domain\\iservices\\idepartments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,189 +50,137 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Departments.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\Models\\PrimitiveModels\\Departments.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\PrimitiveModels\\Departments.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\Models\\PrimitiveModels\\Departments.cs",
-              "RelativeToolTip": "Domain\\Models\\PrimitiveModels\\Departments.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAA3wA8AAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T15:24:29.71Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SeedData.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Infraestructure\\Data\\SeedData.cs",
-              "RelativeDocumentMoniker": "Infraestructure\\Data\\SeedData.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Infraestructure\\Data\\SeedData.cs",
-              "RelativeToolTip": "Infraestructure\\Data\\SeedData.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAIwBkAAABGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T20:22:13.126Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CategoriesProducts.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\Models\\PrimitiveModels\\CategoriesProducts.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\PrimitiveModels\\CategoriesProducts.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\Models\\PrimitiveModels\\CategoriesProducts.cs",
-              "RelativeToolTip": "Domain\\Models\\PrimitiveModels\\CategoriesProducts.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAzwBQAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T19:47:29.589Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CategoriesSuppliers.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\Models\\PrimitiveModels\\CategoriesSuppliers.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\PrimitiveModels\\CategoriesSuppliers.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\Models\\PrimitiveModels\\CategoriesSuppliers.cs",
-              "RelativeToolTip": "Domain\\Models\\PrimitiveModels\\CategoriesSuppliers.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T18:51:51.179Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DepartmentsRepository.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Infraestructure\\Repositories\\DepartmentsRepository.cs",
-              "RelativeDocumentMoniker": "Infraestructure\\Repositories\\DepartmentsRepository.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Infraestructure\\Repositories\\DepartmentsRepository.cs",
-              "RelativeToolTip": "Infraestructure\\Repositories\\DepartmentsRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFwAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T18:28:56.872Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "DepartmentViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Presentation\\ViewModels\\DepartmentViewModel.cs",
-              "RelativeDocumentMoniker": "Presentation\\ViewModels\\DepartmentViewModel.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Presentation\\ViewModels\\DepartmentViewModel.cs",
-              "RelativeToolTip": "Presentation\\ViewModels\\DepartmentViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T18:26:15.12Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "DepartmentUpdateDTO.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Departments\\DepartmentUpdateDTO.cs",
-              "RelativeDocumentMoniker": "Application\\DTOs\\Departments\\DepartmentUpdateDTO.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Departments\\DepartmentUpdateDTO.cs",
-              "RelativeToolTip": "Application\\DTOs\\Departments\\DepartmentUpdateDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T18:24:47.281Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "DepartmentReadDTO.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Departments\\DepartmentReadDTO.cs",
-              "RelativeDocumentMoniker": "Application\\DTOs\\Departments\\DepartmentReadDTO.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Departments\\DepartmentReadDTO.cs",
-              "RelativeToolTip": "Application\\DTOs\\Departments\\DepartmentReadDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T18:23:16.346Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "DepartmentCreateDTO.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Departments\\DepartmentCreateDTO.cs",
-              "RelativeDocumentMoniker": "Application\\DTOs\\Departments\\DepartmentCreateDTO.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Departments\\DepartmentCreateDTO.cs",
-              "RelativeToolTip": "Application\\DTOs\\Departments\\DepartmentCreateDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T18:22:34.757Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "DepartmentsController.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Presentation\\Controllers\\DepartmentsController.cs",
-              "RelativeDocumentMoniker": "Presentation\\Controllers\\DepartmentsController.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Presentation\\Controllers\\DepartmentsController.cs",
-              "RelativeToolTip": "Presentation\\Controllers\\DepartmentsController.cs",
-              "ViewState": "AgIAAGkAAAAAAAAAAAAYwI0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T18:22:15.613Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DepartmentsService.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\AppServices\\DepartmentsService.cs",
-              "RelativeDocumentMoniker": "Application\\AppServices\\DepartmentsService.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\AppServices\\DepartmentsService.cs",
-              "RelativeToolTip": "Application\\AppServices\\DepartmentsService.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAAwAQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T18:16:14.482Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "IDepartments.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\IServices\\IDepartments.cs",
-              "RelativeDocumentMoniker": "Domain\\IServices\\IDepartments.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\IServices\\IDepartments.cs",
-              "RelativeToolTip": "Domain\\IServices\\IDepartments.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T18:11:19.931Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ModelConfigurations.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Infraestructure\\Data\\ModelConfigurations.cs",
-              "RelativeDocumentMoniker": "Infraestructure\\Data\\ModelConfigurations.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Infraestructure\\Data\\ModelConfigurations.cs",
-              "RelativeToolTip": "Infraestructure\\Data\\ModelConfigurations.cs",
-              "ViewState": "AgIAAG8BAAAAAAAAAAAAwHIBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T17:29:10.317Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Infraestructure\\Data\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "Infraestructure\\Data\\DependencyInjection.cs",
               "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Infraestructure\\Data\\DependencyInjection.cs",
               "RelativeToolTip": "Infraestructure\\Data\\DependencyInjection.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAwBQAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAYwBYAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-10T16:55:23.701Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CategoryProductsViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Presentation\\ViewModels\\CategoryProductsViewModel.cs",
+              "RelativeDocumentMoniker": "Presentation\\ViewModels\\CategoryProductsViewModel.cs",
+              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Presentation\\ViewModels\\CategoryProductsViewModel.cs",
+              "RelativeToolTip": "Presentation\\ViewModels\\CategoryProductsViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T00:09:54.665Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CategoriesProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Presentation\\Controllers\\CategoriesProductsController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Controllers\\CategoriesProductsController.cs",
+              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Presentation\\Controllers\\CategoriesProductsController.cs",
+              "RelativeToolTip": "Presentation\\Controllers\\CategoriesProductsController.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAswI0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T00:09:31.336Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CategoriesProductsService.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\AppServices\\CategoriesProductsService.cs",
+              "RelativeDocumentMoniker": "Application\\AppServices\\CategoriesProductsService.cs",
+              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\AppServices\\CategoriesProductsService.cs",
+              "RelativeToolTip": "Application\\AppServices\\CategoriesProductsService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T00:08:58.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CategoriesProductsRepository.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Infraestructure\\Repositories\\CategoriesProductsRepository.cs",
+              "RelativeDocumentMoniker": "Infraestructure\\Repositories\\CategoriesProductsRepository.cs",
+              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Infraestructure\\Repositories\\CategoriesProductsRepository.cs",
+              "RelativeToolTip": "Infraestructure\\Repositories\\CategoriesProductsRepository.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAYwHsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T00:08:22.573Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CategoryProductsUpdateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\CategoriesProducts\\CategoryProductsUpdateDTO.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\CategoriesProducts\\CategoryProductsUpdateDTO.cs",
+              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\CategoriesProducts\\CategoryProductsUpdateDTO.cs",
+              "RelativeToolTip": "Application\\DTOs\\CategoriesProducts\\CategoryProductsUpdateDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T00:07:39.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CategoryProductsReadDTO.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\CategoriesProducts\\CategoryProductsReadDTO.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\CategoriesProducts\\CategoryProductsReadDTO.cs",
+              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\CategoriesProducts\\CategoryProductsReadDTO.cs",
+              "RelativeToolTip": "Application\\DTOs\\CategoriesProducts\\CategoryProductsReadDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T00:07:33.571Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CategoryProductsCreateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\CategoriesProducts\\CategoryProductsCreateDTO.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\CategoriesProducts\\CategoryProductsCreateDTO.cs",
+              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\CategoriesProducts\\CategoryProductsCreateDTO.cs",
+              "RelativeToolTip": "Application\\DTOs\\CategoriesProducts\\CategoryProductsCreateDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T00:07:10.975Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ICategoriesProducts.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\IServices\\ICategoriesProducts.cs",
+              "RelativeDocumentMoniker": "Domain\\IServices\\ICategoriesProducts.cs",
+              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\IServices\\ICategoriesProducts.cs",
+              "RelativeToolTip": "Domain\\IServices\\ICategoriesProducts.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAiwAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T00:06:12.509Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CategoriesProducts.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\Models\\PrimitiveModels\\CategoriesProducts.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\PrimitiveModels\\CategoriesProducts.cs",
+              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\Models\\PrimitiveModels\\CategoriesProducts.cs",
+              "RelativeToolTip": "Domain\\Models\\PrimitiveModels\\CategoriesProducts.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAUwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T23:14:07.319Z",
               "EditorCaption": ""
             }
           ]
