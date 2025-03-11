@@ -95,6 +95,85 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CategoriesPurchaseOrdersController",
+    "Method": "Create",
+    "RelativePath": "api/CategoriesPurchaseOrders/create-category-purchase-order",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "FluxSYS_backend.Application.ViewModels.CategoryPurchaseOrderViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CategoriesPurchaseOrdersController",
+    "Method": "SoftDelete",
+    "RelativePath": "api/CategoriesPurchaseOrders/delete-category-purchase-order/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CategoriesPurchaseOrdersController",
+    "Method": "GetAll",
+    "RelativePath": "api/CategoriesPurchaseOrders/get-categories-purchase-orders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CategoriesPurchaseOrdersController",
+    "Method": "Restore",
+    "RelativePath": "api/CategoriesPurchaseOrders/restore-category-purchase-order/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CategoriesPurchaseOrdersController",
+    "Method": "Update",
+    "RelativePath": "api/CategoriesPurchaseOrders/update-category-purchase-order/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "FluxSYS_backend.Application.ViewModels.CategoryPurchaseOrderViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FluxSYS_backend.API.Controllers.ClasificationMovementsController",
     "Method": "Create",
     "RelativePath": "api/ClasificationMovements/create-clasification-movement",

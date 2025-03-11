@@ -136,6 +136,137 @@
         }
       }
     },
+    "/api/CategoriesPurchaseOrders/get-categories-purchase-orders": {
+      "get": {
+        "tags": [
+          "CategoriesPurchaseOrders"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CategoriesPurchaseOrders/create-category-purchase-order": {
+      "post": {
+        "tags": [
+          "CategoriesPurchaseOrders"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryPurchaseOrderViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryPurchaseOrderViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryPurchaseOrderViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CategoriesPurchaseOrders/update-category-purchase-order/{id}": {
+      "put": {
+        "tags": [
+          "CategoriesPurchaseOrders"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryPurchaseOrderViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryPurchaseOrderViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryPurchaseOrderViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CategoriesPurchaseOrders/delete-category-purchase-order/{id}": {
+      "delete": {
+        "tags": [
+          "CategoriesPurchaseOrders"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CategoriesPurchaseOrders/restore-category-purchase-order/{id}": {
+      "patch": {
+        "tags": [
+          "CategoriesPurchaseOrders"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/ClasificationMovements/get-clasification-movements": {
       "get": {
         "tags": [
@@ -552,6 +683,26 @@
         "type": "object",
         "properties": {
           "name_category_product": {
+            "maxLength": 50,
+            "minLength": 3,
+            "pattern": "^[a-zA-Z\\s]+$",
+            "type": "string"
+          },
+          "id_company_Id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CategoryPurchaseOrderViewModel": {
+        "required": [
+          "id_company_Id",
+          "name_category_purchase_order"
+        ],
+        "type": "object",
+        "properties": {
+          "name_category_purchase_order": {
             "maxLength": 50,
             "minLength": 3,
             "pattern": "^[a-zA-Z\\s]+$",
