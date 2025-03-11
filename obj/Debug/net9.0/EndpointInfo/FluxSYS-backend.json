@@ -267,6 +267,137 @@
         }
       }
     },
+    "/api/CategoriesSuppliers/get-categories-suppliers": {
+      "get": {
+        "tags": [
+          "CategoriesSuppliers"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CategoriesSuppliers/create-category-supplier": {
+      "post": {
+        "tags": [
+          "CategoriesSuppliers"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategorySuppliersViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategorySuppliersViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategorySuppliersViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CategoriesSuppliers/update-category-supplier/{id}": {
+      "put": {
+        "tags": [
+          "CategoriesSuppliers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategorySuppliersViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategorySuppliersViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategorySuppliersViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CategoriesSuppliers/delete-category-supplier/{id}": {
+      "delete": {
+        "tags": [
+          "CategoriesSuppliers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CategoriesSuppliers/restore-category-supplier/{id}": {
+      "patch": {
+        "tags": [
+          "CategoriesSuppliers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/ClasificationMovements/get-clasification-movements": {
       "get": {
         "tags": [
@@ -703,6 +834,26 @@
         "type": "object",
         "properties": {
           "name_category_purchase_order": {
+            "maxLength": 50,
+            "minLength": 3,
+            "pattern": "^[a-zA-Z\\s]+$",
+            "type": "string"
+          },
+          "id_company_Id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CategorySuppliersViewModel": {
+        "required": [
+          "id_company_Id",
+          "name_category_supplier"
+        ],
+        "type": "object",
+        "properties": {
+          "name_category_supplier": {
             "maxLength": 50,
             "minLength": 3,
             "pattern": "^[a-zA-Z\\s]+$",
