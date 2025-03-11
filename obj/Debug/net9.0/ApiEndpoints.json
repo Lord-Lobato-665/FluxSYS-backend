@@ -814,5 +814,84 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.StatesController",
+    "Method": "Create",
+    "RelativePath": "api/States/create-state",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "FluxSYS_backend.Application.ViewModels.StateViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.StatesController",
+    "Method": "SoftDelete",
+    "RelativePath": "api/States/delete-state/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.StatesController",
+    "Method": "GetAll",
+    "RelativePath": "api/States/get-states",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.StatesController",
+    "Method": "Restore",
+    "RelativePath": "api/States/restore-state/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.StatesController",
+    "Method": "Update",
+    "RelativePath": "api/States/update-state/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "FluxSYS_backend.Application.ViewModels.StateViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

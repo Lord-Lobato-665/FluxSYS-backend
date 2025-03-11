@@ -1326,6 +1326,137 @@
           }
         }
       }
+    },
+    "/api/States/get-states": {
+      "get": {
+        "tags": [
+          "States"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/States/create-state": {
+      "post": {
+        "tags": [
+          "States"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StateViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StateViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StateViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/States/update-state/{id}": {
+      "put": {
+        "tags": [
+          "States"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StateViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StateViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StateViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/States/delete-state/{id}": {
+      "delete": {
+        "tags": [
+          "States"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/States/restore-state/{id}": {
+      "patch": {
+        "tags": [
+          "States"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1511,6 +1642,26 @@
             "minLength": 3,
             "pattern": "^[a-zA-Z\\s]+$",
             "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StateViewModel": {
+        "required": [
+          "id_company_Id",
+          "name_state"
+        ],
+        "type": "object",
+        "properties": {
+          "name_state": {
+            "maxLength": 50,
+            "minLength": 3,
+            "pattern": "^[a-zA-Z\\s]+$",
+            "type": "string"
+          },
+          "id_company_Id": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
