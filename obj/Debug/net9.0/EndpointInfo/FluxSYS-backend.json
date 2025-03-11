@@ -1458,6 +1458,137 @@
         }
       }
     },
+    "/api/Suppliers/get-suppliers": {
+      "get": {
+        "tags": [
+          "Suppliers"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Suppliers/create-supplier": {
+      "post": {
+        "tags": [
+          "Suppliers"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SupplierViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SupplierViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SupplierViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Suppliers/update-supplier/{id}": {
+      "put": {
+        "tags": [
+          "Suppliers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SupplierViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SupplierViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SupplierViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Suppliers/delete-supplier/{id}": {
+      "delete": {
+        "tags": [
+          "Suppliers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Suppliers/restore-supplier/{id}": {
+      "patch": {
+        "tags": [
+          "Suppliers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Users/get-users": {
       "get": {
         "tags": [
@@ -1793,6 +1924,73 @@
           "id_company_Id": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SupplierProductViewModel": {
+        "required": [
+          "id_inventory_product_Id",
+          "suggested_price"
+        ],
+        "type": "object",
+        "properties": {
+          "id_inventory_product_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "suggested_price": {
+            "minimum": 0.01,
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SupplierViewModel": {
+        "required": [
+          "id_category_supplier_Id",
+          "id_company_Id",
+          "id_module_Id",
+          "mail_supplier",
+          "name_supplier",
+          "phone_supplier"
+        ],
+        "type": "object",
+        "properties": {
+          "name_supplier": {
+            "maxLength": 50,
+            "minLength": 3,
+            "type": "string"
+          },
+          "mail_supplier": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "phone_supplier": {
+            "pattern": "^\\d{10}$",
+            "type": "integer",
+            "format": "int64"
+          },
+          "id_category_supplier_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_module_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_company_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SupplierProductViewModel"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
