@@ -7,40 +7,40 @@
       "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:infraestructure\\data\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\presentation\\controllers\\positionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:presentation\\controllers\\positionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\presentation\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:presentation\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\presentation\\viewmodels\\positionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:presentation\\viewmodels\\positionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\presentation\\viewmodels\\roleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:presentation\\viewmodels\\roleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\application\\appservices\\positionsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\appservices\\positionsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\application\\appservices\\rolesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\appservices\\rolesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\infraestructure\\repositories\\positionsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:infraestructure\\repositories\\positionsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\infraestructure\\repositories\\rolesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:infraestructure\\repositories\\rolesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\domain\\iservices\\ipositions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:domain\\iservices\\ipositions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\domain\\iservices\\iroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:domain\\iservices\\iroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\application\\dtos\\positions\\positionreaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\dtos\\positions\\positionreaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\application\\dtos\\roles\\roleupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\dtos\\roles\\roleupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\application\\dtos\\positions\\positionupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\dtos\\positions\\positionupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\domain\\models\\primitivemodels\\roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:domain\\models\\primitivemodels\\roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\application\\dtos\\positions\\positioncreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\dtos\\positions\\positioncreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\application\\dtos\\roles\\rolereaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\dtos\\roles\\rolereaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\domain\\models\\primitivemodels\\positions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:domain\\models\\primitivemodels\\positions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\application\\dtos\\roles\\rolecreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\dtos\\roles\\rolecreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -60,7 +60,7 @@
               "RelativeDocumentMoniker": "Infraestructure\\Data\\DependencyInjection.cs",
               "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Infraestructure\\Data\\DependencyInjection.cs",
               "RelativeToolTip": "Infraestructure\\Data\\DependencyInjection.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAQwCIAAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwCQAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-10T16:55:23.701Z",
               "IsPinned": true,
@@ -69,118 +69,118 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "PositionViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Presentation\\ViewModels\\PositionViewModel.cs",
-              "RelativeDocumentMoniker": "Presentation\\ViewModels\\PositionViewModel.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Presentation\\ViewModels\\PositionViewModel.cs",
-              "RelativeToolTip": "Presentation\\ViewModels\\PositionViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Title": "RoleViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Presentation\\ViewModels\\RoleViewModel.cs",
+              "RelativeDocumentMoniker": "Presentation\\ViewModels\\RoleViewModel.cs",
+              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Presentation\\ViewModels\\RoleViewModel.cs",
+              "RelativeToolTip": "Presentation\\ViewModels\\RoleViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T03:30:00.527Z",
+              "WhenOpened": "2025-03-11T03:45:32.564Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "PositionsController.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Presentation\\Controllers\\PositionsController.cs",
-              "RelativeDocumentMoniker": "Presentation\\Controllers\\PositionsController.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Presentation\\Controllers\\PositionsController.cs",
-              "RelativeToolTip": "Presentation\\Controllers\\PositionsController.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAmwIEAAAANAAAAAAAAAA==",
+              "Title": "RolesController.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Presentation\\Controllers\\RolesController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Controllers\\RolesController.cs",
+              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Presentation\\Controllers\\RolesController.cs",
+              "RelativeToolTip": "Presentation\\Controllers\\RolesController.cs",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAAAHwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T03:29:37.027Z",
+              "WhenOpened": "2025-03-11T03:45:08.747Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "PositionsService.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\AppServices\\PositionsService.cs",
-              "RelativeDocumentMoniker": "Application\\AppServices\\PositionsService.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\AppServices\\PositionsService.cs",
-              "RelativeToolTip": "Application\\AppServices\\PositionsService.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAAACcAAAABAAAAAAAAAA==",
+              "Title": "RolesService.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\AppServices\\RolesService.cs",
+              "RelativeDocumentMoniker": "Application\\AppServices\\RolesService.cs",
+              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\AppServices\\RolesService.cs",
+              "RelativeToolTip": "Application\\AppServices\\RolesService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T03:29:05.614Z",
+              "WhenOpened": "2025-03-11T03:44:41.938Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "PositionsRepository.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Infraestructure\\Repositories\\PositionsRepository.cs",
-              "RelativeDocumentMoniker": "Infraestructure\\Repositories\\PositionsRepository.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Infraestructure\\Repositories\\PositionsRepository.cs",
-              "RelativeToolTip": "Infraestructure\\Repositories\\PositionsRepository.cs",
-              "ViewState": "AgIAAGwAAAAAAAAAAAAAAHoAAAABAAAAAAAAAA==",
+              "Title": "RolesRepository.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Infraestructure\\Repositories\\RolesRepository.cs",
+              "RelativeDocumentMoniker": "Infraestructure\\Repositories\\RolesRepository.cs",
+              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Infraestructure\\Repositories\\RolesRepository.cs",
+              "RelativeToolTip": "Infraestructure\\Repositories\\RolesRepository.cs",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAAAHgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T03:28:40.379Z",
+              "WhenOpened": "2025-03-11T03:44:19.601Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "IPositions.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\IServices\\IPositions.cs",
-              "RelativeDocumentMoniker": "Domain\\IServices\\IPositions.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\IServices\\IPositions.cs",
-              "RelativeToolTip": "Domain\\IServices\\IPositions.cs",
+              "Title": "IRoles.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\IServices\\IRoles.cs",
+              "RelativeDocumentMoniker": "Domain\\IServices\\IRoles.cs",
+              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\IServices\\IRoles.cs",
+              "RelativeToolTip": "Domain\\IServices\\IRoles.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T03:28:13.743Z",
+              "WhenOpened": "2025-03-11T03:43:42.205Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "PositionReadDTO.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Positions\\PositionReadDTO.cs",
-              "RelativeDocumentMoniker": "Application\\DTOs\\Positions\\PositionReadDTO.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Positions\\PositionReadDTO.cs",
-              "RelativeToolTip": "Application\\DTOs\\Positions\\PositionReadDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Title": "RoleUpdateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Roles\\RoleUpdateDTO.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\Roles\\RoleUpdateDTO.cs",
+              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Roles\\RoleUpdateDTO.cs",
+              "RelativeToolTip": "Application\\DTOs\\Roles\\RoleUpdateDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T03:06:33.24Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PositionUpdateDTO.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Positions\\PositionUpdateDTO.cs",
-              "RelativeDocumentMoniker": "Application\\DTOs\\Positions\\PositionUpdateDTO.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Positions\\PositionUpdateDTO.cs",
-              "RelativeToolTip": "Application\\DTOs\\Positions\\PositionUpdateDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T03:06:02.665Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "PositionCreateDTO.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Positions\\PositionCreateDTO.cs",
-              "RelativeDocumentMoniker": "Application\\DTOs\\Positions\\PositionCreateDTO.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Positions\\PositionCreateDTO.cs",
-              "RelativeToolTip": "Application\\DTOs\\Positions\\PositionCreateDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T03:05:50.117Z",
+              "WhenOpened": "2025-03-11T03:38:14.313Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "Positions.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\Models\\PrimitiveModels\\Positions.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\PrimitiveModels\\Positions.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\Models\\PrimitiveModels\\Positions.cs",
-              "RelativeToolTip": "Domain\\Models\\PrimitiveModels\\Positions.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAswBQAAAAAAAAAAAAAAA==",
+              "Title": "RoleCreateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Roles\\RoleCreateDTO.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\Roles\\RoleCreateDTO.cs",
+              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Roles\\RoleCreateDTO.cs",
+              "RelativeToolTip": "Application\\DTOs\\Roles\\RoleCreateDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T03:04:54.317Z",
+              "WhenOpened": "2025-03-11T03:37:52.183Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "RoleReadDTO.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Roles\\RoleReadDTO.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\Roles\\RoleReadDTO.cs",
+              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Roles\\RoleReadDTO.cs",
+              "RelativeToolTip": "Application\\DTOs\\Roles\\RoleReadDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T03:37:33.313Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Roles.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\Models\\PrimitiveModels\\Roles.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\PrimitiveModels\\Roles.cs",
+              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\Models\\PrimitiveModels\\Roles.cs",
+              "RelativeToolTip": "Domain\\Models\\PrimitiveModels\\Roles.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAwwAsAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T03:36:24.788Z",
               "EditorCaption": ""
             }
           ]
