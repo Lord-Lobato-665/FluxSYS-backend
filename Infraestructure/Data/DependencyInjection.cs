@@ -20,6 +20,7 @@ namespace FluxSYS_backend.Infraestructure.Data
             services.AddScoped<ICategoriesSuppliers, CategoriesSuppliersRepository>();
             services.AddScoped<IModules, ModulesRepository>();
             services.AddScoped<IMovementsTypes, MovementsTypesRepository>();
+            services.AddScoped<IPositions, PositionsRepository>();
 
             // Registrar Servicios
             services.AddScoped<ErrorLogService>();
@@ -31,6 +32,7 @@ namespace FluxSYS_backend.Infraestructure.Data
             services.AddScoped<CategoriesSuppliersService>();
             services.AddScoped<ModulesService>();
             services.AddScoped<MovementsTypesService>();
+            services.AddScoped<PositionsService>();
 
             return services;
         }
