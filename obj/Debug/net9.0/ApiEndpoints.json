@@ -16,6 +16,85 @@
     ]
   },
   {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CategoriesProductsController",
+    "Method": "Create",
+    "RelativePath": "api/CategoriesProducts/create-category-product",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "FluxSYS_backend.Application.ViewModels.CategoryProductsViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CategoriesProductsController",
+    "Method": "SoftDelete",
+    "RelativePath": "api/CategoriesProducts/delete-category-product/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CategoriesProductsController",
+    "Method": "GetAll",
+    "RelativePath": "api/CategoriesProducts/get-categories-products",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CategoriesProductsController",
+    "Method": "Restore",
+    "RelativePath": "api/CategoriesProducts/restore-category-product/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CategoriesProductsController",
+    "Method": "Update",
+    "RelativePath": "api/CategoriesProducts/update-category-product/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "FluxSYS_backend.Application.ViewModels.CategoryProductsViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FluxSYS_backend.API.Controllers.ClasificationMovementsController",
     "Method": "Create",
     "RelativePath": "api/ClasificationMovements/create-clasification-movement",
