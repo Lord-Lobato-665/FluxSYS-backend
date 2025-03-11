@@ -136,6 +136,268 @@
         }
       }
     },
+    "/api/CategoriesPurchaseOrders/get-categories-purchase-orders": {
+      "get": {
+        "tags": [
+          "CategoriesPurchaseOrders"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CategoriesPurchaseOrders/create-category-purchase-order": {
+      "post": {
+        "tags": [
+          "CategoriesPurchaseOrders"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryPurchaseOrderViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryPurchaseOrderViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryPurchaseOrderViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CategoriesPurchaseOrders/update-category-purchase-order/{id}": {
+      "put": {
+        "tags": [
+          "CategoriesPurchaseOrders"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryPurchaseOrderViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryPurchaseOrderViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryPurchaseOrderViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CategoriesPurchaseOrders/delete-category-purchase-order/{id}": {
+      "delete": {
+        "tags": [
+          "CategoriesPurchaseOrders"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CategoriesPurchaseOrders/restore-category-purchase-order/{id}": {
+      "patch": {
+        "tags": [
+          "CategoriesPurchaseOrders"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CategoriesSuppliers/get-categories-suppliers": {
+      "get": {
+        "tags": [
+          "CategoriesSuppliers"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CategoriesSuppliers/create-category-supplier": {
+      "post": {
+        "tags": [
+          "CategoriesSuppliers"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategorySuppliersViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategorySuppliersViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategorySuppliersViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CategoriesSuppliers/update-category-supplier/{id}": {
+      "put": {
+        "tags": [
+          "CategoriesSuppliers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategorySuppliersViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategorySuppliersViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategorySuppliersViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CategoriesSuppliers/delete-category-supplier/{id}": {
+      "delete": {
+        "tags": [
+          "CategoriesSuppliers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CategoriesSuppliers/restore-category-supplier/{id}": {
+      "patch": {
+        "tags": [
+          "CategoriesSuppliers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/ClasificationMovements/get-clasification-movements": {
       "get": {
         "tags": [
@@ -540,6 +802,137 @@
           }
         }
       }
+    },
+    "/api/Modules/get-modules": {
+      "get": {
+        "tags": [
+          "Modules"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Modules/create-module": {
+      "post": {
+        "tags": [
+          "Modules"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Modules/update-module/{id}": {
+      "put": {
+        "tags": [
+          "Modules"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModuleViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Modules/delete-module/{id}": {
+      "delete": {
+        "tags": [
+          "Modules"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Modules/restore-module/{id}": {
+      "patch": {
+        "tags": [
+          "Modules"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -552,6 +945,46 @@
         "type": "object",
         "properties": {
           "name_category_product": {
+            "maxLength": 50,
+            "minLength": 3,
+            "pattern": "^[a-zA-Z\\s]+$",
+            "type": "string"
+          },
+          "id_company_Id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CategoryPurchaseOrderViewModel": {
+        "required": [
+          "id_company_Id",
+          "name_category_purchase_order"
+        ],
+        "type": "object",
+        "properties": {
+          "name_category_purchase_order": {
+            "maxLength": 50,
+            "minLength": 3,
+            "pattern": "^[a-zA-Z\\s]+$",
+            "type": "string"
+          },
+          "id_company_Id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CategorySuppliersViewModel": {
+        "required": [
+          "id_company_Id",
+          "name_category_supplier"
+        ],
+        "type": "object",
+        "properties": {
+          "name_category_supplier": {
             "maxLength": 50,
             "minLength": 3,
             "pattern": "^[a-zA-Z\\s]+$",
@@ -610,6 +1043,21 @@
           "id_company_Id": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ModuleViewModel": {
+        "required": [
+          "name_module"
+        ],
+        "type": "object",
+        "properties": {
+          "name_module": {
+            "maxLength": 50,
+            "minLength": 3,
+            "pattern": "^[a-zA-Z\\s]+$",
+            "type": "string"
           }
         },
         "additionalProperties": false

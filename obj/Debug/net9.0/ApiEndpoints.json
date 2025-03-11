@@ -95,6 +95,164 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CategoriesPurchaseOrdersController",
+    "Method": "Create",
+    "RelativePath": "api/CategoriesPurchaseOrders/create-category-purchase-order",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "FluxSYS_backend.Application.ViewModels.CategoryPurchaseOrderViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CategoriesPurchaseOrdersController",
+    "Method": "SoftDelete",
+    "RelativePath": "api/CategoriesPurchaseOrders/delete-category-purchase-order/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CategoriesPurchaseOrdersController",
+    "Method": "GetAll",
+    "RelativePath": "api/CategoriesPurchaseOrders/get-categories-purchase-orders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CategoriesPurchaseOrdersController",
+    "Method": "Restore",
+    "RelativePath": "api/CategoriesPurchaseOrders/restore-category-purchase-order/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CategoriesPurchaseOrdersController",
+    "Method": "Update",
+    "RelativePath": "api/CategoriesPurchaseOrders/update-category-purchase-order/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "FluxSYS_backend.Application.ViewModels.CategoryPurchaseOrderViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CategoriesSuppliersController",
+    "Method": "Create",
+    "RelativePath": "api/CategoriesSuppliers/create-category-supplier",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "FluxSYS_backend.Application.ViewModels.CategorySuppliersViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CategoriesSuppliersController",
+    "Method": "SoftDelete",
+    "RelativePath": "api/CategoriesSuppliers/delete-category-supplier/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CategoriesSuppliersController",
+    "Method": "GetAll",
+    "RelativePath": "api/CategoriesSuppliers/get-categories-suppliers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CategoriesSuppliersController",
+    "Method": "Restore",
+    "RelativePath": "api/CategoriesSuppliers/restore-category-supplier/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.CategoriesSuppliersController",
+    "Method": "Update",
+    "RelativePath": "api/CategoriesSuppliers/update-category-supplier/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "FluxSYS_backend.Application.ViewModels.CategorySuppliersViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FluxSYS_backend.API.Controllers.ClasificationMovementsController",
     "Method": "Create",
     "RelativePath": "api/ClasificationMovements/create-clasification-movement",
@@ -339,6 +497,85 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.ModulesController",
+    "Method": "Create",
+    "RelativePath": "api/Modules/create-module",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "FluxSYS_backend.Application.ViewModels.ModuleViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.ModulesController",
+    "Method": "SoftDelete",
+    "RelativePath": "api/Modules/delete-module/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.ModulesController",
+    "Method": "GetAll",
+    "RelativePath": "api/Modules/get-modules",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.ModulesController",
+    "Method": "Restore",
+    "RelativePath": "api/Modules/restore-module/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.ModulesController",
+    "Method": "Update",
+    "RelativePath": "api/Modules/update-module/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "FluxSYS_backend.Application.ViewModels.ModuleViewModel",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]
