@@ -1457,6 +1457,137 @@
           }
         }
       }
+    },
+    "/api/Users/get-users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Users/create-user": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Users/update-user/{id}": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Users/delete-user/{id}": {
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Users/restore-user/{id}": {
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1660,6 +1791,63 @@
             "type": "string"
           },
           "id_company_Id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserViewModel": {
+        "required": [
+          "id_company_Id",
+          "id_department_Id",
+          "id_module_Id",
+          "id_position_Id",
+          "id_rol_Id",
+          "mail_user",
+          "name_user",
+          "password_user",
+          "phone_user"
+        ],
+        "type": "object",
+        "properties": {
+          "name_user": {
+            "maxLength": 50,
+            "minLength": 3,
+            "type": "string"
+          },
+          "mail_user": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "phone_user": {
+            "pattern": "^\\d{10}$",
+            "type": "integer",
+            "format": "int64"
+          },
+          "password_user": {
+            "maxLength": 50,
+            "minLength": 8,
+            "type": "string"
+          },
+          "id_rol_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_position_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_department_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_company_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_module_Id": {
             "type": "integer",
             "format": "int32"
           }
