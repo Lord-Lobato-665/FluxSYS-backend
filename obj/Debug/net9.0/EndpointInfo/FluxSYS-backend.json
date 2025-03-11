@@ -933,6 +933,137 @@
           }
         }
       }
+    },
+    "/api/MovementsTypes/get-movements-types": {
+      "get": {
+        "tags": [
+          "MovementsTypes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MovementsTypes/create-movement-type": {
+      "post": {
+        "tags": [
+          "MovementsTypes"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MovementTypeViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MovementTypeViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MovementTypeViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MovementsTypes/update-movement-type/{id}": {
+      "put": {
+        "tags": [
+          "MovementsTypes"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MovementTypeViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MovementTypeViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MovementTypeViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MovementsTypes/delete-movement-type/{id}": {
+      "delete": {
+        "tags": [
+          "MovementsTypes"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MovementsTypes/restore-movement-type/{id}": {
+      "patch": {
+        "tags": [
+          "MovementsTypes"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1058,6 +1189,31 @@
             "minLength": 3,
             "pattern": "^[a-zA-Z\\s]+$",
             "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MovementTypeViewModel": {
+        "required": [
+          "id_clasification_movement_Id",
+          "id_company_Id",
+          "name_movement_type"
+        ],
+        "type": "object",
+        "properties": {
+          "name_movement_type": {
+            "maxLength": 50,
+            "minLength": 3,
+            "pattern": "^[a-zA-Z\\s]+$",
+            "type": "string"
+          },
+          "id_company_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_clasification_movement_Id": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
