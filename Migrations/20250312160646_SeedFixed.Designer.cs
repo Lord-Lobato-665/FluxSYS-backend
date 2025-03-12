@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FluxSYS_backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250310203240_ModelsConfiguration")]
-    partial class ModelsConfiguration
+    [Migration("20250312160646_SeedFixed")]
+    partial class SeedFixed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,6 +48,43 @@ namespace FluxSYS_backend.Migrations
                     b.HasIndex("Id_company_Id");
 
                     b.ToTable("categories_products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id_category_product = 1,
+                            Delete_log_category_product = false,
+                            Id_company_Id = 1,
+                            Name_category_product = "Electrónica"
+                        },
+                        new
+                        {
+                            Id_category_product = 2,
+                            Delete_log_category_product = false,
+                            Id_company_Id = 2,
+                            Name_category_product = "Muebles"
+                        },
+                        new
+                        {
+                            Id_category_product = 3,
+                            Delete_log_category_product = false,
+                            Id_company_Id = 3,
+                            Name_category_product = "Ropa"
+                        },
+                        new
+                        {
+                            Id_category_product = 4,
+                            Delete_log_category_product = false,
+                            Id_company_Id = 4,
+                            Name_category_product = "Alimentos"
+                        },
+                        new
+                        {
+                            Id_category_product = 5,
+                            Delete_log_category_product = false,
+                            Id_company_Id = 1,
+                            Name_category_product = "Herramientas"
+                        });
                 });
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.CategoriesPurchaseOrders", b =>
@@ -73,6 +110,43 @@ namespace FluxSYS_backend.Migrations
                     b.HasIndex("Id_company_Id");
 
                     b.ToTable("categories_purchase_orders");
+
+                    b.HasData(
+                        new
+                        {
+                            Id_category_purchase_order = 1,
+                            Delete_log_category_purchase_order = false,
+                            Id_company_Id = 1,
+                            Name_category_purchase_order = "Interna"
+                        },
+                        new
+                        {
+                            Id_category_purchase_order = 2,
+                            Delete_log_category_purchase_order = false,
+                            Id_company_Id = 2,
+                            Name_category_purchase_order = "Externa"
+                        },
+                        new
+                        {
+                            Id_category_purchase_order = 3,
+                            Delete_log_category_purchase_order = false,
+                            Id_company_Id = 3,
+                            Name_category_purchase_order = "Urgente"
+                        },
+                        new
+                        {
+                            Id_category_purchase_order = 4,
+                            Delete_log_category_purchase_order = false,
+                            Id_company_Id = 4,
+                            Name_category_purchase_order = "Planificada"
+                        },
+                        new
+                        {
+                            Id_category_purchase_order = 5,
+                            Delete_log_category_purchase_order = false,
+                            Id_company_Id = 1,
+                            Name_category_purchase_order = "Especial"
+                        });
                 });
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.CategoriesSuppliers", b =>
@@ -98,6 +172,43 @@ namespace FluxSYS_backend.Migrations
                     b.HasIndex("Id_company_Id");
 
                     b.ToTable("categories_suppliers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id_category_supplier = 1,
+                            Delete_log_category_supplier = false,
+                            Id_company_Id = 1,
+                            Name_category_supplier = "Tecnología"
+                        },
+                        new
+                        {
+                            Id_category_supplier = 2,
+                            Delete_log_category_supplier = false,
+                            Id_company_Id = 2,
+                            Name_category_supplier = "Alimentos"
+                        },
+                        new
+                        {
+                            Id_category_supplier = 3,
+                            Delete_log_category_supplier = false,
+                            Id_company_Id = 3,
+                            Name_category_supplier = "Materiales de Construcción"
+                        },
+                        new
+                        {
+                            Id_category_supplier = 4,
+                            Delete_log_category_supplier = false,
+                            Id_company_Id = 4,
+                            Name_category_supplier = "Suministros de Oficina"
+                        },
+                        new
+                        {
+                            Id_category_supplier = 5,
+                            Delete_log_category_supplier = false,
+                            Id_company_Id = 1,
+                            Name_category_supplier = "Productos Químicos"
+                        });
                 });
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.ClasificationMovements", b =>
@@ -137,6 +248,12 @@ namespace FluxSYS_backend.Migrations
                             Id_clasification_movement = 3,
                             Delete_log_clasification_movement = false,
                             Name_clasification_movement = "Actualizacion"
+                        },
+                        new
+                        {
+                            Id_clasification_movement = 4,
+                            Delete_log_clasification_movement = false,
+                            Name_clasification_movement = "Restauracion"
                         });
                 });
 
@@ -183,42 +300,6 @@ namespace FluxSYS_backend.Migrations
                             Id_company = 4,
                             Delete_log_company = false,
                             Name_company = "Future Enterprises"
-                        },
-                        new
-                        {
-                            Id_company = 5,
-                            Delete_log_company = false,
-                            Name_company = "Pioneer Tech"
-                        },
-                        new
-                        {
-                            Id_company = 6,
-                            Delete_log_company = false,
-                            Name_company = "Visionary Corp"
-                        },
-                        new
-                        {
-                            Id_company = 7,
-                            Delete_log_company = false,
-                            Name_company = "Nexus Industries"
-                        },
-                        new
-                        {
-                            Id_company = 8,
-                            Delete_log_company = false,
-                            Name_company = "Elite Technologies"
-                        },
-                        new
-                        {
-                            Id_company = 9,
-                            Delete_log_company = false,
-                            Name_company = "Synergy Networks"
-                        },
-                        new
-                        {
-                            Id_company = 10,
-                            Delete_log_company = false,
-                            Name_company = "Vertex Solutions"
                         });
                 });
 
@@ -245,6 +326,43 @@ namespace FluxSYS_backend.Migrations
                     b.HasIndex("Id_company_Id");
 
                     b.ToTable("departments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id_department = 1,
+                            Delete_log_department = false,
+                            Id_company_Id = 1,
+                            Name_deparment = "Recursos Humanos"
+                        },
+                        new
+                        {
+                            Id_department = 2,
+                            Delete_log_department = false,
+                            Id_company_Id = 2,
+                            Name_deparment = "Tecnología"
+                        },
+                        new
+                        {
+                            Id_department = 3,
+                            Delete_log_department = false,
+                            Id_company_Id = 3,
+                            Name_deparment = "Ventas"
+                        },
+                        new
+                        {
+                            Id_department = 4,
+                            Delete_log_department = false,
+                            Id_company_Id = 4,
+                            Name_deparment = "Logística"
+                        },
+                        new
+                        {
+                            Id_department = 5,
+                            Delete_log_department = false,
+                            Id_company_Id = 1,
+                            Name_deparment = "Finanzas"
+                        });
                 });
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.Modules", b =>
@@ -265,6 +383,44 @@ namespace FluxSYS_backend.Migrations
                     b.HasKey("Id_module");
 
                     b.ToTable("modules");
+
+                    b.HasData(
+                        new
+                        {
+                            Id_module = 1,
+                            Delete_log_module = false,
+                            Name_module = "Proveedores"
+                        },
+                        new
+                        {
+                            Id_module = 2,
+                            Delete_log_module = false,
+                            Name_module = "Auditorias"
+                        },
+                        new
+                        {
+                            Id_module = 3,
+                            Delete_log_module = false,
+                            Name_module = "Inventario"
+                        },
+                        new
+                        {
+                            Id_module = 4,
+                            Delete_log_module = false,
+                            Name_module = "Facturas"
+                        },
+                        new
+                        {
+                            Id_module = 5,
+                            Delete_log_module = false,
+                            Name_module = "Ordenes de compra"
+                        },
+                        new
+                        {
+                            Id_module = 6,
+                            Delete_log_module = false,
+                            Name_module = "Usuarios"
+                        });
                 });
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.MovementsTypes", b =>
@@ -295,6 +451,48 @@ namespace FluxSYS_backend.Migrations
                     b.HasIndex("Id_company_Id");
 
                     b.ToTable("movements_types");
+
+                    b.HasData(
+                        new
+                        {
+                            Id_movement_type = 1,
+                            Delete_log_movement_type = false,
+                            Id_clasification_movement_Id = 1,
+                            Id_company_Id = 1,
+                            Name_movement_type = "Entrada de Mercancía"
+                        },
+                        new
+                        {
+                            Id_movement_type = 2,
+                            Delete_log_movement_type = false,
+                            Id_clasification_movement_Id = 2,
+                            Id_company_Id = 2,
+                            Name_movement_type = "Salida por Venta"
+                        },
+                        new
+                        {
+                            Id_movement_type = 3,
+                            Delete_log_movement_type = false,
+                            Id_clasification_movement_Id = 3,
+                            Id_company_Id = 3,
+                            Name_movement_type = "Ajuste por Pérdida"
+                        },
+                        new
+                        {
+                            Id_movement_type = 4,
+                            Delete_log_movement_type = false,
+                            Id_clasification_movement_Id = 1,
+                            Id_company_Id = 1,
+                            Name_movement_type = "Transferencia de Almacén"
+                        },
+                        new
+                        {
+                            Id_movement_type = 5,
+                            Delete_log_movement_type = false,
+                            Id_clasification_movement_Id = 2,
+                            Id_company_Id = 2,
+                            Name_movement_type = "Devolución de Producto"
+                        });
                 });
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.OrdersProducts", b =>
@@ -349,6 +547,43 @@ namespace FluxSYS_backend.Migrations
                     b.HasIndex("Id_company_Id");
 
                     b.ToTable("positions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id_position = 1,
+                            Delete_log_position = false,
+                            Id_company_Id = 1,
+                            Name_position = "Gerente"
+                        },
+                        new
+                        {
+                            Id_position = 2,
+                            Delete_log_position = false,
+                            Id_company_Id = 2,
+                            Name_position = "Supervisor"
+                        },
+                        new
+                        {
+                            Id_position = 3,
+                            Delete_log_position = false,
+                            Id_company_Id = 3,
+                            Name_position = "Analista"
+                        },
+                        new
+                        {
+                            Id_position = 4,
+                            Delete_log_position = false,
+                            Id_company_Id = 4,
+                            Name_position = "Técnico"
+                        },
+                        new
+                        {
+                            Id_position = 5,
+                            Delete_log_position = false,
+                            Id_company_Id = 1,
+                            Name_position = "Asistente"
+                        });
                 });
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.Roles", b =>
@@ -369,6 +604,38 @@ namespace FluxSYS_backend.Migrations
                     b.HasKey("Id_role");
 
                     b.ToTable("roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id_role = 1,
+                            Delete_log_role = false,
+                            Name_role = "Administrador"
+                        },
+                        new
+                        {
+                            Id_role = 2,
+                            Delete_log_role = false,
+                            Name_role = "Supervisor"
+                        },
+                        new
+                        {
+                            Id_role = 3,
+                            Delete_log_role = false,
+                            Name_role = "Operador"
+                        },
+                        new
+                        {
+                            Id_role = 4,
+                            Delete_log_role = false,
+                            Name_role = "Invitado"
+                        },
+                        new
+                        {
+                            Id_role = 5,
+                            Delete_log_role = false,
+                            Name_role = "Gerente"
+                        });
                 });
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.States", b =>
@@ -394,6 +661,43 @@ namespace FluxSYS_backend.Migrations
                     b.HasIndex("Id_company_Id");
 
                     b.ToTable("states");
+
+                    b.HasData(
+                        new
+                        {
+                            Id_state = 1,
+                            Delete_log_state = false,
+                            Id_company_Id = 1,
+                            Name_state = "Activo"
+                        },
+                        new
+                        {
+                            Id_state = 2,
+                            Delete_log_state = false,
+                            Id_company_Id = 2,
+                            Name_state = "Inactivo"
+                        },
+                        new
+                        {
+                            Id_state = 3,
+                            Delete_log_state = false,
+                            Id_company_Id = 3,
+                            Name_state = "Pendiente"
+                        },
+                        new
+                        {
+                            Id_state = 4,
+                            Delete_log_state = false,
+                            Id_company_Id = 1,
+                            Name_state = "En Proceso"
+                        },
+                        new
+                        {
+                            Id_state = 5,
+                            Delete_log_state = false,
+                            Id_company_Id = 2,
+                            Name_state = "Finalizado"
+                        });
                 });
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.Suppliers", b =>
@@ -448,6 +752,68 @@ namespace FluxSYS_backend.Migrations
                     b.HasIndex("Id_module_Id");
 
                     b.ToTable("suppliers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id_supplier = 1,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_suppliers = false,
+                            Id_category_supplier_Id = 1,
+                            Id_company_Id = 1,
+                            Id_module_Id = 1,
+                            Mail_supplier = "contacto@proveedora.com",
+                            Name_supplier = "Proveedor A",
+                            Phone_supplier = 5512345678L
+                        },
+                        new
+                        {
+                            Id_supplier = 2,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_suppliers = false,
+                            Id_category_supplier_Id = 2,
+                            Id_company_Id = 2,
+                            Id_module_Id = 1,
+                            Mail_supplier = "ventas@proveedorb.com",
+                            Name_supplier = "Proveedor B",
+                            Phone_supplier = 5523456789L
+                        },
+                        new
+                        {
+                            Id_supplier = 3,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_suppliers = false,
+                            Id_category_supplier_Id = 3,
+                            Id_company_Id = 3,
+                            Id_module_Id = 1,
+                            Mail_supplier = "info@distribuidorac.com",
+                            Name_supplier = "Distribuidora C",
+                            Phone_supplier = 5534567890L
+                        },
+                        new
+                        {
+                            Id_supplier = 4,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_suppliers = false,
+                            Id_category_supplier_Id = 4,
+                            Id_company_Id = 1,
+                            Id_module_Id = 1,
+                            Mail_supplier = "soporte@empresad.com",
+                            Name_supplier = "Empresa D",
+                            Phone_supplier = 5545678901L
+                        },
+                        new
+                        {
+                            Id_supplier = 5,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_suppliers = false,
+                            Id_category_supplier_Id = 5,
+                            Id_company_Id = 2,
+                            Id_module_Id = 1,
+                            Mail_supplier = "compras@mayoristae.com",
+                            Name_supplier = "Mayorista E",
+                            Phone_supplier = 5556789012L
+                        });
                 });
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.SuppliersProducts", b =>
@@ -631,6 +997,93 @@ namespace FluxSYS_backend.Migrations
                     b.HasIndex("Id_user_Id");
 
                     b.ToTable("inventory");
+
+                    b.HasData(
+                        new
+                        {
+                            Id_inventory_product = 1,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_inventory = false,
+                            Id_category_product_Id = 1,
+                            Id_company_Id = 1,
+                            Id_department_Id = 1,
+                            Id_module_Id = 3,
+                            Id_movement_type_Id = 1,
+                            Id_state_Id = 1,
+                            Id_supplier_Id = 1,
+                            Id_user_Id = 1,
+                            Name_product = "Laptop Dell XPS 15",
+                            Price_product = 25000.00m,
+                            Stock_product = 10
+                        },
+                        new
+                        {
+                            Id_inventory_product = 2,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_inventory = false,
+                            Id_category_product_Id = 2,
+                            Id_company_Id = 2,
+                            Id_department_Id = 2,
+                            Id_module_Id = 3,
+                            Id_movement_type_Id = 2,
+                            Id_state_Id = 2,
+                            Id_supplier_Id = 2,
+                            Id_user_Id = 2,
+                            Name_product = "Monitor Samsung 27\"",
+                            Price_product = 7500.00m,
+                            Stock_product = 20
+                        },
+                        new
+                        {
+                            Id_inventory_product = 3,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_inventory = false,
+                            Id_category_product_Id = 3,
+                            Id_company_Id = 3,
+                            Id_department_Id = 3,
+                            Id_module_Id = 3,
+                            Id_movement_type_Id = 1,
+                            Id_state_Id = 1,
+                            Id_supplier_Id = 3,
+                            Id_user_Id = 3,
+                            Name_product = "Teclado Mecánico HyperX",
+                            Price_product = 3500.00m,
+                            Stock_product = 15
+                        },
+                        new
+                        {
+                            Id_inventory_product = 4,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_inventory = false,
+                            Id_category_product_Id = 4,
+                            Id_company_Id = 1,
+                            Id_department_Id = 4,
+                            Id_module_Id = 3,
+                            Id_movement_type_Id = 2,
+                            Id_state_Id = 2,
+                            Id_supplier_Id = 4,
+                            Id_user_Id = 4,
+                            Name_product = "Mouse Logitech MX Master 3",
+                            Price_product = 2500.00m,
+                            Stock_product = 25
+                        },
+                        new
+                        {
+                            Id_inventory_product = 5,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_inventory = false,
+                            Id_category_product_Id = 5,
+                            Id_company_Id = 2,
+                            Id_department_Id = 5,
+                            Id_module_Id = 3,
+                            Id_movement_type_Id = 3,
+                            Id_state_Id = 3,
+                            Id_supplier_Id = 5,
+                            Id_user_Id = 5,
+                            Name_product = "Silla Ergonómica",
+                            Price_product = 12000.00m,
+                            Stock_product = 5
+                        });
                 });
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrincipalModels.InventoryMovements", b =>
@@ -762,6 +1215,73 @@ namespace FluxSYS_backend.Migrations
                     b.HasIndex("Id_supplier_Id");
 
                     b.ToTable("invoices");
+
+                    b.HasData(
+                        new
+                        {
+                            Id_invoice = 1,
+                            Amount_items_in_the_invoice = 5,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_invoices = false,
+                            Id_company_Id = 1,
+                            Id_department_Id = 1,
+                            Id_module_Id = 4,
+                            Id_purchase_order_Id = 1,
+                            Id_supplier_Id = 1,
+                            Name_invoice = "Factura 001"
+                        },
+                        new
+                        {
+                            Id_invoice = 2,
+                            Amount_items_in_the_invoice = 8,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_invoices = false,
+                            Id_company_Id = 1,
+                            Id_department_Id = 2,
+                            Id_module_Id = 4,
+                            Id_purchase_order_Id = 2,
+                            Id_supplier_Id = 2,
+                            Name_invoice = "Factura 002"
+                        },
+                        new
+                        {
+                            Id_invoice = 3,
+                            Amount_items_in_the_invoice = 3,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_invoices = false,
+                            Id_company_Id = 2,
+                            Id_department_Id = 3,
+                            Id_module_Id = 4,
+                            Id_purchase_order_Id = 3,
+                            Id_supplier_Id = 3,
+                            Name_invoice = "Factura 003"
+                        },
+                        new
+                        {
+                            Id_invoice = 4,
+                            Amount_items_in_the_invoice = 12,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_invoices = false,
+                            Id_company_Id = 2,
+                            Id_department_Id = 4,
+                            Id_module_Id = 4,
+                            Id_purchase_order_Id = 4,
+                            Id_supplier_Id = 4,
+                            Name_invoice = "Factura 004"
+                        },
+                        new
+                        {
+                            Id_invoice = 5,
+                            Amount_items_in_the_invoice = 7,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_invoices = false,
+                            Id_company_Id = 3,
+                            Id_department_Id = 5,
+                            Id_module_Id = 4,
+                            Id_purchase_order_Id = 5,
+                            Id_supplier_Id = 5,
+                            Name_invoice = "Factura 005"
+                        });
                 });
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrincipalModels.PurchaseOrders", b =>
@@ -840,6 +1360,93 @@ namespace FluxSYS_backend.Migrations
                     b.HasIndex("Id_user_Id");
 
                     b.ToTable("purchase_orders");
+
+                    b.HasData(
+                        new
+                        {
+                            Id_purchase_order = 1,
+                            Amount_items_in_the_order = 5,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_purchase_orders = false,
+                            Id_category_purchase_order_Id = 1,
+                            Id_company_Id = 1,
+                            Id_department_Id = 1,
+                            Id_module_Id = 5,
+                            Id_movement_type_Id = 1,
+                            Id_state_Id = 1,
+                            Id_supplier_Id = 1,
+                            Id_user_Id = 1,
+                            Name_purchase_order = "Orden de Compra 001",
+                            Total_price_products = 1500.50m
+                        },
+                        new
+                        {
+                            Id_purchase_order = 2,
+                            Amount_items_in_the_order = 8,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_purchase_orders = false,
+                            Id_category_purchase_order_Id = 2,
+                            Id_company_Id = 1,
+                            Id_department_Id = 2,
+                            Id_module_Id = 5,
+                            Id_movement_type_Id = 2,
+                            Id_state_Id = 2,
+                            Id_supplier_Id = 2,
+                            Id_user_Id = 2,
+                            Name_purchase_order = "Orden de Compra 002",
+                            Total_price_products = 2450.75m
+                        },
+                        new
+                        {
+                            Id_purchase_order = 3,
+                            Amount_items_in_the_order = 3,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_purchase_orders = false,
+                            Id_category_purchase_order_Id = 3,
+                            Id_company_Id = 2,
+                            Id_department_Id = 3,
+                            Id_module_Id = 5,
+                            Id_movement_type_Id = 3,
+                            Id_state_Id = 3,
+                            Id_supplier_Id = 3,
+                            Id_user_Id = 3,
+                            Name_purchase_order = "Orden de Compra 003",
+                            Total_price_products = 850.25m
+                        },
+                        new
+                        {
+                            Id_purchase_order = 4,
+                            Amount_items_in_the_order = 12,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_purchase_orders = false,
+                            Id_category_purchase_order_Id = 4,
+                            Id_company_Id = 2,
+                            Id_department_Id = 4,
+                            Id_module_Id = 5,
+                            Id_movement_type_Id = 4,
+                            Id_state_Id = 4,
+                            Id_supplier_Id = 4,
+                            Id_user_Id = 4,
+                            Name_purchase_order = "Orden de Compra 004",
+                            Total_price_products = 3750.00m
+                        },
+                        new
+                        {
+                            Id_purchase_order = 5,
+                            Amount_items_in_the_order = 7,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_purchase_orders = false,
+                            Id_category_purchase_order_Id = 5,
+                            Id_company_Id = 3,
+                            Id_department_Id = 5,
+                            Id_module_Id = 5,
+                            Id_movement_type_Id = 5,
+                            Id_state_Id = 5,
+                            Id_supplier_Id = 5,
+                            Id_user_Id = 5,
+                            Name_purchase_order = "Orden de Compra 005",
+                            Total_price_products = 1980.99m
+                        });
                 });
 
             modelBuilder.Entity("FluxSYS_backend.InvoicesProducts", b =>
@@ -937,6 +1544,83 @@ namespace FluxSYS_backend.Migrations
                     b.HasIndex("Id_rol_Id");
 
                     b.ToTable("users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id_user = 1,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_user = false,
+                            Id_company_Id = 1,
+                            Id_department_Id = 1,
+                            Id_module_Id = 6,
+                            Id_position_Id = 1,
+                            Id_rol_Id = 1,
+                            Mail_user = "gael.sanchez@example.com",
+                            Name_user = "Sánchez Lobato Gael",
+                            Password_user = "password123",
+                            Phone_user = 1234567890L
+                        },
+                        new
+                        {
+                            Id_user = 2,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_user = false,
+                            Id_company_Id = 1,
+                            Id_department_Id = 2,
+                            Id_module_Id = 6,
+                            Id_position_Id = 2,
+                            Id_rol_Id = 2,
+                            Mail_user = "carlos.quintero@example.com",
+                            Name_user = "Quintero Escobar Carlos Máximo",
+                            Password_user = "password123",
+                            Phone_user = 9876543210L
+                        },
+                        new
+                        {
+                            Id_user = 3,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_user = false,
+                            Id_company_Id = 2,
+                            Id_department_Id = 3,
+                            Id_module_Id = 6,
+                            Id_position_Id = 3,
+                            Id_rol_Id = 3,
+                            Mail_user = "gustavo.gutierrez@example.com",
+                            Name_user = "Gutiérrez Canul Gustavo",
+                            Password_user = "password123",
+                            Phone_user = 1122334455L
+                        },
+                        new
+                        {
+                            Id_user = 4,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_user = false,
+                            Id_company_Id = 2,
+                            Id_department_Id = 4,
+                            Id_module_Id = 6,
+                            Id_position_Id = 4,
+                            Id_rol_Id = 4,
+                            Mail_user = "isha.mata@example.com",
+                            Name_user = "Raymundo Mata Isha Mia",
+                            Password_user = "password123",
+                            Phone_user = 2233445566L
+                        },
+                        new
+                        {
+                            Id_user = 5,
+                            Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Delete_log_user = false,
+                            Id_company_Id = 3,
+                            Id_department_Id = 5,
+                            Id_module_Id = 6,
+                            Id_position_Id = 5,
+                            Id_rol_Id = 5,
+                            Mail_user = "carlos.velazquez@example.com",
+                            Name_user = "Velázquez De La Cruz Carlos Yahir",
+                            Password_user = "password123",
+                            Phone_user = 3344556677L
+                        });
                 });
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.CategoriesProducts", b =>

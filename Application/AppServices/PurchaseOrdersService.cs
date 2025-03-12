@@ -1,5 +1,7 @@
 ﻿using FluxSYS_backend.Application.DTOs.PurchaseOrders;
 using FluxSYS_backend.Domain.IServices;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FluxSYS_backend.Application.Services
 {
@@ -17,24 +19,24 @@ namespace FluxSYS_backend.Application.Services
             return await _repository.GetAllAsyncPurchaseOrders();
         }
 
-        public async Task AddAsyncPurchaseOrder(PurchaseOrderCreateDTO dto)
+        public async Task AddAsyncPurchaseOrder(PurchaseOrderCreateDTO dto, int userId, int departmentId)
         {
-            await _repository.AddAsyncPurchaseOrder(dto);
+            await _repository.AddAsyncPurchaseOrder(dto, userId, departmentId);
         }
 
-        public async Task UpdateAsyncPurchaseOrder(int id, PurchaseOrderUpdateDTO dto)
+        public async Task UpdateAsyncPurchaseOrder(int id, PurchaseOrderUpdateDTO dto, int userId, int departmentId)
         {
-            await _repository.UpdateAsyncPurchaseOrder(id, dto);
+            await _repository.UpdateAsyncPurchaseOrder(id, dto, userId, departmentId);
         }
 
-        public async Task SoftDeleteAsyncPurchaseOrder(int id)
+        public async Task SoftDeleteAsyncPurchaseOrder(int id, int userId, int departmentId)
         {
-            await _repository.SoftDeleteAsyncPurchaseOrder(id);
+            await _repository.SoftDeleteAsyncPurchaseOrder(id, userId, departmentId);
         }
 
-        public async Task RestoreAsyncPurchaseOrder(int id)
+        public async Task RestoreAsyncPurchaseOrder(int id, int userId, int departmentId)
         {
-            await _repository.RestoreAsyncPurchaseOrder(id);
+            await _repository.RestoreAsyncPurchaseOrder(id, userId, departmentId);
         }
     }
 }

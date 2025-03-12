@@ -19,24 +19,24 @@ namespace FluxSYS_backend.Application.Services
             return await _repository.GetAllAsyncInventories();
         }
 
-        public async Task AddAsyncInventory(InventoryCreateDTO dto)
+        public async Task AddAsyncInventory(InventoryCreateDTO dto, int userId, int departmentId)
         {
-            await _repository.AddAsyncInventory(dto);
+            await _repository.AddAsyncInventory(dto, userId, departmentId);
         }
 
-        public async Task UpdateAsyncInventory(int id, InventoryUpdateDTO dto)
+        public async Task UpdateAsyncInventory(int id, InventoryUpdateDTO dto, int userId, int departmentId)
         {
-            await _repository.UpdateAsyncInventory(id, dto);
+            await _repository.UpdateAsyncInventory(id, dto, userId, departmentId);
         }
 
-        public async Task SoftDeleteAsyncInventory(int id)
+        public async Task SoftDeleteAsyncInventory(int id, int userId, int departmentId)
         {
-            await _repository.SoftDeleteAsyncInventory(id);
+            await _repository.SoftDeleteAsyncInventory(id, userId, departmentId);
         }
 
-        public async Task RestoreAsyncInventory(int id)
+        public async Task RestoreAsyncInventory(int id, int userId, int departmentId)
         {
-            await _repository.RestoreAsyncInventory(id);
+            await _repository.RestoreAsyncInventory(id, userId, departmentId);
         }
     }
 }

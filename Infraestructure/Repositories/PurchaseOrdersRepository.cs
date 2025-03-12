@@ -5,6 +5,10 @@ using FluxSYS_backend.Domain.Models.PrimitiveModels;
 using FluxSYS_backend.Domain.Models.PrincipalModels;
 using FluxSYS_backend.Infraestructure.Data;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace FluxSYS_backend.Infrastructure.Repositories
 {
@@ -25,7 +29,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             {
                 var purchaseOrders = await _context.PurchaseOrders
                     .Include(po => po.OrdersProducts)
-                        .ThenInclude(op => op.Inventories) // Incluir los productos del inventario
+                        .ThenInclude(op => op.Inventories)
                     .Include(po => po.Users)
                     .Include(po => po.CategoryPurchaseOrders)
                     .Include(po => po.Departments)
@@ -39,7 +43,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                         Id_purchase_order = po.Id_purchase_order,
                         Name_purchase_order = po.Name_purchase_order,
                         Amount_items_in_the_order = po.OrdersProducts.Count(),
-                        Total_price_products = po.OrdersProducts.Sum(op => op.Inventories.Price_product * op.Quantity), // Usar el precio del inventario
+                        Total_price_products = po.OrdersProducts.Sum(op => op.Price * op.Quantity),
                         Name_user = po.Users.Name_user,
                         Name_category_purchase_order = po.CategoryPurchaseOrders.Name_category_purchase_order,
                         Name_department = po.Departments.Name_deparment,
@@ -67,7 +71,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                                 Id_inventory_product = op.Inventories.Id_inventory_product,
                                 Name_product = op.Inventories.Name_product,
                                 Quantity = op.Quantity,
-                                Price = op.Inventories.Price_product // Usar el precio del inventario
+                                Price = op.Price
                             }).ToList()
                             : new List<OrderProductReadDTO>()
                     })
@@ -79,9 +83,9 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     if (!purchaseOrder.Products.Any())
                     {
                         purchaseOrder.Products = new List<OrderProductReadDTO>
-                {
-                    new OrderProductReadDTO { Name_product = "Sin productos asociados" }
-                };
+                        {
+                            new OrderProductReadDTO { Name_product = "Sin productos asociados" }
+                        };
                     }
                 }
 
@@ -94,7 +98,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task AddAsyncPurchaseOrder(PurchaseOrderCreateDTO dto)
+        public async Task AddAsyncPurchaseOrder(PurchaseOrderCreateDTO dto, int userId, int departmentId)
         {
             try
             {
@@ -107,9 +111,9 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     Id_supplier_Id = dto.Id_supplier_Id,
                     Id_state_Id = dto.Id_state_Id,
                     Id_movement_type_Id = dto.Id_movement_type_Id,
-                    Id_module_Id = dto.Id_module_Id,
+                    Id_module_Id = 5,
                     Id_company_Id = dto.Id_company_Id,
-                    Date_insert = DateTime.UtcNow,
+                    Date_insert = DateTime.Now,
                     Delete_log_purchase_orders = false
                 };
                 _context.PurchaseOrders.Add(purchaseOrder);
@@ -142,6 +146,20 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     await _context.OrdersProducts.AddRangeAsync(orderProducts);
                     await _context.SaveChangesAsync();
                 }
+
+                // Registrar en la tabla de auditoría
+                var audit = new Audits
+                {
+                    Date_insert = DateTime.Now,
+                    Amount_modify = dto.Products?.Count ?? 0, // Cantidad de ítems en la orden
+                    Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
+                    Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
+                    Id_module_Id = 5, // Módulo de órdenes de compra
+                    Id_company_Id = dto.Id_company_Id, // Usar el ID de la compañía desde el DTO
+                    Delete_log_audits = false
+                };
+                _context.Audits.Add(audit);
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
@@ -149,7 +167,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task UpdateAsyncPurchaseOrder(int id, PurchaseOrderUpdateDTO dto)
+        public async Task UpdateAsyncPurchaseOrder(int id, PurchaseOrderUpdateDTO dto, int userId, int departmentId)
         {
             try
             {
@@ -162,6 +180,24 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     throw new KeyNotFoundException("Orden de compra no encontrada.");
                 }
 
+                // Calcular la cantidad de ítems en la orden antes y después de la actualización
+                int itemsBeforeUpdate = purchaseOrder.OrdersProducts.Count;
+                int itemsAfterUpdate = dto.Products?.Count ?? 0;
+
+                // Registrar en la tabla de auditoría
+                var audit = new Audits
+                {
+                    Date_update = DateTime.Now,
+                    Amount_modify = itemsAfterUpdate - itemsBeforeUpdate, // Diferencia en la cantidad de ítems
+                    Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
+                    Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
+                    Id_module_Id = 5, // Módulo de órdenes de compra
+                    Id_company_Id = dto.Id_company_Id, // Usar el ID de la compañía desde el DTO
+                    Delete_log_audits = false
+                };
+                _context.Audits.Add(audit);
+                await _context.SaveChangesAsync();
+
                 // Actualizar datos de la orden
                 purchaseOrder.Name_purchase_order = dto.Name_purchase_order;
                 purchaseOrder.Id_user_Id = dto.Id_user_Id;
@@ -170,9 +206,9 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 purchaseOrder.Id_supplier_Id = dto.Id_supplier_Id;
                 purchaseOrder.Id_state_Id = dto.Id_state_Id;
                 purchaseOrder.Id_movement_type_Id = dto.Id_movement_type_Id;
-                purchaseOrder.Id_module_Id = dto.Id_module_Id;
+                purchaseOrder.Id_module_Id = 5;
                 purchaseOrder.Id_company_Id = dto.Id_company_Id;
-                purchaseOrder.Date_update = DateTime.UtcNow;
+                purchaseOrder.Date_update = DateTime.Now;
 
                 // Manejo de productos asociados
                 var existingProducts = purchaseOrder.OrdersProducts.ToList();
@@ -234,20 +270,38 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task SoftDeleteAsyncPurchaseOrder(int id)
+        public async Task SoftDeleteAsyncPurchaseOrder(int id, int userId, int departmentId)
         {
             try
             {
-                var purchaseOrder = await _context.PurchaseOrders.FindAsync(id);
+                var purchaseOrder = await _context.PurchaseOrders
+                    .Include(po => po.OrdersProducts)
+                    .FirstOrDefaultAsync(po => po.Id_purchase_order == id);
+
                 if (purchaseOrder != null)
                 {
+                    // Registrar en la tabla de auditoría
+                    var audit = new Audits
+                    {
+                        Date_delete = DateTime.Now,
+                        Amount_modify = -purchaseOrder.OrdersProducts.Count, // Cantidad de ítems eliminados
+                        Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
+                        Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
+                        Id_module_Id = purchaseOrder.Id_module_Id, // Módulo de órdenes de compra
+                        Id_company_Id = purchaseOrder.Id_company_Id, // Usar el ID de la compañía desde la orden
+                        Delete_log_audits = false
+                    };
+                    _context.Audits.Add(audit);
+                    await _context.SaveChangesAsync();
+
+                    // Eliminación lógica
                     purchaseOrder.Delete_log_purchase_orders = true;
-                    purchaseOrder.Date_delete = DateTime.UtcNow;
+                    purchaseOrder.Date_delete = DateTime.Now;
                     await _context.SaveChangesAsync();
                 }
                 else
                 {
-                    throw new KeyNotFoundException("Orden de compra no encontrada para eliminar");
+                    throw new KeyNotFoundException("Orden de compra no encontrada para eliminar.");
                 }
             }
             catch (Exception ex)
@@ -256,22 +310,38 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task RestoreAsyncPurchaseOrder(int id)
+        public async Task RestoreAsyncPurchaseOrder(int id, int userId, int departmentId)
         {
             try
             {
                 var purchaseOrder = await _context.PurchaseOrders
+                    .Include(po => po.OrdersProducts)
                     .FirstOrDefaultAsync(po => po.Id_purchase_order == id && po.Delete_log_purchase_orders);
 
                 if (purchaseOrder != null)
                 {
+                    // Registrar en la tabla de auditoría
+                    var audit = new Audits
+                    {
+                        Date_restore = DateTime.Now,
+                        Amount_modify = purchaseOrder.OrdersProducts.Count, // Cantidad de ítems restaurados
+                        Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
+                        Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
+                        Id_module_Id = purchaseOrder.Id_module_Id, // Módulo de órdenes de compra
+                        Id_company_Id = purchaseOrder.Id_company_Id, // Usar el ID de la compañía desde la orden
+                        Delete_log_audits = false
+                    };
+                    _context.Audits.Add(audit);
+                    await _context.SaveChangesAsync();
+
+                    // Restauración
                     purchaseOrder.Delete_log_purchase_orders = false;
-                    purchaseOrder.Date_restore = DateTime.UtcNow;
+                    purchaseOrder.Date_restore = DateTime.Now;
                     await _context.SaveChangesAsync();
                 }
                 else
                 {
-                    throw new KeyNotFoundException("Orden de compra no encontrada para restaurar");
+                    throw new KeyNotFoundException("Orden de compra no encontrada para restaurar.");
                 }
             }
             catch (Exception ex)

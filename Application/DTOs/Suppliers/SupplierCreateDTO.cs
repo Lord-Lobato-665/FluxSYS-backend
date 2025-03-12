@@ -8,7 +8,6 @@ namespace FluxSYS_backend.Application.DTOs.Suppliers
         public string Mail_supplier { get; set; }
         public long Phone_supplier { get; set; }
         public int Id_category_supplier_Id { get; set; }
-        public int Id_module_Id { get; set; }
         public int Id_company_Id { get; set; }
 
         public List<SupplierProductCreateDTO> Products { get; set; }

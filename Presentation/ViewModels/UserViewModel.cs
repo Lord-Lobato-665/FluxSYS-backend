@@ -31,8 +31,5 @@ namespace FluxSYS_backend.Application.ViewModels
 
         [Required(ErrorMessage = "El ID de la compañía es obligatorio.")]
         public int Id_company_Id { get; set; }
-
-        [Required(ErrorMessage = "El ID del módulo es obligatorio.")]
-        public int Id_module_Id { get; set; }
     }
 }

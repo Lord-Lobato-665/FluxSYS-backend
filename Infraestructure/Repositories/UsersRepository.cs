@@ -1,9 +1,13 @@
 ﻿using FluxSYS_backend.Application.DTOs.Users;
 using FluxSYS_backend.Application.Services;
 using FluxSYS_backend.Domain.IServices;
-using FluxSYS_backend.Domain.Models.PrimitiveModels;
+using FluxSYS_backend.Domain.Models.PrincipalModels;
 using FluxSYS_backend.Infraestructure.Data;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace FluxSYS_backend.Infrastructure.Repositories
 {
@@ -49,7 +53,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task AddAsyncUser(UserCreateDTO dto)
+        public async Task AddAsyncUser(UserCreateDTO dto, int userId, int departmentId)
         {
             try
             {
@@ -63,10 +67,24 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     Id_position_Id = dto.Id_position_Id,
                     Id_department_Id = dto.Id_department_Id,
                     Id_company_Id = dto.Id_company_Id,
-                    Id_module_Id = dto.Id_module_Id,
-                    Date_insert = DateTime.UtcNow // Marca de tiempo para la creación
+                    Id_module_Id = 6,
+                    Date_insert = DateTime.Now // Marca de tiempo para la creación
                 };
                 _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+
+                // Registrar en la tabla de auditoría
+                var audit = new Audits
+                {
+                    Date_insert = DateTime.Now,
+                    Amount_modify = 1, // Creación de 1 usuario
+                    Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
+                    Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
+                    Id_module_Id = 6, // Módulo de usuarios
+                    Id_company_Id = dto.Id_company_Id, // Usar el ID de la compañía desde el DTO
+                    Delete_log_audits = false
+                };
+                _context.Audits.Add(audit);
                 await _context.SaveChangesAsync();
             }
             catch (Exception ex)
@@ -75,7 +93,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task UpdateAsyncUser(int id, UserUpdateDTO dto)
+        public async Task UpdateAsyncUser(int id, UserUpdateDTO dto, int userId, int departmentId)
         {
             try
             {
@@ -85,6 +103,21 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     throw new KeyNotFoundException("Usuario no encontrado para actualizar");
                 }
 
+                // Registrar en la tabla de auditoría
+                var audit = new Audits
+                {
+                    Date_update = DateTime.Now,
+                    Amount_modify = 1, // Actualización de 1 usuario
+                    Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
+                    Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
+                    Id_module_Id = 6, // Módulo de usuarios
+                    Id_company_Id = dto.Id_company_Id, // Usar el ID de la compañía desde el DTO
+                    Delete_log_audits = false
+                };
+                _context.Audits.Add(audit);
+                await _context.SaveChangesAsync();
+
+                // Actualizar datos del usuario
                 user.Name_user = dto.Name_user;
                 user.Mail_user = dto.Mail_user;
                 user.Phone_user = dto.Phone_user;
@@ -93,8 +126,8 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 user.Id_position_Id = dto.Id_position_Id;
                 user.Id_department_Id = dto.Id_department_Id;
                 user.Id_company_Id = dto.Id_company_Id;
-                user.Id_module_Id = dto.Id_module_Id;
-                user.Date_update = DateTime.UtcNow; // Marca de tiempo para la actualización
+                user.Id_module_Id = 6;
+                user.Date_update = DateTime.Now; // Marca de tiempo para la actualización
 
                 await _context.SaveChangesAsync();
             }
@@ -104,15 +137,30 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task SoftDeleteAsyncUser(int id)
+        public async Task SoftDeleteAsyncUser(int id, int userId, int departmentId)
         {
             try
             {
                 var user = await _context.Users.FindAsync(id);
                 if (user != null)
                 {
+                    // Registrar en la tabla de auditoría
+                    var audit = new Audits
+                    {
+                        Date_delete = DateTime.Now,
+                        Amount_modify = -1, // Eliminación de 1 usuario
+                        Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
+                        Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
+                        Id_module_Id = user.Id_module_Id, // Módulo de usuarios
+                        Id_company_Id = user.Id_company_Id, // Usar el ID de la compañía desde el usuario
+                        Delete_log_audits = false
+                    };
+                    _context.Audits.Add(audit);
+                    await _context.SaveChangesAsync();
+
+                    // Eliminación lógica
                     user.Delete_log_user = true;
-                    user.Date_delete = DateTime.UtcNow; // Marca de tiempo para la eliminación
+                    user.Date_delete = DateTime.Now; // Marca de tiempo para la eliminación
                     await _context.SaveChangesAsync();
                 }
                 else
@@ -126,7 +174,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task RestoreAsyncUser(int id)
+        public async Task RestoreAsyncUser(int id, int userId, int departmentId)
         {
             try
             {
@@ -135,8 +183,23 @@ namespace FluxSYS_backend.Infrastructure.Repositories
 
                 if (user != null)
                 {
+                    // Registrar en la tabla de auditoría
+                    var audit = new Audits
+                    {
+                        Date_restore = DateTime.Now,
+                        Amount_modify = 1, // Restauración de 1 usuario
+                        Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
+                        Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
+                        Id_module_Id = user.Id_module_Id, // Módulo de usuarios
+                        Id_company_Id = user.Id_company_Id, // Usar el ID de la compañía desde el usuario
+                        Delete_log_audits = false
+                    };
+                    _context.Audits.Add(audit);
+                    await _context.SaveChangesAsync();
+
+                    // Restauración
                     user.Delete_log_user = false;
-                    user.Date_restore = DateTime.UtcNow; // Marca de tiempo para la restauración
+                    user.Date_restore = DateTime.Now; // Marca de tiempo para la restauración
                     await _context.SaveChangesAsync();
                 }
                 else

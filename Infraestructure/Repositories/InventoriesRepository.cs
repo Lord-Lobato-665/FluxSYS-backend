@@ -66,7 +66,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task AddAsyncInventory(InventoryCreateDTO dto)
+        public async Task AddAsyncInventory(InventoryCreateDTO dto, int userId, int departmentId)
         {
             try
             {
@@ -80,13 +80,45 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     Id_movement_type_Id = dto.Id_movement_type_Id,
                     Id_supplier_Id = dto.Id_supplier_Id,
                     Id_department_Id = dto.Id_department_Id,
-                    Id_module_Id = dto.Id_module_Id,
+                    Id_module_Id = 3,
                     Id_company_Id = dto.Id_company_Id,
                     Id_user_Id = dto.Id_user_Id,
-                    Date_insert = DateTime.UtcNow,
+                    Date_insert = DateTime.Now,
                     Delete_log_inventory = false
                 };
                 _context.Inventories.Add(inventory);
+                await _context.SaveChangesAsync();
+
+                // Registrar en la tabla de auditoría
+                var audit = new Audits
+                {
+                    Date_insert = DateTime.Now,
+                    Amount_modify = dto.Stock_product, // Cantidad de stock agregado
+                    Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
+                    Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
+                    Id_module_Id = 3, // Módulo de inventarios
+                    Id_company_Id = dto.Id_company_Id, // Usar el ID de la compañía desde el DTO
+                    Delete_log_audits = false
+                };
+                _context.Audits.Add(audit);
+                await _context.SaveChangesAsync();
+
+                // Registrar en la tabla de movimientos de inventario
+                var movement = new InventoryMovements
+                {
+                    Amount_modify = dto.Stock_product, // Cantidad de stock agregado
+                    Id_inventory_product_Id = inventory.Id_inventory_product,
+                    Id_category_product_Id = dto.Id_category_product_Id,
+                    Id_department_Id = dto.Id_department_Id,
+                    Id_supplier_Id = dto.Id_supplier_Id,
+                    Id_movements_types_Id = dto.Id_movement_type_Id,
+                    Id_module_Id = 3,
+                    Id_company_Id = dto.Id_company_Id,
+                    Id_user_Id = dto.Id_user_Id,
+                    Date_insert = DateTime.Now,
+                    Delete_log_inventory_movement = false
+                };
+                _context.InventoryMovements.Add(movement);
                 await _context.SaveChangesAsync();
             }
             catch (Exception ex)
@@ -95,7 +127,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task UpdateAsyncInventory(int id, InventoryUpdateDTO dto)
+        public async Task UpdateAsyncInventory(int id, InventoryUpdateDTO dto, int userId, int departmentId)
         {
             try
             {
@@ -105,6 +137,42 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     throw new KeyNotFoundException("Producto de inventario no encontrado.");
                 }
 
+                // Calcular la diferencia en el stock
+                int stockDifference = dto.Stock_product - inventory.Stock_product;
+
+                // Registrar en la tabla de auditoría
+                var audit = new Audits
+                {
+                    Date_update = DateTime.Now,
+                    Amount_modify = stockDifference, // Diferencia en el stock
+                    Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
+                    Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
+                    Id_module_Id = 3, // Módulo de inventarios
+                    Id_company_Id = dto.Id_company_Id, // Usar el ID de la compañía desde el DTO
+                    Delete_log_audits = false
+                };
+                _context.Audits.Add(audit);
+                await _context.SaveChangesAsync();
+
+                // Registrar en la tabla de movimientos de inventario
+                var movement = new InventoryMovements
+                {
+                    Amount_modify = stockDifference, // Diferencia en el stock
+                    Id_inventory_product_Id = inventory.Id_inventory_product,
+                    Id_category_product_Id = dto.Id_category_product_Id,
+                    Id_department_Id = dto.Id_department_Id,
+                    Id_supplier_Id = dto.Id_supplier_Id,
+                    Id_movements_types_Id = dto.Id_movement_type_Id,
+                    Id_module_Id = 3,
+                    Id_company_Id = dto.Id_company_Id,
+                    Id_user_Id = dto.Id_user_Id,
+                    Date_update = DateTime.Now,
+                    Delete_log_inventory_movement = false
+                };
+                _context.InventoryMovements.Add(movement);
+                await _context.SaveChangesAsync();
+
+                // Actualizar datos del producto
                 inventory.Name_product = dto.Name_product;
                 inventory.Stock_product = dto.Stock_product;
                 inventory.Price_product = dto.Price_product;
@@ -113,10 +181,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 inventory.Id_movement_type_Id = dto.Id_movement_type_Id;
                 inventory.Id_supplier_Id = dto.Id_supplier_Id;
                 inventory.Id_department_Id = dto.Id_department_Id;
-                inventory.Id_module_Id = dto.Id_module_Id;
+                inventory.Id_module_Id = 3;
                 inventory.Id_company_Id = dto.Id_company_Id;
                 inventory.Id_user_Id = dto.Id_user_Id;
-                inventory.Date_update = DateTime.UtcNow;
+                inventory.Date_update = DateTime.Now;
 
                 await _context.SaveChangesAsync();
             }
@@ -126,15 +194,48 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task SoftDeleteAsyncInventory(int id)
+        public async Task SoftDeleteAsyncInventory(int id, int userId, int departmentId)
         {
             try
             {
                 var inventory = await _context.Inventories.FindAsync(id);
                 if (inventory != null)
                 {
+                    // Registrar en la tabla de auditoría
+                    var audit = new Audits
+                    {
+                        Date_delete = DateTime.Now,
+                        Amount_modify = -inventory.Stock_product, // Se elimina todo el stock
+                        Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
+                        Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
+                        Id_module_Id = inventory.Id_module_Id, // Módulo de inventarios
+                        Id_company_Id = inventory.Id_company_Id, // Usar el ID de la compañía desde el producto
+                        Delete_log_audits = false
+                    };
+                    _context.Audits.Add(audit);
+                    await _context.SaveChangesAsync();
+
+                    // Registrar en la tabla de movimientos de inventario
+                    var movement = new InventoryMovements
+                    {
+                        Amount_modify = -inventory.Stock_product, // Se elimina todo el stock
+                        Id_inventory_product_Id = inventory.Id_inventory_product,
+                        Id_category_product_Id = inventory.Id_category_product_Id,
+                        Id_department_Id = inventory.Id_department_Id,
+                        Id_supplier_Id = inventory.Id_supplier_Id,
+                        Id_movements_types_Id = inventory.Id_movement_type_Id,
+                        Id_module_Id = inventory.Id_module_Id,
+                        Id_company_Id = inventory.Id_company_Id,
+                        Id_user_Id = inventory.Id_user_Id,
+                        Date_delete = DateTime.Now,
+                        Delete_log_inventory_movement = false
+                    };
+                    _context.InventoryMovements.Add(movement);
+                    await _context.SaveChangesAsync();
+
+                    // Eliminación lógica
                     inventory.Delete_log_inventory = true;
-                    inventory.Date_delete = DateTime.UtcNow;
+                    inventory.Date_delete = DateTime.Now;
                     await _context.SaveChangesAsync();
                 }
                 else
@@ -148,7 +249,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task RestoreAsyncInventory(int id)
+        public async Task RestoreAsyncInventory(int id, int userId, int departmentId)
         {
             try
             {
@@ -157,8 +258,41 @@ namespace FluxSYS_backend.Infrastructure.Repositories
 
                 if (inventory != null)
                 {
+                    // Registrar en la tabla de auditoría
+                    var audit = new Audits
+                    {
+                        Date_restore = DateTime.Now,
+                        Amount_modify = inventory.Stock_product, // Se restaura todo el stock
+                        Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
+                        Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
+                        Id_module_Id = inventory.Id_module_Id, // Módulo de inventarios
+                        Id_company_Id = inventory.Id_company_Id, // Usar el ID de la compañía desde el producto
+                        Delete_log_audits = false
+                    };
+                    _context.Audits.Add(audit);
+                    await _context.SaveChangesAsync();
+
+                    // Registrar en la tabla de movimientos de inventario
+                    var movement = new InventoryMovements
+                    {
+                        Amount_modify = inventory.Stock_product, // Se restaura todo el stock
+                        Id_inventory_product_Id = inventory.Id_inventory_product,
+                        Id_category_product_Id = inventory.Id_category_product_Id,
+                        Id_department_Id = inventory.Id_department_Id,
+                        Id_supplier_Id = inventory.Id_supplier_Id,
+                        Id_movements_types_Id = inventory.Id_movement_type_Id,
+                        Id_module_Id = inventory.Id_module_Id,
+                        Id_company_Id = inventory.Id_company_Id,
+                        Id_user_Id = inventory.Id_user_Id,
+                        Date_restore = DateTime.Now,
+                        Delete_log_inventory_movement = false
+                    };
+                    _context.InventoryMovements.Add(movement);
+                    await _context.SaveChangesAsync();
+
+                    // Restauración
                     inventory.Delete_log_inventory = false;
-                    inventory.Date_restore = DateTime.UtcNow;
+                    inventory.Date_restore = DateTime.Now;
                     await _context.SaveChangesAsync();
                 }
                 else

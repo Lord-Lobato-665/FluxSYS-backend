@@ -4,8 +4,8 @@ using FluxSYS_backend.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
-using FluxSYS_backend.Application.AppServices;
 using Microsoft.Data.SqlClient;
+using FluxSYS_backend.Application.AppServices;
 
 namespace FluxSYS_backend.API.Controllers
 {
@@ -21,7 +21,14 @@ namespace FluxSYS_backend.API.Controllers
         private readonly CompaniesService _companiesService;
         private readonly ModulesService _modulesService;
 
-        public UsersController(UsersService service, ErrorLogService errorLogService, RolesService rolesService, PositionsService positionsService, DepartmentsService departmentsService, CompaniesService companiesService, ModulesService modulesService)
+        public UsersController(
+            UsersService service,
+            ErrorLogService errorLogService,
+            RolesService rolesService,
+            PositionsService positionsService,
+            DepartmentsService departmentsService,
+            CompaniesService companiesService,
+            ModulesService modulesService)
         {
             _service = service;
             _errorLogService = errorLogService;
@@ -48,7 +55,7 @@ namespace FluxSYS_backend.API.Controllers
         }
 
         [HttpPost("create-user")]
-        public async Task<IActionResult> Create([FromBody] UserViewModel model)
+        public async Task<IActionResult> Create([FromBody] UserViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -80,12 +87,6 @@ namespace FluxSYS_backend.API.Controllers
                     return BadRequest("La compañía especificada no existe.");
                 }
 
-                var module = await _modulesService.GetAllAsyncModules();
-                if (!module.Any(m => m.Id_module == model.Id_module_Id))
-                {
-                    return BadRequest("El módulo especificado no existe.");
-                }
-
                 var dto = new UserCreateDTO
                 {
                     Name_user = model.Name_user,
@@ -95,10 +96,9 @@ namespace FluxSYS_backend.API.Controllers
                     Id_rol_Id = model.Id_rol_Id,
                     Id_position_Id = model.Id_position_Id,
                     Id_department_Id = model.Id_department_Id,
-                    Id_company_Id = model.Id_company_Id,
-                    Id_module_Id = model.Id_module_Id
+                    Id_company_Id = model.Id_company_Id
                 };
-                await _service.AddAsyncUser(dto);
+                await _service.AddAsyncUser(dto, userId, departmentId);
                 return Ok(new { message = "Usuario creado correctamente" });
             }
             catch (SqlException ex) when (ex.Number == 547) // Error de clave foránea
@@ -114,7 +114,7 @@ namespace FluxSYS_backend.API.Controllers
         }
 
         [HttpPut("update-user/{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] UserViewModel model)
+        public async Task<IActionResult> Update(int id, [FromBody] UserViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -130,10 +130,9 @@ namespace FluxSYS_backend.API.Controllers
                     Id_rol_Id = model.Id_rol_Id,
                     Id_position_Id = model.Id_position_Id,
                     Id_department_Id = model.Id_department_Id,
-                    Id_company_Id = model.Id_company_Id,
-                    Id_module_Id = model.Id_module_Id
+                    Id_company_Id = model.Id_company_Id
                 };
-                await _service.UpdateAsyncUser(id, dto);
+                await _service.UpdateAsyncUser(id, dto, userId, departmentId);
                 return Ok(new { message = "Usuario actualizado correctamente" });
             }
             catch (KeyNotFoundException)
@@ -148,11 +147,11 @@ namespace FluxSYS_backend.API.Controllers
         }
 
         [HttpDelete("delete-user/{id}")]
-        public async Task<IActionResult> SoftDelete(int id)
+        public async Task<IActionResult> SoftDelete(int id, [FromQuery] int userId, [FromQuery] int departmentId)
         {
             try
             {
-                await _service.SoftDeleteAsyncUser(id);
+                await _service.SoftDeleteAsyncUser(id, userId, departmentId);
                 return Ok(new { message = "Usuario eliminado correctamente" });
             }
             catch (KeyNotFoundException)
@@ -167,11 +166,11 @@ namespace FluxSYS_backend.API.Controllers
         }
 
         [HttpPatch("restore-user/{id}")]
-        public async Task<IActionResult> Restore(int id)
+        public async Task<IActionResult> Restore(int id, [FromQuery] int userId, [FromQuery] int departmentId)
         {
             try
             {
-                await _service.RestoreAsyncUser(id);
+                await _service.RestoreAsyncUser(id, userId, departmentId);
                 return Ok(new { message = "Usuario restaurado correctamente" });
             }
             catch (KeyNotFoundException)

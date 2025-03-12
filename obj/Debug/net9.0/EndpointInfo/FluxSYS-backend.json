@@ -5,6 +5,18 @@
     "version": "v1"
   },
   "paths": {
+    "/api/Audits/get-audits": {
+      "get": {
+        "tags": [
+          "Audits"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/CategoriesProducts/get-categories-products": {
       "get": {
         "tags": [
@@ -820,6 +832,24 @@
         "tags": [
           "Inventories"
         ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "departmentId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -856,6 +886,22 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "departmentId",
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -902,6 +948,22 @@
               "type": "integer",
               "format": "int32"
             }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "departmentId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
@@ -921,6 +983,231 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "departmentId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/InventoryMovements/get-inventory-movements": {
+      "get": {
+        "tags": [
+          "InventoryMovements"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Invoices/get-invoices": {
+      "get": {
+        "tags": [
+          "Invoices"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Invoices/create-invoice": {
+      "post": {
+        "tags": [
+          "Invoices"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "departmentId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Invoices/update-invoice/{id}": {
+      "put": {
+        "tags": [
+          "Invoices"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "departmentId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Invoices/delete-invoice/{id}": {
+      "delete": {
+        "tags": [
+          "Invoices"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "departmentId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Invoices/restore-invoice/{id}": {
+      "patch": {
+        "tags": [
+          "Invoices"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "departmentId",
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -1344,6 +1631,24 @@
         "tags": [
           "PurchaseOrders"
         ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "departmentId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1380,6 +1685,22 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "departmentId",
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -1426,6 +1747,22 @@
               "type": "integer",
               "format": "int32"
             }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "departmentId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
@@ -1445,6 +1782,22 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "departmentId",
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -1737,6 +2090,24 @@
         "tags": [
           "Suppliers"
         ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "departmentId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1773,6 +2144,22 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "departmentId",
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -1819,6 +2206,22 @@
               "type": "integer",
               "format": "int32"
             }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "departmentId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
@@ -1838,6 +2241,22 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "departmentId",
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -1867,6 +2286,24 @@
       "post": {
         "tags": [
           "Users"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "departmentId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "requestBody": {
           "content": {
@@ -1904,6 +2341,22 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "departmentId",
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -1950,6 +2403,22 @@
               "type": "integer",
               "format": "int32"
             }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "departmentId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
@@ -1969,6 +2438,22 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "departmentId",
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -2100,7 +2585,6 @@
           "id_category_product_Id",
           "id_company_Id",
           "id_department_Id",
-          "id_module_Id",
           "id_movement_type_Id",
           "id_state_Id",
           "id_supplier_Id",
@@ -2147,10 +2631,6 @@
             "type": "integer",
             "format": "int32"
           },
-          "id_module_Id": {
-            "type": "integer",
-            "format": "int32"
-          },
           "id_company_Id": {
             "type": "integer",
             "format": "int32"
@@ -2158,6 +2638,67 @@
           "id_user_Id": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "InvoiceProductViewModel": {
+        "required": [
+          "id_inventory_product_Id",
+          "quantity"
+        ],
+        "type": "object",
+        "properties": {
+          "id_inventory_product_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "quantity": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "InvoiceViewModel": {
+        "required": [
+          "id_company_Id",
+          "id_department_Id",
+          "id_purchase_order_Id",
+          "id_supplier_Id",
+          "name_invoice"
+        ],
+        "type": "object",
+        "properties": {
+          "name_invoice": {
+            "maxLength": 100,
+            "minLength": 3,
+            "type": "string"
+          },
+          "id_purchase_order_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_supplier_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_department_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_company_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InvoiceProductViewModel"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2247,7 +2788,6 @@
           "id_category_purchase_order_Id",
           "id_company_Id",
           "id_department_Id",
-          "id_module_Id",
           "id_movement_type_Id",
           "id_state_Id",
           "id_supplier_Id",
@@ -2282,10 +2822,6 @@
             "format": "int32"
           },
           "id_movement_type_Id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "id_module_Id": {
             "type": "integer",
             "format": "int32"
           },
@@ -2361,7 +2897,6 @@
         "required": [
           "id_category_supplier_Id",
           "id_company_Id",
-          "id_module_Id",
           "mail_supplier",
           "name_supplier",
           "phone_supplier"
@@ -2387,10 +2922,6 @@
             "type": "integer",
             "format": "int32"
           },
-          "id_module_Id": {
-            "type": "integer",
-            "format": "int32"
-          },
           "id_company_Id": {
             "type": "integer",
             "format": "int32"
@@ -2409,7 +2940,6 @@
         "required": [
           "id_company_Id",
           "id_department_Id",
-          "id_module_Id",
           "id_position_Id",
           "id_rol_Id",
           "mail_user",
@@ -2452,10 +2982,6 @@
             "format": "int32"
           },
           "id_company_Id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "id_module_Id": {
             "type": "integer",
             "format": "int32"
           }

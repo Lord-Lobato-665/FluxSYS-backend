@@ -1,4 +1,4 @@
-﻿using FluxSYS_backend.Application.DTOs.PurchaseOrders;
+﻿using FluxSYS_backend.Application.DTOs.Invoices;
 using FluxSYS_backend.Application.ViewModels;
 using FluxSYS_backend.Application.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -13,14 +13,14 @@ namespace FluxSYS_backend.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PurchaseOrdersController : ControllerBase
+    public class InvoicesController : ControllerBase
     {
-        private readonly PurchaseOrdersService _service;
+        private readonly InvoicesService _service;
         private readonly ErrorLogService _errorLogService;
         private readonly ApplicationDbContext _context;
 
-        public PurchaseOrdersController(
-            PurchaseOrdersService service,
+        public InvoicesController(
+            InvoicesService service,
             ErrorLogService errorLogService,
             ApplicationDbContext context)
         {
@@ -29,23 +29,23 @@ namespace FluxSYS_backend.API.Controllers
             _context = context;
         }
 
-        [HttpGet("get-purchase-orders")]
+        [HttpGet("get-invoices")]
         public async Task<IActionResult> GetAll()
         {
             try
             {
-                var purchaseOrders = await _service.GetAllAsyncPurchaseOrders();
-                return Ok(purchaseOrders);
+                var invoices = await _service.GetAllAsyncInvoices();
+                return Ok(invoices);
             }
             catch (Exception ex)
             {
-                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetPurchaseOrdersController");
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetInvoicesController");
                 return StatusCode(500, "Error interno del servidor.");
             }
         }
 
-        [HttpPost("create-purchase-order")]
-        public async Task<IActionResult> Create([FromBody] PurchaseOrderViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
+        [HttpPost("create-invoice")]
+        public async Task<IActionResult> Create([FromBody] InvoiceViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -53,7 +53,7 @@ namespace FluxSYS_backend.API.Controllers
             try
             {
                 // Obtener los precios de los productos desde el inventario
-                var productsWithPrices = new List<OrderProductCreateDTO>();
+                var productsWithPrices = new List<InvoiceProductCreateDTO>();
                 foreach (var product in model.Products)
                 {
                     var inventoryProduct = await _context.Inventories
@@ -64,44 +64,41 @@ namespace FluxSYS_backend.API.Controllers
                         return BadRequest($"El producto con ID {product.Id_inventory_product_Id} no existe en el inventario.");
                     }
 
-                    productsWithPrices.Add(new OrderProductCreateDTO
+                    productsWithPrices.Add(new InvoiceProductCreateDTO
                     {
                         Id_inventory_product_Id = product.Id_inventory_product_Id,
-                        Quantity = product.Quantity,
-                        Price = inventoryProduct.Price_product // Tomar el precio del inventario
+                        Quantity = product.Quantity
+                        // El Unit_price se asignará en el repositorio desde el inventario
                     });
                 }
 
-                var dto = new PurchaseOrderCreateDTO
+                var dto = new InvoiceCreateDTO
                 {
-                    Name_purchase_order = model.Name_purchase_order,
-                    Id_user_Id = model.Id_user_Id,
-                    Id_category_purchase_order_Id = model.Id_category_purchase_order_Id,
-                    Id_department_Id = model.Id_department_Id,
+                    Name_invoice = model.Name_invoice,
+                    Id_purchase_order_Id = model.Id_purchase_order_Id,
                     Id_supplier_Id = model.Id_supplier_Id,
-                    Id_state_Id = model.Id_state_Id,
-                    Id_movement_type_Id = model.Id_movement_type_Id,
+                    Id_department_Id = model.Id_department_Id,
                     Id_company_Id = model.Id_company_Id,
                     Products = productsWithPrices
                 };
 
-                await _service.AddAsyncPurchaseOrder(dto, userId, departmentId);
-                return Ok(new { message = "Orden de compra creada correctamente" });
+                await _service.AddAsyncInvoice(dto, userId, departmentId);
+                return Ok(new { message = "Factura creada correctamente" });
             }
             catch (SqlException ex) when (ex.Number == 547) // Error de clave foránea
             {
-                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "CreatePurchaseOrderController - ForeignKey");
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "CreateInvoiceController - ForeignKey");
                 return BadRequest("Error de clave foránea: Verifica que los IDs de las entidades relacionadas sean correctos.");
             }
             catch (Exception ex)
             {
-                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "CreatePurchaseOrderController");
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "CreateInvoiceController");
                 return StatusCode(500, "Error interno del servidor.");
             }
         }
 
-        [HttpPut("update-purchase-order/{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] PurchaseOrderViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
+        [HttpPut("update-invoice/{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] InvoiceViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -109,7 +106,7 @@ namespace FluxSYS_backend.API.Controllers
             try
             {
                 // Obtener los precios de los productos desde el inventario
-                var productsWithPrices = new List<OrderProductUpdateDTO>();
+                var productsWithPrices = new List<InvoiceProductUpdateDTO>();
                 foreach (var product in model.Products)
                 {
                     var inventoryProduct = await _context.Inventories
@@ -120,75 +117,72 @@ namespace FluxSYS_backend.API.Controllers
                         return BadRequest($"El producto con ID {product.Id_inventory_product_Id} no existe en el inventario.");
                     }
 
-                    productsWithPrices.Add(new OrderProductUpdateDTO
+                    productsWithPrices.Add(new InvoiceProductUpdateDTO
                     {
                         Id_inventory_product_Id = product.Id_inventory_product_Id,
-                        Quantity = product.Quantity,
-                        Price = inventoryProduct.Price_product // Tomar el precio del inventario
+                        Quantity = product.Quantity
+                        // El Unit_price se asignará en el repositorio desde el inventario
                     });
                 }
 
-                var dto = new PurchaseOrderUpdateDTO
+                var dto = new InvoiceUpdateDTO
                 {
-                    Name_purchase_order = model.Name_purchase_order,
-                    Id_user_Id = model.Id_user_Id,
-                    Id_category_purchase_order_Id = model.Id_category_purchase_order_Id,
-                    Id_department_Id = model.Id_department_Id,
+                    Name_invoice = model.Name_invoice,
+                    Id_purchase_order_Id = model.Id_purchase_order_Id,
                     Id_supplier_Id = model.Id_supplier_Id,
-                    Id_state_Id = model.Id_state_Id,
-                    Id_movement_type_Id = model.Id_movement_type_Id,
+                    Id_department_Id = model.Id_department_Id,
                     Id_company_Id = model.Id_company_Id,
                     Products = productsWithPrices
                 };
 
-                await _service.UpdateAsyncPurchaseOrder(id, dto, userId, departmentId);
-                return Ok(new { message = "Orden de compra actualizada correctamente" });
+                await _service.UpdateAsyncInvoice(id, dto, userId, departmentId);
+                return Ok(new { message = "Factura actualizada correctamente" });
             }
             catch (KeyNotFoundException)
             {
-                return NotFound("Orden de compra no encontrada");
+                return NotFound("Factura no encontrada");
             }
             catch (Exception ex)
             {
-                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "UpdatePurchaseOrderController");
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "UpdateInvoiceController");
                 return StatusCode(500, "Error interno del servidor.");
             }
         }
 
-        [HttpDelete("delete-purchase-order/{id}")]
+        [HttpDelete("delete-invoice/{id}")]
         public async Task<IActionResult> SoftDelete(int id, [FromQuery] int userId, [FromQuery] int departmentId)
         {
             try
             {
-                await _service.SoftDeleteAsyncPurchaseOrder(id, userId, departmentId);
-                return Ok(new { message = "Orden de compra eliminada correctamente" });
+                await _service.SoftDeleteAsyncInvoice(id, userId, departmentId);
+                return Ok(new { message = "Factura eliminada correctamente" });
             }
             catch (KeyNotFoundException)
             {
-                return NotFound("Orden de compra no encontrada para eliminar");
+                return NotFound("Factura no encontrada para eliminar");
             }
             catch (Exception ex)
             {
-                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "SoftDeletePurchaseOrderController");
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "SoftDeleteInvoiceController");
                 return StatusCode(500, "Error interno del servidor.");
             }
         }
 
-        [HttpPatch("restore-purchase-order/{id}")]
+        [HttpPatch("restore-invoice/{id}")]
         public async Task<IActionResult> Restore(int id, [FromQuery] int userId, [FromQuery] int departmentId)
         {
             try
             {
-                await _service.RestoreAsyncPurchaseOrder(id, userId, departmentId);
-                return Ok(new { message = "Orden de compra restaurada correctamente" });
+                await _service.RestoreAsyncInvoice(id, userId, departmentId);
+                return Ok(new { message = "Factura restaurada correctamente" });
             }
             catch (KeyNotFoundException)
             {
-                return NotFound("Orden de compra no encontrada para restaurar");
+                return NotFound("Factura no encontrada para restaurar");
             }
             catch (Exception ex)
             {
-                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "RestorePurchaseOrderController");
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "RestoreInvoiceController");
                 return StatusCode(500, "Error interno del servidor.");
             }
         }

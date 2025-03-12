@@ -19,7 +19,12 @@ namespace FluxSYS_backend.API.Controllers
         private readonly ModulesService _modulesService;
         private readonly CompaniesService _companiesService;
 
-        public SuppliersController(SuppliersService service, ErrorLogService errorLogService, CategoriesSuppliersService categoriesSuppliersService, ModulesService modulesService, CompaniesService companiesService)
+        public SuppliersController(
+            SuppliersService service,
+            ErrorLogService errorLogService,
+            CategoriesSuppliersService categoriesSuppliersService,
+            ModulesService modulesService,
+            CompaniesService companiesService)
         {
             _service = service;
             _errorLogService = errorLogService;
@@ -44,7 +49,7 @@ namespace FluxSYS_backend.API.Controllers
         }
 
         [HttpPost("create-supplier")]
-        public async Task<IActionResult> Create([FromBody] SupplierViewModel model)
+        public async Task<IActionResult> Create([FromBody] SupplierViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -56,12 +61,6 @@ namespace FluxSYS_backend.API.Controllers
                 if (!categorySupplier.Any(c => c.Id_category_supplier == model.Id_category_supplier_Id))
                 {
                     return BadRequest("La categoría de proveedor especificada no existe.");
-                }
-
-                var module = await _modulesService.GetAllAsyncModules();
-                if (!module.Any(m => m.Id_module == model.Id_module_Id))
-                {
-                    return BadRequest("El módulo especificado no existe.");
                 }
 
                 var company = await _companiesService.GetAllAsyncCompanies();
@@ -76,7 +75,6 @@ namespace FluxSYS_backend.API.Controllers
                     Mail_supplier = model.Mail_supplier,
                     Phone_supplier = model.Phone_supplier,
                     Id_category_supplier_Id = model.Id_category_supplier_Id,
-                    Id_module_Id = model.Id_module_Id,
                     Id_company_Id = model.Id_company_Id,
                     Products = model.Products.Select(p => new SupplierProductCreateDTO
                     {
@@ -84,7 +82,7 @@ namespace FluxSYS_backend.API.Controllers
                         Suggested_price = p.Suggested_price
                     }).ToList()
                 };
-                await _service.AddAsyncSupplier(dto);
+                await _service.AddAsyncSupplier(dto, userId, departmentId);
                 return Ok(new { message = "Proveedor creado correctamente" });
             }
             catch (SqlException ex) when (ex.Number == 547) // Error de clave foránea
@@ -100,7 +98,7 @@ namespace FluxSYS_backend.API.Controllers
         }
 
         [HttpPut("update-supplier/{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] SupplierViewModel model)
+        public async Task<IActionResult> Update(int id, [FromBody] SupplierViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -120,7 +118,7 @@ namespace FluxSYS_backend.API.Controllers
                         Suggested_price = p.Suggested_price
                     }).ToList()
                 };
-                await _service.UpdateAsyncSupplier(id, dto);
+                await _service.UpdateAsyncSupplier(id, dto, userId, departmentId);
                 return Ok(new { message = "Proveedor actualizado correctamente" });
             }
             catch (KeyNotFoundException)
@@ -135,11 +133,11 @@ namespace FluxSYS_backend.API.Controllers
         }
 
         [HttpDelete("delete-supplier/{id}")]
-        public async Task<IActionResult> SoftDelete(int id)
+        public async Task<IActionResult> SoftDelete(int id, [FromQuery] int userId, [FromQuery] int departmentId)
         {
             try
             {
-                await _service.SoftDeleteAsyncSupplier(id);
+                await _service.SoftDeleteAsyncSupplier(id, userId, departmentId);
                 return Ok(new { message = "Proveedor eliminado correctamente" });
             }
             catch (KeyNotFoundException)
@@ -154,11 +152,11 @@ namespace FluxSYS_backend.API.Controllers
         }
 
         [HttpPatch("restore-supplier/{id}")]
-        public async Task<IActionResult> Restore(int id)
+        public async Task<IActionResult> Restore(int id, [FromQuery] int userId, [FromQuery] int departmentId)
         {
             try
             {
-                await _service.RestoreAsyncSupplier(id);
+                await _service.RestoreAsyncSupplier(id, userId, departmentId);
                 return Ok(new { message = "Proveedor restaurado correctamente" });
             }
             catch (KeyNotFoundException)
