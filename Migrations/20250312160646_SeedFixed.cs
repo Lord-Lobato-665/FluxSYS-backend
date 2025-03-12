@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FluxSYS_backend.Migrations
 {
     /// <inheritdoc />
-    public partial class ModelsConfiguration : Migration
+    public partial class SeedFixed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -712,7 +712,8 @@ namespace FluxSYS_backend.Migrations
                 {
                     { 1, false, "Eliminacion" },
                     { 2, false, "Creacion" },
-                    { 3, false, "Actualizacion" }
+                    { 3, false, "Actualizacion" },
+                    { 4, false, "Restauracion" }
                 });
 
             migrationBuilder.InsertData(
@@ -723,13 +724,176 @@ namespace FluxSYS_backend.Migrations
                     { 1, false, "Tech Innovators" },
                     { 2, false, "Global Solutions" },
                     { 3, false, "NextGen Systems" },
-                    { 4, false, "Future Enterprises" },
-                    { 5, false, "Pioneer Tech" },
-                    { 6, false, "Visionary Corp" },
-                    { 7, false, "Nexus Industries" },
-                    { 8, false, "Elite Technologies" },
-                    { 9, false, "Synergy Networks" },
-                    { 10, false, "Vertex Solutions" }
+                    { 4, false, "Future Enterprises" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "modules",
+                columns: new[] { "Id_module", "Delete_log_module", "Name_module" },
+                values: new object[,]
+                {
+                    { 1, false, "Proveedores" },
+                    { 2, false, "Auditorias" },
+                    { 3, false, "Inventario" },
+                    { 4, false, "Facturas" },
+                    { 5, false, "Ordenes de compra" },
+                    { 6, false, "Usuarios" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "roles",
+                columns: new[] { "Id_role", "Delete_log_role", "Name_role" },
+                values: new object[,]
+                {
+                    { 1, false, "Administrador" },
+                    { 2, false, "Supervisor" },
+                    { 3, false, "Operador" },
+                    { 4, false, "Invitado" },
+                    { 5, false, "Gerente" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "categories_products",
+                columns: new[] { "Id_category_product", "Delete_log_category_product", "Id_company_Id", "Name_category_product" },
+                values: new object[,]
+                {
+                    { 1, false, 1, "Electrónica" },
+                    { 2, false, 2, "Muebles" },
+                    { 3, false, 3, "Ropa" },
+                    { 4, false, 4, "Alimentos" },
+                    { 5, false, 1, "Herramientas" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "categories_purchase_orders",
+                columns: new[] { "Id_category_purchase_order", "Delete_log_category_purchase_order", "Id_company_Id", "Name_category_purchase_order" },
+                values: new object[,]
+                {
+                    { 1, false, 1, "Interna" },
+                    { 2, false, 2, "Externa" },
+                    { 3, false, 3, "Urgente" },
+                    { 4, false, 4, "Planificada" },
+                    { 5, false, 1, "Especial" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "categories_suppliers",
+                columns: new[] { "Id_category_supplier", "Delete_log_category_supplier", "Id_company_Id", "Name_category_supplier" },
+                values: new object[,]
+                {
+                    { 1, false, 1, "Tecnología" },
+                    { 2, false, 2, "Alimentos" },
+                    { 3, false, 3, "Materiales de Construcción" },
+                    { 4, false, 4, "Suministros de Oficina" },
+                    { 5, false, 1, "Productos Químicos" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "departments",
+                columns: new[] { "Id_department", "Delete_log_department", "Id_company_Id", "Name_deparment" },
+                values: new object[,]
+                {
+                    { 1, false, 1, "Recursos Humanos" },
+                    { 2, false, 2, "Tecnología" },
+                    { 3, false, 3, "Ventas" },
+                    { 4, false, 4, "Logística" },
+                    { 5, false, 1, "Finanzas" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "movements_types",
+                columns: new[] { "Id_movement_type", "Delete_log_movement_type", "Id_clasification_movement_Id", "Id_company_Id", "Name_movement_type" },
+                values: new object[,]
+                {
+                    { 1, false, 1, 1, "Entrada de Mercancía" },
+                    { 2, false, 2, 2, "Salida por Venta" },
+                    { 3, false, 3, 3, "Ajuste por Pérdida" },
+                    { 4, false, 1, 1, "Transferencia de Almacén" },
+                    { 5, false, 2, 2, "Devolución de Producto" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "positions",
+                columns: new[] { "Id_position", "Delete_log_position", "Id_company_Id", "Name_position" },
+                values: new object[,]
+                {
+                    { 1, false, 1, "Gerente" },
+                    { 2, false, 2, "Supervisor" },
+                    { 3, false, 3, "Analista" },
+                    { 4, false, 4, "Técnico" },
+                    { 5, false, 1, "Asistente" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "states",
+                columns: new[] { "Id_state", "Delete_log_state", "Id_company_Id", "Name_state" },
+                values: new object[,]
+                {
+                    { 1, false, 1, "Activo" },
+                    { 2, false, 2, "Inactivo" },
+                    { 3, false, 3, "Pendiente" },
+                    { 4, false, 1, "En Proceso" },
+                    { 5, false, 2, "Finalizado" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "suppliers",
+                columns: new[] { "Id_supplier", "Date_delete", "Date_insert", "Date_restore", "Date_update", "Delete_log_suppliers", "Id_category_supplier_Id", "Id_company_Id", "Id_module_Id", "Mail_supplier", "Name_supplier", "Phone_supplier" },
+                values: new object[,]
+                {
+                    { 1, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 1, 1, 1, "contacto@proveedora.com", "Proveedor A", 5512345678L },
+                    { 2, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 2, 2, 1, "ventas@proveedorb.com", "Proveedor B", 5523456789L },
+                    { 3, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 3, 3, 1, "info@distribuidorac.com", "Distribuidora C", 5534567890L },
+                    { 4, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 4, 1, 1, "soporte@empresad.com", "Empresa D", 5545678901L },
+                    { 5, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 5, 2, 1, "compras@mayoristae.com", "Mayorista E", 5556789012L }
+                });
+
+            migrationBuilder.InsertData(
+                table: "users",
+                columns: new[] { "Id_user", "Date_delete", "Date_insert", "Date_restore", "Date_update", "Delete_log_user", "Id_company_Id", "Id_department_Id", "Id_module_Id", "Id_position_Id", "Id_rol_Id", "Mail_user", "Name_user", "Password_user", "Phone_user" },
+                values: new object[,]
+                {
+                    { 1, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 1, 1, 6, 1, 1, "gael.sanchez@example.com", "Sánchez Lobato Gael", "password123", 1234567890L },
+                    { 2, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 1, 2, 6, 2, 2, "carlos.quintero@example.com", "Quintero Escobar Carlos Máximo", "password123", 9876543210L },
+                    { 3, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 2, 3, 6, 3, 3, "gustavo.gutierrez@example.com", "Gutiérrez Canul Gustavo", "password123", 1122334455L },
+                    { 4, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 2, 4, 6, 4, 4, "isha.mata@example.com", "Raymundo Mata Isha Mia", "password123", 2233445566L },
+                    { 5, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 3, 5, 6, 5, 5, "carlos.velazquez@example.com", "Velázquez De La Cruz Carlos Yahir", "password123", 3344556677L }
+                });
+
+            migrationBuilder.InsertData(
+                table: "inventory",
+                columns: new[] { "Id_inventory_product", "Date_delete", "Date_insert", "Date_restore", "Date_update", "Delete_log_inventory", "Id_category_product_Id", "Id_company_Id", "Id_department_Id", "Id_module_Id", "Id_movement_type_Id", "Id_state_Id", "Id_supplier_Id", "Id_user_Id", "Name_product", "Price_product", "Stock_product" },
+                values: new object[,]
+                {
+                    { 1, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 1, 1, 1, 3, 1, 1, 1, 1, "Laptop Dell XPS 15", 25000.00m, 10 },
+                    { 2, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 2, 2, 2, 3, 2, 2, 2, 2, "Monitor Samsung 27\"", 7500.00m, 20 },
+                    { 3, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 3, 3, 3, 3, 1, 1, 3, 3, "Teclado Mecánico HyperX", 3500.00m, 15 },
+                    { 4, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 4, 1, 4, 3, 2, 2, 4, 4, "Mouse Logitech MX Master 3", 2500.00m, 25 },
+                    { 5, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 5, 2, 5, 3, 3, 3, 5, 5, "Silla Ergonómica", 12000.00m, 5 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "purchase_orders",
+                columns: new[] { "Id_purchase_order", "Amount_items_in_the_order", "Date_delete", "Date_insert", "Date_restore", "Date_update", "Delete_log_purchase_orders", "Id_category_purchase_order_Id", "Id_company_Id", "Id_department_Id", "Id_module_Id", "Id_movement_type_Id", "Id_state_Id", "Id_supplier_Id", "Id_user_Id", "Name_purchase_order", "Total_price_products" },
+                values: new object[,]
+                {
+                    { 1, 5, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 1, 1, 1, 5, 1, 1, 1, 1, "Orden de Compra 001", 1500.50m },
+                    { 2, 8, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 2, 1, 2, 5, 2, 2, 2, 2, "Orden de Compra 002", 2450.75m },
+                    { 3, 3, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 3, 2, 3, 5, 3, 3, 3, 3, "Orden de Compra 003", 850.25m },
+                    { 4, 12, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 4, 2, 4, 5, 4, 4, 4, 4, "Orden de Compra 004", 3750.00m },
+                    { 5, 7, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 5, 3, 5, 5, 5, 5, 5, 5, "Orden de Compra 005", 1980.99m }
+                });
+
+            migrationBuilder.InsertData(
+                table: "invoices",
+                columns: new[] { "Id_invoice", "Amount_items_in_the_invoice", "Date_delete", "Date_insert", "Date_restore", "Date_update", "Delete_log_invoices", "Id_company_Id", "Id_department_Id", "Id_module_Id", "Id_purchase_order_Id", "Id_supplier_Id", "Name_invoice" },
+                values: new object[,]
+                {
+                    { 1, 5, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 1, 1, 4, 1, 1, "Factura 001" },
+                    { 2, 8, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 1, 2, 4, 2, 2, "Factura 002" },
+                    { 3, 3, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 2, 3, 4, 3, 3, "Factura 003" },
+                    { 4, 12, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 2, 4, 4, 4, 4, "Factura 004" },
+                    { 5, 7, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 3, 5, 4, 5, 5, "Factura 005" }
                 });
 
             migrationBuilder.CreateIndex(

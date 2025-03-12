@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Application\DTOs\Invoices\" />
     <Folder Include="Application\PDFs\" />
     <Folder Include="Domain\CoreServices\" />
     <Folder Include="Domain\Models\PrimitiveModels\" />

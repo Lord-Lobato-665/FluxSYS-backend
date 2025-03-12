@@ -23,6 +23,13 @@ namespace FluxSYS_backend.Infraestructure.Data
             services.AddScoped<IPositions, PositionsRepository>();
             services.AddScoped<IRoles, RolesRepository>();
             services.AddScoped<IStates, StatesRepository>();
+            services.AddScoped<IUsers, UsersRepository>();
+            services.AddScoped<ISuppliers, SuppliersRepository>();
+            services.AddScoped<IPurchaseOrders, PurchaseOrdersRepository>();
+            services.AddScoped<IInventories,  InventoriesRepository>();
+            services.AddScoped<IInvoices, InvoicesRepository>();
+            services.AddScoped<IAudits, AuditsRepository>();
+            services.AddScoped<IInventoryMovements,  InventoryMovementsRepository>();
 
             // Registrar Servicios
             services.AddScoped<ErrorLogService>();
@@ -37,6 +44,13 @@ namespace FluxSYS_backend.Infraestructure.Data
             services.AddScoped<PositionsService>();
             services.AddScoped<RolesService>();
             services.AddScoped<StatesService>();
+            services.AddScoped<UsersService>();
+            services.AddScoped<SuppliersService>();
+            services.AddScoped<PurchaseOrdersService>();
+            services.AddScoped<InventoriesService>();
+            services.AddScoped<InvoicesService>();
+            services.AddScoped<AuditsService>();
+            services.AddScoped<InventoryMovementsService>();
 
             return services;
         }

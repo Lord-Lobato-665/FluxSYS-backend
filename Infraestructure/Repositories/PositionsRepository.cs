@@ -25,6 +25,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 return await _context.Positions
                     .Select(p => new PositionReadDTO
                     {
+                        Id_position = p.Id_position,
                         Name_position = p.Name_position,
                         Name_company = p.Companies.Name_company,
                         Delete_log_position = p.Delete_log_position
