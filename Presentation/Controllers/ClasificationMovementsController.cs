@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using FluxSYS_backend.Application.ViewModels;
+using FluxSYS_backend.Application.Filters;
 
 namespace FluxSYS_backend.API.Controllers
 {
@@ -22,6 +23,7 @@ namespace FluxSYS_backend.API.Controllers
             _errorLogService = errorLogService;
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpGet("get-clasification-movements")]
         public async Task<IActionResult> GetAll()
         {
@@ -37,6 +39,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpPost("create-clasification-movement")]
         public async Task<IActionResult> Create([FromBody] ClasificationMovementViewModel model)
         {
@@ -68,6 +71,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpPut("update-clasification-movement/{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] ClasificationMovementViewModel model)
         {
@@ -87,8 +91,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.UpdateAsyncClasificationMovement(id, dto);
                 return Ok(new { message = "Clasificación de movimiento actualizada correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "UpdateClasificationMovementController - KeyNotFound");
                 return NotFound("Clasificación de movimiento no encontrada.");
             }
             catch (Exception ex)
@@ -98,6 +103,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpDelete("delete-clasification-movement/{id}")]
         public async Task<IActionResult> SoftDelete(int id)
         {
@@ -106,8 +112,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.SoftDeleteAsyncClasificationMovement(id);
                 return Ok(new { message = "Clasificación de movimiento eliminada correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "DeleteClasificationMovementController - KeyNotFound");
                 return NotFound("Clasificación de movimiento no encontrada para eliminar.");
             }
             catch (Exception ex)
@@ -117,6 +124,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpPatch("restore-clasification-movement/{id}")]
         public async Task<IActionResult> Restore(int id)
         {
@@ -125,8 +133,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.RestoreAsyncClasificationMovement(id);
                 return Ok(new { message = "Clasificación de movimiento restaurada correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "RestoreClasificationMovementController - KeyNotFound");
                 return NotFound("Clasificación de movimiento no encontrada para restaurar.");
             }
             catch (Exception ex)

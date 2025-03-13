@@ -1,4 +1,5 @@
 ﻿using FluxSYS_backend.Application.DTOs.InventoryMovements;
+using FluxSYS_backend.Application.Filters;
 using FluxSYS_backend.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -19,6 +20,7 @@ namespace FluxSYS_backend.API.Controllers
             _errorLogService = errorLogService;
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
         [HttpGet("get-inventory-movements")]
         public async Task<IActionResult> GetAll()
         {

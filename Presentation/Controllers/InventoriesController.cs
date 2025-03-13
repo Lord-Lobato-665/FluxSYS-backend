@@ -1,4 +1,5 @@
 ﻿using FluxSYS_backend.Application.DTOs.Inventories;
+using FluxSYS_backend.Application.Filters;
 using FluxSYS_backend.Application.Services;
 using FluxSYS_backend.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,7 @@ namespace FluxSYS_backend.API.Controllers
             _errorLogService = errorLogService;
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpGet("get-inventories")]
         public async Task<IActionResult> GetAll()
         {
@@ -35,6 +37,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
         [HttpPost("create-inventory")]
         public async Task<IActionResult> Create([FromBody] InventoryViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
         {
@@ -66,6 +69,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento")]
         [HttpPut("update-inventory/{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] InventoryViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
         {
@@ -90,8 +94,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.UpdateAsyncInventory(id, dto, userId, departmentId);
                 return Ok(new { message = "Producto de inventario actualizado correctamente." });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "UpdateInventoryController - KeyNotFound");
                 return NotFound("Producto de inventario no encontrado.");
             }
             catch (Exception ex)
@@ -101,6 +106,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpDelete("delete-inventory/{id}")]
         public async Task<IActionResult> SoftDelete(int id, [FromQuery] int userId, [FromQuery] int departmentId)
         {
@@ -109,8 +115,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.SoftDeleteAsyncInventory(id, userId, departmentId);
                 return Ok(new { message = "Producto de inventario eliminado correctamente." });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "DeleteInventoryController - KeyNotFound");
                 return NotFound("Producto de inventario no encontrado para eliminar.");
             }
             catch (Exception ex)
@@ -120,6 +127,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpPatch("restore-inventory/{id}")]
         public async Task<IActionResult> Restore(int id, [FromQuery] int userId, [FromQuery] int departmentId)
         {
@@ -128,8 +136,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.RestoreAsyncInventory(id, userId, departmentId);
                 return Ok(new { message = "Producto de inventario restaurado correctamente." });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "RestoreInventoryController - KeyNotFound");
                 return NotFound("Producto de inventario no encontrado para restaurar.");
             }
             catch (Exception ex)

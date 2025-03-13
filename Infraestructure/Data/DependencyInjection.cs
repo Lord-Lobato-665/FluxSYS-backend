@@ -51,6 +51,7 @@ namespace FluxSYS_backend.Infraestructure.Data
             services.AddScoped<InvoicesService>();
             services.AddScoped<AuditsService>();
             services.AddScoped<InventoryMovementsService>();
+            services.AddScoped<AuthService>();
 
             return services;
         }

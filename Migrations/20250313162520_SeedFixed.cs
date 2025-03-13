@@ -509,6 +509,27 @@ namespace FluxSYS_backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UserTokens",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Token = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    ExpirationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserTokens", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserTokens_users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "users",
+                        principalColumn: "Id_user",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "inventory_movements",
                 columns: table => new
                 {
@@ -721,7 +742,7 @@ namespace FluxSYS_backend.Migrations
                 columns: new[] { "Id_company", "Delete_log_company", "Name_company" },
                 values: new object[,]
                 {
-                    { 1, false, "Tech Innovators" },
+                    { 1, false, "FluxSYS" },
                     { 2, false, "Global Solutions" },
                     { 3, false, "NextGen Systems" },
                     { 4, false, "Future Enterprises" }
@@ -746,10 +767,10 @@ namespace FluxSYS_backend.Migrations
                 values: new object[,]
                 {
                     { 1, false, "Administrador" },
-                    { 2, false, "Supervisor" },
-                    { 3, false, "Operador" },
-                    { 4, false, "Invitado" },
-                    { 5, false, "Gerente" }
+                    { 2, false, "Administrador Empresarial" },
+                    { 3, false, "Jefe de Departamento" },
+                    { 4, false, "Subjefe de Departamento" },
+                    { 5, false, "Colaborador" }
                 });
 
             migrationBuilder.InsertData(
@@ -793,7 +814,7 @@ namespace FluxSYS_backend.Migrations
                 columns: new[] { "Id_department", "Delete_log_department", "Id_company_Id", "Name_deparment" },
                 values: new object[,]
                 {
-                    { 1, false, 1, "Recursos Humanos" },
+                    { 1, false, 1, "System" },
                     { 2, false, 2, "Tecnología" },
                     { 3, false, 3, "Ventas" },
                     { 4, false, 4, "Logística" },
@@ -817,7 +838,7 @@ namespace FluxSYS_backend.Migrations
                 columns: new[] { "Id_position", "Delete_log_position", "Id_company_Id", "Name_position" },
                 values: new object[,]
                 {
-                    { 1, false, 1, "Gerente" },
+                    { 1, false, 1, "System" },
                     { 2, false, 2, "Supervisor" },
                     { 3, false, 3, "Analista" },
                     { 4, false, 4, "Técnico" },
@@ -853,11 +874,11 @@ namespace FluxSYS_backend.Migrations
                 columns: new[] { "Id_user", "Date_delete", "Date_insert", "Date_restore", "Date_update", "Delete_log_user", "Id_company_Id", "Id_department_Id", "Id_module_Id", "Id_position_Id", "Id_rol_Id", "Mail_user", "Name_user", "Password_user", "Phone_user" },
                 values: new object[,]
                 {
-                    { 1, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 1, 1, 6, 1, 1, "gael.sanchez@example.com", "Sánchez Lobato Gael", "password123", 1234567890L },
-                    { 2, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 1, 2, 6, 2, 2, "carlos.quintero@example.com", "Quintero Escobar Carlos Máximo", "password123", 9876543210L },
-                    { 3, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 2, 3, 6, 3, 3, "gustavo.gutierrez@example.com", "Gutiérrez Canul Gustavo", "password123", 1122334455L },
-                    { 4, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 2, 4, 6, 4, 4, "isha.mata@example.com", "Raymundo Mata Isha Mia", "password123", 2233445566L },
-                    { 5, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 3, 5, 6, 5, 5, "carlos.velazquez@example.com", "Velázquez De La Cruz Carlos Yahir", "password123", 3344556677L }
+                    { 1, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 1, 1, 6, 1, 1, "gael@example.com", "Sánchez Lobato Gael", "$2y$10$5E5W.r3psQwlD7qFPQMqx.X55Tm8YuTWfirUaSQO5XTk0t5v0CJ/S", 1234567890L },
+                    { 2, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 1, 1, 6, 1, 1, "maximo@example.com", "Quintero Escobar Carlos Máximo", "$2y$10$5E5W.r3psQwlD7qFPQMqx.X55Tm8YuTWfirUaSQO5XTk0t5v0CJ/S", 9876543210L },
+                    { 3, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 1, 1, 6, 1, 1, "gustavo@example.com", "Gutiérrez Canul Gustavo", "$2y$10$5E5W.r3psQwlD7qFPQMqx.X55Tm8YuTWfirUaSQO5XTk0t5v0CJ/S", 1122334455L },
+                    { 4, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 1, 1, 6, 1, 1, "mia@example.com", "Raymundo Mata Isha Mia", "$2y$10$5E5W.r3psQwlD7qFPQMqx.X55Tm8YuTWfirUaSQO5XTk0t5v0CJ/S", 2233445566L },
+                    { 5, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 1, 1, 6, 1, 1, "carlos@example.com", "Velázquez De La Cruz Carlos Yahir", "$2y$10$5E5W.r3psQwlD7qFPQMqx.X55Tm8YuTWfirUaSQO5XTk0t5v0CJ/S", 3344556677L }
                 });
 
             migrationBuilder.InsertData(
@@ -1170,6 +1191,11 @@ namespace FluxSYS_backend.Migrations
                 name: "IX_users_Id_rol_Id",
                 table: "users",
                 column: "Id_rol_Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserTokens_UserId",
+                table: "UserTokens",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -1192,6 +1218,9 @@ namespace FluxSYS_backend.Migrations
 
             migrationBuilder.DropTable(
                 name: "suppliers_products");
+
+            migrationBuilder.DropTable(
+                name: "UserTokens");
 
             migrationBuilder.DropTable(
                 name: "invoices");

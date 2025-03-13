@@ -10,7 +10,7 @@ namespace FluxSYS_backend.Infraestructure.Data
         {
             // Companies
             modelBuilder.Entity<Companies>().HasData(
-                new Companies { Id_company = 1, Name_company = "Tech Innovators" },
+                new Companies { Id_company = 1, Name_company = "FluxSYS" },
                 new Companies { Id_company = 2, Name_company = "Global Solutions" },
                 new Companies { Id_company = 3, Name_company = "NextGen Systems" },
                 new Companies { Id_company = 4, Name_company = "Future Enterprises" }
@@ -72,7 +72,7 @@ namespace FluxSYS_backend.Infraestructure.Data
 
             // Departments
             modelBuilder.Entity<Departments>().HasData(
-                new Departments { Id_department = 1, Name_deparment = "Recursos Humanos", Id_company_Id = 1 },
+                new Departments { Id_department = 1, Name_deparment = "System", Id_company_Id = 1 },
                 new Departments { Id_department = 2, Name_deparment = "Tecnología", Id_company_Id = 2 },
                 new Departments { Id_department = 3, Name_deparment = "Ventas", Id_company_Id = 3 },
                 new Departments { Id_department = 4, Name_deparment = "Logística", Id_company_Id = 4 },
@@ -81,7 +81,7 @@ namespace FluxSYS_backend.Infraestructure.Data
 
             // Positions
             modelBuilder.Entity<Positions>().HasData(
-                new Positions { Id_position = 1, Name_position = "Gerente", Id_company_Id = 1 },
+                new Positions { Id_position = 1, Name_position = "System", Id_company_Id = 1 },
                 new Positions { Id_position = 2, Name_position = "Supervisor", Id_company_Id = 2 },
                 new Positions { Id_position = 3, Name_position = "Analista", Id_company_Id = 3 },
                 new Positions { Id_position = 4, Name_position = "Técnico", Id_company_Id = 4 },
@@ -91,10 +91,10 @@ namespace FluxSYS_backend.Infraestructure.Data
             // Roles
             modelBuilder.Entity<Roles>().HasData(
                 new Roles { Id_role = 1, Name_role = "Administrador" },
-                new Roles { Id_role = 2, Name_role = "Supervisor" },
-                new Roles { Id_role = 3, Name_role = "Operador" },
-                new Roles { Id_role = 4, Name_role = "Invitado" },
-                new Roles { Id_role = 5, Name_role = "Gerente" }
+                new Roles { Id_role = 2, Name_role = "Administrador Empresarial" },
+                new Roles { Id_role = 3, Name_role = "Jefe de Departamento" },
+                new Roles { Id_role = 4, Name_role = "Subjefe de Departamento" },
+                new Roles { Id_role = 5, Name_role = "Colaborador" }
             );
 
             // States
@@ -423,9 +423,9 @@ namespace FluxSYS_backend.Infraestructure.Data
                 {
                     Id_user = 1,
                     Name_user = "Sánchez Lobato Gael",
-                    Mail_user = "gael.sanchez@example.com",
+                    Mail_user = "gael@example.com",
                     Phone_user = 1234567890,
-                    Password_user = "password123",
+                    Password_user = "$2y$10$5E5W.r3psQwlD7qFPQMqx.X55Tm8YuTWfirUaSQO5XTk0t5v0CJ/S", //contraseña: admin1234
                     Id_rol_Id = 1,
                     Id_position_Id = 1,
                     Id_department_Id = 1,
@@ -438,12 +438,12 @@ namespace FluxSYS_backend.Infraestructure.Data
                 {
                     Id_user = 2,
                     Name_user = "Quintero Escobar Carlos Máximo",
-                    Mail_user = "carlos.quintero@example.com",
+                    Mail_user = "maximo@example.com",
                     Phone_user = 9876543210,
-                    Password_user = "password123",
-                    Id_rol_Id = 2,
-                    Id_position_Id = 2,
-                    Id_department_Id = 2,
+                    Password_user = "$2y$10$5E5W.r3psQwlD7qFPQMqx.X55Tm8YuTWfirUaSQO5XTk0t5v0CJ/S", //contraseña: admin1234
+                    Id_rol_Id = 1,
+                    Id_position_Id = 1,
+                    Id_department_Id = 1,
                     Id_company_Id = 1,
                     Id_module_Id = 6,
                     Date_insert = new DateTime(2025, 3, 12),
@@ -453,13 +453,13 @@ namespace FluxSYS_backend.Infraestructure.Data
                 {
                     Id_user = 3,
                     Name_user = "Gutiérrez Canul Gustavo",
-                    Mail_user = "gustavo.gutierrez@example.com",
+                    Mail_user = "gustavo@example.com",
                     Phone_user = 1122334455,
-                    Password_user = "password123",
-                    Id_rol_Id = 3,
-                    Id_position_Id = 3,
-                    Id_department_Id = 3,
-                    Id_company_Id = 2,
+                    Password_user = "$2y$10$5E5W.r3psQwlD7qFPQMqx.X55Tm8YuTWfirUaSQO5XTk0t5v0CJ/S", //contraseña: admin1234
+                    Id_rol_Id = 1,
+                    Id_position_Id = 1,
+                    Id_department_Id = 1,
+                    Id_company_Id = 1,
                     Id_module_Id = 6,
                     Date_insert = new DateTime(2025, 3, 12), 
                     Delete_log_user = false
@@ -468,13 +468,13 @@ namespace FluxSYS_backend.Infraestructure.Data
                 {
                     Id_user = 4,
                     Name_user = "Raymundo Mata Isha Mia",
-                    Mail_user = "isha.mata@example.com",
+                    Mail_user = "mia@example.com",
                     Phone_user = 2233445566,
-                    Password_user = "password123",
-                    Id_rol_Id = 4,
-                    Id_position_Id = 4,
-                    Id_department_Id = 4,
-                    Id_company_Id = 2,
+                    Password_user = "$2y$10$5E5W.r3psQwlD7qFPQMqx.X55Tm8YuTWfirUaSQO5XTk0t5v0CJ/S", //contraseña: admin1234
+                    Id_rol_Id = 1,
+                    Id_position_Id = 1,
+                    Id_department_Id = 1,
+                    Id_company_Id = 1,
                     Id_module_Id = 6,
                     Date_insert = new DateTime(2025, 3, 12),
                     Delete_log_user = false
@@ -483,13 +483,13 @@ namespace FluxSYS_backend.Infraestructure.Data
                 {
                     Id_user = 5,
                     Name_user = "Velázquez De La Cruz Carlos Yahir",
-                    Mail_user = "carlos.velazquez@example.com",
+                    Mail_user = "carlos@example.com",
                     Phone_user = 3344556677,
-                    Password_user = "password123",
-                    Id_rol_Id = 5,
-                    Id_position_Id = 5,
-                    Id_department_Id = 5,
-                    Id_company_Id = 3,
+                    Password_user = "$2y$10$5E5W.r3psQwlD7qFPQMqx.X55Tm8YuTWfirUaSQO5XTk0t5v0CJ/S", //contraseña: admin1234
+                    Id_rol_Id = 1,
+                    Id_position_Id = 1,
+                    Id_department_Id = 1,
+                    Id_company_Id = 1,
                     Id_module_Id = 6,
                     Date_insert = new DateTime(2025, 3, 12),
                     Delete_log_user = false

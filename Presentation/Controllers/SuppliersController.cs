@@ -6,6 +6,7 @@ using System;
 using System.Threading.Tasks;
 using FluxSYS_backend.Application.AppServices;
 using Microsoft.Data.SqlClient;
+using FluxSYS_backend.Application.Filters;
 
 namespace FluxSYS_backend.API.Controllers
 {
@@ -33,6 +34,7 @@ namespace FluxSYS_backend.API.Controllers
             _companiesService = companiesService;
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpGet("get-suppliers")]
         public async Task<IActionResult> GetAll()
         {
@@ -48,6 +50,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
         [HttpPost("create-supplier")]
         public async Task<IActionResult> Create([FromBody] SupplierViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
         {
@@ -97,6 +100,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento")]
         [HttpPut("update-supplier/{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] SupplierViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
         {
@@ -121,8 +125,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.UpdateAsyncSupplier(id, dto, userId, departmentId);
                 return Ok(new { message = "Proveedor actualizado correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "UpdateSupplierController - KeyNotFound");
                 return NotFound("Proveedor no encontrado");
             }
             catch (Exception ex)
@@ -132,6 +137,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpDelete("delete-supplier/{id}")]
         public async Task<IActionResult> SoftDelete(int id, [FromQuery] int userId, [FromQuery] int departmentId)
         {
@@ -140,8 +146,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.SoftDeleteAsyncSupplier(id, userId, departmentId);
                 return Ok(new { message = "Proveedor eliminado correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "DeleteSupplierController - KeyNotFound");
                 return NotFound("Proveedor no encontrado para eliminar");
             }
             catch (Exception ex)
@@ -151,6 +158,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpPatch("restore-supplier/{id}")]
         public async Task<IActionResult> Restore(int id, [FromQuery] int userId, [FromQuery] int departmentId)
         {
@@ -159,8 +167,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.RestoreAsyncSupplier(id, userId, departmentId);
                 return Ok(new { message = "Proveedor restaurado correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "RestoreSupplierController - KeyNotFound");
                 return NotFound("Proveedor no encontrado para restaurar");
             }
             catch (Exception ex)

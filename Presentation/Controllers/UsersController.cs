@@ -6,6 +6,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using FluxSYS_backend.Application.AppServices;
+using FluxSYS_backend.Application.Filters;
 
 namespace FluxSYS_backend.API.Controllers
 {
@@ -39,6 +40,7 @@ namespace FluxSYS_backend.API.Controllers
             _modulesService = modulesService;
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpGet("get-users")]
         public async Task<IActionResult> GetAll()
         {
@@ -54,6 +56,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpPost("create-user")]
         public async Task<IActionResult> Create([FromBody] UserViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
         {
@@ -98,8 +101,15 @@ namespace FluxSYS_backend.API.Controllers
                     Id_department_Id = model.Id_department_Id,
                     Id_company_Id = model.Id_company_Id
                 };
+
                 await _service.AddAsyncUser(dto, userId, departmentId);
                 return Ok(new { message = "Usuario creado correctamente" });
+            }
+            catch (InvalidOperationException ex)
+            {
+                // Registrar el error en el servicio de errores
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "CreateUserController - InvalidOperation");
+                return BadRequest(ex.Message);
             }
             catch (SqlException ex) when (ex.Number == 547) // Error de clave foránea
             {
@@ -113,30 +123,26 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpPut("update-user/{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] UserViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> Update(int id, [FromBody] UserUpdateDTO dto, [FromQuery] int userId, [FromQuery] int departmentId)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
             try
             {
-                var dto = new UserUpdateDTO
-                {
-                    Name_user = model.Name_user,
-                    Mail_user = model.Mail_user,
-                    Phone_user = model.Phone_user,
-                    Password_user = model.Password_user,
-                    Id_rol_Id = model.Id_rol_Id,
-                    Id_position_Id = model.Id_position_Id,
-                    Id_department_Id = model.Id_department_Id,
-                    Id_company_Id = model.Id_company_Id
-                };
+                // Llamar al servicio para actualizar el usuario
                 await _service.UpdateAsyncUser(id, dto, userId, departmentId);
                 return Ok(new { message = "Usuario actualizado correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (InvalidOperationException ex)
             {
+                // Registrar el error en el servicio de errores
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "UpdateUserController - InvalidOperation");
+                return BadRequest(ex.Message);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                // Registrar el error en el servicio de errores
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "UpdateUserController - KeyNotFound");
                 return NotFound("Usuario no encontrado");
             }
             catch (Exception ex)
@@ -146,6 +152,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpDelete("delete-user/{id}")]
         public async Task<IActionResult> SoftDelete(int id, [FromQuery] int userId, [FromQuery] int departmentId)
         {
@@ -154,8 +161,10 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.SoftDeleteAsyncUser(id, userId, departmentId);
                 return Ok(new { message = "Usuario eliminado correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                // Registrar el error en el servicio de errores
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "SoftDeleteUserController - KeyNotFound");
                 return NotFound("Usuario no encontrado para eliminar");
             }
             catch (Exception ex)
@@ -165,6 +174,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpPatch("restore-user/{id}")]
         public async Task<IActionResult> Restore(int id, [FromQuery] int userId, [FromQuery] int departmentId)
         {
@@ -173,8 +183,10 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.RestoreAsyncUser(id, userId, departmentId);
                 return Ok(new { message = "Usuario restaurado correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                // Registrar el error en el servicio de errores
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "RestoreUserController - KeyNotFound");
                 return NotFound("Usuario no encontrado para restaurar");
             }
             catch (Exception ex)

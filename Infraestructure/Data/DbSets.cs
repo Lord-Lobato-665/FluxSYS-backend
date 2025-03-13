@@ -29,5 +29,6 @@ namespace FluxSYS_backend.Infraestructure.Data
         public DbSet<InvoicesProducts> InvoicesProducts { get; set; }
         public DbSet<SuppliersProducts> SuppliersProducts { get; set; }
         public DbSet<ErrorLogs> ErrorLogs { get; set; }
+        public DbSet<UserToken> UserTokens { get; set; }
     }
 }
