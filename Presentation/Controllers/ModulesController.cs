@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using FluxSYS_backend.Application.AppServices;
+using FluxSYS_backend.Application.Filters;
 
 namespace FluxSYS_backend.API.Controllers
 {
@@ -21,6 +22,7 @@ namespace FluxSYS_backend.API.Controllers
             _errorLogService = errorLogService;
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpGet("get-modules")]
         public async Task<IActionResult> GetAll()
         {
@@ -36,6 +38,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpPost("create-module")]
         public async Task<IActionResult> Create([FromBody] ModuleViewModel model)
         {
@@ -58,6 +61,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpPut("update-module/{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] ModuleViewModel model)
         {
@@ -73,8 +77,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.UpdateAsyncModule(id, dto);
                 return Ok(new { message = "Módulo actualizado correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "UpdateModuleController - KeyNotFound");
                 return NotFound("Módulo no encontrado");
             }
             catch (Exception ex)
@@ -84,6 +89,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpDelete("delete-module/{id}")]
         public async Task<IActionResult> SoftDelete(int id)
         {
@@ -92,8 +98,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.SoftDeleteAsyncModule(id);
                 return Ok(new { message = "Módulo eliminado correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "DeleteModuleController - KeyNotFound");
                 return NotFound("Módulo no encontrado para eliminar");
             }
             catch (Exception ex)
@@ -103,6 +110,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpPatch("restore-module/{id}")]
         public async Task<IActionResult> Restore(int id)
         {
@@ -111,8 +119,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.RestoreAsyncModule(id);
                 return Ok(new { message = "Módulo restaurado correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "RestoreModuleController - KeyNotFound");
                 return NotFound("Módulo no encontrado para restaurar");
             }
             catch (Exception ex)

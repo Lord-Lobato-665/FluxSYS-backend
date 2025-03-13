@@ -57,12 +57,30 @@ namespace FluxSYS_backend.Infrastructure.Repositories
         {
             try
             {
+                // Verificar si el correo electrónico ya existe
+                var existingUserByEmail = await _context.Users
+                    .FirstOrDefaultAsync(u => u.Mail_user == dto.Mail_user);
+
+                if (existingUserByEmail != null)
+                {
+                    throw new InvalidOperationException("El correo electrónico ya está registrado.");
+                }
+
+                // Verificar si el número de teléfono ya existe
+                var existingUserByPhone = await _context.Users
+                    .FirstOrDefaultAsync(u => u.Phone_user == dto.Phone_user);
+
+                if (existingUserByPhone != null)
+                {
+                    throw new InvalidOperationException("El número de teléfono ya está registrado.");
+                }
+
                 var user = new Users
                 {
                     Name_user = dto.Name_user,
                     Mail_user = dto.Mail_user,
                     Phone_user = dto.Phone_user,
-                    Password_user = dto.Password_user,
+                    Password_user = BCrypt.Net.BCrypt.HashPassword(dto.Password_user), // Hashear la contraseña
                     Id_rol_Id = dto.Id_rol_Id,
                     Id_position_Id = dto.Id_position_Id,
                     Id_department_Id = dto.Id_department_Id,
@@ -90,6 +108,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             catch (Exception ex)
             {
                 await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "CreateUser");
+                throw; // Relanzar la excepción para manejarla en el controlador
             }
         }
 
@@ -97,10 +116,29 @@ namespace FluxSYS_backend.Infrastructure.Repositories
         {
             try
             {
+                // Buscar el usuario por ID
                 var user = await _context.Users.FindAsync(id);
                 if (user == null)
                 {
                     throw new KeyNotFoundException("Usuario no encontrado para actualizar");
+                }
+
+                // Verificar si el correo electrónico ya está en uso por otro usuario
+                var existingUserByEmail = await _context.Users
+                    .FirstOrDefaultAsync(u => u.Mail_user == dto.Mail_user && u.Id_user != id);
+
+                if (existingUserByEmail != null)
+                {
+                    throw new InvalidOperationException("El correo electrónico ya está registrado.");
+                }
+
+                // Verificar si el número de teléfono ya está en uso por otro usuario
+                var existingUserByPhone = await _context.Users
+                    .FirstOrDefaultAsync(u => u.Phone_user == dto.Phone_user && u.Id_user != id);
+
+                if (existingUserByPhone != null)
+                {
+                    throw new InvalidOperationException("El número de teléfono ya está registrado.");
                 }
 
                 // Registrar en la tabla de auditoría
@@ -121,7 +159,13 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 user.Name_user = dto.Name_user;
                 user.Mail_user = dto.Mail_user;
                 user.Phone_user = dto.Phone_user;
-                user.Password_user = dto.Password_user;
+
+                // Solo actualizar la contraseña si se proporciona un valor
+                if (!string.IsNullOrEmpty(dto.Password_user))
+                {
+                    user.Password_user = BCrypt.Net.BCrypt.HashPassword(dto.Password_user);
+                }
+
                 user.Id_rol_Id = dto.Id_rol_Id;
                 user.Id_position_Id = dto.Id_position_Id;
                 user.Id_department_Id = dto.Id_department_Id;
@@ -134,6 +178,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             catch (Exception ex)
             {
                 await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "UpdateUser");
+                throw; // Relanzar la excepción para manejarla en el controlador
             }
         }
 

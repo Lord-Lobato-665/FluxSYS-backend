@@ -6,6 +6,7 @@ using System;
 using System.Threading.Tasks;
 using FluxSYS_backend.Application.AppServices;
 using Microsoft.Data.SqlClient;
+using FluxSYS_backend.Application.Filters;
 
 namespace FluxSYS_backend.API.Controllers
 {
@@ -24,6 +25,7 @@ namespace FluxSYS_backend.API.Controllers
             _companiesService = companiesService;
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpGet("get-categories-purchase-orders")]
         public async Task<IActionResult> GetAll()
         {
@@ -39,6 +41,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
         [HttpPost("create-category-purchase-order")]
         public async Task<IActionResult> Create([FromBody] CategoryPurchaseOrderViewModel model)
         {
@@ -74,6 +77,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento")]
         [HttpPut("update-category-purchase-order/{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] CategoryPurchaseOrderViewModel model)
         {
@@ -90,8 +94,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.UpdateAsyncCategoryPurchaseOrder(id, dto);
                 return Ok(new { message = "Categoría de orden de compra actualizada correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "UpdateCategoryPurchaseOrdertController - KeyNotFound");
                 return NotFound("Categoría de orden de compra no encontrada");
             }
             catch (Exception ex)
@@ -101,6 +106,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpDelete("delete-category-purchase-order/{id}")]
         public async Task<IActionResult> SoftDelete(int id)
         {
@@ -109,8 +115,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.SoftDeleteAsyncCategoryPurchaseOrder(id);
                 return Ok(new { message = "Categoría de orden de compra eliminada correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "DeleteCategoryPurchaseOrdertController - KeyNotFound");
                 return NotFound("Categoría de orden de compra no encontrada para eliminar");
             }
             catch (Exception ex)
@@ -120,6 +127,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpPatch("restore-category-purchase-order/{id}")]
         public async Task<IActionResult> Restore(int id)
         {
@@ -128,8 +136,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.RestoreAsyncCategoryPurchaseOrder(id);
                 return Ok(new { message = "Categoría de orden de compra restaurada correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "RestoreCategoryPurchaseOrdertController - KeyNotFound");
                 return NotFound("Categoría de orden de compra no encontrada para restaurar");
             }
             catch (Exception ex)

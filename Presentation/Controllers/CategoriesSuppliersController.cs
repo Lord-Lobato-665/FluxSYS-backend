@@ -6,6 +6,7 @@ using System;
 using System.Threading.Tasks;
 using FluxSYS_backend.Application.AppServices;
 using Microsoft.Data.SqlClient;
+using FluxSYS_backend.Application.Filters;
 
 namespace FluxSYS_backend.API.Controllers
 {
@@ -24,6 +25,7 @@ namespace FluxSYS_backend.API.Controllers
             _companiesService = companiesService;
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpGet("get-categories-suppliers")]
         public async Task<IActionResult> GetAll()
         {
@@ -39,6 +41,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
         [HttpPost("create-category-supplier")]
         public async Task<IActionResult> Create([FromBody] CategorySuppliersViewModel model)
         {
@@ -74,6 +77,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento")]
         [HttpPut("update-category-supplier/{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] CategorySuppliersViewModel model)
         {
@@ -90,8 +94,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.UpdateAsyncCategorySupplier(id, dto);
                 return Ok(new { message = "Categoría de proveedor actualizada correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "UpdateCategorySupplierController - KeyNotFound");
                 return NotFound("Categoría de proveedor no encontrada");
             }
             catch (Exception ex)
@@ -101,6 +106,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpDelete("delete-category-supplier/{id}")]
         public async Task<IActionResult> SoftDelete(int id)
         {
@@ -109,8 +115,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.SoftDeleteAsyncCategorySupplier(id);
                 return Ok(new { message = "Categoría de proveedor eliminada correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "DeleteCategorySupplierController - KeyNotFound");
                 return NotFound("Categoría de proveedor no encontrada para eliminar");
             }
             catch (Exception ex)
@@ -120,6 +127,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpPatch("restore-category-supplier/{id}")]
         public async Task<IActionResult> Restore(int id)
         {
@@ -128,8 +136,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.RestoreAsyncCategorySupplier(id);
                 return Ok(new { message = "Categoría de proveedor restaurada correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "RestoreCategorySupplierController - KeyNotFound");
                 return NotFound("Categoría de proveedor no encontrada para restaurar");
             }
             catch (Exception ex)

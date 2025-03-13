@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using FluxSYS_backend.Application.AppServices;
+using FluxSYS_backend.Application.Filters;
 
 namespace FluxSYS_backend.API.Controllers
 {
@@ -21,6 +22,7 @@ namespace FluxSYS_backend.API.Controllers
             _errorLogService = errorLogService;
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpGet("get-roles")]
         public async Task<IActionResult> GetAll()
         {
@@ -36,6 +38,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpPost("create-role")]
         public async Task<IActionResult> Create([FromBody] RoleViewModel model)
         {
@@ -58,6 +61,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpPut("update-role/{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] RoleViewModel model)
         {
@@ -73,8 +77,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.UpdateAsyncRole(id, dto);
                 return Ok(new { message = "Rol actualizado correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "UpdateRoleController - KeyNotFound");
                 return NotFound("Rol no encontrado");
             }
             catch (Exception ex)
@@ -84,6 +89,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpDelete("delete-role/{id}")]
         public async Task<IActionResult> SoftDelete(int id)
         {
@@ -92,8 +98,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.SoftDeleteAsyncRole(id);
                 return Ok(new { message = "Rol eliminado correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "DeleteRoleController - KeyNotFound");
                 return NotFound("Rol no encontrado para eliminar");
             }
             catch (Exception ex)
@@ -103,6 +110,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpPatch("restore-role/{id}")]
         public async Task<IActionResult> Restore(int id)
         {
@@ -111,8 +119,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.RestoreAsyncRole(id);
                 return Ok(new { message = "Rol restaurado correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "RestoreRoleController - KeyNotFound");
                 return NotFound("Rol no encontrado para restaurar");
             }
             catch (Exception ex)

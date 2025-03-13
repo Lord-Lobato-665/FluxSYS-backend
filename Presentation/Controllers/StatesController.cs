@@ -6,6 +6,7 @@ using System;
 using System.Threading.Tasks;
 using FluxSYS_backend.Application.AppServices;
 using Microsoft.Data.SqlClient;
+using FluxSYS_backend.Application.Filters;
 
 namespace FluxSYS_backend.API.Controllers
 {
@@ -24,6 +25,7 @@ namespace FluxSYS_backend.API.Controllers
             _companiesService = companiesService;
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpGet("get-states")]
         public async Task<IActionResult> GetAll()
         {
@@ -39,6 +41,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
         [HttpPost("create-state")]
         public async Task<IActionResult> Create([FromBody] StateViewModel model)
         {
@@ -74,6 +77,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento")]
         [HttpPut("update-state/{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] StateViewModel model)
         {
@@ -90,8 +94,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.UpdateAsyncState(id, dto);
                 return Ok(new { message = "Estado actualizado correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "UpdateStateController - KeyNotFound");
                 return NotFound("Estado no encontrado");
             }
             catch (Exception ex)
@@ -101,6 +106,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpDelete("delete-state/{id}")]
         public async Task<IActionResult> SoftDelete(int id)
         {
@@ -109,8 +115,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.SoftDeleteAsyncState(id);
                 return Ok(new { message = "Estado eliminado correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "DeleteStateController - KeyNotFound");
                 return NotFound("Estado no encontrado para eliminar");
             }
             catch (Exception ex)
@@ -120,6 +127,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpPatch("restore-state/{id}")]
         public async Task<IActionResult> Restore(int id)
         {
@@ -128,8 +136,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.RestoreAsyncState(id);
                 return Ok(new { message = "Estado restaurado correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "RestoreStateController - KeyNotFound");
                 return NotFound("Estado no encontrado para restaurar");
             }
             catch (Exception ex)

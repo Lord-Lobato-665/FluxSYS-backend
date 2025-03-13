@@ -1,4 +1,5 @@
-﻿using FluxSYS_backend.Application.Services;
+﻿using FluxSYS_backend.Application.Filters;
+using FluxSYS_backend.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace FluxSYS_backend.API.Controllers
             _errorLogService = errorLogService;
         }
 
+        [CustomAuthorize("Administrador")]
         [HttpGet]
         public async Task<IActionResult> GetAllErrors()
         {
