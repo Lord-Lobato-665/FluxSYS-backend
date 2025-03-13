@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using FluxSYS_backend.Infraestructure.Data;
 using Microsoft.EntityFrameworkCore;
+using FluxSYS_backend.Application.Filters;
 
 namespace FluxSYS_backend.API.Controllers
 {
@@ -29,6 +30,7 @@ namespace FluxSYS_backend.API.Controllers
             _context = context;
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpGet("get-purchase-orders")]
         public async Task<IActionResult> GetAll()
         {
@@ -44,6 +46,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
         [HttpPost("create-purchase-order")]
         public async Task<IActionResult> Create([FromBody] PurchaseOrderViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
         {
@@ -100,6 +103,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento")]
         [HttpPut("update-purchase-order/{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] PurchaseOrderViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
         {
@@ -144,8 +148,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.UpdateAsyncPurchaseOrder(id, dto, userId, departmentId);
                 return Ok(new { message = "Orden de compra actualizada correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "UpdatePurchaseOrderController - KeyNotFound");
                 return NotFound("Orden de compra no encontrada");
             }
             catch (Exception ex)
@@ -155,6 +160,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpDelete("delete-purchase-order/{id}")]
         public async Task<IActionResult> SoftDelete(int id, [FromQuery] int userId, [FromQuery] int departmentId)
         {
@@ -163,8 +169,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.SoftDeleteAsyncPurchaseOrder(id, userId, departmentId);
                 return Ok(new { message = "Orden de compra eliminada correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "DeletePurchaseOrderController - KeyNotFound");
                 return NotFound("Orden de compra no encontrada para eliminar");
             }
             catch (Exception ex)
@@ -174,6 +181,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpPatch("restore-purchase-order/{id}")]
         public async Task<IActionResult> Restore(int id, [FromQuery] int userId, [FromQuery] int departmentId)
         {
@@ -182,8 +190,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.RestoreAsyncPurchaseOrder(id, userId, departmentId);
                 return Ok(new { message = "Orden de compra restaurada correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "RestorePurchaseOrderController - KeyNotFound");
                 return NotFound("Orden de compra no encontrada para restaurar");
             }
             catch (Exception ex)

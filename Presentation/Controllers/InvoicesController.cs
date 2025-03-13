@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using FluxSYS_backend.Infraestructure.Data;
 using Microsoft.EntityFrameworkCore;
+using FluxSYS_backend.Application.Filters;
 
 namespace FluxSYS_backend.API.Controllers
 {
@@ -29,6 +30,7 @@ namespace FluxSYS_backend.API.Controllers
             _context = context;
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpGet("get-invoices")]
         public async Task<IActionResult> GetAll()
         {
@@ -44,6 +46,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
         [HttpPost("create-invoice")]
         public async Task<IActionResult> Create([FromBody] InvoiceViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
         {
@@ -97,6 +100,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento")]
         [HttpPut("update-invoice/{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] InvoiceViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
         {
@@ -138,8 +142,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.UpdateAsyncInvoice(id, dto, userId, departmentId);
                 return Ok(new { message = "Factura actualizada correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "UpdateInvoiceController - KeyNotFound");
                 return NotFound("Factura no encontrada");
             }
             catch (Exception ex)
@@ -149,6 +154,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpDelete("delete-invoice/{id}")]
         public async Task<IActionResult> SoftDelete(int id, [FromQuery] int userId, [FromQuery] int departmentId)
         {
@@ -157,8 +163,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.SoftDeleteAsyncInvoice(id, userId, departmentId);
                 return Ok(new { message = "Factura eliminada correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "DeleteInvoiceController - KeyNotFound");
                 return NotFound("Factura no encontrada para eliminar");
             }
             catch (Exception ex)
@@ -168,6 +175,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpPatch("restore-invoice/{id}")]
         public async Task<IActionResult> Restore(int id, [FromQuery] int userId, [FromQuery] int departmentId)
         {
@@ -176,8 +184,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.RestoreAsyncInvoice(id, userId, departmentId);
                 return Ok(new { message = "Factura restaurada correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "RestoreInvoiceController - KeyNotFound");
                 return NotFound("Factura no encontrada para restaurar");
             }
             catch (Exception ex)

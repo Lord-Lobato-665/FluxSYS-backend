@@ -278,7 +278,7 @@ namespace FluxSYS_backend.Migrations
                         {
                             Id_company = 1,
                             Delete_log_company = false,
-                            Name_company = "Tech Innovators"
+                            Name_company = "FluxSYS"
                         },
                         new
                         {
@@ -330,7 +330,7 @@ namespace FluxSYS_backend.Migrations
                             Id_department = 1,
                             Delete_log_department = false,
                             Id_company_Id = 1,
-                            Name_deparment = "Recursos Humanos"
+                            Name_deparment = "System"
                         },
                         new
                         {
@@ -551,7 +551,7 @@ namespace FluxSYS_backend.Migrations
                             Id_position = 1,
                             Delete_log_position = false,
                             Id_company_Id = 1,
-                            Name_position = "Gerente"
+                            Name_position = "System"
                         },
                         new
                         {
@@ -613,25 +613,25 @@ namespace FluxSYS_backend.Migrations
                         {
                             Id_role = 2,
                             Delete_log_role = false,
-                            Name_role = "Supervisor"
+                            Name_role = "Administrador Empresarial"
                         },
                         new
                         {
                             Id_role = 3,
                             Delete_log_role = false,
-                            Name_role = "Operador"
+                            Name_role = "Jefe de Departamento"
                         },
                         new
                         {
                             Id_role = 4,
                             Delete_log_role = false,
-                            Name_role = "Invitado"
+                            Name_role = "Subjefe de Departamento"
                         },
                         new
                         {
                             Id_role = 5,
                             Delete_log_role = false,
-                            Name_role = "Gerente"
+                            Name_role = "Colaborador"
                         });
                 });
 
@@ -1446,6 +1446,31 @@ namespace FluxSYS_backend.Migrations
                         });
                 });
 
+            modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrincipalModels.UserToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("ExpirationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserTokens");
+                });
+
             modelBuilder.Entity("FluxSYS_backend.InvoicesProducts", b =>
                 {
                     b.Property<int>("Id_invoice_product")
@@ -1553,9 +1578,9 @@ namespace FluxSYS_backend.Migrations
                             Id_module_Id = 6,
                             Id_position_Id = 1,
                             Id_rol_Id = 1,
-                            Mail_user = "gael.sanchez@example.com",
+                            Mail_user = "gael@example.com",
                             Name_user = "Sánchez Lobato Gael",
-                            Password_user = "password123",
+                            Password_user = "$2y$10$5E5W.r3psQwlD7qFPQMqx.X55Tm8YuTWfirUaSQO5XTk0t5v0CJ/S",
                             Phone_user = 1234567890L
                         },
                         new
@@ -1564,13 +1589,13 @@ namespace FluxSYS_backend.Migrations
                             Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Delete_log_user = false,
                             Id_company_Id = 1,
-                            Id_department_Id = 2,
+                            Id_department_Id = 1,
                             Id_module_Id = 6,
-                            Id_position_Id = 2,
-                            Id_rol_Id = 2,
-                            Mail_user = "carlos.quintero@example.com",
+                            Id_position_Id = 1,
+                            Id_rol_Id = 1,
+                            Mail_user = "maximo@example.com",
                             Name_user = "Quintero Escobar Carlos Máximo",
-                            Password_user = "password123",
+                            Password_user = "$2y$10$5E5W.r3psQwlD7qFPQMqx.X55Tm8YuTWfirUaSQO5XTk0t5v0CJ/S",
                             Phone_user = 9876543210L
                         },
                         new
@@ -1578,14 +1603,14 @@ namespace FluxSYS_backend.Migrations
                             Id_user = 3,
                             Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Delete_log_user = false,
-                            Id_company_Id = 2,
-                            Id_department_Id = 3,
+                            Id_company_Id = 1,
+                            Id_department_Id = 1,
                             Id_module_Id = 6,
-                            Id_position_Id = 3,
-                            Id_rol_Id = 3,
-                            Mail_user = "gustavo.gutierrez@example.com",
+                            Id_position_Id = 1,
+                            Id_rol_Id = 1,
+                            Mail_user = "gustavo@example.com",
                             Name_user = "Gutiérrez Canul Gustavo",
-                            Password_user = "password123",
+                            Password_user = "$2y$10$5E5W.r3psQwlD7qFPQMqx.X55Tm8YuTWfirUaSQO5XTk0t5v0CJ/S",
                             Phone_user = 1122334455L
                         },
                         new
@@ -1593,14 +1618,14 @@ namespace FluxSYS_backend.Migrations
                             Id_user = 4,
                             Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Delete_log_user = false,
-                            Id_company_Id = 2,
-                            Id_department_Id = 4,
+                            Id_company_Id = 1,
+                            Id_department_Id = 1,
                             Id_module_Id = 6,
-                            Id_position_Id = 4,
-                            Id_rol_Id = 4,
-                            Mail_user = "isha.mata@example.com",
+                            Id_position_Id = 1,
+                            Id_rol_Id = 1,
+                            Mail_user = "mia@example.com",
                             Name_user = "Raymundo Mata Isha Mia",
-                            Password_user = "password123",
+                            Password_user = "$2y$10$5E5W.r3psQwlD7qFPQMqx.X55Tm8YuTWfirUaSQO5XTk0t5v0CJ/S",
                             Phone_user = 2233445566L
                         },
                         new
@@ -1608,14 +1633,14 @@ namespace FluxSYS_backend.Migrations
                             Id_user = 5,
                             Date_insert = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Delete_log_user = false,
-                            Id_company_Id = 3,
-                            Id_department_Id = 5,
+                            Id_company_Id = 1,
+                            Id_department_Id = 1,
                             Id_module_Id = 6,
-                            Id_position_Id = 5,
-                            Id_rol_Id = 5,
-                            Mail_user = "carlos.velazquez@example.com",
+                            Id_position_Id = 1,
+                            Id_rol_Id = 1,
+                            Mail_user = "carlos@example.com",
                             Name_user = "Velázquez De La Cruz Carlos Yahir",
-                            Password_user = "password123",
+                            Password_user = "$2y$10$5E5W.r3psQwlD7qFPQMqx.X55Tm8YuTWfirUaSQO5XTk0t5v0CJ/S",
                             Phone_user = 3344556677L
                         });
                 });
@@ -2047,6 +2072,17 @@ namespace FluxSYS_backend.Migrations
                     b.Navigation("Suppliers");
 
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrincipalModels.UserToken", b =>
+                {
+                    b.HasOne("FluxSYS_backend.Users", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("FluxSYS_backend.InvoicesProducts", b =>

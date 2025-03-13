@@ -17,6 +17,110 @@
         }
       }
     },
+    "/api/Auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginViewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/validate-token": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/logout": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/CategoriesProducts/get-categories-products": {
       "get": {
         "tags": [
@@ -2367,17 +2471,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserViewModel"
+                "$ref": "#/components/schemas/UserUpdateDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserViewModel"
+                "$ref": "#/components/schemas/UserUpdateDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/UserViewModel"
+                "$ref": "#/components/schemas/UserUpdateDTO"
               }
             }
           }
@@ -2703,6 +2807,26 @@
         },
         "additionalProperties": false
       },
+      "LoginViewModel": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "maxLength": 50,
+            "minLength": 8,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "ModuleViewModel": {
         "required": [
           "name_module"
@@ -2936,6 +3060,48 @@
         },
         "additionalProperties": false
       },
+      "UserUpdateDTO": {
+        "type": "object",
+        "properties": {
+          "name_user": {
+            "type": "string",
+            "nullable": true
+          },
+          "mail_user": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone_user": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "password_user": {
+            "type": "string",
+            "nullable": true
+          },
+          "id_rol_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_position_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_department_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_company_Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_module_Id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "UserViewModel": {
         "required": [
           "id_company_Id",
@@ -2988,6 +3154,19 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+        "name": "Authorization",
+        "in": "header"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
 }

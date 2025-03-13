@@ -6,6 +6,7 @@ using System;
 using System.Threading.Tasks;
 using FluxSYS_backend.Application.AppServices;
 using Microsoft.Data.SqlClient;
+using FluxSYS_backend.Application.Filters;
 
 namespace FluxSYS_backend.API.Controllers
 {
@@ -26,6 +27,7 @@ namespace FluxSYS_backend.API.Controllers
             _clasificationMovementsService = clasificationMovementsService;
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpGet("get-movements-types")]
         public async Task<IActionResult> GetAll()
         {
@@ -41,6 +43,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
         [HttpPost("create-movement-type")]
         public async Task<IActionResult> Create([FromBody] MovementTypeViewModel model)
         {
@@ -84,6 +87,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento")]
         [HttpPut("update-movement-type/{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] MovementTypeViewModel model)
         {
@@ -101,8 +105,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.UpdateAsyncMovementType(id, dto);
                 return Ok(new { message = "Tipo de movimiento actualizado correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "UpdateMovementTypeController - KeyNotFound");
                 return NotFound("Tipo de movimiento no encontrado");
             }
             catch (Exception ex)
@@ -112,6 +117,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpDelete("delete-movement-type/{id}")]
         public async Task<IActionResult> SoftDelete(int id)
         {
@@ -120,8 +126,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.SoftDeleteAsyncMovementType(id);
                 return Ok(new { message = "Tipo de movimiento eliminado correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "DeleteMovementTypeController - KeyNotFound");
                 return NotFound("Tipo de movimiento no encontrado para eliminar");
             }
             catch (Exception ex)
@@ -131,6 +138,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpPatch("restore-movement-type/{id}")]
         public async Task<IActionResult> Restore(int id)
         {
@@ -139,8 +147,9 @@ namespace FluxSYS_backend.API.Controllers
                 await _service.RestoreAsyncMovementType(id);
                 return Ok(new { message = "Tipo de movimiento restaurado correctamente" });
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException ex)
             {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "RestoreMovementTypeController - KeyNotFound");
                 return NotFound("Tipo de movimiento no encontrado para restaurar");
             }
             catch (Exception ex)
