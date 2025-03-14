@@ -33,11 +33,11 @@ namespace FluxSYS_backend.Application.Services
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id_user.ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Mail_user),
-                new Claim(ClaimTypes.Role, user.Roles.Name_role),
+                new Claim(ClaimTypes.Role, user.Roles?.Name_role ?? ""), // Asegúrate de no tener nulos
                 new Claim("Name", user.Name_user),
-                new Claim("Department", user.Departments.Name_deparment),
-                new Claim("Position", user.Positions.Name_position),
-                new Claim("Company", user.Companies.Name_company),
+                new Claim("Department", user.Departments?.Name_deparment ?? ""),
+                new Claim("Position", user.Positions?.Name_position ?? ""),
+                new Claim("Company", user.Companies?.Name_company ?? ""),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
@@ -51,6 +51,7 @@ namespace FluxSYS_backend.Application.Services
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
 
         // Autentica al usuario y devuelve el objeto Users si las credenciales son válidas
         public async Task<Users> Authenticate(string email, string password)
@@ -95,11 +96,45 @@ namespace FluxSYS_backend.Application.Services
         }
 
         // Valida si el token existe y no ha expirado
-        public async Task<UserToken> ValidateToken(string token)
+        public async Task<UserTokenDto> ValidateToken(string token)
         {
-            return await _context.UserTokens
-                .Include(ut => ut.User)
-                .FirstOrDefaultAsync(ut => ut.Token == token && ut.ExpirationDate > DateTime.Now);
+            var userToken = await _context.UserTokens
+                .Where(ut => ut.Token == token && ut.ExpirationDate > DateTime.Now)
+                .Select(ut => new UserTokenDto
+                {
+                    Token = ut.Token,
+                    ExpirationDate = ut.ExpirationDate,
+                    User = new UserDto
+                    {
+                        Id_user = ut.User.Id_user,
+                        Name_user = ut.User.Name_user,
+                        Mail_user = ut.User.Mail_user,
+                        Phone_user = ut.User.Phone_user,
+                        Role = new RoleDto
+                        {
+                            Id_role = ut.User.Roles.Id_role,
+                            Name_role = ut.User.Roles.Name_role
+                        },
+                        Position = new PositionDto
+                        {
+                            Id_position = ut.User.Positions.Id_position,
+                            Name_position = ut.User.Positions.Name_position
+                        },
+                        Department = new DepartmentDto
+                        {
+                            Id_department = ut.User.Departments.Id_department,
+                            Name_department = ut.User.Departments.Name_deparment
+                        },
+                        Company = new CompanyDto
+                        {
+                            Id_company = ut.User.Companies.Id_company,
+                            Name_company = ut.User.Companies.Name_company
+                        }
+                    }
+                })
+                .FirstOrDefaultAsync();
+
+            return userToken;
         }
     }
 }
