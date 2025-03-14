@@ -84,15 +84,6 @@
         "tags": [
           "Auth"
         ],
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -104,15 +95,6 @@
       "post": {
         "tags": [
           "Auth"
-        ],
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
         ],
         "responses": {
           "200": {

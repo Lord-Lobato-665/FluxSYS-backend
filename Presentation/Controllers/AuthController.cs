@@ -87,10 +87,19 @@ namespace FluxSYS_backend.API.Controllers
 
         // Endpoint de validación de token
         [HttpGet("validate-token")]
-        public async Task<IActionResult> ValidateToken([FromHeader] string token)
+        public async Task<IActionResult> ValidateToken()
         {
             try
             {
+                var authHeader = Request.Headers["Authorization"].ToString();
+
+                if (string.IsNullOrEmpty(authHeader) || !authHeader.StartsWith("Bearer "))
+                {
+                    return Unauthorized(new { message = "Token no proporcionado o con formato incorrecto" });
+                }
+
+                var token = authHeader.Substring("Bearer ".Length).Trim();
+
                 var userToken = await _authService.ValidateToken(token);
 
                 if (userToken == null)
@@ -105,13 +114,23 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+
         // Endpoint de logout
         [HttpPost("logout")]
-        public async Task<IActionResult> Logout([FromHeader] string token)
+        public async Task<IActionResult> Logout()
         {
             try
             {
+                var authHeader = Request.Headers["Authorization"].ToString();
+
+                if (string.IsNullOrEmpty(authHeader) || !authHeader.StartsWith("Bearer "))
+                {
+                    return Unauthorized(new { message = "Token no proporcionado o inválido" });
+                }
+
+                var token = authHeader.Replace("Bearer ", "").Trim();
                 await _authService.RemoveToken(token);
+
                 return Ok(new { message = "Sesión cerrada correctamente" });
             }
             catch (Exception ex)
@@ -120,5 +139,6 @@ namespace FluxSYS_backend.API.Controllers
                 return StatusCode(500, "Error interno del servidor.");
             }
         }
+
     }
 }
