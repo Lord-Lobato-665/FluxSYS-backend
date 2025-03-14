@@ -88,17 +88,28 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task AddAsyncSupplier(SupplierCreateDTO dto, int userId, int departmentId)
+        public async Task AddAsyncSupplier(SupplierCreateDTO dto, string nameUser, string nameDepartment)
         {
             try
             {
+                // Obtener los nombres de las entidades relacionadas
+                var categorySupplier = await _context.CategoriesSuppliers
+                    .FirstOrDefaultAsync(c => c.Id_category_supplier == dto.Id_category_supplier_Id);
+                var company = await _context.Companies
+                    .FirstOrDefaultAsync(c => c.Id_company == dto.Id_company_Id);
+
+                if (categorySupplier == null || company == null)
+                {
+                    throw new InvalidOperationException("Categoría de proveedor o compañía no encontrada.");
+                }
+
                 var supplier = new Suppliers
                 {
                     Name_supplier = dto.Name_supplier,
                     Mail_supplier = dto.Mail_supplier,
                     Phone_supplier = dto.Phone_supplier,
                     Id_category_supplier_Id = dto.Id_category_supplier_Id,
-                    Id_module_Id = 1,
+                    Id_module_Id = 1, // Módulo de proveedores
                     Id_company_Id = dto.Id_company_Id,
                     Date_insert = DateTime.Now,
                     Delete_log_suppliers = false
@@ -129,10 +140,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 {
                     Date_insert = DateTime.Now,
                     Amount_modify = amountModify, // Cantidad de productos asociados
-                    Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
-                    Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
-                    Id_module_Id = 1, // Módulo de proveedores
-                    Id_company_Id = dto.Id_company_Id, // Usar el ID de la compañía desde el DTO
+                    Name_user = nameUser, // Nombre del usuario desde el localStorage
+                    Name_department = nameDepartment, // Nombre del departamento desde el localStorage
+                    Name_module = "Proveedores", // Módulo de proveedores
+                    Name_company = company.Name_company, // Nombre de la compañía
                     Delete_log_audits = false
                 };
                 _context.Audits.Add(audit);
@@ -144,7 +155,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task UpdateAsyncSupplier(int id, SupplierUpdateDTO dto, int userId, int departmentId)
+        public async Task UpdateAsyncSupplier(int id, SupplierUpdateDTO dto, string nameUser, string nameDepartment)
         {
             try
             {
@@ -155,6 +166,17 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 if (supplier == null)
                 {
                     throw new KeyNotFoundException("Proveedor no encontrado.");
+                }
+
+                // Obtener los nombres de las entidades relacionadas
+                var categorySupplier = await _context.CategoriesSuppliers
+                    .FirstOrDefaultAsync(c => c.Id_category_supplier == dto.Id_category_supplier_Id);
+                var company = await _context.Companies
+                    .FirstOrDefaultAsync(c => c.Id_company == dto.Id_company_Id);
+
+                if (categorySupplier == null || company == null)
+                {
+                    throw new InvalidOperationException("Categoría de proveedor o compañía no encontrada.");
                 }
 
                 // Calcular la cantidad de productos modificados
@@ -176,10 +198,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 {
                     Date_update = DateTime.Now,
                     Amount_modify = amountModify, // Cantidad de productos modificados
-                    Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
-                    Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
-                    Id_module_Id = 1, // Módulo de proveedores
-                    Id_company_Id = dto.Id_company_Id, // Usar el ID de la compañía desde el DTO
+                    Name_user = nameUser, // Nombre del usuario desde el localStorage
+                    Name_department = nameDepartment, // Nombre del departamento desde el localStorage
+                    Name_module = "Proveedores", // Módulo de proveedores
+                    Name_company = company.Name_company, // Nombre de la compañía
                     Delete_log_audits = false
                 };
                 _context.Audits.Add(audit);
@@ -230,7 +252,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task SoftDeleteAsyncSupplier(int id, int userId, int departmentId)
+        public async Task SoftDeleteAsyncSupplier(int id, string nameUser, string nameDepartment)
         {
             try
             {
@@ -241,6 +263,15 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 if (supplier == null)
                 {
                     throw new KeyNotFoundException("Proveedor no encontrado para eliminar");
+                }
+
+                // Obtener los nombres de las entidades relacionadas
+                var company = await _context.Companies
+                    .FirstOrDefaultAsync(c => c.Id_company == supplier.Id_company_Id);
+
+                if (company == null)
+                {
+                    throw new InvalidOperationException("Compañía no encontrada.");
                 }
 
                 int amountModify = supplier.SuppliersProducts.Count; // Cantidad de productos antes de eliminar
@@ -254,10 +285,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 {
                     Date_delete = DateTime.Now,
                     Amount_modify = amountModify, // Cantidad de productos antes de eliminar
-                    Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
-                    Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
-                    Id_module_Id = supplier.Id_module_Id, // Módulo de proveedores
-                    Id_company_Id = supplier.Id_company_Id, // Usar el ID de la compañía desde el proveedor
+                    Name_user = nameUser, // Nombre del usuario desde el localStorage
+                    Name_department = nameDepartment, // Nombre del departamento desde el localStorage
+                    Name_module = "Proveedores", // Módulo de proveedores
+                    Name_company = company.Name_company, // Nombre de la compañía
                     Delete_log_audits = false
                 };
                 _context.Audits.Add(audit);
@@ -269,7 +300,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task RestoreAsyncSupplier(int id, int userId, int departmentId)
+        public async Task RestoreAsyncSupplier(int id, string nameUser, string nameDepartment)
         {
             try
             {
@@ -280,6 +311,15 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 if (supplier == null)
                 {
                     throw new KeyNotFoundException("Proveedor no encontrado para restaurar");
+                }
+
+                // Obtener los nombres de las entidades relacionadas
+                var company = await _context.Companies
+                    .FirstOrDefaultAsync(c => c.Id_company == supplier.Id_company_Id);
+
+                if (company == null)
+                {
+                    throw new InvalidOperationException("Compañía no encontrada.");
                 }
 
                 int amountModify = supplier.SuppliersProducts.Count; // Cantidad de productos antes de restaurar
@@ -293,10 +333,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 {
                     Date_restore = DateTime.Now,
                     Amount_modify = amountModify, // Cantidad de productos antes de restaurar
-                    Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
-                    Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
-                    Id_module_Id = supplier.Id_module_Id, // Módulo de proveedores
-                    Id_company_Id = supplier.Id_company_Id, // Usar el ID de la compañía desde el proveedor
+                    Name_user = nameUser, // Nombre del usuario desde el localStorage
+                    Name_department = nameDepartment, // Nombre del departamento desde el localStorage
+                    Name_module = "Proveedores", // Módulo de proveedores
+                    Name_company = company.Name_company, // Nombre de la compañía
                     Delete_log_audits = false
                 };
                 _context.Audits.Add(audit);

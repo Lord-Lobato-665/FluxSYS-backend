@@ -19,24 +19,24 @@ namespace FluxSYS_backend.Application.Services
             return await _repository.GetAllAsyncUsers();
         }
 
-        public async Task AddAsyncUser(UserCreateDTO dto, int userId, int departmentId)
+        public async Task AddAsyncUser(UserCreateDTO dto, string nameUser, string nameDepartment)
         {
-            await _repository.AddAsyncUser(dto, userId, departmentId);
+            await _repository.AddAsyncUser(dto, nameUser, nameDepartment);
         }
 
-        public async Task UpdateAsyncUser(int id, UserUpdateDTO dto, int userId, int departmentId)
+        public async Task UpdateAsyncUser(int id, UserUpdateDTO dto, string nameUser, string nameDepartment)
         {
-            await _repository.UpdateAsyncUser(id, dto, userId, departmentId);
+            await _repository.UpdateAsyncUser(id, dto, nameUser, nameDepartment);
         }
 
-        public async Task SoftDeleteAsyncUser(int id, int userId, int departmentId)
+        public async Task SoftDeleteAsyncUser(int id, string nameUser, string nameDepartment)
         {
-            await _repository.SoftDeleteAsyncUser(id, userId, departmentId);
+            await _repository.SoftDeleteAsyncUser(id, nameUser, nameDepartment);
         }
 
-        public async Task RestoreAsyncUser(int id, int userId, int departmentId)
+        public async Task RestoreAsyncUser(int id, string nameUser, string nameDepartment)
         {
-            await _repository.RestoreAsyncUser(id, userId, departmentId);
+            await _repository.RestoreAsyncUser(id, nameUser, nameDepartment);
         }
     }
 }

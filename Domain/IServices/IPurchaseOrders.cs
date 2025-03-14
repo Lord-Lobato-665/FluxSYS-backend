@@ -7,9 +7,9 @@ namespace FluxSYS_backend.Domain.IServices
     public interface IPurchaseOrders
     {
         Task<IEnumerable<PurchaseOrderReadDTO>> GetAllAsyncPurchaseOrders();
-        Task AddAsyncPurchaseOrder(PurchaseOrderCreateDTO dto, int userId, int departmentId);
-        Task UpdateAsyncPurchaseOrder(int id, PurchaseOrderUpdateDTO dto, int userId, int departmentId);
-        Task SoftDeleteAsyncPurchaseOrder(int id, int userId, int departmentId);
-        Task RestoreAsyncPurchaseOrder(int id, int userId, int departmentId);
+        Task AddAsyncPurchaseOrder(PurchaseOrderCreateDTO dto, string nameUser, string nameDepartment);
+        Task UpdateAsyncPurchaseOrder(int id, PurchaseOrderUpdateDTO dto, string nameUser, string nameDepartment);
+        Task SoftDeleteAsyncPurchaseOrder(int id, string nameUser, string nameDepartment);
+        Task RestoreAsyncPurchaseOrder(int id, string nameUser, string nameDepartment);
     }
 }

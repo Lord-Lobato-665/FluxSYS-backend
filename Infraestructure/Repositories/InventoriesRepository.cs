@@ -66,7 +66,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task AddAsyncInventory(InventoryCreateDTO dto, int userId, int departmentId)
+        public async Task AddAsyncInventory(InventoryCreateDTO dto, string nameUser, string nameDepartment)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     Id_movement_type_Id = dto.Id_movement_type_Id,
                     Id_supplier_Id = dto.Id_supplier_Id,
                     Id_department_Id = dto.Id_department_Id,
-                    Id_module_Id = 3,
+                    Id_module_Id = 3, // Módulo de inventarios
                     Id_company_Id = dto.Id_company_Id,
                     Id_user_Id = dto.Id_user_Id,
                     Date_insert = DateTime.Now,
@@ -94,10 +94,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 {
                     Date_insert = DateTime.Now,
                     Amount_modify = dto.Stock_product, // Cantidad de stock agregado
-                    Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
-                    Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
-                    Id_module_Id = 3, // Módulo de inventarios
-                    Id_company_Id = dto.Id_company_Id, // Usar el ID de la compañía desde el DTO
+                    Name_user = nameUser, // Nombre del usuario desde el localStorage
+                    Name_department = nameDepartment, // Nombre del departamento desde el localStorage
+                    Name_module = "Inventarios", // Módulo de inventarios
+                    Name_company = (await _context.Companies.FindAsync(dto.Id_company_Id))?.Name_company ?? "Desconocida",
                     Delete_log_audits = false
                 };
                 _context.Audits.Add(audit);
@@ -127,7 +127,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task UpdateAsyncInventory(int id, InventoryUpdateDTO dto, int userId, int departmentId)
+        public async Task UpdateAsyncInventory(int id, InventoryUpdateDTO dto, string nameUser, string nameDepartment)
         {
             try
             {
@@ -145,10 +145,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 {
                     Date_update = DateTime.Now,
                     Amount_modify = stockDifference, // Diferencia en el stock
-                    Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
-                    Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
-                    Id_module_Id = 3, // Módulo de inventarios
-                    Id_company_Id = dto.Id_company_Id, // Usar el ID de la compañía desde el DTO
+                    Name_user = nameUser, // Nombre del usuario desde el localStorage
+                    Name_department = nameDepartment, // Nombre del departamento desde el localStorage
+                    Name_module = "Inventarios", // Módulo de inventarios
+                    Name_company = (await _context.Companies.FindAsync(dto.Id_company_Id))?.Name_company ?? "Desconocida",
                     Delete_log_audits = false
                 };
                 _context.Audits.Add(audit);
@@ -194,7 +194,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task SoftDeleteAsyncInventory(int id, int userId, int departmentId)
+        public async Task SoftDeleteAsyncInventory(int id, string nameUser, string nameDepartment)
         {
             try
             {
@@ -206,10 +206,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     {
                         Date_delete = DateTime.Now,
                         Amount_modify = -inventory.Stock_product, // Se elimina todo el stock
-                        Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
-                        Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
-                        Id_module_Id = inventory.Id_module_Id, // Módulo de inventarios
-                        Id_company_Id = inventory.Id_company_Id, // Usar el ID de la compañía desde el producto
+                        Name_user = nameUser, // Nombre del usuario desde el localStorage
+                        Name_department = nameDepartment, // Nombre del departamento desde el localStorage
+                        Name_module = "Inventarios", // Módulo de inventarios
+                        Name_company = (await _context.Companies.FindAsync(inventory.Id_company_Id))?.Name_company ?? "Desconocida",
                         Delete_log_audits = false
                     };
                     _context.Audits.Add(audit);
@@ -249,7 +249,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task RestoreAsyncInventory(int id, int userId, int departmentId)
+        public async Task RestoreAsyncInventory(int id, string nameUser, string nameDepartment)
         {
             try
             {
@@ -263,10 +263,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     {
                         Date_restore = DateTime.Now,
                         Amount_modify = inventory.Stock_product, // Se restaura todo el stock
-                        Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
-                        Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
-                        Id_module_Id = inventory.Id_module_Id, // Módulo de inventarios
-                        Id_company_Id = inventory.Id_company_Id, // Usar el ID de la compañía desde el producto
+                        Name_user = nameUser, // Nombre del usuario desde el localStorage
+                        Name_department = nameDepartment, // Nombre del departamento desde el localStorage
+                        Name_module = "Inventarios", // Módulo de inventarios
+                        Name_company = (await _context.Companies.FindAsync(inventory.Id_company_Id))?.Name_company ?? "Desconocida",
                         Delete_log_audits = false
                     };
                     _context.Audits.Add(audit);

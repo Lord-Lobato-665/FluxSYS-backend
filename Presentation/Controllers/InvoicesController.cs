@@ -48,7 +48,10 @@ namespace FluxSYS_backend.API.Controllers
 
         [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
         [HttpPost("create-invoice")]
-        public async Task<IActionResult> Create([FromBody] InvoiceViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> Create(
+            [FromBody] InvoiceViewModel model,
+            [FromQuery] string nameUser, // Nombre del usuario desde el localStorage
+            [FromQuery] string nameDepartment) // Nombre del departamento desde el localStorage
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -85,7 +88,7 @@ namespace FluxSYS_backend.API.Controllers
                     Products = productsWithPrices
                 };
 
-                await _service.AddAsyncInvoice(dto, userId, departmentId);
+                await _service.AddAsyncInvoice(dto, nameUser, nameDepartment);
                 return Ok(new { message = "Factura creada correctamente" });
             }
             catch (SqlException ex) when (ex.Number == 547) // Error de clave foránea
@@ -102,7 +105,11 @@ namespace FluxSYS_backend.API.Controllers
 
         [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento")]
         [HttpPut("update-invoice/{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] InvoiceViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> Update(
+            int id,
+            [FromBody] InvoiceViewModel model,
+            [FromQuery] string nameUser, // Nombre del usuario desde el localStorage
+            [FromQuery] string nameDepartment) // Nombre del departamento desde el localStorage
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -139,7 +146,7 @@ namespace FluxSYS_backend.API.Controllers
                     Products = productsWithPrices
                 };
 
-                await _service.UpdateAsyncInvoice(id, dto, userId, departmentId);
+                await _service.UpdateAsyncInvoice(id, dto, nameUser, nameDepartment);
                 return Ok(new { message = "Factura actualizada correctamente" });
             }
             catch (KeyNotFoundException ex)
@@ -156,11 +163,14 @@ namespace FluxSYS_backend.API.Controllers
 
         [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpDelete("delete-invoice/{id}")]
-        public async Task<IActionResult> SoftDelete(int id, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> SoftDelete(
+            int id,
+            [FromQuery] string nameUser, // Nombre del usuario desde el localStorage
+            [FromQuery] string nameDepartment) // Nombre del departamento desde el localStorage
         {
             try
             {
-                await _service.SoftDeleteAsyncInvoice(id, userId, departmentId);
+                await _service.SoftDeleteAsyncInvoice(id, nameUser, nameDepartment);
                 return Ok(new { message = "Factura eliminada correctamente" });
             }
             catch (KeyNotFoundException ex)
@@ -177,11 +187,14 @@ namespace FluxSYS_backend.API.Controllers
 
         [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpPatch("restore-invoice/{id}")]
-        public async Task<IActionResult> Restore(int id, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> Restore(
+            int id,
+            [FromQuery] string nameUser, // Nombre del usuario desde el localStorage
+            [FromQuery] string nameDepartment) // Nombre del departamento desde el localStorage
         {
             try
             {
-                await _service.RestoreAsyncInvoice(id, userId, departmentId);
+                await _service.RestoreAsyncInvoice(id, nameUser, nameDepartment);
                 return Ok(new { message = "Factura restaurada correctamente" });
             }
             catch (KeyNotFoundException ex)

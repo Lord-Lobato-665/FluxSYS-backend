@@ -58,7 +58,10 @@ namespace FluxSYS_backend.API.Controllers
 
         [CustomAuthorize("Administrador")]
         [HttpPost("create-user")]
-        public async Task<IActionResult> Create([FromBody] UserViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> Create(
+            [FromBody] UserViewModel model,
+            [FromQuery] string nameUser, // Nombre del usuario desde el localStorage
+            [FromQuery] string nameDepartment) // Nombre del departamento desde el localStorage
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -102,7 +105,7 @@ namespace FluxSYS_backend.API.Controllers
                     Id_company_Id = model.Id_company_Id
                 };
 
-                await _service.AddAsyncUser(dto, userId, departmentId);
+                await _service.AddAsyncUser(dto, nameUser, nameDepartment);
                 return Ok(new { message = "Usuario creado correctamente" });
             }
             catch (InvalidOperationException ex)
@@ -125,12 +128,16 @@ namespace FluxSYS_backend.API.Controllers
 
         [CustomAuthorize("Administrador")]
         [HttpPut("update-user/{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] UserUpdateDTO dto, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> Update(
+            int id,
+            [FromBody] UserUpdateDTO dto,
+            [FromQuery] string nameUser, // Nombre del usuario desde el localStorage
+            [FromQuery] string nameDepartment) // Nombre del departamento desde el localStorage
         {
             try
             {
                 // Llamar al servicio para actualizar el usuario
-                await _service.UpdateAsyncUser(id, dto, userId, departmentId);
+                await _service.UpdateAsyncUser(id, dto, nameUser, nameDepartment);
                 return Ok(new { message = "Usuario actualizado correctamente" });
             }
             catch (InvalidOperationException ex)
@@ -154,11 +161,14 @@ namespace FluxSYS_backend.API.Controllers
 
         [CustomAuthorize("Administrador")]
         [HttpDelete("delete-user/{id}")]
-        public async Task<IActionResult> SoftDelete(int id, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> SoftDelete(
+            int id,
+            [FromQuery] string nameUser, // Nombre del usuario desde el localStorage
+            [FromQuery] string nameDepartment) // Nombre del departamento desde el localStorage
         {
             try
             {
-                await _service.SoftDeleteAsyncUser(id, userId, departmentId);
+                await _service.SoftDeleteAsyncUser(id, nameUser, nameDepartment);
                 return Ok(new { message = "Usuario eliminado correctamente" });
             }
             catch (KeyNotFoundException ex)
@@ -176,11 +186,14 @@ namespace FluxSYS_backend.API.Controllers
 
         [CustomAuthorize("Administrador")]
         [HttpPatch("restore-user/{id}")]
-        public async Task<IActionResult> Restore(int id, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> Restore(
+            int id,
+            [FromQuery] string nameUser, // Nombre del usuario desde el localStorage
+            [FromQuery] string nameDepartment) // Nombre del departamento desde el localStorage
         {
             try
             {
-                await _service.RestoreAsyncUser(id, userId, departmentId);
+                await _service.RestoreAsyncUser(id, nameUser, nameDepartment);
                 return Ok(new { message = "Usuario restaurado correctamente" });
             }
             catch (KeyNotFoundException ex)

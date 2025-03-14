@@ -39,7 +39,10 @@ namespace FluxSYS_backend.API.Controllers
 
         [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
         [HttpPost("create-inventory")]
-        public async Task<IActionResult> Create([FromBody] InventoryViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> Create(
+            [FromBody] InventoryViewModel model,
+            [FromQuery] string nameUser, // Nombre del usuario desde el localStorage
+            [FromQuery] string nameDepartment) // Nombre del departamento desde el localStorage
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -59,7 +62,7 @@ namespace FluxSYS_backend.API.Controllers
                     Id_company_Id = model.Id_company_Id,
                     Id_user_Id = model.Id_user_Id
                 };
-                await _service.AddAsyncInventory(dto, userId, departmentId);
+                await _service.AddAsyncInventory(dto, nameUser, nameDepartment);
                 return Ok(new { message = "Producto de inventario creado correctamente." });
             }
             catch (Exception ex)
@@ -71,7 +74,11 @@ namespace FluxSYS_backend.API.Controllers
 
         [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento")]
         [HttpPut("update-inventory/{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] InventoryViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> Update(
+            int id,
+            [FromBody] InventoryViewModel model,
+            [FromQuery] string nameUser, // Nombre del usuario desde el localStorage
+            [FromQuery] string nameDepartment) // Nombre del departamento desde el localStorage
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -91,7 +98,7 @@ namespace FluxSYS_backend.API.Controllers
                     Id_company_Id = model.Id_company_Id,
                     Id_user_Id = model.Id_user_Id
                 };
-                await _service.UpdateAsyncInventory(id, dto, userId, departmentId);
+                await _service.UpdateAsyncInventory(id, dto, nameUser, nameDepartment);
                 return Ok(new { message = "Producto de inventario actualizado correctamente." });
             }
             catch (KeyNotFoundException ex)
@@ -108,11 +115,14 @@ namespace FluxSYS_backend.API.Controllers
 
         [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpDelete("delete-inventory/{id}")]
-        public async Task<IActionResult> SoftDelete(int id, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> SoftDelete(
+            int id,
+            [FromQuery] string nameUser, // Nombre del usuario desde el localStorage
+            [FromQuery] string nameDepartment) // Nombre del departamento desde el localStorage
         {
             try
             {
-                await _service.SoftDeleteAsyncInventory(id, userId, departmentId);
+                await _service.SoftDeleteAsyncInventory(id, nameUser, nameDepartment);
                 return Ok(new { message = "Producto de inventario eliminado correctamente." });
             }
             catch (KeyNotFoundException ex)
@@ -129,11 +139,14 @@ namespace FluxSYS_backend.API.Controllers
 
         [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpPatch("restore-inventory/{id}")]
-        public async Task<IActionResult> Restore(int id, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> Restore(
+            int id,
+            [FromQuery] string nameUser, // Nombre del usuario desde el localStorage
+            [FromQuery] string nameDepartment) // Nombre del departamento desde el localStorage
         {
             try
             {
-                await _service.RestoreAsyncInventory(id, userId, departmentId);
+                await _service.RestoreAsyncInventory(id, nameUser, nameDepartment);
                 return Ok(new { message = "Producto de inventario restaurado correctamente." });
             }
             catch (KeyNotFoundException ex)

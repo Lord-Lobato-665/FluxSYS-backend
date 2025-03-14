@@ -60,30 +60,7 @@ namespace FluxSYS_backend.Infraestructure.Data
                 .OnDelete(DeleteBehavior.NoAction);
 
 
-            // Configuracion de elimaciones en cascada del modelo Audits
-            modelBuilder.Entity<Audits>()
-                .HasOne(a => a.Companies)
-                .WithMany(a => a.Audits)
-                .HasForeignKey(a => a.Id_company_Id)
-                .OnDelete(DeleteBehavior.NoAction);
-
-            modelBuilder.Entity<Audits>()
-                .HasOne(a => a.Departments)
-                .WithMany(a => a.Audits)
-                .HasForeignKey(a => a.Id_department_Id)
-                .OnDelete(DeleteBehavior.NoAction);
-
-            modelBuilder.Entity<Audits>()
-                .HasOne(a => a.Modules)
-                .WithMany(a => a.Audits)
-                .HasForeignKey(a => a.Id_module_Id)
-                .OnDelete(DeleteBehavior.NoAction);
-
-            modelBuilder.Entity<Audits>()
-                .HasOne(a => a.Users)
-                .WithMany(a => a.Audits)
-                .HasForeignKey(a => a.Id_user_Id)
-                .OnDelete(DeleteBehavior.NoAction);
+            // Configuracion de elimaciones en cascada del modelo Audits (declinado)
 
 
             // Configuracion de elimaciones en cascada del modelo Inventories

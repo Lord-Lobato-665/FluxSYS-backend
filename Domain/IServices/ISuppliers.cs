@@ -7,9 +7,9 @@ namespace FluxSYS_backend.Domain.IServices
     public interface ISuppliers
     {
         Task<IEnumerable<SupplierReadDTO>> GetAllAsyncSuppliers();
-        Task AddAsyncSupplier(SupplierCreateDTO dto, int userId, int departmentId); // Nuevos parámetros
-        Task UpdateAsyncSupplier(int id, SupplierUpdateDTO dto, int userId, int departmentId); // Nuevos parámetros
-        Task SoftDeleteAsyncSupplier(int id, int userId, int departmentId); // Nuevos parámetros
-        Task RestoreAsyncSupplier(int id, int userId, int departmentId); // Nuevos parámetros
+        Task AddAsyncSupplier(SupplierCreateDTO dto, string nameUser, string nameDepartment);
+        Task UpdateAsyncSupplier(int id, SupplierUpdateDTO dto, string nameUser, string nameDepartment);
+        Task SoftDeleteAsyncSupplier(int id, string nameUser, string nameDepartment);
+        Task RestoreAsyncSupplier(int id, string nameUser, string nameDepartment);
     }
 }

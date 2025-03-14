@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FluxSYS_backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250313162520_SeedFixed")]
-    partial class SeedFixed
+    [Migration("20250314045521_NameInconsistency")]
+    partial class NameInconsistency
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -868,27 +868,23 @@ namespace FluxSYS_backend.Migrations
                     b.Property<bool>("Delete_log_audits")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Id_company_Id")
-                        .HasColumnType("int");
+                    b.Property<string>("Name_company")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Id_department_Id")
-                        .HasColumnType("int");
+                    b.Property<string>("Name_department")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Id_module_Id")
-                        .HasColumnType("int");
+                    b.Property<string>("Name_module")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Id_user_Id")
-                        .HasColumnType("int");
+                    b.Property<string>("Name_user")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id_audit");
-
-                    b.HasIndex("Id_company_Id");
-
-                    b.HasIndex("Id_department_Id");
-
-                    b.HasIndex("Id_module_Id");
-
-                    b.HasIndex("Id_user_Id");
 
                     b.ToTable("audits");
                 });
@@ -1798,41 +1794,6 @@ namespace FluxSYS_backend.Migrations
                     b.Navigation("Suppliers");
                 });
 
-            modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrincipalModels.Audits", b =>
-                {
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", "Companies")
-                        .WithMany("Audits")
-                        .HasForeignKey("Id_company_Id")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Departments", "Departments")
-                        .WithMany("Audits")
-                        .HasForeignKey("Id_department_Id")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.Modules", "Modules")
-                        .WithMany("Audits")
-                        .HasForeignKey("Id_module_Id")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("FluxSYS_backend.Users", "Users")
-                        .WithMany("Audits")
-                        .HasForeignKey("Id_user_Id")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("Companies");
-
-                    b.Navigation("Departments");
-
-                    b.Navigation("Modules");
-
-                    b.Navigation("Users");
-                });
-
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrincipalModels.Inventories", b =>
                 {
                     b.HasOne("FluxSYS_backend.Domain.Models.PrimitiveModels.CategoriesProducts", "CategoriesProducts")
@@ -2174,8 +2135,6 @@ namespace FluxSYS_backend.Migrations
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.Companies", b =>
                 {
-                    b.Navigation("Audits");
-
                     b.Navigation("CategoriesProducts");
 
                     b.Navigation("CategoriesPurchaseOrders");
@@ -2205,8 +2164,6 @@ namespace FluxSYS_backend.Migrations
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.Departments", b =>
                 {
-                    b.Navigation("Audits");
-
                     b.Navigation("Inventories");
 
                     b.Navigation("InventoryMovements");
@@ -2220,8 +2177,6 @@ namespace FluxSYS_backend.Migrations
 
             modelBuilder.Entity("FluxSYS_backend.Domain.Models.PrimitiveModels.Modules", b =>
                 {
-                    b.Navigation("Audits");
-
                     b.Navigation("Inventories");
 
                     b.Navigation("InventoryMovements");
@@ -2299,8 +2254,6 @@ namespace FluxSYS_backend.Migrations
 
             modelBuilder.Entity("FluxSYS_backend.Users", b =>
                 {
-                    b.Navigation("Audits");
-
                     b.Navigation("Inventories");
 
                     b.Navigation("InventoryMovements");

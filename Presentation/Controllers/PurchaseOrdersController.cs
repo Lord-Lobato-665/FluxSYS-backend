@@ -48,7 +48,10 @@ namespace FluxSYS_backend.API.Controllers
 
         [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
         [HttpPost("create-purchase-order")]
-        public async Task<IActionResult> Create([FromBody] PurchaseOrderViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> Create(
+            [FromBody] PurchaseOrderViewModel model,
+            [FromQuery] string nameUser, // Nombre del usuario desde el localStorage
+            [FromQuery] string nameDepartment) // Nombre del departamento desde el localStorage
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -88,7 +91,7 @@ namespace FluxSYS_backend.API.Controllers
                     Products = productsWithPrices
                 };
 
-                await _service.AddAsyncPurchaseOrder(dto, userId, departmentId);
+                await _service.AddAsyncPurchaseOrder(dto, nameUser, nameDepartment);
                 return Ok(new { message = "Orden de compra creada correctamente" });
             }
             catch (SqlException ex) when (ex.Number == 547) // Error de clave foránea
@@ -105,7 +108,11 @@ namespace FluxSYS_backend.API.Controllers
 
         [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento")]
         [HttpPut("update-purchase-order/{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] PurchaseOrderViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> Update(
+            int id,
+            [FromBody] PurchaseOrderViewModel model,
+            [FromQuery] string nameUser, // Nombre del usuario desde el localStorage
+            [FromQuery] string nameDepartment) // Nombre del departamento desde el localStorage
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -145,7 +152,7 @@ namespace FluxSYS_backend.API.Controllers
                     Products = productsWithPrices
                 };
 
-                await _service.UpdateAsyncPurchaseOrder(id, dto, userId, departmentId);
+                await _service.UpdateAsyncPurchaseOrder(id, dto, nameUser, nameDepartment);
                 return Ok(new { message = "Orden de compra actualizada correctamente" });
             }
             catch (KeyNotFoundException ex)
@@ -162,11 +169,14 @@ namespace FluxSYS_backend.API.Controllers
 
         [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpDelete("delete-purchase-order/{id}")]
-        public async Task<IActionResult> SoftDelete(int id, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> SoftDelete(
+            int id,
+            [FromQuery] string nameUser, // Nombre del usuario desde el localStorage
+            [FromQuery] string nameDepartment) // Nombre del departamento desde el localStorage
         {
             try
             {
-                await _service.SoftDeleteAsyncPurchaseOrder(id, userId, departmentId);
+                await _service.SoftDeleteAsyncPurchaseOrder(id, nameUser, nameDepartment);
                 return Ok(new { message = "Orden de compra eliminada correctamente" });
             }
             catch (KeyNotFoundException ex)
@@ -183,11 +193,14 @@ namespace FluxSYS_backend.API.Controllers
 
         [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpPatch("restore-purchase-order/{id}")]
-        public async Task<IActionResult> Restore(int id, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> Restore(
+            int id,
+            [FromQuery] string nameUser, // Nombre del usuario desde el localStorage
+            [FromQuery] string nameDepartment) // Nombre del departamento desde el localStorage
         {
             try
             {
-                await _service.RestoreAsyncPurchaseOrder(id, userId, departmentId);
+                await _service.RestoreAsyncPurchaseOrder(id, nameUser, nameDepartment);
                 return Ok(new { message = "Orden de compra restaurada correctamente" });
             }
             catch (KeyNotFoundException ex)

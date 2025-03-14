@@ -8,11 +8,33 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FluxSYS_backend.Migrations
 {
     /// <inheritdoc />
-    public partial class SeedFixed : Migration
+    public partial class NameInconsistency : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "audits",
+                columns: table => new
+                {
+                    Id_audit = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Date_insert = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Date_update = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Date_delete = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Date_restore = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Amount_modify = table.Column<int>(type: "int", nullable: false),
+                    Name_user = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name_department = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name_module = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name_company = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Delete_log_audits = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_audits", x => x.Id_audit);
+                });
+
             migrationBuilder.CreateTable(
                 name: "clasification_movements",
                 columns: table => new
@@ -326,48 +348,6 @@ namespace FluxSYS_backend.Migrations
                         column: x => x.Id_rol_Id,
                         principalTable: "roles",
                         principalColumn: "Id_role");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "audits",
-                columns: table => new
-                {
-                    Id_audit = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Date_insert = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Date_update = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Date_delete = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Date_restore = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Amount_modify = table.Column<int>(type: "int", nullable: false),
-                    Id_user_Id = table.Column<int>(type: "int", nullable: false),
-                    Id_department_Id = table.Column<int>(type: "int", nullable: false),
-                    Id_module_Id = table.Column<int>(type: "int", nullable: false),
-                    Id_company_Id = table.Column<int>(type: "int", nullable: false),
-                    Delete_log_audits = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_audits", x => x.Id_audit);
-                    table.ForeignKey(
-                        name: "FK_audits_companies_Id_company_Id",
-                        column: x => x.Id_company_Id,
-                        principalTable: "companies",
-                        principalColumn: "Id_company");
-                    table.ForeignKey(
-                        name: "FK_audits_departments_Id_department_Id",
-                        column: x => x.Id_department_Id,
-                        principalTable: "departments",
-                        principalColumn: "Id_department");
-                    table.ForeignKey(
-                        name: "FK_audits_modules_Id_module_Id",
-                        column: x => x.Id_module_Id,
-                        principalTable: "modules",
-                        principalColumn: "Id_module");
-                    table.ForeignKey(
-                        name: "FK_audits_users_Id_user_Id",
-                        column: x => x.Id_user_Id,
-                        principalTable: "users",
-                        principalColumn: "Id_user");
                 });
 
             migrationBuilder.CreateTable(
@@ -916,26 +896,6 @@ namespace FluxSYS_backend.Migrations
                     { 4, 12, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 2, 4, 4, 4, 4, "Factura 004" },
                     { 5, 7, null, new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null, false, 3, 5, 4, 5, 5, "Factura 005" }
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_audits_Id_company_Id",
-                table: "audits",
-                column: "Id_company_Id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_audits_Id_department_Id",
-                table: "audits",
-                column: "Id_department_Id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_audits_Id_module_Id",
-                table: "audits",
-                column: "Id_module_Id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_audits_Id_user_Id",
-                table: "audits",
-                column: "Id_user_Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_categories_products_Id_company_Id",
