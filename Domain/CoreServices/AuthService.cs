@@ -28,7 +28,7 @@ namespace FluxSYS_backend.Application.Services
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            // Crear claims con la información del usuario
+            // Crear claims con la información del usuario relevante
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id_user.ToString()),
