@@ -42,7 +42,6 @@ public class Users
     public virtual Modules Modules { get; set; }
 
     public virtual ICollection<PurchaseOrders> PurchaseOrders { get; set; }
-    public virtual ICollection<Audits> Audits { get; set; }
     public virtual ICollection<InventoryMovements> InventoryMovements { get; set; }
     public virtual ICollection<Inventories> Inventories { get; set; }
 }

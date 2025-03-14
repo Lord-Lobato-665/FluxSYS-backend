@@ -98,7 +98,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task AddAsyncPurchaseOrder(PurchaseOrderCreateDTO dto, int userId, int departmentId)
+        public async Task AddAsyncPurchaseOrder(PurchaseOrderCreateDTO dto, string nameUser, string nameDepartment)
         {
             try
             {
@@ -111,7 +111,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     Id_supplier_Id = dto.Id_supplier_Id,
                     Id_state_Id = dto.Id_state_Id,
                     Id_movement_type_Id = dto.Id_movement_type_Id,
-                    Id_module_Id = 5,
+                    Id_module_Id = 5, // Módulo de órdenes de compra
                     Id_company_Id = dto.Id_company_Id,
                     Date_insert = DateTime.Now,
                     Delete_log_purchase_orders = false
@@ -152,10 +152,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 {
                     Date_insert = DateTime.Now,
                     Amount_modify = dto.Products?.Count ?? 0, // Cantidad de ítems en la orden
-                    Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
-                    Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
-                    Id_module_Id = 5, // Módulo de órdenes de compra
-                    Id_company_Id = dto.Id_company_Id, // Usar el ID de la compañía desde el DTO
+                    Name_user = nameUser, // Nombre del usuario desde el localStorage
+                    Name_department = nameDepartment, // Nombre del departamento desde el localStorage
+                    Name_module = "Órdenes de Compra", // Módulo de órdenes de compra
+                    Name_company = (await _context.Companies.FindAsync(dto.Id_company_Id))?.Name_company ?? "Desconocida",
                     Delete_log_audits = false
                 };
                 _context.Audits.Add(audit);
@@ -167,7 +167,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task UpdateAsyncPurchaseOrder(int id, PurchaseOrderUpdateDTO dto, int userId, int departmentId)
+        public async Task UpdateAsyncPurchaseOrder(int id, PurchaseOrderUpdateDTO dto, string nameUser, string nameDepartment)
         {
             try
             {
@@ -189,10 +189,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 {
                     Date_update = DateTime.Now,
                     Amount_modify = itemsAfterUpdate - itemsBeforeUpdate, // Diferencia en la cantidad de ítems
-                    Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
-                    Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
-                    Id_module_Id = 5, // Módulo de órdenes de compra
-                    Id_company_Id = dto.Id_company_Id, // Usar el ID de la compañía desde el DTO
+                    Name_user = nameUser, // Nombre del usuario desde el localStorage
+                    Name_department = nameDepartment, // Nombre del departamento desde el localStorage
+                    Name_module = "Órdenes de Compra", // Módulo de órdenes de compra
+                    Name_company = (await _context.Companies.FindAsync(dto.Id_company_Id))?.Name_company ?? "Desconocida",
                     Delete_log_audits = false
                 };
                 _context.Audits.Add(audit);
@@ -270,7 +270,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task SoftDeleteAsyncPurchaseOrder(int id, int userId, int departmentId)
+        public async Task SoftDeleteAsyncPurchaseOrder(int id, string nameUser, string nameDepartment)
         {
             try
             {
@@ -285,10 +285,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     {
                         Date_delete = DateTime.Now,
                         Amount_modify = -purchaseOrder.OrdersProducts.Count, // Cantidad de ítems eliminados
-                        Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
-                        Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
-                        Id_module_Id = purchaseOrder.Id_module_Id, // Módulo de órdenes de compra
-                        Id_company_Id = purchaseOrder.Id_company_Id, // Usar el ID de la compañía desde la orden
+                        Name_user = nameUser, // Nombre del usuario desde el localStorage
+                        Name_department = nameDepartment, // Nombre del departamento desde el localStorage
+                        Name_module = "Órdenes de Compra", // Módulo de órdenes de compra
+                        Name_company = (await _context.Companies.FindAsync(purchaseOrder.Id_company_Id))?.Name_company ?? "Desconocida",
                         Delete_log_audits = false
                     };
                     _context.Audits.Add(audit);
@@ -310,7 +310,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task RestoreAsyncPurchaseOrder(int id, int userId, int departmentId)
+        public async Task RestoreAsyncPurchaseOrder(int id, string nameUser, string nameDepartment)
         {
             try
             {
@@ -325,10 +325,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     {
                         Date_restore = DateTime.Now,
                         Amount_modify = purchaseOrder.OrdersProducts.Count, // Cantidad de ítems restaurados
-                        Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
-                        Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
-                        Id_module_Id = purchaseOrder.Id_module_Id, // Módulo de órdenes de compra
-                        Id_company_Id = purchaseOrder.Id_company_Id, // Usar el ID de la compañía desde la orden
+                        Name_user = nameUser, // Nombre del usuario desde el localStorage
+                        Name_department = nameDepartment, // Nombre del departamento desde el localStorage
+                        Name_module = "Órdenes de Compra", // Módulo de órdenes de compra
+                        Name_company = (await _context.Companies.FindAsync(purchaseOrder.Id_company_Id))?.Name_company ?? "Desconocida",
                         Delete_log_audits = false
                     };
                     _context.Audits.Add(audit);

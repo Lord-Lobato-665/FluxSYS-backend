@@ -19,24 +19,24 @@ namespace FluxSYS_backend.Application.Services
             return await _repository.GetAllAsyncInvoices();
         }
 
-        public async Task AddAsyncInvoice(InvoiceCreateDTO dto, int userId, int departmentId)
+        public async Task AddAsyncInvoice(InvoiceCreateDTO dto, string nameUser, string nameDepartment)
         {
-            await _repository.AddAsyncInvoice(dto, userId, departmentId);
+            await _repository.AddAsyncInvoice(dto, nameUser, nameDepartment);
         }
 
-        public async Task UpdateAsyncInvoice(int id, InvoiceUpdateDTO dto, int userId, int departmentId)
+        public async Task UpdateAsyncInvoice(int id, InvoiceUpdateDTO dto, string nameUser, string nameDepartment)
         {
-            await _repository.UpdateAsyncInvoice(id, dto, userId, departmentId);
+            await _repository.UpdateAsyncInvoice(id, dto, nameUser, nameDepartment);
         }
 
-        public async Task SoftDeleteAsyncInvoice(int id, int userId, int departmentId)
+        public async Task SoftDeleteAsyncInvoice(int id, string nameUser, string nameDepartment)
         {
-            await _repository.SoftDeleteAsyncInvoice(id, userId, departmentId);
+            await _repository.SoftDeleteAsyncInvoice(id, nameUser, nameDepartment);
         }
 
-        public async Task RestoreAsyncInvoice(int id, int userId, int departmentId)
+        public async Task RestoreAsyncInvoice(int id, string nameUser, string nameDepartment)
         {
-            await _repository.RestoreAsyncInvoice(id, userId, departmentId);
+            await _repository.RestoreAsyncInvoice(id, nameUser, nameDepartment);
         }
     }
 }

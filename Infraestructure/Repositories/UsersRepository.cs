@@ -53,7 +53,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task AddAsyncUser(UserCreateDTO dto, int userId, int departmentId)
+        public async Task AddAsyncUser(UserCreateDTO dto, string nameUser, string nameDepartment)
         {
             try
             {
@@ -85,7 +85,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     Id_position_Id = dto.Id_position_Id,
                     Id_department_Id = dto.Id_department_Id,
                     Id_company_Id = dto.Id_company_Id,
-                    Id_module_Id = 6,
+                    Id_module_Id = 6, // Módulo de usuarios
                     Date_insert = DateTime.Now // Marca de tiempo para la creación
                 };
                 _context.Users.Add(user);
@@ -96,10 +96,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 {
                     Date_insert = DateTime.Now,
                     Amount_modify = 1, // Creación de 1 usuario
-                    Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
-                    Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
-                    Id_module_Id = 6, // Módulo de usuarios
-                    Id_company_Id = dto.Id_company_Id, // Usar el ID de la compañía desde el DTO
+                    Name_user = nameUser, // Nombre del usuario desde el localStorage
+                    Name_department = nameDepartment, // Nombre del departamento desde el localStorage
+                    Name_module = "Usuarios", // Módulo de usuarios
+                    Name_company = (await _context.Companies.FindAsync(dto.Id_company_Id))?.Name_company ?? "Desconocida",
                     Delete_log_audits = false
                 };
                 _context.Audits.Add(audit);
@@ -112,7 +112,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task UpdateAsyncUser(int id, UserUpdateDTO dto, int userId, int departmentId)
+        public async Task UpdateAsyncUser(int id, UserUpdateDTO dto, string nameUser, string nameDepartment)
         {
             try
             {
@@ -146,10 +146,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 {
                     Date_update = DateTime.Now,
                     Amount_modify = 1, // Actualización de 1 usuario
-                    Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
-                    Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
-                    Id_module_Id = 6, // Módulo de usuarios
-                    Id_company_Id = dto.Id_company_Id, // Usar el ID de la compañía desde el DTO
+                    Name_user = nameUser, // Nombre del usuario desde el localStorage
+                    Name_department = nameDepartment, // Nombre del departamento desde el localStorage
+                    Name_module = "Usuarios", // Módulo de usuarios
+                    Name_company = (await _context.Companies.FindAsync(dto.Id_company_Id))?.Name_company ?? "Desconocida",
                     Delete_log_audits = false
                 };
                 _context.Audits.Add(audit);
@@ -182,7 +182,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task SoftDeleteAsyncUser(int id, int userId, int departmentId)
+        public async Task SoftDeleteAsyncUser(int id, string nameUser, string nameDepartment)
         {
             try
             {
@@ -194,10 +194,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     {
                         Date_delete = DateTime.Now,
                         Amount_modify = -1, // Eliminación de 1 usuario
-                        Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
-                        Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
-                        Id_module_Id = user.Id_module_Id, // Módulo de usuarios
-                        Id_company_Id = user.Id_company_Id, // Usar el ID de la compañía desde el usuario
+                        Name_user = nameUser, // Nombre del usuario desde el localStorage
+                        Name_department = nameDepartment, // Nombre del departamento desde el localStorage
+                        Name_module = "Usuarios", // Módulo de usuarios
+                        Name_company = (await _context.Companies.FindAsync(user.Id_company_Id))?.Name_company ?? "Desconocida",
                         Delete_log_audits = false
                     };
                     _context.Audits.Add(audit);
@@ -219,7 +219,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task RestoreAsyncUser(int id, int userId, int departmentId)
+        public async Task RestoreAsyncUser(int id, string nameUser, string nameDepartment)
         {
             try
             {
@@ -233,10 +233,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     {
                         Date_restore = DateTime.Now,
                         Amount_modify = 1, // Restauración de 1 usuario
-                        Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
-                        Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
-                        Id_module_Id = user.Id_module_Id, // Módulo de usuarios
-                        Id_company_Id = user.Id_company_Id, // Usar el ID de la compañía desde el usuario
+                        Name_user = nameUser, // Nombre del usuario desde el localStorage
+                        Name_department = nameDepartment, // Nombre del departamento desde el localStorage
+                        Name_module = "Usuarios", // Módulo de usuarios
+                        Name_company = (await _context.Companies.FindAsync(user.Id_company_Id))?.Name_company ?? "Desconocida",
                         Delete_log_audits = false
                     };
                     _context.Audits.Add(audit);

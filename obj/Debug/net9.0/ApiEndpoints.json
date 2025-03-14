@@ -587,13 +587,13 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "nameUser",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "departmentId",
-        "Type": "System.Int32",
+        "Name": "nameDepartment",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -613,13 +613,13 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "nameUser",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "departmentId",
-        "Type": "System.Int32",
+        "Name": "nameDepartment",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -649,13 +649,13 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "nameUser",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "departmentId",
-        "Type": "System.Int32",
+        "Name": "nameDepartment",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -680,13 +680,13 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "nameUser",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "departmentId",
-        "Type": "System.Int32",
+        "Name": "nameDepartment",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -716,13 +716,13 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "nameUser",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "departmentId",
-        "Type": "System.Int32",
+        "Name": "nameDepartment",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -742,13 +742,13 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "nameUser",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "departmentId",
-        "Type": "System.Int32",
+        "Name": "nameDepartment",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -778,13 +778,13 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "nameUser",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "departmentId",
-        "Type": "System.Int32",
+        "Name": "nameDepartment",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -809,13 +809,13 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "nameUser",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "departmentId",
-        "Type": "System.Int32",
+        "Name": "nameDepartment",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -1072,13 +1072,13 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "nameUser",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "departmentId",
-        "Type": "System.Int32",
+        "Name": "nameDepartment",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -1098,13 +1098,13 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "nameUser",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "departmentId",
-        "Type": "System.Int32",
+        "Name": "nameDepartment",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -1134,13 +1134,13 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "nameUser",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "departmentId",
-        "Type": "System.Int32",
+        "Name": "nameDepartment",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -1165,13 +1165,13 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "nameUser",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "departmentId",
-        "Type": "System.Int32",
+        "Name": "nameDepartment",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -1349,13 +1349,13 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "nameUser",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "departmentId",
-        "Type": "System.Int32",
+        "Name": "nameDepartment",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -1375,13 +1375,13 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "nameUser",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "departmentId",
-        "Type": "System.Int32",
+        "Name": "nameDepartment",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -1411,13 +1411,13 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "nameUser",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "departmentId",
-        "Type": "System.Int32",
+        "Name": "nameDepartment",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -1442,13 +1442,13 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "nameUser",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "departmentId",
-        "Type": "System.Int32",
+        "Name": "nameDepartment",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -1468,13 +1468,13 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "nameUser",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "departmentId",
-        "Type": "System.Int32",
+        "Name": "nameDepartment",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -1494,13 +1494,13 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "nameUser",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "departmentId",
-        "Type": "System.Int32",
+        "Name": "nameDepartment",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -1530,13 +1530,13 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "nameUser",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "departmentId",
-        "Type": "System.Int32",
+        "Name": "nameDepartment",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -1561,13 +1561,13 @@
         "IsRequired": true
       },
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "nameUser",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "departmentId",
-        "Type": "System.Int32",
+        "Name": "nameDepartment",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],

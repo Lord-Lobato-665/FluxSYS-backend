@@ -52,7 +52,10 @@ namespace FluxSYS_backend.API.Controllers
 
         [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
         [HttpPost("create-supplier")]
-        public async Task<IActionResult> Create([FromBody] SupplierViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> Create(
+            [FromBody] SupplierViewModel model,
+            [FromQuery] string nameUser, // Nombre del usuario desde el localStorage
+            [FromQuery] string nameDepartment) // Nombre del departamento desde el localStorage
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -85,7 +88,8 @@ namespace FluxSYS_backend.API.Controllers
                         Suggested_price = p.Suggested_price
                     }).ToList()
                 };
-                await _service.AddAsyncSupplier(dto, userId, departmentId);
+
+                await _service.AddAsyncSupplier(dto, nameUser, nameDepartment);
                 return Ok(new { message = "Proveedor creado correctamente" });
             }
             catch (SqlException ex) when (ex.Number == 547) // Error de clave foránea
@@ -102,7 +106,11 @@ namespace FluxSYS_backend.API.Controllers
 
         [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento")]
         [HttpPut("update-supplier/{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] SupplierViewModel model, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> Update(
+            int id,
+            [FromBody] SupplierViewModel model,
+            [FromQuery] string nameUser, // Nombre del usuario desde el localStorage
+            [FromQuery] string nameDepartment) // Nombre del departamento desde el localStorage
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -122,7 +130,8 @@ namespace FluxSYS_backend.API.Controllers
                         Suggested_price = p.Suggested_price
                     }).ToList()
                 };
-                await _service.UpdateAsyncSupplier(id, dto, userId, departmentId);
+
+                await _service.UpdateAsyncSupplier(id, dto, nameUser, nameDepartment);
                 return Ok(new { message = "Proveedor actualizado correctamente" });
             }
             catch (KeyNotFoundException ex)
@@ -139,11 +148,14 @@ namespace FluxSYS_backend.API.Controllers
 
         [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpDelete("delete-supplier/{id}")]
-        public async Task<IActionResult> SoftDelete(int id, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> SoftDelete(
+            int id,
+            [FromQuery] string nameUser, // Nombre del usuario desde el localStorage
+            [FromQuery] string nameDepartment) // Nombre del departamento desde el localStorage
         {
             try
             {
-                await _service.SoftDeleteAsyncSupplier(id, userId, departmentId);
+                await _service.SoftDeleteAsyncSupplier(id, nameUser, nameDepartment);
                 return Ok(new { message = "Proveedor eliminado correctamente" });
             }
             catch (KeyNotFoundException ex)
@@ -160,11 +172,14 @@ namespace FluxSYS_backend.API.Controllers
 
         [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpPatch("restore-supplier/{id}")]
-        public async Task<IActionResult> Restore(int id, [FromQuery] int userId, [FromQuery] int departmentId)
+        public async Task<IActionResult> Restore(
+            int id,
+            [FromQuery] string nameUser, // Nombre del usuario desde el localStorage
+            [FromQuery] string nameDepartment) // Nombre del departamento desde el localStorage
         {
             try
             {
-                await _service.RestoreAsyncSupplier(id, userId, departmentId);
+                await _service.RestoreAsyncSupplier(id, nameUser, nameDepartment);
                 return Ok(new { message = "Proveedor restaurado correctamente" });
             }
             catch (KeyNotFoundException ex)

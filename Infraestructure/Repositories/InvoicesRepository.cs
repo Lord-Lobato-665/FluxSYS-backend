@@ -91,7 +91,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task AddAsyncInvoice(InvoiceCreateDTO dto, int userId, int departmentId)
+        public async Task AddAsyncInvoice(InvoiceCreateDTO dto, string nameUser, string nameDepartment)
         {
             try
             {
@@ -101,7 +101,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     Id_purchase_order_Id = dto.Id_purchase_order_Id,
                     Id_supplier_Id = dto.Id_supplier_Id,
                     Id_department_Id = dto.Id_department_Id,
-                    Id_module_Id = 4,
+                    Id_module_Id = 4, // Módulo de facturas
                     Id_company_Id = dto.Id_company_Id,
                     Date_insert = DateTime.Now,
                     Delete_log_invoices = false
@@ -142,10 +142,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 {
                     Date_insert = DateTime.Now,
                     Amount_modify = dto.Products?.Count ?? 0, // Cantidad de ítems en la factura
-                    Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
-                    Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
-                    Id_module_Id = 4, // Módulo de facturas
-                    Id_company_Id = dto.Id_company_Id, // Usar el ID de la compañía desde el DTO
+                    Name_user = nameUser, // Nombre del usuario desde el localStorage
+                    Name_department = nameDepartment, // Nombre del departamento desde el localStorage
+                    Name_module = "Facturas", // Módulo de facturas
+                    Name_company = (await _context.Companies.FindAsync(dto.Id_company_Id))?.Name_company ?? "Desconocida",
                     Delete_log_audits = false
                 };
                 _context.Audits.Add(audit);
@@ -157,7 +157,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task UpdateAsyncInvoice(int id, InvoiceUpdateDTO dto, int userId, int departmentId)
+        public async Task UpdateAsyncInvoice(int id, InvoiceUpdateDTO dto, string nameUser, string nameDepartment)
         {
             try
             {
@@ -179,10 +179,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 {
                     Date_update = DateTime.Now,
                     Amount_modify = itemsAfterUpdate - itemsBeforeUpdate, // Diferencia en la cantidad de ítems
-                    Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
-                    Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
-                    Id_module_Id = 4, // Módulo de facturas
-                    Id_company_Id = dto.Id_company_Id, // Usar el ID de la compañía desde el DTO
+                    Name_user = nameUser, // Nombre del usuario desde el localStorage
+                    Name_department = nameDepartment, // Nombre del departamento desde el localStorage
+                    Name_module = "Facturas", // Módulo de facturas
+                    Name_company = (await _context.Companies.FindAsync(dto.Id_company_Id))?.Name_company ?? "Desconocida",
                     Delete_log_audits = false
                 };
                 _context.Audits.Add(audit);
@@ -257,7 +257,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task SoftDeleteAsyncInvoice(int id, int userId, int departmentId)
+        public async Task SoftDeleteAsyncInvoice(int id, string nameUser, string nameDepartment)
         {
             try
             {
@@ -272,10 +272,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     {
                         Date_delete = DateTime.Now,
                         Amount_modify = -invoice.InvoicesProducts.Count, // Cantidad de ítems eliminados
-                        Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
-                        Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
-                        Id_module_Id = invoice.Id_module_Id, // Módulo de facturas
-                        Id_company_Id = invoice.Id_company_Id, // Usar el ID de la compañía desde la factura
+                        Name_user = nameUser, // Nombre del usuario desde el localStorage
+                        Name_department = nameDepartment, // Nombre del departamento desde el localStorage
+                        Name_module = "Facturas", // Módulo de facturas
+                        Name_company = (await _context.Companies.FindAsync(invoice.Id_company_Id))?.Name_company ?? "Desconocida",
                         Delete_log_audits = false
                     };
                     _context.Audits.Add(audit);
@@ -297,7 +297,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
-        public async Task RestoreAsyncInvoice(int id, int userId, int departmentId)
+        public async Task RestoreAsyncInvoice(int id, string nameUser, string nameDepartment)
         {
             try
             {
@@ -312,10 +312,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     {
                         Date_restore = DateTime.Now,
                         Amount_modify = invoice.InvoicesProducts.Count, // Cantidad de ítems restaurados
-                        Id_user_Id = userId, // Usar el ID del usuario desde los parámetros
-                        Id_department_Id = departmentId, // Usar el ID del departamento desde los parámetros
-                        Id_module_Id = invoice.Id_module_Id, // Módulo de facturas
-                        Id_company_Id = invoice.Id_company_Id, // Usar el ID de la compañía desde la factura
+                        Name_user = nameUser, // Nombre del usuario desde el localStorage
+                        Name_department = nameDepartment, // Nombre del departamento desde el localStorage
+                        Name_module = "Facturas", // Módulo de facturas
+                        Name_company = (await _context.Companies.FindAsync(invoice.Id_company_Id))?.Name_company ?? "Desconocida",
                         Delete_log_audits = false
                     };
                     _context.Audits.Add(audit);

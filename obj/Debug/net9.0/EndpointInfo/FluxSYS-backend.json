@@ -938,19 +938,17 @@
         ],
         "parameters": [
           {
-            "name": "userId",
+            "name": "nameUser",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
-            "name": "departmentId",
+            "name": "nameDepartment",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -996,19 +994,17 @@
             }
           },
           {
-            "name": "userId",
+            "name": "nameUser",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
-            "name": "departmentId",
+            "name": "nameDepartment",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -1054,19 +1050,17 @@
             }
           },
           {
-            "name": "userId",
+            "name": "nameUser",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
-            "name": "departmentId",
+            "name": "nameDepartment",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -1093,19 +1087,17 @@
             }
           },
           {
-            "name": "userId",
+            "name": "nameUser",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
-            "name": "departmentId",
+            "name": "nameDepartment",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -1147,19 +1139,17 @@
         ],
         "parameters": [
           {
-            "name": "userId",
+            "name": "nameUser",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
-            "name": "departmentId",
+            "name": "nameDepartment",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -1205,19 +1195,17 @@
             }
           },
           {
-            "name": "userId",
+            "name": "nameUser",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
-            "name": "departmentId",
+            "name": "nameDepartment",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -1263,19 +1251,17 @@
             }
           },
           {
-            "name": "userId",
+            "name": "nameUser",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
-            "name": "departmentId",
+            "name": "nameDepartment",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -1302,19 +1288,17 @@
             }
           },
           {
-            "name": "userId",
+            "name": "nameUser",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
-            "name": "departmentId",
+            "name": "nameDepartment",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -1737,19 +1721,17 @@
         ],
         "parameters": [
           {
-            "name": "userId",
+            "name": "nameUser",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
-            "name": "departmentId",
+            "name": "nameDepartment",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -1795,19 +1777,17 @@
             }
           },
           {
-            "name": "userId",
+            "name": "nameUser",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
-            "name": "departmentId",
+            "name": "nameDepartment",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -1853,19 +1833,17 @@
             }
           },
           {
-            "name": "userId",
+            "name": "nameUser",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
-            "name": "departmentId",
+            "name": "nameDepartment",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -1892,19 +1870,17 @@
             }
           },
           {
-            "name": "userId",
+            "name": "nameUser",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
-            "name": "departmentId",
+            "name": "nameDepartment",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -2196,19 +2172,17 @@
         ],
         "parameters": [
           {
-            "name": "userId",
+            "name": "nameUser",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
-            "name": "departmentId",
+            "name": "nameDepartment",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -2254,19 +2228,17 @@
             }
           },
           {
-            "name": "userId",
+            "name": "nameUser",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
-            "name": "departmentId",
+            "name": "nameDepartment",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -2312,19 +2284,17 @@
             }
           },
           {
-            "name": "userId",
+            "name": "nameUser",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
-            "name": "departmentId",
+            "name": "nameDepartment",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -2351,19 +2321,17 @@
             }
           },
           {
-            "name": "userId",
+            "name": "nameUser",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
-            "name": "departmentId",
+            "name": "nameDepartment",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -2393,19 +2361,17 @@
         ],
         "parameters": [
           {
-            "name": "userId",
+            "name": "nameUser",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
-            "name": "departmentId",
+            "name": "nameDepartment",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -2451,19 +2417,17 @@
             }
           },
           {
-            "name": "userId",
+            "name": "nameUser",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
-            "name": "departmentId",
+            "name": "nameDepartment",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -2509,19 +2473,17 @@
             }
           },
           {
-            "name": "userId",
+            "name": "nameUser",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
-            "name": "departmentId",
+            "name": "nameDepartment",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -2548,19 +2510,17 @@
             }
           },
           {
-            "name": "userId",
+            "name": "nameUser",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           },
           {
-            "name": "departmentId",
+            "name": "nameDepartment",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],

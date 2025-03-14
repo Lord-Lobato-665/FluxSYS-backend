@@ -18,5 +18,4 @@ public class Modules
     public virtual ICollection<PurchaseOrders> PurchaseOrders { get; set; }
     public virtual ICollection<Invoices> Invoices { get; set; }
     public virtual ICollection<InventoryMovements> InventoryMovements { get; set; }
-    public virtual ICollection<Audits> Audits { get; set; }
 }

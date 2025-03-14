@@ -27,10 +27,6 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             try
             {
                 var audits = await _context.Audits
-                    .Include(a => a.Users)
-                    .Include(a => a.Departments)
-                    .Include(a => a.Modules)
-                    .Include(a => a.Companies)
                     .Select(a => new AuditReadDTO
                     {
                         Id_audit = a.Id_audit,
@@ -47,10 +43,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                             ? a.Date_restore.Value.ToString("yyyy-MM-dd HH:mm:ss")
                             : "N/A",
                         Amount_modify = a.Amount_modify,
-                        Name_user = a.Users.Name_user,
-                        Name_department = a.Departments.Name_deparment,
-                        Name_module = a.Modules.Name_module,
-                        Name_company = a.Companies.Name_company,
+                        Name_user = a.Name_user,
+                        Name_department = a.Name_department,
+                        Name_module = a.Name_module,
+                        Name_company = a.Name_company,
                         Delete_log_audits = a.Delete_log_audits
                     })
                     .ToListAsync();
