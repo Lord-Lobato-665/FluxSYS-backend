@@ -28,11 +28,16 @@ namespace FluxSYS_backend.Application.Services
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
+            // Crear claims con la información del usuario
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id_user.ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Mail_user),
                 new Claim(ClaimTypes.Role, user.Roles.Name_role),
+                new Claim("Name", user.Name_user),
+                new Claim("Department", user.Departments.Name_deparment),
+                new Claim("Position", user.Positions.Name_position),
+                new Claim("Company", user.Companies.Name_company),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
@@ -50,8 +55,12 @@ namespace FluxSYS_backend.Application.Services
         // Autentica al usuario y devuelve el objeto Users si las credenciales son válidas
         public async Task<Users> Authenticate(string email, string password)
         {
+            // Cargar el usuario con todas las entidades relacionadas
             var user = await _context.Users
                 .Include(u => u.Roles)
+                .Include(u => u.Positions)
+                .Include(u => u.Departments)
+                .Include(u => u.Companies)
                 .FirstOrDefaultAsync(u => u.Mail_user == email);
 
             if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.Password_user))
