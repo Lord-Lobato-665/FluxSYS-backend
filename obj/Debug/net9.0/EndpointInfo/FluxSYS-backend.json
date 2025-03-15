@@ -913,6 +913,29 @@
         }
       }
     },
+    "/api/Inventories/get-inventory-by-id/{id}": {
+      "get": {
+        "tags": [
+          "Inventories"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Inventories/create-inventory": {
       "post": {
         "tags": [

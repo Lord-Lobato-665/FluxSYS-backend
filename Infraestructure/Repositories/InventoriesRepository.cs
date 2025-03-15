@@ -66,6 +66,82 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
+        public async Task<InventoryReadByIdDTO> GetInventoryByIdAsync(int id)
+        {
+            try
+            {
+                var inventory = await _context.Inventories
+                    .Include(i => i.CategoriesProducts)
+                    .Include(i => i.States)
+                    .Include(i => i.MovementsTypes)
+                    .Include(i => i.Suppliers)
+                    .Include(i => i.Departments)
+                    .Include(i => i.Modules)
+                    .Include(i => i.Companies)
+                    .Include(i => i.Users)
+                    .Include(i => i.SuppliersProducts)
+                        .ThenInclude(sp => sp.Suppliers)
+                    .Include(i => i.InvoicesProducts)
+                        .ThenInclude(ip => ip.Invoices)
+                    .Include(i => i.OrdersProducts)
+                        .ThenInclude(op => op.PurchaseOrders)
+                    .FirstOrDefaultAsync(i => i.Id_inventory_product == id);
+
+                if (inventory == null)
+                {
+                    return null; // O podrías lanzar una excepción si lo prefieres
+                }
+
+                var inventoryDto = new InventoryReadByIdDTO
+                {
+                    Id_inventory_product = inventory.Id_inventory_product,
+                    Name_product = inventory.Name_product,
+                    Stock_product = inventory.Stock_product,
+                    Price_product = inventory.Price_product,
+                    Name_category_product = inventory.CategoriesProducts.Name_category_product,
+                    Name_state = inventory.States.Name_state,
+                    Name_movement_type = inventory.MovementsTypes.Name_movement_type,
+                    Name_supplier = inventory.Suppliers.Name_supplier,
+                    Name_department = inventory.Departments.Name_deparment,
+                    Name_module = inventory.Modules.Name_module,
+                    Name_company = inventory.Companies.Name_company,
+                    Name_user = inventory.Users.Name_user,
+                    Date_insert = inventory.Date_insert.HasValue ? inventory.Date_insert.Value.ToString("yyyy-MM-dd HH:mm:ss") : "N/A",
+                    Date_update = inventory.Date_update.HasValue ? inventory.Date_update.Value.ToString("yyyy-MM-dd HH:mm:ss") : "N/A",
+                    Date_delete = inventory.Date_delete.HasValue ? inventory.Date_delete.Value.ToString("yyyy-MM-dd HH:mm:ss") : "N/A",
+                    Date_restore = inventory.Date_restore.HasValue ? inventory.Date_restore.Value.ToString("yyyy-MM-dd HH:mm:ss") : "N/A",
+                    Delete_log_inventory = inventory.Delete_log_inventory,
+                    Suppliers = inventory.SuppliersProducts
+                        .Select(sp => new SupplierSimpleReadDTO
+                        {
+                            Id_supplier = sp.Suppliers.Id_supplier,
+                            Name_supplier = sp.Suppliers.Name_supplier,
+                            Mail_supplier = sp.Suppliers.Mail_supplier,
+                            Phone_supplier = sp.Suppliers.Phone_supplier
+                        }).ToList(),
+                    Invoices = inventory.InvoicesProducts
+                        .Select(ip => new InvoiceSimpleReadDTO
+                        {
+                            Id_invoice = ip.Invoices.Id_invoice,
+                            Name_invoice = ip.Invoices.Name_invoice
+                        }).ToList(),
+                    PurchaseOrders = inventory.OrdersProducts
+                        .Select(op => new PurchaseOrderSimpleReadDTO
+                        {
+                            Id_purchase_order = op.PurchaseOrders.Id_purchase_order,
+                            Name_purchase_order = op.PurchaseOrders.Name_purchase_order
+                        }).ToList()
+                };
+
+                return inventoryDto;
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetInventoryById");
+                return null;
+            }
+        }
+
         public async Task AddAsyncInventory(InventoryCreateDTO dto, string nameUser, string nameDepartment)
         {
             try
