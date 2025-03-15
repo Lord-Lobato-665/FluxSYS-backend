@@ -4,6 +4,7 @@ using FluxSYS_backend.Application.Services;
 using FluxSYS_backend.Application.ViewModels;
 using FluxSYS_backend.Domain.Models.PrincipalModels;
 using FluxSYS_backend.Infraestructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace FluxSYS_backend.API.Controllers
 {
@@ -31,6 +32,16 @@ namespace FluxSYS_backend.API.Controllers
 
             try
             {
+                // Verificar si el correo electrónico ya existe
+                var existingUser = await _context.Users
+                    .FirstOrDefaultAsync(u => u.Mail_user == model.Mail_user);
+
+                if (existingUser != null)
+                {
+                    return BadRequest(new { message = "El correo electrónico ya está registrado." });
+                }
+
+                // Crear el nuevo usuario
                 var user = new Users
                 {
                     Name_user = model.Name_user,
@@ -45,6 +56,7 @@ namespace FluxSYS_backend.API.Controllers
                     Date_insert = DateTime.Now
                 };
 
+                // Guardar el usuario en la base de datos
                 _context.Users.Add(user);
                 await _context.SaveChangesAsync();
 
