@@ -625,6 +625,22 @@
   },
   {
     "ContainingType": "FluxSYS_backend.API.Controllers.InventoriesController",
+    "Method": "GetInventoryById",
+    "RelativePath": "api/Inventories/get-inventory-by-id/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.InventoriesController",
     "Method": "Restore",
     "RelativePath": "api/Inventories/restore-inventory/{id}",
     "HttpMethod": "PATCH",
