@@ -24,7 +24,7 @@ namespace FluxSYS_backend.API.Controllers
             _errorLogService = errorLogService;
         }
 
-        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
+        [CustomAuthorize("Administrador")]
         [HttpGet("get-companies")]
         public async Task<IActionResult> GetAll()
         {
@@ -40,7 +40,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
+        [CustomAuthorize("Administrador")]
         [HttpPost("create-company")]
         public async Task<IActionResult> Create([FromBody] CompanyViewModel model)
         {
@@ -60,7 +60,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento")]
+        [CustomAuthorize("Administrador")]
         [HttpPut("update-company/{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] CompanyViewModel model)
         {
@@ -84,7 +84,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
+        [CustomAuthorize("Administrador")]
         [HttpDelete("delete-company/{id}")]
         public async Task<IActionResult> SoftDelete(int id)
         {
@@ -104,7 +104,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
+        [CustomAuthorize("Administrador")]
         [HttpPatch("restore-company/{id}")]
         public async Task<IActionResult> Restore(int id)
         {

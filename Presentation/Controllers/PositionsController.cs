@@ -25,7 +25,7 @@ namespace FluxSYS_backend.API.Controllers
             _companiesService = companiesService;
         }
 
-        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpGet("get-positions")]
         public async Task<IActionResult> GetAll()
         {
@@ -77,7 +77,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpPut("update-position/{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] PositionViewModel model)
         {
@@ -106,7 +106,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpDelete("delete-position/{id}")]
         public async Task<IActionResult> SoftDelete(int id)
         {
@@ -127,7 +127,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpPatch("restore-position/{id}")]
         public async Task<IActionResult> Restore(int id)
         {
