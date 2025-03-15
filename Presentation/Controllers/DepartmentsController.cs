@@ -25,7 +25,7 @@ namespace FluxSYS_backend.API.Controllers
             _companiesService = companiesService;
         }
 
-        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpGet("get-departments")]
         public async Task<IActionResult> GetAll()
         {
@@ -41,7 +41,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpPost("create-department")]
         public async Task<IActionResult> Create([FromBody] DepartmentViewModel model)
         {
@@ -77,7 +77,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpPut("update-department/{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] DepartmentViewModel model)
         {
@@ -106,7 +106,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpDelete("delete-department/{id}")]
         public async Task<IActionResult> SoftDelete(int id)
         {
@@ -127,7 +127,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpPatch("restore-department/{id}")]
         public async Task<IActionResult> Restore(int id)
         {
