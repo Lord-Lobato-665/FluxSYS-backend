@@ -7,5 +7,6 @@ namespace FluxSYS_backend.Domain.IServices
     public interface IInventoryMovements
     {
         Task<IEnumerable<InventoryMovementReadDTO>> GetAllAsyncInventoryMovements();
+        Task<IEnumerable<InventoryMovementReadDTO>> GetAllByCompanyIdAsync(int idCompany);
     }
 }
