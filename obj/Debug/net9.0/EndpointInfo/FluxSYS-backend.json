@@ -1125,6 +1125,29 @@
         }
       }
     },
+    "/api/InventoryMovements/get-inventory-movements-by-company/{idCompany}": {
+      "get": {
+        "tags": [
+          "InventoryMovements"
+        ],
+        "parameters": [
+          {
+            "name": "idCompany",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Invoices/get-invoices": {
       "get": {
         "tags": [

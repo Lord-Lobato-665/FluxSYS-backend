@@ -20,7 +20,7 @@ namespace FluxSYS_backend.API.Controllers
             _errorLogService = errorLogService;
         }
 
-        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
+        [CustomAuthorize("Administrador")]
         [HttpGet("get-inventory-movements")]
         public async Task<IActionResult> GetAll()
         {
@@ -32,6 +32,22 @@ namespace FluxSYS_backend.API.Controllers
             catch (Exception ex)
             {
                 await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetInventoryMovementsController");
+                return StatusCode(500, "Error interno del servidor.");
+            }
+        }
+
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
+        [HttpGet("get-inventory-movements-by-company/{idCompany}")]
+        public async Task<IActionResult> GetAllByCompanyId(int idCompany)
+        {
+            try
+            {
+                var inventoryMovements = await _service.GetAllByCompanyIdAsync(idCompany);
+                return Ok(inventoryMovements);
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetInventoryMovementsByCompanyController");
                 return StatusCode(500, "Error interno del servidor.");
             }
         }

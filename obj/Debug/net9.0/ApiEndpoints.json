@@ -707,6 +707,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FluxSYS_backend.API.Controllers.InventoryMovementsController",
+    "Method": "GetAllByCompanyId",
+    "RelativePath": "api/InventoryMovements/get-inventory-movements-by-company/{idCompany}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idCompany",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FluxSYS_backend.API.Controllers.InvoicesController",
     "Method": "Create",
     "RelativePath": "api/Invoices/create-invoice",
