@@ -1,4 +1,5 @@
-﻿using FluxSYS_backend.Application.DTOs.Inventories;
+﻿using DevExpress.DataAccess.ObjectBinding;
+using FluxSYS_backend.Application.DTOs.Inventories;
 using FluxSYS_backend.Application.Services;
 using FluxSYS_backend.Domain.IServices;
 using FluxSYS_backend.Domain.Models.PrincipalModels;
@@ -379,6 +380,67 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             catch (Exception ex)
             {
                 await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "RestoreInventory");
+            }
+        }
+
+        public async Task<byte[]> GetPDF(string companyName, string departmentName)
+        {
+            // Filtra los datos de inventarios por el nombre de la compañía y departamento
+            var inventories = await _context.Inventories
+                .Include(i => i.CategoriesProducts)
+                .Include(i => i.States)
+                .Include(i => i.MovementsTypes)
+                .Include(i => i.Suppliers)
+                .Include(i => i.Departments)
+                .Include(i => i.Modules)
+                .Include(i => i.Companies)
+                .Include(i => i.Users)
+                .Where(i => i.Companies.Name_company.Contains(companyName) && i.Departments.Name_deparment.Contains(departmentName)) // Filtra por nombre de compañía y departamento
+                .Select(i => new InventoryReadDTO
+                {
+                    Id_inventory_product = i.Id_inventory_product,
+                    Name_product = i.Name_product,
+                    Stock_product = i.Stock_product,
+                    Price_product = i.Price_product,
+                    Name_category_product = i.CategoriesProducts.Name_category_product,
+                    Name_state = i.States.Name_state,
+                    Name_movement_type = i.MovementsTypes.Name_movement_type,
+                    Name_supplier = i.Suppliers.Name_supplier,
+                    Name_department = i.Departments.Name_deparment,
+                    Name_module = i.Modules.Name_module,
+                    Name_company = i.Companies.Name_company,
+                    Name_user = i.Users.Name_user,
+                    Date_insert = i.Date_insert.HasValue ? i.Date_insert.Value.ToString("yyyy-MM-dd HH:mm:ss") : "N/A",
+                    Date_update = i.Date_update.HasValue ? i.Date_update.Value.ToString("yyyy-MM-dd HH:mm:ss") : "N/A",
+                    Date_delete = i.Date_delete.HasValue ? i.Date_delete.Value.ToString("yyyy-MM-dd HH:mm:ss") : "N/A",
+                    Date_restore = i.Date_restore.HasValue ? i.Date_restore.Value.ToString("yyyy-MM-dd HH:mm:ss") : "N/A",
+                    Delete_log_inventory = i.Delete_log_inventory
+                })
+                .ToListAsync();
+
+            // Crear el objeto DTO para el reporte
+            var reportePdf = new InventoryReadDTOPDF
+            {
+                Fecha = DateTime.Now.ToString("dddd dd MMMM yyyy", new System.Globalization.CultureInfo("es-ES")),
+                Hora = DateTime.Now.ToString("HH:mm:ss"),
+                Inventories = inventories
+            };
+
+            // Configura el ObjectDataSource
+            ObjectDataSource source = new ObjectDataSource { DataSource = reportePdf };
+
+            // Crea el reporte
+            var report = new FluxSYS_backend.Application.PDFs.Inventory.InventoryReport
+            {
+                DataSource = source,
+                DataMember = "Inventories"
+            };
+
+            using (var memory = new MemoryStream())
+            {
+                // Exporta el reporte a PDF
+                await report.ExportToPdfAsync(memory);
+                return memory.ToArray();
             }
         }
     }

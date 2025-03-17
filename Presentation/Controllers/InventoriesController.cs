@@ -180,5 +180,29 @@ namespace FluxSYS_backend.API.Controllers
                 return StatusCode(500, "Error interno del servidor.");
             }
         }
+
+        [CustomAuthorize("Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento")]
+        [HttpGet("inventory-pdf")]
+        public async Task<IActionResult> GetPDF([FromQuery] string companyName, [FromQuery] string departmentName)
+        {
+            if (string.IsNullOrEmpty(companyName))
+            {
+                return BadRequest("El parámetro 'Compañía' es requerido.");
+            }
+            if (string.IsNullOrEmpty(departmentName))
+            {
+                return BadRequest("El parámetro 'Departamento' es requerido.");
+            }
+
+            // Pasar ambos parámetros al servicio
+            var pdfFile = await _service.GetPDF(companyName, departmentName);
+
+            if (pdfFile == null || pdfFile.Length == 0)
+            {
+                return NotFound("No se encontraron productos para la compañía y departamento especificados.");
+            }
+
+            return File(pdfFile, "application/pdf", "InventoryReport.pdf");
+        }
     }
 }
