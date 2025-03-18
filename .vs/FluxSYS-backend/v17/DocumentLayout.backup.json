@@ -1,33 +1,45 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\",
+  "WorkspaceRootPath": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\presentation\\controllers\\inventoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:presentation\\controllers\\inventoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\application\\pdfs\\inventory\\inventoryreport.cs||{95027D70-C6B4-4736-8A48-AD3582187321}|Form",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\pdfs\\inventory\\inventoryreport.cs||{95027D70-C6B4-4736-8A48-AD3582187321}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\application\\appservices\\inventoriesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\appservices\\inventoriesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\application\\pdfs\\inventory\\inventoryreport.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\pdfs\\inventory\\inventoryreport.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\domain\\iservices\\iinventories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:domain\\iservices\\iinventories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\infraestructure\\repositories\\inventoriesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\infraestructure\\repositories\\inventoriesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:infraestructure\\repositories\\inventoriesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\application\\dtos\\inventories\\inventoryreaddtopdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\dtos\\inventories\\inventoryreaddtopdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\application\\dtos\\inventories\\inventoryreaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\application\\dtos\\inventories\\inventoryreaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\dtos\\inventories\\inventoryreaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\onedrive\\desktop\\fluxsys-backend\\infraestructure\\data\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\application\\dtos\\inventories\\inventoryreaddtopdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\dtos\\inventories\\inventoryreaddtopdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\presentation\\controllers\\inventoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:presentation\\controllers\\inventoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\application\\appservices\\inventoriesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\appservices\\inventoriesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\domain\\iservices\\iinventories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:domain\\iservices\\iinventories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\domain\\models\\principalmodels\\inventories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:domain\\models\\principalmodels\\inventories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\infraestructure\\data\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:infraestructure\\data\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -38,17 +50,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 633,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "DependencyInjection.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Infraestructure\\Data\\DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Infraestructure\\Data\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "Infraestructure\\Data\\DependencyInjection.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Infraestructure\\Data\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Infraestructure\\Data\\DependencyInjection.cs",
               "RelativeToolTip": "Infraestructure\\Data\\DependencyInjection.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-10T16:55:23.701Z",
               "IsPinned": true,
@@ -56,37 +68,75 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "InventoryReport.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Application\\PDFs\\Inventory\\InventoryReport.Designer.cs",
+              "RelativeDocumentMoniker": "Application\\PDFs\\Inventory\\InventoryReport.Designer.cs",
+              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Application\\PDFs\\Inventory\\InventoryReport.Designer.cs",
+              "RelativeToolTip": "Application\\PDFs\\Inventory\\InventoryReport.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T22:20:26.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "InventoryReport.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Application\\PDFs\\Inventory\\InventoryReport.cs",
+              "RelativeDocumentMoniker": "Application\\PDFs\\Inventory\\InventoryReport.cs",
+              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Application\\PDFs\\Inventory\\InventoryReport.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Application\\PDFs\\Inventory\\InventoryReport.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T22:20:18.66Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Inventories.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Domain\\Models\\PrincipalModels\\Inventories.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\PrincipalModels\\Inventories.cs",
+              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Domain\\Models\\PrincipalModels\\Inventories.cs",
+              "RelativeToolTip": "Domain\\Models\\PrincipalModels\\Inventories.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAA/wDwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T22:17:33.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "InventoriesController.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Presentation\\Controllers\\InventoriesController.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Presentation\\Controllers\\InventoriesController.cs",
               "RelativeDocumentMoniker": "Presentation\\Controllers\\InventoriesController.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Presentation\\Controllers\\InventoriesController.cs",
+              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Presentation\\Controllers\\InventoriesController.cs",
               "RelativeToolTip": "Presentation\\Controllers\\InventoriesController.cs",
-              "ViewState": "AgIAALcAAAAAAAAAAAAgwLwAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAALUAAAAAAAAAAAAgwLsAAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-17T01:24:09.232Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "InventoriesService.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\AppServices\\InventoriesService.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Application\\AppServices\\InventoriesService.cs",
               "RelativeDocumentMoniker": "Application\\AppServices\\InventoriesService.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\AppServices\\InventoriesService.cs",
+              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Application\\AppServices\\InventoriesService.cs",
               "RelativeToolTip": "Application\\AppServices\\InventoriesService.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAkwDEAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAwC0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-17T01:23:11.866Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "IInventories.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\IServices\\IInventories.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Domain\\IServices\\IInventories.cs",
               "RelativeDocumentMoniker": "Domain\\IServices\\IInventories.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Domain\\IServices\\IInventories.cs",
+              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Domain\\IServices\\IInventories.cs",
               "RelativeToolTip": "Domain\\IServices\\IInventories.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -95,13 +145,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "InventoriesRepository.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Infraestructure\\Repositories\\InventoriesRepository.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Infraestructure\\Repositories\\InventoriesRepository.cs",
               "RelativeDocumentMoniker": "Infraestructure\\Repositories\\InventoriesRepository.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Infraestructure\\Repositories\\InventoriesRepository.cs",
+              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Infraestructure\\Repositories\\InventoriesRepository.cs",
               "RelativeToolTip": "Infraestructure\\Repositories\\InventoriesRepository.cs",
-              "ViewState": "AgIAAI0BAAAAAAAAAAAAALABAABHAAAAAAAAAA==",
+              "ViewState": "AgIAAIwBAAAAAAAAAAAqwI8BAABfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-17T01:21:24.18Z",
               "EditorCaption": ""
@@ -110,9 +160,9 @@
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "InventoryReadDTOPDF.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Inventories\\InventoryReadDTOPDF.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Inventories\\InventoryReadDTOPDF.cs",
               "RelativeDocumentMoniker": "Application\\DTOs\\Inventories\\InventoryReadDTOPDF.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Inventories\\InventoryReadDTOPDF.cs",
+              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Inventories\\InventoryReadDTOPDF.cs",
               "RelativeToolTip": "Application\\DTOs\\Inventories\\InventoryReadDTOPDF.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -121,13 +171,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "InventoryReadDTO.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Inventories\\InventoryReadDTO.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Inventories\\InventoryReadDTO.cs",
               "RelativeDocumentMoniker": "Application\\DTOs\\Inventories\\InventoryReadDTO.cs",
-              "ToolTip": "C:\\Users\\pochi\\OneDrive\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Inventories\\InventoryReadDTO.cs",
+              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Application\\DTOs\\Inventories\\InventoryReadDTO.cs",
               "RelativeToolTip": "Application\\DTOs\\Inventories\\InventoryReadDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAYwAYAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-17T01:06:57.529Z",
               "EditorCaption": ""

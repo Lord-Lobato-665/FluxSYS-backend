@@ -10,6 +10,8 @@
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="DevExpress.Data" Version="24.2.5" />
+    <PackageReference Include="DevExpress.DataAccess" Version="24.2.5" />
+    <PackageReference Include="DevExpress.Reporting.Core" Version="24.2.5" />
     <PackageReference Include="DevExtreme.AspNet.Data" Version="5.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3" />
@@ -27,7 +29,6 @@
 
   <ItemGroup>
     <Folder Include="Application\DTOs\Invoices\" />
-    <Folder Include="Application\PDFs\Inventory\" />
     <Folder Include="Domain\Models\PrimitiveModels\" />
     <Folder Include="Infraestructure\ExternalServices\" />
   </ItemGroup>

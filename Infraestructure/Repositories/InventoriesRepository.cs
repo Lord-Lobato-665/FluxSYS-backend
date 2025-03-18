@@ -385,7 +385,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
 
         public async Task<byte[]> GetPDF(string companyName, string departmentName)
         {
-            // Filtra los datos de inventarios por el nombre de la compañía y departamento
+            // Filtra los datos de inventarios por el nombre de la compañía, el departamento y excluye los eliminados lógicamente
             var inventories = await _context.Inventories
                 .Include(i => i.CategoriesProducts)
                 .Include(i => i.States)
@@ -395,7 +395,9 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 .Include(i => i.Modules)
                 .Include(i => i.Companies)
                 .Include(i => i.Users)
-                .Where(i => i.Companies.Name_company.Contains(companyName) && i.Departments.Name_deparment.Contains(departmentName)) // Filtra por nombre de compañía y departamento
+                .Where(i => i.Companies.Name_company.Contains(companyName) // Filtra por nombre de compañía
+                    && i.Departments.Name_deparment.Contains(departmentName) // Filtra por nombre de departamento
+                    && !i.Delete_log_inventory) // Excluye los registros eliminados lógicamente
                 .Select(i => new InventoryReadDTO
                 {
                     Id_inventory_product = i.Id_inventory_product,
@@ -410,10 +412,10 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                     Name_module = i.Modules.Name_module,
                     Name_company = i.Companies.Name_company,
                     Name_user = i.Users.Name_user,
-                    Date_insert = i.Date_insert.HasValue ? i.Date_insert.Value.ToString("yyyy-MM-dd HH:mm:ss") : "N/A",
-                    Date_update = i.Date_update.HasValue ? i.Date_update.Value.ToString("yyyy-MM-dd HH:mm:ss") : "N/A",
-                    Date_delete = i.Date_delete.HasValue ? i.Date_delete.Value.ToString("yyyy-MM-dd HH:mm:ss") : "N/A",
-                    Date_restore = i.Date_restore.HasValue ? i.Date_restore.Value.ToString("yyyy-MM-dd HH:mm:ss") : "N/A",
+                    Date_insert = i.Date_insert.HasValue ? i.Date_insert.Value.ToString("dd/MM/yyyy") : null,
+                    Date_update = i.Date_update.HasValue ? i.Date_update.Value.ToString("dd/MM/yyyy") : null,
+                    Date_delete = i.Date_delete.HasValue ? i.Date_delete.Value.ToString("dd/MM/yyyy") : null,
+                    Date_restore = i.Date_restore.HasValue ? i.Date_restore.Value.ToString("dd/MM/yyyy") : null,
                     Delete_log_inventory = i.Delete_log_inventory
                 })
                 .ToListAsync();
@@ -429,7 +431,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             // Configura el ObjectDataSource
             ObjectDataSource source = new ObjectDataSource { DataSource = reportePdf };
 
-            // Crea el reporte
+            // Crea el reporte usando tu informe personalizado
             var report = new FluxSYS_backend.Application.PDFs.Inventory.InventoryReport
             {
                 DataSource = source,
@@ -443,5 +445,6 @@ namespace FluxSYS_backend.Infrastructure.Repositories
                 return memory.ToArray();
             }
         }
+
     }
 }

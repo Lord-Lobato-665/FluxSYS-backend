@@ -1113,6 +1113,34 @@
         }
       }
     },
+    "/api/Inventories/generate-pdf": {
+      "get": {
+        "tags": [
+          "Inventories"
+        ],
+        "parameters": [
+          {
+            "name": "companyName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "departmentName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/InventoryMovements/get-inventory-movements": {
       "get": {
         "tags": [

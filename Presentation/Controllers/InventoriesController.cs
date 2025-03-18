@@ -181,28 +181,25 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento")]
-        [HttpGet("inventory-pdf")]
-        public async Task<IActionResult> GetPDF([FromQuery] string companyName, [FromQuery] string departmentName)
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
+        [HttpGet("generate-pdf")]
+        public async Task<IActionResult> GeneratePdf(
+            [FromQuery] string companyName, // Nombre de la compañía desde el query string
+            [FromQuery] string departmentName) // Nombre del departamento desde el query string
         {
-            if (string.IsNullOrEmpty(companyName))
+            try
             {
-                return BadRequest("El parámetro 'Compañía' es requerido.");
+                // Generar el PDF
+                var pdfBytes = await _service.GetPDF(companyName, departmentName);
+
+                // Devolver el PDF como un archivo para descargar
+                return File(pdfBytes, "application/pdf", $"Inventario_{companyName}_{departmentName}.pdf");
             }
-            if (string.IsNullOrEmpty(departmentName))
+            catch (Exception ex)
             {
-                return BadRequest("El parámetro 'Departamento' es requerido.");
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GeneratePdfController");
+                return StatusCode(500, "Error interno del servidor.");
             }
-
-            // Pasar ambos parámetros al servicio
-            var pdfFile = await _service.GetPDF(companyName, departmentName);
-
-            if (pdfFile == null || pdfFile.Length == 0)
-            {
-                return NotFound("No se encontraron productos para la compañía y departamento especificados.");
-            }
-
-            return File(pdfFile, "application/pdf", "InventoryReport.pdf");
         }
     }
 }
