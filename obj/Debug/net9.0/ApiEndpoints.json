@@ -615,6 +615,27 @@
   },
   {
     "ContainingType": "FluxSYS_backend.API.Controllers.InventoriesController",
+    "Method": "GeneratePdf",
+    "RelativePath": "api/Inventories/generate-pdf",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "companyName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "departmentName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FluxSYS_backend.API.Controllers.InventoriesController",
     "Method": "GetAll",
     "RelativePath": "api/Inventories/get-inventories",
     "HttpMethod": "GET",

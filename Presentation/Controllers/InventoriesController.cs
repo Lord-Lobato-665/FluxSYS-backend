@@ -180,5 +180,26 @@ namespace FluxSYS_backend.API.Controllers
                 return StatusCode(500, "Error interno del servidor.");
             }
         }
+
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
+        [HttpGet("generate-pdf")]
+        public async Task<IActionResult> GeneratePdf(
+            [FromQuery] string companyName, // Nombre de la compañía desde el query string
+            [FromQuery] string departmentName) // Nombre del departamento desde el query string
+        {
+            try
+            {
+                // Generar el PDF
+                var pdfBytes = await _service.GetPDF(companyName, departmentName);
+
+                // Devolver el PDF como un archivo para descargar
+                return File(pdfBytes, "application/pdf", $"Inventario_{companyName}_{departmentName}.pdf");
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GeneratePdfController");
+                return StatusCode(500, "Error interno del servidor.");
+            }
+        }
     }
 }

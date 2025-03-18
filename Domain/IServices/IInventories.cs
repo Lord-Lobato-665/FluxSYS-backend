@@ -12,5 +12,6 @@ namespace FluxSYS_backend.Domain.IServices
         Task UpdateAsyncInventory(int id, InventoryUpdateDTO dto, string nameUser, string nameDepartment);
         Task SoftDeleteAsyncInventory(int id, string nameUser, string nameDepartment);
         Task RestoreAsyncInventory(int id, string nameUser, string nameDepartment);
+        Task<byte[]> GetPDF(string companyName, string departmentName);
     }
 }
