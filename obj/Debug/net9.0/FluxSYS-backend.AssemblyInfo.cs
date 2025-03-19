@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FluxSYS-backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8adb830c08b878fa271e932fdc4ee7332a9a9ba9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e08d7e5979a2ad05d14c3a467d39d7d8e0f2b282")]
 [assembly: System.Reflection.AssemblyProductAttribute("FluxSYS-backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FluxSYS-backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
