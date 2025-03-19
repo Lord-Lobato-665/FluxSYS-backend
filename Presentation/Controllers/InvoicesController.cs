@@ -46,6 +46,22 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
+        [HttpGet("get-invoices-by-company/{companyId}")]
+        public async Task<IActionResult> GetInvoicesByCompanyId(int companyId)
+        {
+            try
+            {
+                var invoices = await _service.GetInvoicesByCompanyIdAsync(companyId);
+                return Ok(invoices);
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetInvoicesByCompanyIdController");
+                return StatusCode(500, "Error interno del servidor.");
+            }
+        }
+
         [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
         [HttpPost("create-invoice")]
         public async Task<IActionResult> Create(
