@@ -17,6 +17,11 @@ namespace FluxSYS_backend.Application.Services
             return await _repository.GetAllAsyncStates();
         }
 
+        public async Task<IEnumerable<StateReadDTO>> GetStatesByCompanyIdAsync(int companyId)
+        {
+            return await _repository.GetStatesByCompanyIdAsync(companyId);
+        }
+
         public async Task AddAsyncState(StateCreateDTO dto)
         {
             await _repository.AddAsyncState(dto);

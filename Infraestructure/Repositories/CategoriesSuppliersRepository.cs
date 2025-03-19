@@ -39,6 +39,28 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
+        public async Task<IEnumerable<CategorySuppliersReadDTO>> GetCategoriesSuppliersByCompanyIdAsync(int companyId)
+        {
+            try
+            {
+                return await _context.CategoriesSuppliers
+                    .Where(cs => cs.Companies.Id_company == companyId) // Filtra por ID de la compañía
+                    .Select(cs => new CategorySuppliersReadDTO
+                    {
+                        Id_category_supplier = cs.Id_category_supplier,
+                        Name_category_supplier = cs.Name_category_supplier,
+                        Name_company = cs.Companies.Name_company,
+                        Delete_log_category_supplier = cs.Delete_log_category_supplier
+                    })
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetCategoriesSuppliersByCompanyIdAsync");
+                return new List<CategorySuppliersReadDTO>();
+            }
+        }
+
         public async Task AddAsyncCategorySupplier(CategorySuppliersCreateDTO dto)
         {
             try

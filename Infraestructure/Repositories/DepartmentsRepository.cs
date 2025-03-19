@@ -39,6 +39,28 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
+        public async Task<IEnumerable<DepartmentReadDTO>> GetDepartmentsByCompanyIdAsync(int companyId)
+        {
+            try
+            {
+                return await _context.Departments
+                    .Where(d => d.Companies.Id_company == companyId) // Filtra por ID de la compañía
+                    .Select(d => new DepartmentReadDTO
+                    {
+                        Id_department = d.Id_department,
+                        Name_deparment = d.Name_deparment,
+                        Name_company = d.Companies.Name_company,
+                        Delete_log_department = d.Delete_log_department
+                    })
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetDepartmentsByCompanyIdAsync");
+                return new List<DepartmentReadDTO>();
+            }
+        }
+
         public async Task<DepartmentReadDTO> GetByIdAsyncDepartment(int id)
         {
             try

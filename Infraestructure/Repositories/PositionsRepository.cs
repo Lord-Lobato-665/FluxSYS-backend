@@ -39,6 +39,28 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
+        public async Task<IEnumerable<PositionReadDTO>> GetPositionsByCompanyIdAsync(int companyId)
+        {
+            try
+            {
+                return await _context.Positions
+                    .Where(p => p.Companies.Id_company == companyId) // Filtra por ID de la compañía
+                    .Select(p => new PositionReadDTO
+                    {
+                        Id_position = p.Id_position,
+                        Name_position = p.Name_position,
+                        Name_company = p.Companies.Name_company,
+                        Delete_log_position = p.Delete_log_position
+                    })
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetPositionsByCompanyIdAsync");
+                return new List<PositionReadDTO>();
+            }
+        }
+
         public async Task AddAsyncPosition(PositionCreateDTO dto)
         {
             try

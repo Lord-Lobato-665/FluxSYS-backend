@@ -40,6 +40,29 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
+        public async Task<IEnumerable<MovementTypeReadDTO>> GetMovementTypesByCompanyIdAsync(int companyId)
+        {
+            try
+            {
+                return await _context.MovementsTypes
+                    .Where(mt => mt.Companies.Id_company == companyId) // Filtra por ID de la compañía
+                    .Select(mt => new MovementTypeReadDTO
+                    {
+                        Id_movement_type = mt.Id_movement_type,
+                        Name_movement_type = mt.Name_movement_type,
+                        Name_company = mt.Companies.Name_company,
+                        Name_clasification_movement = mt.ClasificationsMovements.Name_clasification_movement,
+                        Delete_log_movement_type = mt.Delete_log_movement_type
+                    })
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetMovementTypesByCompanyIdAsync");
+                return new List<MovementTypeReadDTO>();
+            }
+        }
+
         public async Task AddAsyncMovementType(MovementTypeCreateDTO dto)
         {
             try

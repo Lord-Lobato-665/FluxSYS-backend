@@ -17,6 +17,11 @@ namespace FluxSYS_backend.Application.Services
             return await _repository.GetAllAsyncMovementsTypes();
         }
 
+        public async Task<IEnumerable<MovementTypeReadDTO>> GetMovementTypesByCompanyIdAsync(int companyId)
+        {
+            return await _repository.GetMovementTypesByCompanyIdAsync(companyId);
+        }
+
         public async Task AddAsyncMovementType(MovementTypeCreateDTO dto)
         {
             await _repository.AddAsyncMovementType(dto);

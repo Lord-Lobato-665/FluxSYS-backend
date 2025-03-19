@@ -7,6 +7,7 @@ namespace FluxSYS_backend.Domain.IServices
     public interface IInventories
     {
         Task<IEnumerable<InventoryReadDTO>> GetAllAsyncInventories();
+        Task<IEnumerable<InventoryReadDTO>> GetInventoriesByCompanyIdAsync(int companyId);
         Task<InventoryReadByIdDTO> GetInventoryByIdAsync(int id);
         Task AddAsyncInventory(InventoryCreateDTO dto, string nameUser, string nameDepartment);
         Task UpdateAsyncInventory(int id, InventoryUpdateDTO dto, string nameUser, string nameDepartment);
