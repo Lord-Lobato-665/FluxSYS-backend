@@ -17,6 +17,12 @@ namespace FluxSYS_backend.Application.Services
         public async Task<IEnumerable<InvoiceReadDTO>> GetAllAsyncInvoices()
         {
             return await _repository.GetAllAsyncInvoices();
+
+        }
+
+        public async Task<IEnumerable<InvoiceReadDTO>> GetInvoicesByCompanyIdAsync(int companyId)
+        {
+            return await _repository.GetInvoicesByCompanyIdAsync(companyId);
         }
 
         public async Task AddAsyncInvoice(InvoiceCreateDTO dto, string nameUser, string nameDepartment)

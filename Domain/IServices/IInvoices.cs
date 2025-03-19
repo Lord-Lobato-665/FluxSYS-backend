@@ -7,6 +7,7 @@ namespace FluxSYS_backend.Domain.IServices
     public interface IInvoices
     {
         Task<IEnumerable<InvoiceReadDTO>> GetAllAsyncInvoices();
+        Task<IEnumerable<InvoiceReadDTO>> GetInvoicesByCompanyIdAsync(int companyId);
         Task AddAsyncInvoice(InvoiceCreateDTO dto, string nameUser, string nameDepartment);
         Task UpdateAsyncInvoice(int id, InvoiceUpdateDTO dto, string nameUser, string nameDepartment);
         Task SoftDeleteAsyncInvoice(int id, string nameUser, string nameDepartment);

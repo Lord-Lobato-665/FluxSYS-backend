@@ -17,6 +17,11 @@ namespace FluxSYS_backend.Application.Services
             return await _repository.GetAllAsyncDepartments();
         }
 
+        public async Task<IEnumerable<DepartmentReadDTO>> GetDepartmentsByCompanyIdAsync(int companyId)
+        {
+            return await _repository.GetDepartmentsByCompanyIdAsync(companyId);
+        }
+
         public async Task AddAsyncDepartment(DepartmentCreateDTO dto)
         {
             await _repository.AddAsyncDepartment(dto);

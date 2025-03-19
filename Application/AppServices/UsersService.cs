@@ -19,6 +19,11 @@ namespace FluxSYS_backend.Application.Services
             return await _repository.GetAllAsyncUsers();
         }
 
+        public async Task<IEnumerable<UserReadDTO>> GetUsersByCompanyIdAsync(int companyId)
+        {
+            return await _repository.GetUsersByCompanyIdAsync(companyId);
+        }
+
         public async Task AddAsyncUser(UserCreateDTO dto, string nameUser, string nameDepartment)
         {
             await _repository.AddAsyncUser(dto, nameUser, nameDepartment);

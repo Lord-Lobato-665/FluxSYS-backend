@@ -88,6 +88,72 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
+        public async Task<IEnumerable<SupplierReadDTO>> GetSuppliersByCompanyIdAsync(int companyId)
+        {
+            try
+            {
+                var suppliers = await _context.Suppliers
+                    .Include(s => s.SuppliersProducts)
+                        .ThenInclude(sp => sp.Inventories)
+                    .Include(s => s.CategoriesSuppliers)
+                    .Include(s => s.Modules)
+                    .Include(s => s.Companies)
+                    .Where(s => s.Companies.Id_company == companyId) // Filtra por ID de la compañía
+                    .Select(s => new SupplierReadDTO
+                    {
+                        Id_supplier = s.Id_supplier,
+                        Name_supplier = s.Name_supplier,
+                        Mail_supplier = s.Mail_supplier,
+                        Phone_supplier = s.Phone_supplier,
+                        Name_category_supplier = s.CategoriesSuppliers.Name_category_supplier,
+                        Name_module = s.Modules.Name_module,
+                        Name_company = s.Companies.Name_company,
+                        Date_insert = s.Date_insert.HasValue
+                            ? s.Date_insert.Value.ToString("yyyy-MM-dd HH:mm:ss")
+                            : "N/A",
+                        Date_update = s.Date_update.HasValue
+                            ? s.Date_update.Value.ToString("yyyy-MM-dd HH:mm:ss")
+                            : "N/A",
+                        Date_delete = s.Date_delete.HasValue
+                            ? s.Date_delete.Value.ToString("yyyy-MM-dd HH:mm:ss")
+                            : "N/A",
+                        Date_restore = s.Date_restore.HasValue
+                            ? s.Date_restore.Value.ToString("yyyy-MM-dd HH:mm:ss")
+                            : "N/A",
+                        Delete_log_suppliers = s.Delete_log_suppliers,
+                        Products_from_supplier = s.SuppliersProducts.Count(),
+                        Products = s.SuppliersProducts.Any()
+                            ? s.SuppliersProducts.Select(sp => new SupplierProductReadDTO
+                            {
+                                Id_inventory_product = sp.Inventories.Id_inventory_product,
+                                Name_product = sp.Inventories.Name_product,
+                                Suggested_price = sp.Suggested_price
+                            }).ToList()
+                            : new List<SupplierProductReadDTO>()
+                    })
+                    .ToListAsync();
+
+                // Manejar "Sin productos asociados" fuera de la consulta LINQ
+                foreach (var supplier in suppliers)
+                {
+                    if (!supplier.Products.Any())
+                    {
+                        supplier.Products = new List<SupplierProductReadDTO>
+                {
+                    new SupplierProductReadDTO { Name_product = "Sin productos asociados" }
+                };
+                    }
+                }
+
+                return suppliers;
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetSuppliersByCompanyIdAsync");
+                return new List<SupplierReadDTO>();
+            }
+        }
+
         public async Task AddAsyncSupplier(SupplierCreateDTO dto, string nameUser, string nameDepartment)
         {
             try

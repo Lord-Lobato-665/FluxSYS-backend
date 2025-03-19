@@ -67,6 +67,51 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
+        public async Task<IEnumerable<InventoryReadDTO>> GetInventoriesByCompanyIdAsync(int companyId)
+        {
+            try
+            {
+                var inventories = await _context.Inventories
+                    .Include(i => i.CategoriesProducts)
+                    .Include(i => i.States)
+                    .Include(i => i.MovementsTypes)
+                    .Include(i => i.Suppliers)
+                    .Include(i => i.Departments)
+                    .Include(i => i.Modules)
+                    .Include(i => i.Companies)
+                    .Include(i => i.Users)
+                    .Where(i => i.Companies.Id_company == companyId) // Filtra por ID de la compañía
+                    .Select(i => new InventoryReadDTO
+                    {
+                        Id_inventory_product = i.Id_inventory_product,
+                        Name_product = i.Name_product,
+                        Stock_product = i.Stock_product,
+                        Price_product = i.Price_product,
+                        Name_category_product = i.CategoriesProducts.Name_category_product,
+                        Name_state = i.States.Name_state,
+                        Name_movement_type = i.MovementsTypes.Name_movement_type,
+                        Name_supplier = i.Suppliers.Name_supplier,
+                        Name_department = i.Departments.Name_deparment,
+                        Name_module = i.Modules.Name_module,
+                        Name_company = i.Companies.Name_company,
+                        Name_user = i.Users.Name_user,
+                        Date_insert = i.Date_insert.HasValue ? i.Date_insert.Value.ToString("yyyy-MM-dd HH:mm:ss") : "N/A",
+                        Date_update = i.Date_update.HasValue ? i.Date_update.Value.ToString("yyyy-MM-dd HH:mm:ss") : "N/A",
+                        Date_delete = i.Date_delete.HasValue ? i.Date_delete.Value.ToString("yyyy-MM-dd HH:mm:ss") : "N/A",
+                        Date_restore = i.Date_restore.HasValue ? i.Date_restore.Value.ToString("yyyy-MM-dd HH:mm:ss") : "N/A",
+                        Delete_log_inventory = i.Delete_log_inventory
+                    })
+                    .ToListAsync();
+
+                return inventories;
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetInventoriesByCompanyIdAsync");
+                return new List<InventoryReadDTO>();
+            }
+        }
+
         public async Task<InventoryReadByIdDTO> GetInventoryByIdAsync(int id)
         {
             try

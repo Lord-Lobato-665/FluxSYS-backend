@@ -41,6 +41,22 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
+        [HttpGet("get-categories-products-by-company/{idCompany}")]
+        public async Task<IActionResult> GetCategoriesByCompanyId(int idCompany)
+        {
+            try
+            {
+                var categoriesProducts = await _service.GetCategoriesByCompanyIdAsync(idCompany);
+                return Ok(categoriesProducts);
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetCategoriesByCompanyIdController");
+                return StatusCode(500, "Error interno del servidor.");
+            }
+        }
+
         [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
         [HttpPost("create-category-product")]
         public async Task<IActionResult> Create([FromBody] CategoryProductsViewModel model)

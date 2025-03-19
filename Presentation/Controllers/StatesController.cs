@@ -41,6 +41,22 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
+        [HttpGet("get-states-by-company/{companyId}")]
+        public async Task<IActionResult> GetStatesByCompanyId(int companyId)
+        {
+            try
+            {
+                var states = await _service.GetStatesByCompanyIdAsync(companyId);
+                return Ok(states);
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetStatesByCompanyIdController");
+                return StatusCode(500, "Error interno del servidor.");
+            }
+        }
+
         [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
         [HttpPost("create-state")]
         public async Task<IActionResult> Create([FromBody] StateViewModel model)

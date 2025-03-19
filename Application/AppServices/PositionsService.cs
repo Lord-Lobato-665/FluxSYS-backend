@@ -17,6 +17,11 @@ namespace FluxSYS_backend.Application.Services
             return await _repository.GetAllAsyncPositions();
         }
 
+        public async Task<IEnumerable<PositionReadDTO>> GetPositionsByCompanyIdAsync(int companyId)
+        {
+            return await _repository.GetPositionsByCompanyIdAsync(companyId);
+        }
+
         public async Task AddAsyncPosition(PositionCreateDTO dto)
         {
             await _repository.AddAsyncPosition(dto);
