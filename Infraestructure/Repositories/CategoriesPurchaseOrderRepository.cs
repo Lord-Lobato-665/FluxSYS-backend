@@ -39,6 +39,28 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
+        public async Task<IEnumerable<CategoryPurchaseOrderReadDTO>> GetCategoriesPurchaseOrdersByCompanyIdAsync(int companyId)
+        {
+            try
+            {
+                return await _context.CategoriesPurchaseOrders
+                    .Where(cpo => cpo.Companies.Id_company == companyId) // Filtra por ID de la compañía
+                    .Select(cpo => new CategoryPurchaseOrderReadDTO
+                    {
+                        Id_category_purchase_order = cpo.Id_category_purchase_order,
+                        Name_category_purchase_order = cpo.Name_category_purchase_order,
+                        Name_company = cpo.Companies.Name_company,
+                        Delete_log_category_purchase_order = cpo.Delete_log_category_purchase_order
+                    })
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetCategoriesPurchaseOrdersByCompanyIdAsync");
+                return new List<CategoryPurchaseOrderReadDTO>();
+            }
+        }
+
         public async Task AddAsyncCategoryPurchaseOrder(CategoryPurchaseOrderCreateDTO dto)
         {
             try
