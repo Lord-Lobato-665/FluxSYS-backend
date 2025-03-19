@@ -3,4 +3,9 @@
   <PropertyGroup>
     <ActiveDebugProfile>https</ActiveDebugProfile>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Application\PDFs\Inventory\InventoryReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>
