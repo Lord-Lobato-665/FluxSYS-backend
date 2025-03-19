@@ -39,6 +39,28 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
+        public async Task<IEnumerable<StateReadDTO>> GetStatesByCompanyIdAsync(int companyId)
+        {
+            try
+            {
+                return await _context.States
+                    .Where(s => s.Companies.Id_company == companyId) // Filtra por ID de la compañía
+                    .Select(s => new StateReadDTO
+                    {
+                        Id_state = s.Id_state,
+                        Name_state = s.Name_state,
+                        Name_company = s.Companies.Name_company,
+                        Delete_log_state = s.Delete_log_state
+                    })
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetStatesByCompanyIdAsync");
+                return new List<StateReadDTO>();
+            }
+        }
+
         public async Task AddAsyncState(StateCreateDTO dto)
         {
             try

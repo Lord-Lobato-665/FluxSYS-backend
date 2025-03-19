@@ -56,6 +56,22 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
+        [HttpGet("get-users-by-company/{companyId}")]
+        public async Task<IActionResult> GetUsersByCompanyId(int companyId)
+        {
+            try
+            {
+                var users = await _service.GetUsersByCompanyIdAsync(companyId);
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetUsersByCompanyIdController");
+                return StatusCode(500, "Error interno del servidor.");
+            }
+        }
+
         [CustomAuthorize("Administrador")]
         [HttpPost("create-user")]
         public async Task<IActionResult> Create(

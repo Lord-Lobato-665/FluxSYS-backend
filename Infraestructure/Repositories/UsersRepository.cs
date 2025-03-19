@@ -53,6 +53,38 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
+        public async Task<IEnumerable<UserReadDTO>> GetUsersByCompanyIdAsync(int companyId)
+        {
+            try
+            {
+                return await _context.Users
+                    .Where(u => u.Companies.Id_company == companyId) // Filtra por ID de la compañía
+                    .Select(u => new UserReadDTO
+                    {
+                        Id_user = u.Id_user,
+                        Name_user = u.Name_user,
+                        Mail_user = u.Mail_user,
+                        Phone_user = u.Phone_user,
+                        Name_role = u.Roles.Name_role,
+                        Name_position = u.Positions.Name_position,
+                        Name_department = u.Departments.Name_deparment,
+                        Name_company = u.Companies.Name_company,
+                        Name_module = u.Modules.Name_module,
+                        Date_insert = u.Date_insert,
+                        Date_update = u.Date_update,
+                        Date_delete = u.Date_delete,
+                        Date_restore = u.Date_restore,
+                        Delete_log_user = u.Delete_log_user
+                    })
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetUsersByCompanyIdAsync");
+                return new List<UserReadDTO>();
+            }
+        }
+
         public async Task AddAsyncUser(UserCreateDTO dto, string nameUser, string nameDepartment)
         {
             try

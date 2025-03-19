@@ -91,6 +91,76 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
+        public async Task<IEnumerable<InvoiceReadDTO>> GetInvoicesByCompanyIdAsync(int companyId)
+        {
+            try
+            {
+                var invoices = await _context.Invoices
+                    .Include(i => i.PurchaseOrders)
+                    .Include(i => i.Suppliers)
+                    .Include(i => i.Departments)
+                    .Include(i => i.Modules)
+                    .Include(i => i.Companies)
+                    .Include(i => i.InvoicesProducts)
+                        .ThenInclude(ip => ip.Inventories)
+                    .Where(i => i.Companies.Id_company == companyId) // Filtra por ID de la compañía
+                    .Select(i => new InvoiceReadDTO
+                    {
+                        Id_invoice = i.Id_invoice,
+                        Name_invoice = i.Name_invoice,
+                        Amount_items_in_the_invoice = i.InvoicesProducts.Count(),
+                        Total_price_invoice = i.InvoicesProducts.Sum(ip => ip.Unit_price * ip.Quantity),
+                        Name_purchase_order = i.PurchaseOrders.Name_purchase_order,
+                        Name_supplier = i.Suppliers.Name_supplier,
+                        Name_department = i.Departments.Name_deparment,
+                        Name_module = i.Modules.Name_module,
+                        Name_company = i.Companies.Name_company,
+                        Date_insert = i.Date_insert.HasValue
+                            ? i.Date_insert.Value.ToString("yyyy-MM-dd HH:mm:ss")
+                            : "N/A",
+                        Date_update = i.Date_update.HasValue
+                            ? i.Date_update.Value.ToString("yyyy-MM-dd HH:mm:ss")
+                            : "N/A",
+                        Date_delete = i.Date_delete.HasValue
+                            ? i.Date_delete.Value.ToString("yyyy-MM-dd HH:mm:ss")
+                            : "N/A",
+                        Date_restore = i.Date_restore.HasValue
+                            ? i.Date_restore.Value.ToString("yyyy-MM-dd HH:mm:ss")
+                            : "N/A",
+                        Delete_log_invoices = i.Delete_log_invoices,
+                        Products = i.InvoicesProducts.Any()
+                            ? i.InvoicesProducts.Select(ip => new InvoiceProductReadDTO
+                            {
+                                Id_inventory_product = ip.Inventories.Id_inventory_product,
+                                Name_product = ip.Inventories.Name_product,
+                                Quantity = ip.Quantity,
+                                Unit_price = ip.Unit_price
+                            }).ToList()
+                            : new List<InvoiceProductReadDTO>()
+                    })
+                    .ToListAsync();
+
+                // Manejar "Sin productos asociados" fuera de la consulta LINQ
+                foreach (var invoice in invoices)
+                {
+                    if (!invoice.Products.Any())
+                    {
+                        invoice.Products = new List<InvoiceProductReadDTO>
+                {
+                    new InvoiceProductReadDTO { Name_product = "Sin productos asociados" }
+                };
+                    }
+                }
+
+                return invoices;
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetInvoicesByCompanyIdAsync");
+                return new List<InvoiceReadDTO>();
+            }
+        }
+
         public async Task AddAsyncInvoice(InvoiceCreateDTO dto, string nameUser, string nameDepartment)
         {
             try

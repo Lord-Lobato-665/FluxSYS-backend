@@ -17,6 +17,11 @@ namespace FluxSYS_backend.Application.Services
             return await _repository.GetAllAsyncCategoriesProducts();
         }
 
+        public async Task<IEnumerable<CategoryProductsReadDTO>> GetCategoriesByCompanyIdAsync(int idCompany)
+        {
+            return await _repository.GetCategoriesByCompanyIdAsync(idCompany);
+        }
+
         public async Task AddAsyncCategoryProduct(CategoryProductsCreateDTO dto)
         {
             await _repository.AddAsyncCategoryProduct(dto);

@@ -7,6 +7,7 @@ namespace FluxSYS_backend.Domain.IServices
     public interface ISuppliers
     {
         Task<IEnumerable<SupplierReadDTO>> GetAllAsyncSuppliers();
+        Task<IEnumerable<SupplierReadDTO>> GetSuppliersByCompanyIdAsync(int companyId);
         Task AddAsyncSupplier(SupplierCreateDTO dto, string nameUser, string nameDepartment);
         Task UpdateAsyncSupplier(int id, SupplierUpdateDTO dto, string nameUser, string nameDepartment);
         Task SoftDeleteAsyncSupplier(int id, string nameUser, string nameDepartment);
