@@ -98,6 +98,82 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             }
         }
 
+        public async Task<IEnumerable<PurchaseOrderReadDTO>> GetPurchaseOrdersByCompanyIdAsync(int companyId)
+        {
+            try
+            {
+                var purchaseOrders = await _context.PurchaseOrders
+                    .Include(po => po.OrdersProducts)
+                        .ThenInclude(op => op.Inventories)
+                    .Include(po => po.Users)
+                    .Include(po => po.CategoryPurchaseOrders)
+                    .Include(po => po.Departments)
+                    .Include(po => po.Suppliers)
+                    .Include(po => po.States)
+                    .Include(po => po.MovementsTypes)
+                    .Include(po => po.Modules)
+                    .Include(po => po.Companies)
+                    .Where(po => po.Companies.Id_company == companyId) // Filtra por ID de la compañía
+                    .Select(po => new PurchaseOrderReadDTO
+                    {
+                        Id_purchase_order = po.Id_purchase_order,
+                        Name_purchase_order = po.Name_purchase_order,
+                        Amount_items_in_the_order = po.OrdersProducts.Count(),
+                        Total_price_products = po.OrdersProducts.Sum(op => op.Price * op.Quantity),
+                        Name_user = po.Users.Name_user,
+                        Name_category_purchase_order = po.CategoryPurchaseOrders.Name_category_purchase_order,
+                        Name_department = po.Departments.Name_deparment,
+                        Name_supplier = po.Suppliers.Name_supplier,
+                        Name_state = po.States.Name_state,
+                        Name_movement_type = po.MovementsTypes.Name_movement_type,
+                        Name_module = po.Modules.Name_module,
+                        Name_company = po.Companies.Name_company,
+                        Date_insert = po.Date_insert.HasValue
+                            ? po.Date_insert.Value.ToString("yyyy-MM-dd HH:mm:ss")
+                            : "N/A",
+                        Date_update = po.Date_update.HasValue
+                            ? po.Date_update.Value.ToString("yyyy-MM-dd HH:mm:ss")
+                            : "N/A",
+                        Date_delete = po.Date_delete.HasValue
+                            ? po.Date_delete.Value.ToString("yyyy-MM-dd HH:mm:ss")
+                            : "N/A",
+                        Date_restore = po.Date_restore.HasValue
+                            ? po.Date_restore.Value.ToString("yyyy-MM-dd HH:mm:ss")
+                            : "N/A",
+                        Delete_log_purchase_orders = po.Delete_log_purchase_orders,
+                        Products = po.OrdersProducts.Any()
+                            ? po.OrdersProducts.Select(op => new OrderProductReadDTO
+                            {
+                                Id_inventory_product = op.Inventories.Id_inventory_product,
+                                Name_product = op.Inventories.Name_product,
+                                Quantity = op.Quantity,
+                                Price = op.Price
+                            }).ToList()
+                            : new List<OrderProductReadDTO>()
+                    })
+                    .ToListAsync();
+
+                // Manejar "Sin productos asociados" fuera de la consulta LINQ
+                foreach (var purchaseOrder in purchaseOrders)
+                {
+                    if (!purchaseOrder.Products.Any())
+                    {
+                        purchaseOrder.Products = new List<OrderProductReadDTO>
+                {
+                    new OrderProductReadDTO { Name_product = "Sin productos asociados" }
+                };
+                    }
+                }
+
+                return purchaseOrders;
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetPurchaseOrdersByCompanyIdAsync");
+                return new List<PurchaseOrderReadDTO>();
+            }
+        }
+
         public async Task AddAsyncPurchaseOrder(PurchaseOrderCreateDTO dto, string nameUser, string nameDepartment)
         {
             try
