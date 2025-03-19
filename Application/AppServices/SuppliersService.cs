@@ -24,18 +24,13 @@ namespace FluxSYS_backend.Application.Services
             return await _repository.GetAllAsyncSuppliers();
         }
 
+        public async Task<IEnumerable<SupplierReadDTO>> GetSuppliersByCompanyIdAsync(int companyId)
+        {
+            return await _repository.GetSuppliersByCompanyIdAsync(companyId);
+        }
+
         public async Task AddAsyncSupplier(SupplierCreateDTO dto, string nameUser, string nameDepartment)
         {
-            // Verificar si la categoría del proveedor existe
-            var categories = await _categoriesSuppliersRepository.GetAllAsyncCategoriesSuppliers();
-            if (!categories.Any(c => c.Id_category_supplier == dto.Id_category_supplier_Id))
-                throw new KeyNotFoundException("La categoría de proveedor especificada no existe.");
-
-            // Verificar si la compañía existe
-            var companies = await _companiesRepository.GetAllAsyncCompanies();
-            if (!companies.Any(c => c.Id_company == dto.Id_company_Id))
-                throw new KeyNotFoundException("La compañía especificada no existe.");
-
             await _repository.AddAsyncSupplier(dto, nameUser, nameDepartment);
         }
 
