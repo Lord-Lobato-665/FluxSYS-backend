@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\presentation\\controllers\\categoriespurchaseorderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:presentation\\controllers\\categoriespurchaseorderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\presentation\\controllers\\categoriessupplierscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:presentation\\controllers\\categoriessupplierscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\application\\appservices\\categoriespurchaseordersservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\appservices\\categoriespurchaseordersservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\application\\appservices\\categoriessuppliersservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\appservices\\categoriessuppliersservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\domain\\iservices\\icategoriespurchaseorders.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:domain\\iservices\\icategoriespurchaseorders.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\domain\\iservices\\icategoriessuppliers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:domain\\iservices\\icategoriessuppliers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\infraestructure\\repositories\\categoriespurchaseorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:infraestructure\\repositories\\categoriespurchaseorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\infraestructure\\repositories\\categoriessuppliersrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:infraestructure\\repositories\\categoriessuppliersrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\infraestructure\\data\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -49,53 +49,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CategoriesPurchaseOrdersController.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Presentation\\Controllers\\CategoriesPurchaseOrdersController.cs",
-              "RelativeDocumentMoniker": "Presentation\\Controllers\\CategoriesPurchaseOrdersController.cs",
-              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Presentation\\Controllers\\CategoriesPurchaseOrdersController.cs",
-              "RelativeToolTip": "Presentation\\Controllers\\CategoriesPurchaseOrdersController.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAgwDkAAAAJAAAAAAAAAA==",
+              "Title": "CategoriesSuppliersController.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Presentation\\Controllers\\CategoriesSuppliersController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Controllers\\CategoriesSuppliersController.cs",
+              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Presentation\\Controllers\\CategoriesSuppliersController.cs",
+              "RelativeToolTip": "Presentation\\Controllers\\CategoriesSuppliersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T16:21:25.505Z",
+              "WhenOpened": "2025-03-19T16:29:18.315Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CategoriesPurchaseOrdersService.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Application\\AppServices\\CategoriesPurchaseOrdersService.cs",
-              "RelativeDocumentMoniker": "Application\\AppServices\\CategoriesPurchaseOrdersService.cs",
-              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Application\\AppServices\\CategoriesPurchaseOrdersService.cs",
-              "RelativeToolTip": "Application\\AppServices\\CategoriesPurchaseOrdersService.cs",
+              "Title": "CategoriesSuppliersService.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Application\\AppServices\\CategoriesSuppliersService.cs",
+              "RelativeDocumentMoniker": "Application\\AppServices\\CategoriesSuppliersService.cs",
+              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Application\\AppServices\\CategoriesSuppliersService.cs",
+              "RelativeToolTip": "Application\\AppServices\\CategoriesSuppliersService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T16:20:39.542Z",
+              "WhenOpened": "2025-03-19T16:28:48.062Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ICategoriesPurchaseOrders.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Domain\\IServices\\ICategoriesPurchaseOrders.cs",
-              "RelativeDocumentMoniker": "Domain\\IServices\\ICategoriesPurchaseOrders.cs",
-              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Domain\\IServices\\ICategoriesPurchaseOrders.cs",
-              "RelativeToolTip": "Domain\\IServices\\ICategoriesPurchaseOrders.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABzAAAAAAAAAA==",
+              "Title": "ICategoriesSuppliers.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Domain\\IServices\\ICategoriesSuppliers.cs",
+              "RelativeDocumentMoniker": "Domain\\IServices\\ICategoriesSuppliers.cs",
+              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Domain\\IServices\\ICategoriesSuppliers.cs",
+              "RelativeToolTip": "Domain\\IServices\\ICategoriesSuppliers.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T16:20:24.061Z",
+              "WhenOpened": "2025-03-19T16:28:32.83Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "CategoriesPurchaseOrderRepository.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Infraestructure\\Repositories\\CategoriesPurchaseOrderRepository.cs",
-              "RelativeDocumentMoniker": "Infraestructure\\Repositories\\CategoriesPurchaseOrderRepository.cs",
-              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Infraestructure\\Repositories\\CategoriesPurchaseOrderRepository.cs",
-              "RelativeToolTip": "Infraestructure\\Repositories\\CategoriesPurchaseOrderRepository.cs",
+              "Title": "CategoriesSuppliersRepository.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Infraestructure\\Repositories\\CategoriesSuppliersRepository.cs",
+              "RelativeDocumentMoniker": "Infraestructure\\Repositories\\CategoriesSuppliersRepository.cs",
+              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Infraestructure\\Repositories\\CategoriesSuppliersRepository.cs",
+              "RelativeToolTip": "Infraestructure\\Repositories\\CategoriesSuppliersRepository.cs",
               "ViewState": "AgIAABwAAAAAAAAAAAAkwD0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T16:19:58.479Z",
+              "WhenOpened": "2025-03-19T16:28:21.465Z",
               "EditorCaption": ""
             }
           ]

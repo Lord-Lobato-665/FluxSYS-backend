@@ -41,6 +41,22 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
+        [HttpGet("get-departments-by-company/{companyId}")]
+        public async Task<IActionResult> GetDepartmentsByCompanyId(int companyId)
+        {
+            try
+            {
+                var departments = await _service.GetDepartmentsByCompanyIdAsync(companyId);
+                return Ok(departments);
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetDepartmentsByCompanyIdController");
+                return StatusCode(500, "Error interno del servidor.");
+            }
+        }
+
         [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpPost("create-department")]
         public async Task<IActionResult> Create([FromBody] DepartmentViewModel model)
