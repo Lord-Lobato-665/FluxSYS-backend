@@ -43,5 +43,10 @@ namespace FluxSYS_backend.Application.Services
         {
             await _repository.RestoreAsyncInventory(id, nameUser, nameDepartment);
         }
+
+        public async Task<byte[]> GetPDF(string companyName, string departmentName)
+        {
+            return await _repository.GetPDF(companyName, departmentName);
+        }
     }
 }
