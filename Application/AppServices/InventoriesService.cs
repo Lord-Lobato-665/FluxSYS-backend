@@ -19,6 +19,11 @@ namespace FluxSYS_backend.Application.Services
             return await _repository.GetAllAsyncInventories();
         }
 
+        public async Task<IEnumerable<InventoryReadDTO>> GetInventoriesByCompanyIdAsync(int companyId)
+        {
+            return await _repository.GetInventoriesByCompanyIdAsync(companyId);
+        }
+
         public async Task<InventoryReadByIdDTO> GetInventoryByIdAsync(int id)
         {
             return await _repository.GetInventoryByIdAsync(id);

@@ -38,6 +38,22 @@ namespace FluxSYS_backend.API.Controllers
         }
 
         [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
+        [HttpGet("get-inventories-by-company/{companyId}")]
+        public async Task<IActionResult> GetInventoriesByCompanyId(int companyId)
+        {
+            try
+            {
+                var inventories = await _service.GetInventoriesByCompanyIdAsync(companyId);
+                return Ok(inventories);
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetInventoriesByCompanyIdController");
+                return StatusCode(500, "Error interno del servidor.");
+            }
+        }
+
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpGet("get-inventory-by-id/{id}")]
         public async Task<IActionResult> GetInventoryById(int id)
         {
