@@ -7,6 +7,7 @@ namespace FluxSYS_backend.Domain.IServices
     public interface IUsers
     {
         Task<IEnumerable<UserReadDTO>> GetAllAsyncUsers();
+        Task<IEnumerable<UserReadDTO>> GetUsersByCompanyIdAsync(int companyId);
         Task AddAsyncUser(UserCreateDTO dto, string nameUser, string nameDepartment);
         Task UpdateAsyncUser(int id, UserUpdateDTO dto, string nameUser, string nameDepartment);
         Task SoftDeleteAsyncUser(int id, string nameUser, string nameDepartment);
