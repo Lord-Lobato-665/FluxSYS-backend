@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\presentation\\controllers\\supplierscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:presentation\\controllers\\supplierscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\presentation\\controllers\\errorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:presentation\\controllers\\errorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\application\\appservices\\suppliersservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\appservices\\suppliersservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\application\\dtos\\errorlogs\\errorlogcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\dtos\\errorlogs\\errorlogcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\domain\\iservices\\isuppliers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:domain\\iservices\\isuppliers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\application\\appservices\\errorlogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:application\\appservices\\errorlogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\infraestructure\\repositories\\suppliersrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:infraestructure\\repositories\\suppliersrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\domain\\iservices\\ierrorlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:domain\\iservices\\ierrorlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\infraestructure\\repositories\\usersrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|solutionrelative:infraestructure\\repositories\\usersrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{438A2259-C74F-43C6-AD88-7486CADCAFCA}|FluxSYS-backend.csproj|c:\\users\\pochi\\desktop\\fluxsys-backend\\infraestructure\\data\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,11 +34,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 633,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Infraestructure\\Data\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "Infraestructure\\Data\\DependencyInjection.cs",
@@ -43,59 +47,71 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-10T16:55:23.701Z",
-              "IsPinned": true,
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ErrorLogCreateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Application\\DTOs\\ErrorLogs\\ErrorLogCreateDTO.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\ErrorLogs\\ErrorLogCreateDTO.cs",
+              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Application\\DTOs\\ErrorLogs\\ErrorLogCreateDTO.cs",
+              "RelativeToolTip": "Application\\DTOs\\ErrorLogs\\ErrorLogCreateDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T14:44:15.615Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SuppliersController.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Presentation\\Controllers\\SuppliersController.cs",
-              "RelativeDocumentMoniker": "Presentation\\Controllers\\SuppliersController.cs",
-              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Presentation\\Controllers\\SuppliersController.cs",
-              "RelativeToolTip": "Presentation\\Controllers\\SuppliersController.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAgwEIAAAAJAAAAAAAAAA==",
+              "Title": "ErrorsController.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Presentation\\Controllers\\ErrorsController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Controllers\\ErrorsController.cs",
+              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Presentation\\Controllers\\ErrorsController.cs",
+              "RelativeToolTip": "Presentation\\Controllers\\ErrorsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T17:33:45.053Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SuppliersService.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Application\\AppServices\\SuppliersService.cs",
-              "RelativeDocumentMoniker": "Application\\AppServices\\SuppliersService.cs",
-              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Application\\AppServices\\SuppliersService.cs",
-              "RelativeToolTip": "Application\\AppServices\\SuppliersService.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwCAAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T17:32:49.469Z",
+              "WhenOpened": "2025-03-20T14:32:38.382Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ISuppliers.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Domain\\IServices\\ISuppliers.cs",
-              "RelativeDocumentMoniker": "Domain\\IServices\\ISuppliers.cs",
-              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Domain\\IServices\\ISuppliers.cs",
-              "RelativeToolTip": "Domain\\IServices\\ISuppliers.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABXAAAAAAAAAA==",
+              "Title": "ErrorLogService.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Application\\AppServices\\ErrorLogService.cs",
+              "RelativeDocumentMoniker": "Application\\AppServices\\ErrorLogService.cs",
+              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Application\\AppServices\\ErrorLogService.cs",
+              "RelativeToolTip": "Application\\AppServices\\ErrorLogService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T17:32:34.423Z",
+              "WhenOpened": "2025-03-20T14:32:09.886Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "SuppliersRepository.cs",
-              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Infraestructure\\Repositories\\SuppliersRepository.cs",
-              "RelativeDocumentMoniker": "Infraestructure\\Repositories\\SuppliersRepository.cs",
-              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Infraestructure\\Repositories\\SuppliersRepository.cs",
-              "RelativeToolTip": "Infraestructure\\Repositories\\SuppliersRepository.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAgwJoAAAAJAAAAAAAAAA==",
+              "Title": "IErrorLog.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Domain\\IServices\\IErrorLog.cs",
+              "RelativeDocumentMoniker": "Domain\\IServices\\IErrorLog.cs",
+              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Domain\\IServices\\IErrorLog.cs",
+              "RelativeToolTip": "Domain\\IServices\\IErrorLog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T17:31:03.269Z",
+              "WhenOpened": "2025-03-20T14:31:47.279Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UsersRepository.cs",
+              "DocumentMoniker": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Infraestructure\\Repositories\\UsersRepository.cs",
+              "RelativeDocumentMoniker": "Infraestructure\\Repositories\\UsersRepository.cs",
+              "ToolTip": "C:\\Users\\pochi\\Desktop\\FluxSYS-backend\\Infraestructure\\Repositories\\UsersRepository.cs",
+              "RelativeToolTip": "Infraestructure\\Repositories\\UsersRepository.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAkwEUAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T17:35:24.156Z",
               "EditorCaption": ""
             }
           ]
