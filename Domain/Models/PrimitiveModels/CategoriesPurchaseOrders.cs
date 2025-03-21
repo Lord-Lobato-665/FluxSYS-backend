@@ -13,7 +13,7 @@ public class CategoriesPurchaseOrders
 
     [ForeignKey("Id_company_Id")]
     public int Id_company_Id { get; set; }
-    public bool Delete_log_category_purchase_order { get; set; } = false;
+    public bool Delete_log_category_purchase_order { get; set; } = false;   
 
     public virtual Companies Companies { get; set; }
 
