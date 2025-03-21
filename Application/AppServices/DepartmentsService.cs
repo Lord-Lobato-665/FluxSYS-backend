@@ -1,15 +1,24 @@
 ﻿using FluxSYS_backend.Application.DTOs.Departments;
 using FluxSYS_backend.Domain.IServices;
+using FluxSYS_backend.Infraestructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace FluxSYS_backend.Application.Services
 {
     public class DepartmentsService : IDepartments
     {
         private readonly IDepartments _repository;
+        private readonly ApplicationDbContext _context;
+        private readonly ErrorLogService _errorLogService;
 
-        public DepartmentsService(IDepartments repository)
+        public DepartmentsService(
+            IDepartments repository,
+            ApplicationDbContext context,
+            ErrorLogService errorLogService)
         {
             _repository = repository;
+            _context = context;
+            _errorLogService = errorLogService;
         }
 
         public async Task<IEnumerable<DepartmentReadDTO>> GetAllAsyncDepartments()
@@ -24,22 +33,74 @@ namespace FluxSYS_backend.Application.Services
 
         public async Task AddAsyncDepartment(DepartmentCreateDTO dto)
         {
-            await _repository.AddAsyncDepartment(dto);
+            using (var transaction = await _context.Database.BeginTransactionAsync())
+            {
+                try
+                {
+                    await _repository.AddAsyncDepartment(dto);
+                    await transaction.CommitAsync();
+                }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                    await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "AddAsyncDepartment");
+                    throw;
+                }
+            }
         }
 
         public async Task UpdateAsyncDepartment(int id, DepartmentUpdateDTO dto)
         {
-            await _repository.UpdateAsyncDepartment(id, dto);
+            using (var transaction = await _context.Database.BeginTransactionAsync())
+            {
+                try
+                {
+                    await _repository.UpdateAsyncDepartment(id, dto);
+                    await transaction.CommitAsync();
+                }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                    await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "UpdateAsyncDepartment");
+                    throw;
+                }
+            }
         }
 
         public async Task SoftDeleteAsyncDepartment(int id)
         {
-            await _repository.SoftDeleteAsyncDepartment(id);
+            using (var transaction = await _context.Database.BeginTransactionAsync())
+            {
+                try
+                {
+                    await _repository.SoftDeleteAsyncDepartment(id);
+                    await transaction.CommitAsync();
+                }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                    await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "SoftDeleteAsyncDepartment");
+                    throw;
+                }
+            }
         }
 
         public async Task RestoreAsyncDepartment(int id)
         {
-            await _repository.RestoreAsyncDepartment(id);
+            using (var transaction = await _context.Database.BeginTransactionAsync())
+            {
+                try
+                {
+                    await _repository.RestoreAsyncDepartment(id);
+                    await transaction.CommitAsync();
+                }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                    await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "RestoreAsyncDepartment");
+                    throw;
+                }
+            }
         }
     }
 }
