@@ -10,6 +10,5 @@
         public int Id_position_Id { get; set; }
         public int Id_department_Id { get; set; }
         public int Id_company_Id { get; set; }
-        public int Id_module_Id { get; set; }
     }
 }

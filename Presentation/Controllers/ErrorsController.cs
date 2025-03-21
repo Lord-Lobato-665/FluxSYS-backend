@@ -1,4 +1,5 @@
-﻿using FluxSYS_backend.Application.Filters;
+﻿using FluxSYS_backend.Application.DTOs.ErrorLogs; // Importa el DTO
+using FluxSYS_backend.Application.Filters;
 using FluxSYS_backend.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -29,6 +30,22 @@ namespace FluxSYS_backend.API.Controllers
             catch (Exception ex)
             {
                 await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "GetAllErrorsController");
+                return StatusCode(500, "Error interno del servidor.");
+            }
+        }
+
+        // Nuevo método para crear un ErrorLog desde el frontend usando el DTO
+        [HttpPost("log")]
+        public async Task<IActionResult> LogError([FromBody] ErrorLogCreateDTO request)
+        {
+            try
+            {
+                await _errorLogService.SaveErrorAsync(request.Message, request.StackTrace, request.Source);
+                return Ok("Error registrado correctamente.");
+            }
+            catch (Exception ex)
+            {
+                await _errorLogService.SaveErrorAsync(ex.Message, ex.StackTrace, "LogErrorController");
                 return StatusCode(500, "Error interno del servidor.");
             }
         }
