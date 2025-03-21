@@ -83,18 +83,99 @@ public class CompaniesRepository : ICompanies
     {
         try
         {
+            // Buscar la compañía por su ID
             var company = await _context.Companies
+                .Include(c => c.States)
+                .Include(c => c.MovementsTypes)
+                .Include(c => c.Departments)
+                .Include(c => c.Positions)
+                .Include(c => c.CategoriesProducts)
+                .Include(c => c.CategoriesPurchaseOrders)
+                .Include(c => c.CategoriesSuppliers)
+                .Include(c => c.Users)
+                .Include(c => c.Suppliers)
+                .Include(c => c.Inventories)
+                .Include(c => c.PurchaseOrders)
+                .Include(c => c.Invoices)
+                .Include(c => c.InventoryMovements)
                 .FirstOrDefaultAsync(c => c.Id_company == id);
 
-            if (company != null)
-            {
-                company.Delete_log_company = true;
-                await _context.SaveChangesAsync();
-            }
-            else
+            if (company == null)
             {
                 throw new KeyNotFoundException("Compañía no encontrada para eliminar");
             }
+
+            // Marcar la compañía como eliminada lógicamente
+            company.Delete_log_company = true;
+
+            // Marcar todas las entidades relacionadas como eliminadas lógicamente
+            foreach (var state in company.States)
+            {
+                state.Delete_log_state = true;
+            }
+
+            foreach (var movementType in company.MovementsTypes)
+            {
+                movementType.Delete_log_movement_type = true;
+            }
+
+            foreach (var department in company.Departments)
+            {
+                department.Delete_log_department = true;
+            }
+
+            foreach (var position in company.Positions)
+            {
+                position.Delete_log_position = true;
+            }
+
+            foreach (var categoryProduct in company.CategoriesProducts)
+            {
+                categoryProduct.Delete_log_category_product = true;
+            }
+
+            foreach (var categoryPurchaseOrder in company.CategoriesPurchaseOrders)
+            {
+                categoryPurchaseOrder.Delete_log_category_purchase_order = true;
+            }
+
+            foreach (var categorySupplier in company.CategoriesSuppliers)
+            {
+                categorySupplier.Delete_log_category_supplier = true;
+            }
+
+            foreach (var user in company.Users)
+            {
+                user.Delete_log_user = true;
+            }
+
+            foreach (var supplier in company.Suppliers)
+            {
+                supplier.Delete_log_suppliers = true;
+            }
+
+            foreach (var inventory in company.Inventories)
+            {
+                inventory.Delete_log_inventory = true;
+            }
+
+            foreach (var purchaseOrder in company.PurchaseOrders)
+            {
+                purchaseOrder.Delete_log_purchase_orders = true;
+            }
+
+            foreach (var invoice in company.Invoices)
+            {
+                invoice.Delete_log_invoices = true;
+            }
+
+            foreach (var inventoryMovement in company.InventoryMovements)
+            {
+                inventoryMovement.Delete_log_inventory_movement = true;
+            }
+
+            // Guardar los cambios en la base de datos
+            await _context.SaveChangesAsync();
         }
         catch (Exception ex)
         {
@@ -106,18 +187,99 @@ public class CompaniesRepository : ICompanies
     {
         try
         {
+            // Buscar la compañía por su ID, incluyendo todas las entidades relacionadas
             var company = await _context.Companies
+                .Include(c => c.States)
+                .Include(c => c.MovementsTypes)
+                .Include(c => c.Departments)
+                .Include(c => c.Positions)
+                .Include(c => c.CategoriesProducts)
+                .Include(c => c.CategoriesPurchaseOrders)
+                .Include(c => c.CategoriesSuppliers)
+                .Include(c => c.Users)
+                .Include(c => c.Suppliers)
+                .Include(c => c.Inventories)
+                .Include(c => c.PurchaseOrders)
+                .Include(c => c.Invoices)
+                .Include(c => c.InventoryMovements)
                 .FirstOrDefaultAsync(c => c.Id_company == id && c.Delete_log_company);
 
-            if (company != null)
-            {
-                company.Delete_log_company = false;
-                await _context.SaveChangesAsync();
-            }
-            else
+            if (company == null)
             {
                 throw new KeyNotFoundException("Compañía no encontrada para restaurar");
             }
+
+            // Restaurar la compañía
+            company.Delete_log_company = false;
+
+            // Restaurar todas las entidades relacionadas
+            foreach (var state in company.States)
+            {
+                state.Delete_log_state = false;
+            }
+
+            foreach (var movementType in company.MovementsTypes)
+            {
+                movementType.Delete_log_movement_type = false;
+            }
+
+            foreach (var department in company.Departments)
+            {
+                department.Delete_log_department = false;
+            }
+
+            foreach (var position in company.Positions)
+            {
+                position.Delete_log_position = false;
+            }
+
+            foreach (var categoryProduct in company.CategoriesProducts)
+            {
+                categoryProduct.Delete_log_category_product = false;
+            }
+
+            foreach (var categoryPurchaseOrder in company.CategoriesPurchaseOrders)
+            {
+                categoryPurchaseOrder.Delete_log_category_purchase_order = false;
+            }
+
+            foreach (var categorySupplier in company.CategoriesSuppliers)
+            {
+                categorySupplier.Delete_log_category_supplier = false;
+            }
+
+            foreach (var user in company.Users)
+            {
+                user.Delete_log_user = false;
+            }
+
+            foreach (var supplier in company.Suppliers)
+            {
+                supplier.Delete_log_suppliers = false;
+            }
+
+            foreach (var inventory in company.Inventories)
+            {
+                inventory.Delete_log_inventory = false;
+            }
+
+            foreach (var purchaseOrder in company.PurchaseOrders)
+            {
+                purchaseOrder.Delete_log_purchase_orders = false;
+            }
+
+            foreach (var invoice in company.Invoices)
+            {
+                invoice.Delete_log_invoices = false;
+            }
+
+            foreach (var inventoryMovement in company.InventoryMovements)
+            {
+                inventoryMovement.Delete_log_inventory_movement = false;
+            }
+
+            // Guardar los cambios en la base de datos
+            await _context.SaveChangesAsync();
         }
         catch (Exception ex)
         {
