@@ -78,17 +78,25 @@ namespace FluxSYS_backend.API.Controllers
 
             try
             {
+                // Autenticar al usuario
                 var user = await _authService.Authenticate(model.Email, model.Password);
 
                 if (user == null)
                     return Unauthorized(new { message = "Credenciales inválidas" });
 
+                // Generar el token
                 var token = await _authService.GenerateToken(user);
                 var expirationDate = DateTime.Now.AddMinutes(120);
 
+                // Guardar el token en la base de datos
                 await _authService.SaveToken(user.Id_user, token, expirationDate);
 
                 return Ok(new { token, expirationDate });
+            }
+            catch (InvalidOperationException ex)
+            {
+                // Capturar la excepción y devolver un mensaje adecuado
+                return Unauthorized(new { message = ex.Message });
             }
             catch (Exception ex)
             {
