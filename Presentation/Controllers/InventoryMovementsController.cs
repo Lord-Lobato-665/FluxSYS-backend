@@ -20,7 +20,7 @@ namespace FluxSYS_backend.API.Controllers
             _errorLogService = errorLogService;
         }
 
-        [CustomAuthorize("Administrador")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento")]
         [HttpGet("get-inventory-movements")]
         public async Task<IActionResult> GetAll()
         {
@@ -36,7 +36,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento")]
         [HttpGet("get-inventory-movements-by-company/{idCompany}")]
         public async Task<IActionResult> GetAllByCompanyId(int idCompany)
         {
