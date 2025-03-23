@@ -40,7 +40,7 @@ namespace FluxSYS_backend.API.Controllers
             _modulesService = modulesService;
         }
 
-        [CustomAuthorize("Administrador")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpGet("get-users")]
         public async Task<IActionResult> GetAll()
         {
@@ -56,7 +56,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpGet("get-users-by-company/{companyId}")]
         public async Task<IActionResult> GetUsersByCompanyId(int companyId)
         {
@@ -72,7 +72,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpPost("create-user")]
         public async Task<IActionResult> Create(
             [FromBody] UserViewModel model,
@@ -142,7 +142,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpPut("update-user/{id}")]
         public async Task<IActionResult> Update(
             int id,
@@ -175,7 +175,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpDelete("delete-user/{id}")]
         public async Task<IActionResult> SoftDelete(
             int id,
@@ -200,7 +200,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpPatch("restore-user/{id}")]
         public async Task<IActionResult> Restore(
             int id,

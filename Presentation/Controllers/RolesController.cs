@@ -22,7 +22,7 @@ namespace FluxSYS_backend.API.Controllers
             _errorLogService = errorLogService;
         }
 
-        [CustomAuthorize("Administrador")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpGet("get-roles")]
         public async Task<IActionResult> GetAll()
         {
@@ -38,7 +38,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpPost("create-role")]
         public async Task<IActionResult> Create([FromBody] RoleViewModel model)
         {
@@ -61,7 +61,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpPut("update-role/{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] RoleViewModel model)
         {
@@ -89,7 +89,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpDelete("delete-role/{id}")]
         public async Task<IActionResult> SoftDelete(int id)
         {
@@ -110,7 +110,7 @@ namespace FluxSYS_backend.API.Controllers
             }
         }
 
-        [CustomAuthorize("Administrador")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial")]
         [HttpPatch("restore-role/{id}")]
         public async Task<IActionResult> Restore(int id)
         {
