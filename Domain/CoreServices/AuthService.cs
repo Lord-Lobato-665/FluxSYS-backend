@@ -64,8 +64,15 @@ namespace FluxSYS_backend.Application.Services
                 .Include(u => u.Companies)
                 .FirstOrDefaultAsync(u => u.Mail_user == email);
 
+            // Verificar si el usuario existe y si la contraseña es correcta
             if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.Password_user))
                 return null;
+
+            // Verificar si el usuario está marcado como eliminado
+            if (user.Delete_log_user)
+            {
+                throw new InvalidOperationException("El usuario no está disponible.");
+            }
 
             return user;
         }
