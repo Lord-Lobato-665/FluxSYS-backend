@@ -23,7 +23,7 @@ namespace FluxSYS_backend.API.Controllers
             _errorLogService = errorLogService;
         }
 
-        [CustomAuthorize("Administrador")]
+        [CustomAuthorize("Administrador", "Administrador Empresarial", "Jefe de Departamento", "Subjefe de Departamento", "Colaborador")]
         [HttpGet("get-clasification-movements")]
         public async Task<IActionResult> GetAll()
         {
