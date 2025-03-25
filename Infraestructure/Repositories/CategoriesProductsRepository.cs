@@ -45,7 +45,7 @@ namespace FluxSYS_backend.Infrastructure.Repositories
             {
                 return await _context.CategoriesProducts
                     .Include(cp => cp.Companies) // Incluye la compañía
-                    .Where(cp => cp.Id_company_Id == idCompany && !cp.Delete_log_category_product) // Filtra por Id_company y excluye eliminados lógicamente
+                    .Where(cp => cp.Id_company_Id == idCompany) // Filtra por Id_company y excluye eliminados lógicamente
                     .Select(cp => new CategoryProductsReadDTO
                     {
                         Id_category_product = cp.Id_category_product,
