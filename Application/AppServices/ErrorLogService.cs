@@ -20,19 +20,7 @@ namespace FluxSYS_backend.Application.Services
 
         public async Task SaveErrorAsync(string message, string stackTrace, string source)
         {
-            using (var transaction = await _context.Database.BeginTransactionAsync())
-            {
-                try
-                {
-                    await _errorLogRepository.SaveErrorAsync(message, stackTrace, source);
-                    await transaction.CommitAsync();
-                }
-                catch (Exception)
-                {
-                    await transaction.RollbackAsync();
-                    throw; // Relanzar la excepción para manejarla en un nivel superior
-                }
-            }
+            await _errorLogRepository.SaveErrorAsync(message, stackTrace, source);
         }
 
         public async Task<List<ErrorLogs>> GetAllErrorsAsync()
